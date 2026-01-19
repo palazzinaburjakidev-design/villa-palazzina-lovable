@@ -47,6 +47,9 @@ import gymSpa2 from '@/assets/gym-spa-2.avif';
 import gymSpa3 from '@/assets/gym-spa-3.avif';
 import gymSpa4 from '@/assets/gym-spa-4.avif';
 import gymSpa5 from '@/assets/gym-spa-5.avif';
+import backyard1 from '@/assets/backyard-1.avif';
+import backyard2 from '@/assets/backyard-2.avif';
+import backyard3 from '@/assets/backyard-3.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -160,6 +163,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: gymSpa1,
       images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
       count: 5,
+    },
+    {
+      id: 'backyard',
+      title: 'Stražnje dvorište',
+      cover: backyard1,
+      images: [backyard1, backyard2, backyard3],
+      count: 3,
     },
   ];
 
