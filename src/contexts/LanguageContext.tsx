@@ -146,6 +146,128 @@ export const translations: Translations = {
     de: 'Natürliches Licht',
   },
 
+  // Gallery Categories
+  'gallery.category.all': {
+    en: 'All',
+    hr: 'Sve',
+    it: 'Tutto',
+    de: 'Alle',
+  },
+  'gallery.category.exterior': {
+    en: 'Exterior',
+    hr: 'Eksterijer',
+    it: 'Esterno',
+    de: 'Außenbereich',
+  },
+  'gallery.category.living': {
+    en: 'Living Spaces',
+    hr: 'Dnevni prostori',
+    it: 'Spazi abitativi',
+    de: 'Wohnbereiche',
+  },
+  'gallery.category.bedrooms': {
+    en: 'Bedrooms',
+    hr: 'Spavaće sobe',
+    it: 'Camere da letto',
+    de: 'Schlafzimmer',
+  },
+  'gallery.category.bathrooms': {
+    en: 'Bathrooms',
+    hr: 'Kupaonice',
+    it: 'Bagni',
+    de: 'Badezimmer',
+  },
+
+  // Gallery Albums
+  'gallery.album.pool': {
+    en: 'Pool & Surroundings',
+    hr: 'Bazen & Okoliš',
+    it: 'Piscina e dintorni',
+    de: 'Pool & Umgebung',
+  },
+  'gallery.album.terrace': {
+    en: 'Terrace',
+    hr: 'Terasa',
+    it: 'Terrazza',
+    de: 'Terrasse',
+  },
+  'gallery.album.backyard': {
+    en: 'Backyard',
+    hr: 'Stražnje dvorište',
+    it: 'Cortile',
+    de: 'Hinterhof',
+  },
+  'gallery.album.living': {
+    en: 'Living Room',
+    hr: 'Dnevni boravak',
+    it: 'Soggiorno',
+    de: 'Wohnzimmer',
+  },
+  'gallery.album.dining': {
+    en: 'Dining Room',
+    hr: 'Blagovaonica',
+    it: 'Sala da pranzo',
+    de: 'Esszimmer',
+  },
+  'gallery.album.kitchen': {
+    en: 'Kitchen',
+    hr: 'Kuhinja',
+    it: 'Cucina',
+    de: 'Küche',
+  },
+  'gallery.album.gymSpa': {
+    en: 'Gym & Spa',
+    hr: 'Gym & Spa',
+    it: 'Palestra & Spa',
+    de: 'Fitness & Spa',
+  },
+  'gallery.album.laundry': {
+    en: 'Laundry Room',
+    hr: 'Vešeraj',
+    it: 'Lavanderia',
+    de: 'Waschküche',
+  },
+  'gallery.album.bedroom': {
+    en: 'Bedroom',
+    hr: 'Spavaća soba',
+    it: 'Camera da letto',
+    de: 'Schlafzimmer',
+  },
+  'gallery.album.bathroom': {
+    en: 'Bathroom',
+    hr: 'Kupaonica',
+    it: 'Bagno',
+    de: 'Badezimmer',
+  },
+
+  // Gallery Video
+  'gallery.video.title': {
+    en: 'Video Tour',
+    hr: 'Video tura',
+    it: 'Video tour',
+    de: 'Video-Tour',
+  },
+  'gallery.video.subtitle': {
+    en: 'Virtual villa walkthrough',
+    hr: 'Virtualna šetnja vilom',
+    it: 'Passeggiata virtuale nella villa',
+    de: 'Virtueller Villenrundgang',
+  },
+
+  // Gallery Misc
+  'gallery.photos': {
+    en: 'photos',
+    hr: 'slika',
+    it: 'foto',
+    de: 'Fotos',
+  },
+  'gallery.photo': {
+    en: 'photo',
+    hr: 'slika',
+    it: 'foto',
+    de: 'Foto',
+  },
+
   // Amenities
   'amenities.label': {
     en: 'Villa Features',
