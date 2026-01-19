@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '@/assets/hero-villa.avif';
-import villaTourVideo from '@/assets/villa-tour.mp4';
 
 interface HeroSectionProps {
   isActive: boolean;
@@ -62,20 +61,12 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.brand')}
           </motion.p>
 
-          {/* Small Video Window */}
-          <motion.div
+          <motion.h1
             variants={itemVariants}
-            className="mx-auto mb-6 sm:mb-8 w-full max-w-[280px] sm:max-w-[350px]"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-linen mb-4 sm:mb-6 text-shadow"
           >
-            <div className="relative rounded-xl overflow-hidden shadow-2xl glass-card p-1">
-              <video
-                src={villaTourVideo}
-                className="w-full aspect-video rounded-lg"
-                controls
-                playsInline
-              />
-            </div>
-          </motion.div>
+            {t('hero.title')}
+          </motion.h1>
 
           <motion.p
             variants={itemVariants}

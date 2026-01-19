@@ -51,6 +51,12 @@ export const translations: Translations = {
     it: 'Villa Palazzina Burjaki',
     de: 'Villa Palazzina Burjaki',
   },
+  'hero.title': {
+    en: 'Experience Istrian Luxury',
+    hr: 'Doživite Istarsku Raskoš',
+    it: 'Vivi il Lusso Istriano',
+    de: 'Erleben Sie Istrischen Luxus',
+  },
   'hero.watchVideo': {
     en: 'Watch Video Tour',
     hr: 'Pogledaj Video Turu',
