@@ -181,7 +181,7 @@ const AboutSection = ({
                 </a>
                 <a href="https://instagram.com/palazzina.burjaki" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
                   <Instagram className="w-4 h-4 text-gold flex-shrink-0" />
-                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">@palazzina.burjaki</span>
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">​@burjaki</span>
                 </a>
               </div>
             </div>
