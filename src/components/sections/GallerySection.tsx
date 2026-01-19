@@ -383,7 +383,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2"
                   onClick={() => setShowVideo(true)}
                 >
-                  <div className="relative h-36 sm:h-44 md:h-52 bg-charcoal">
+                  <div className="relative h-28 sm:h-32 md:h-40 bg-charcoal">
                     <video
                       src={villaTourVideo}
                       className="w-full h-full object-cover"
