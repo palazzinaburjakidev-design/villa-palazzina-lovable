@@ -80,7 +80,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow-sm"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold-light text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow"
           >
             {t('location.label')}
           </motion.span>
@@ -112,12 +112,12 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
                   className="location-card"
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 rounded-full glass-card flex items-center justify-center">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold-light" />
                   </div>
-                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1 text-shadow-sm">
+                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1 text-shadow">
                     {location.title}
                   </h3>
-                  <p className="text-gold text-xs sm:text-sm font-medium text-shadow-sm">
+                  <p className="text-gold-light text-xs sm:text-sm font-semibold text-shadow">
                     {location.distance}
                   </p>
                 </div>
