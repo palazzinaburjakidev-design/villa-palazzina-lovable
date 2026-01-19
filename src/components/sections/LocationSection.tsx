@@ -94,7 +94,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-12 text-shadow-sm"
+            className="text-linen/80 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-12 text-shadow-sm"
           >
             {t('location.subtitle')}
           </motion.p>
@@ -114,10 +114,10 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 rounded-full glass-card flex items-center justify-center">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gold" />
                   </div>
-                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1">
+                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1 text-shadow-sm">
                     {location.title}
                   </h3>
-                  <p className="text-gold text-xs sm:text-sm font-medium">
+                  <p className="text-gold text-xs sm:text-sm font-medium text-shadow-sm">
                     {location.distance}
                   </p>
                 </div>
