@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Play, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '@/assets/hero-villa.avif';
 
@@ -8,6 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ isActive }: HeroSectionProps) => {
   const { t } = useLanguage();
+  const [showVideo, setShowVideo] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,16 +64,23 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.brand')}
           </motion.p>
 
-          <motion.h1
+          {/* Video Play Button */}
+          <motion.button
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-linen mb-4 sm:mb-6 leading-tight px-2 text-shadow"
+            onClick={() => setShowVideo(true)}
+            className="group relative mx-auto mb-6 sm:mb-8 flex items-center justify-center"
           >
-            {t('hero.title')}
-          </motion.h1>
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full glass-card flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+              <Play className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-gold ml-1 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-linen/70 text-xs sm:text-sm whitespace-nowrap">
+              {t('hero.watchVideo')}
+            </span>
+          </motion.button>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm"
+            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm mt-8"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -88,6 +98,33 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           </div>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/95 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <button
+            onClick={() => setShowVideo(false)}
+            className="absolute top-4 right-4 sm:top-8 sm:right-8 p-2 text-linen hover:text-gold transition-colors z-10"
+            aria-label="Close video"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <div className="w-full max-w-5xl mx-4 aspect-video">
+            <iframe
+              src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1"
+              title="Villa Palazzina Burjaki Video Tour"
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 };

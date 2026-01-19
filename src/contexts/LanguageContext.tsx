@@ -51,11 +51,11 @@ export const translations: Translations = {
     it: 'Villa Palazzina Burjaki',
     de: 'Villa Palazzina Burjaki',
   },
-  'hero.title': {
-    en: '4 Bedrooms · 5 Bathrooms · 235 m² · Up to 8 Guests',
-    hr: '4 Spavaće sobe · 5 Kupaonica · 235 m² · Do 8 Gostiju',
-    it: '4 Camere · 5 Bagni · 235 m² · Fino a 8 Ospiti',
-    de: '4 Schlafzimmer · 5 Bäder · 235 m² · Bis zu 8 Gäste',
+  'hero.watchVideo': {
+    en: 'Watch Video Tour',
+    hr: 'Pogledaj Video Turu',
+    it: 'Guarda il Video Tour',
+    de: 'Video-Tour ansehen',
   },
   'hero.subtitle': {
     en: 'Luxurious villa with private pool, jacuzzi, sauna, and fitness center in the heart of Istria. Trget, Croatia.',
