@@ -56,7 +56,7 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
         >
           <motion.p
             variants={itemVariants}
-            className="text-gold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4 text-shadow-sm"
+            className="text-gold-light uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4 text-shadow"
           >
             {t('hero.brand')}
           </motion.p>
