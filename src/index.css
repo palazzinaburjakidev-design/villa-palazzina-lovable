@@ -120,8 +120,8 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-radius: 1.5rem;
-    mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 30%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 60%, transparent 100%);
   }
 
   /* Text backdrop with radial gradient (legacy) */
