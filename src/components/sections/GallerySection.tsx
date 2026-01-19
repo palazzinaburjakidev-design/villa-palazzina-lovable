@@ -52,9 +52,18 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-charcoal">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/95 to-charcoal" />
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Image with Zoom Effect */}
+      <motion.div
+        className="section-zoom"
+        style={{ backgroundImage: `url(${galleryLiving})` }}
+        initial={{ scale: 1.4, opacity: 0 }}
+        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
