@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '@/assets/hero-villa.avif';
+import villaTourVideo from '@/assets/villa-tour.mp4';
 
 interface HeroSectionProps {
   isActive: boolean;
@@ -114,13 +115,12 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           >
             <X className="w-8 h-8" />
           </button>
-          <div className="w-full max-w-5xl mx-4 aspect-video">
-            <iframe
-              src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1"
-              title="Villa Palazzina Burjaki Video Tour"
+          <div className="w-full max-w-2xl mx-4 aspect-video">
+            <video
+              src={villaTourVideo}
               className="w-full h-full rounded-lg"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+              controls
+              autoPlay
             />
           </div>
         </motion.div>
