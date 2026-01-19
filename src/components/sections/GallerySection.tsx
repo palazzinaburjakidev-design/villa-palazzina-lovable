@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Play, Loader2 } from 'lucide-react';
 import villaTourVideo from '@/assets/villa-tour.mp4';
 import galleryLiving from '@/assets/gallery-living.avif';
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
@@ -101,6 +101,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
+  const [videoLoading, setVideoLoading] = useState(true);
 
   const categories: { key: CategoryKey; label: string }[] = [
     { key: 'all', label: t('gallery.category.all') },
@@ -379,14 +380,17 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 <motion.div
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 row-span-2"
-                  onClick={() => setShowVideo(true)}
+                  onClick={() => {
+                    setVideoLoading(true);
+                    setShowVideo(true);
+                  }}
                 >
                   <div className="relative h-full bg-charcoal">
-                    <video
-                      src={villaTourVideo}
+                    {/* Static poster image instead of video for thumbnail */}
+                    <img
+                      src={pool1}
+                      alt="Villa Tour"
                       className="w-full h-full object-cover"
-                      muted
-                      playsInline
                     />
                     <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -467,14 +471,22 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             onClick={() => setShowVideo(false)}
           >
             <button
-              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2"
+              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2 z-10"
               onClick={() => setShowVideo(false)}
             >
               <X className="w-8 h-8" />
             </button>
+            
+            {/* Loading spinner */}
+            {videoLoading && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Loader2 className="w-12 h-12 text-gold animate-spin" />
+              </div>
+            )}
+            
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              animate={{ scale: 1, opacity: videoLoading ? 0 : 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="w-full max-w-5xl"
               onClick={(e) => e.stopPropagation()}
@@ -485,6 +497,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 controls
                 autoPlay
                 playsInline
+                preload="auto"
+                onCanPlay={() => setVideoLoading(false)}
               />
             </motion.div>
           </motion.div>
