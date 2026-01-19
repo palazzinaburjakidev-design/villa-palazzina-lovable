@@ -54,15 +54,23 @@
   html {
     scroll-behavior: auto;
     overflow: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+  }
+
+  /* Prevent zoom on input focus on iOS */
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }
 
@@ -127,21 +135,26 @@
 
   /* Feature pill */
   .feature-pill {
-    @apply glass-card px-4 py-2 rounded-full text-sm font-medium text-linen;
+    @apply glass-card px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium text-linen;
   }
 
   /* Amenity card */
   .amenity-card {
-    @apply glass-card p-6 rounded-2xl transition-all duration-300 hover:border-gold/50;
+    @apply glass-card p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300;
   }
 
-  .amenity-card:hover .amenity-icon {
-    @apply text-gold;
+  @media (hover: hover) {
+    .amenity-card:hover {
+      @apply border-gold/50;
+    }
+    .amenity-card:hover .amenity-icon {
+      @apply text-gold;
+    }
   }
 
   /* Location card */
   .location-card {
-    @apply text-center p-4;
+    @apply text-center p-3 sm:p-4;
   }
 
   /* Book button variants */
@@ -170,7 +183,15 @@
 
   /* Mobile book button */
   .mobile-book-btn {
-    @apply fixed bottom-4 left-4 right-4 z-50 btn-gold text-center md:hidden;
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-gold text-charcoal font-semibold py-4 text-center;
+    @apply hidden;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  @media (max-width: 767px) {
+    .mobile-book-btn {
+      @apply block;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, Instagram, ChevronUp } from 'lucide-react';
+import { Mail, Phone, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import bedroomImage from '@/assets/gallery-bedroom.avif';
 
@@ -49,7 +49,7 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 pt-20">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-32 sm:pb-24">
         <motion.div
           className="text-center max-w-3xl w-full"
           variants={containerVariants}
@@ -58,14 +58,14 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl lg:text-6xl text-linen mb-4"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4"
           >
             {t('contact.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-lg mb-12"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-12"
           >
             {t('contact.subtitle')}
           </motion.p>
@@ -73,28 +73,28 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
           {/* Contact Links */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12"
+            className="flex flex-col items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
           >
             <a
               href="mailto:info@palazzina-burjaki.com"
-              className="flex items-center gap-3 glass-card px-6 py-3 rounded-full hover:bg-white/20 transition-colors"
+              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2.5 sm:px-6 sm:py-3 rounded-full hover:bg-white/20 transition-colors w-full max-w-xs sm:max-w-none sm:w-auto"
             >
-              <Mail className="w-5 h-5 text-gold" />
-              <span className="text-linen">info@palazzina-burjaki.com</span>
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
+              <span className="text-linen text-sm sm:text-base truncate">info@palazzina-burjaki.com</span>
             </a>
 
             <a
               href="tel:+385123456789"
-              className="flex items-center gap-3 glass-card px-6 py-3 rounded-full hover:bg-white/20 transition-colors"
+              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2.5 sm:px-6 sm:py-3 rounded-full hover:bg-white/20 transition-colors"
             >
-              <Phone className="w-5 h-5 text-gold" />
-              <span className="text-linen">+385 123 456 789</span>
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
+              <span className="text-linen text-sm sm:text-base">+385 123 456 789</span>
             </a>
           </motion.div>
 
           {/* Social */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <p className="text-linen/50 text-sm uppercase tracking-widest mb-4">
+          <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
+            <p className="text-linen/50 text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4">
               {t('contact.social')}
             </p>
             <a
@@ -103,24 +103,24 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
             >
-              <Instagram className="w-6 h-6" />
-              <span className="font-medium">@palazzina.burjaki</span>
+              <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="font-medium text-sm sm:text-base">@palazzina.burjaki</span>
             </a>
           </motion.div>
         </motion.div>
 
         {/* Footer */}
         <motion.footer
-          className="absolute bottom-0 left-0 right-0 py-6 px-4"
+          className="absolute bottom-16 sm:bottom-0 left-0 right-0 py-4 sm:py-6 px-4"
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-linen/40 text-sm">
+          <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
+            <p className="text-linen/40 text-xs sm:text-sm text-center sm:text-left">
               {t('contact.copyright')}
             </p>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <a href="#" className="text-linen/40 hover:text-linen transition-colors">
                 {t('contact.privacy')}
               </a>
@@ -131,10 +131,10 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
           </div>
         </motion.footer>
 
-        {/* Scroll to Top Indicator */}
+        {/* Scroll to Top Indicator - Hidden on mobile due to Book button */}
         <motion.button
           onClick={() => scrollToSection(0)}
-          className="absolute bottom-24 left-1/2 -translate-x-1/2"
+          className="hidden sm:block absolute bottom-24 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
