@@ -380,10 +380,10 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
               {activeCategory === 'all' && (
                 <motion.div
                   variants={itemVariants}
-                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
+                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2"
                   onClick={() => setShowVideo(true)}
                 >
-                  <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
+                  <div className="relative h-36 sm:h-44 md:h-52 bg-charcoal">
                     <video
                       src={villaTourVideo}
                       className="w-full h-full object-cover"
@@ -414,7 +414,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   <img
                     src={album.cover}
                     alt={album.title}
-                    className="w-full h-40 sm:h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-28 sm:h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
