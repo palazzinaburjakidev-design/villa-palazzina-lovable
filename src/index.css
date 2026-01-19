@@ -62,6 +62,10 @@
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
     touch-action: pan-y;
+    /* Safe area support for modern phones with notches */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -215,14 +219,33 @@
 
   /* Mobile book button */
   .mobile-book-btn {
-    @apply fixed bottom-0 left-0 right-0 z-50 bg-gold text-charcoal font-semibold py-4 text-center;
-    @apply hidden;
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-gold text-charcoal font-semibold py-4 text-center text-base;
+    @apply hidden active:bg-gold-light transition-colors;
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 
   @media (max-width: 767px) {
     .mobile-book-btn {
       @apply block;
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .section-dot {
+      @apply w-1.5 h-1.5;
+    }
+    
+    .section-dot.active {
+      @apply w-2.5 h-2.5;
+    }
+  }
+
+  /* Landscape mode adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .mobile-book-btn {
+      @apply py-2;
+      padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     }
   }
 }

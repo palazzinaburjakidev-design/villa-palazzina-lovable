@@ -114,10 +114,10 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                     scrollToSection(item.section);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`text-left text-base sm:text-lg font-medium py-3 px-2 rounded-lg transition-colors ${
+                  className={`text-left text-base sm:text-lg font-medium py-3 px-3 rounded-lg transition-colors active:bg-white/10 ${
                     currentSection === item.section
                       ? 'text-gold bg-white/5'
-                      : 'text-linen/80 active:bg-white/10'
+                      : 'text-linen/80'
                   }`}
                 >
                   {item.label}
@@ -130,7 +130,7 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`flex-1 px-3 py-2.5 text-sm font-medium transition-colors rounded-lg ${
+                    className={`flex-1 px-3 py-2.5 text-sm font-medium transition-colors rounded-lg active:scale-95 ${
                       language === lang.code
                         ? 'bg-gold text-charcoal'
                         : 'text-linen/60 border border-white/20 active:bg-white/10'
