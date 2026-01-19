@@ -82,10 +82,10 @@ const AboutSection = ({
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-32 sm:pb-24 overflow-y-auto">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-12 overflow-hidden">
         <motion.div className="max-w-4xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-6 sm:mb-8">
+          <motion.div variants={itemVariants} className="text-center mb-3 sm:mb-4">
             <span className="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full text-gold text-xs uppercase tracking-widest mb-3">
               <Home className="w-3.5 h-3.5" />
               {t('about.label')}
@@ -99,7 +99,7 @@ const AboutSection = ({
           </motion.div>
 
           {/* Villa Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
             {villaStats.map((stat, index) => <div key={index} className="glass-card rounded-xl p-3 sm:p-4 text-center">
                 <stat.icon className="w-5 h-5 text-gold mx-auto mb-2" />
                 <p className="text-linen font-display text-xl sm:text-2xl">
@@ -110,14 +110,14 @@ const AboutSection = ({
           </motion.div>
 
           {/* Description */}
-          <motion.div variants={itemVariants} className="glass-card rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+          <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
             <p className="text-linen/80 text-sm sm:text-base leading-relaxed text-center">
               {t('about.description')}
             </p>
           </motion.div>
 
           {/* Check-in/out and Rating */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-3 sm:mb-4">
             <div className="glass-card rounded-xl p-3 sm:p-4 flex items-center gap-3">
               <Clock className="w-5 h-5 text-gold flex-shrink-0" />
               <div>
@@ -142,7 +142,7 @@ const AboutSection = ({
           </motion.div>
 
           {/* Host & Contact */}
-          <motion.div variants={itemVariants} className="glass-card rounded-xl p-4 sm:p-6 mb-4">
+          <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4 mb-2 sm:mb-3">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               {/* Host Info */}
               <div className="flex items-center gap-3">
@@ -174,7 +174,7 @@ const AboutSection = ({
           </motion.div>
 
           {/* House Rules */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-3">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
               <PawPrint className="w-3.5 h-3.5 text-gold" />
               {t('contact.rules.noPets')}
@@ -191,7 +191,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Footer */}
-        <motion.footer className="absolute bottom-16 sm:bottom-0 left-0 right-0 py-4 sm:py-6 px-4" initial={{
+        <motion.footer className="absolute bottom-8 sm:bottom-0 left-0 right-0 py-2 sm:py-4 px-4" initial={{
         opacity: 0
       }} animate={isActive ? {
         opacity: 1
