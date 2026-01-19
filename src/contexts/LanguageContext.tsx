@@ -43,6 +43,12 @@ export const translations: Translations = {
     it: 'Prenota',
     de: 'Buchen',
   },
+  'hero.reserveNow': {
+    en: 'Reserve Now',
+    hr: 'Rezerviraj sada',
+    it: 'Prenota ora',
+    de: 'Jetzt buchen',
+  },
 
   // Hero
   'hero.brand': {
