@@ -32,6 +32,12 @@ import bedroom2_3 from '@/assets/bedroom2-3.avif';
 import bedroom2_4 from '@/assets/bedroom2-4.webp';
 import bedroom2_5 from '@/assets/bedroom2-5.avif';
 import bedroom2_6 from '@/assets/bedroom2-6.avif';
+import bedroom3_1 from '@/assets/bedroom3-1.avif';
+import bedroom3_2 from '@/assets/bedroom3-2.webp';
+import bedroom3_3 from '@/assets/bedroom3-3.webp';
+import bedroom3_4 from '@/assets/bedroom3-4.avif';
+import bedroom3_5 from '@/assets/bedroom3-5.webp';
+import bedroom3_6 from '@/assets/bedroom3-6.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -102,6 +108,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       title: 'Spavaća soba 2',
       cover: bedroom2_1,
       images: [bedroom2_1, bedroom2_2, bedroom2_3, bedroom2_4, bedroom2_5, bedroom2_6],
+      count: 6,
+    },
+    {
+      id: 'bedroom3',
+      title: 'Spavaća soba 3',
+      cover: bedroom3_1,
+      images: [bedroom3_1, bedroom3_2, bedroom3_3, bedroom3_4, bedroom3_5, bedroom3_6],
       count: 6,
     },
     {
