@@ -77,7 +77,7 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
       <motion.div
         className="section-zoom"
@@ -91,7 +91,10 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
+      <div 
+        data-scrollable="true"
+        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-28 sm:pb-20 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
+      >
         <motion.div
           className="text-center max-w-6xl w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
           variants={containerVariants}
