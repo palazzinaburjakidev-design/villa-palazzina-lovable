@@ -71,7 +71,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-24 sm:pb-20">
         <motion.div
           className="text-center max-w-4xl w-full text-backdrop py-12 px-6"
           variants={containerVariants}
@@ -128,17 +128,17 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
           {/* Google Map */}
           <motion.div
             variants={itemVariants}
-            className="w-full max-w-5xl mx-auto rounded-xl overflow-hidden glass-card p-1"
+            className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden glass-card p-1"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.5!2d14.0631!3d45.0567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477c9e8d8f8d8d8d%3A0x8d8d8d8d8d8d8d8d!2sBurjaki%2036%2C%2052223%2C%20Trget%2C%20Croatia!5e0!3m2!1sen!2shr!4v1705700000000!5m2!1sen!2shr&q=Burjaki+36,+Trget,+52223,+Raša,+Croatia"
               width="100%"
-              height="300"
+              height="150"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg lg:h-[350px]"
+              className="rounded-lg lg:h-[180px] opacity-80"
               title="Villa Palazzina Burjaki location"
             />
           </motion.div>
