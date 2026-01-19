@@ -5,6 +5,12 @@ import galleryLiving from '@/assets/gallery-living.avif';
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
 import galleryPool from '@/assets/gallery-pool.avif';
 import galleryTerrace from '@/assets/gallery-terrace.avif';
+import livingRoom1 from '@/assets/living-room-1.avif';
+import livingRoom2 from '@/assets/living-room-2.avif';
+import livingRoom3 from '@/assets/living-room-3.avif';
+import livingRoom4 from '@/assets/living-room-4.avif';
+import livingRoom5 from '@/assets/living-room-5.avif';
+import livingRoom6 from '@/assets/living-room-6.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -36,9 +42,18 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
   };
 
-  // Gallery images - placeholder structure ready for real images
+  // Living room images
+  const livingRoomImages = [
+    { src: livingRoom1, label: 'Dnevni boravak' },
+    { src: livingRoom2, label: 'Dnevni boravak' },
+    { src: livingRoom3, label: 'Dnevni boravak' },
+    { src: livingRoom4, label: 'Dnevni boravak' },
+    { src: livingRoom5, label: 'Dnevni boravak' },
+    { src: livingRoom6, label: 'Dnevni boravak' },
+  ];
+
+  // Other gallery images
   const galleryImages = [
-    { src: galleryLiving, label: 'Dnevni boravak', category: 'living' },
     { src: galleryBedroom, label: 'Spavaća soba', category: 'bedroom' },
     { src: galleryPool, label: 'Bazen', category: 'pool' },
     { src: galleryTerrace, label: 'Terasa', category: 'terrace' },
@@ -108,7 +123,26 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
               </div>
             </div>
 
-            {/* Existing gallery images */}
+            {/* Living room images */}
+            {livingRoomImages.map((image, index) => (
+              <motion.div
+                key={`living-${index}`}
+                variants={itemVariants}
+                className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
+              >
+                <img
+                  src={image.src}
+                  alt={image.label}
+                  className="w-full h-32 sm:h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+                <div className="absolute bottom-2 left-2 px-2 py-1 bg-charcoal/80 rounded text-linen text-xs">
+                  {image.label}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Other gallery images */}
             {galleryImages.map((image, index) => (
               <motion.div
                 key={image.category}
