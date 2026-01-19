@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '@/assets/hero-villa.avif';
 import villaTourVideo from '@/assets/villa-tour.mp4';
@@ -11,7 +9,6 @@ interface HeroSectionProps {
 
 const HeroSection = ({ isActive }: HeroSectionProps) => {
   const { t } = useLanguage();
-  const [showVideo, setShowVideo] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,29 +62,30 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.brand')}
           </motion.p>
 
-          {/* Video Play Button */}
-          <motion.button
+          {/* Small Video Window */}
+          <motion.div
             variants={itemVariants}
-            onClick={() => setShowVideo(true)}
-            className="group relative mx-auto mb-6 sm:mb-8 flex items-center justify-center"
+            className="mx-auto mb-6 sm:mb-8 w-full max-w-[280px] sm:max-w-xs"
           >
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full glass-card flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-              <Play className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-gold ml-1 group-hover:scale-110 transition-transform duration-300" />
+            <div className="relative rounded-xl overflow-hidden shadow-2xl glass-card p-1">
+              <video
+                src={villaTourVideo}
+                className="w-full aspect-video rounded-lg"
+                controls
+                playsInline
+              />
             </div>
-            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-linen/70 text-xs sm:text-sm whitespace-nowrap">
-              {t('hero.watchVideo')}
-            </span>
-          </motion.button>
+          </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm mt-8"
+            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm"
           >
             {t('hero.subtitle')}
           </motion.p>
         </motion.div>
 
-        {/* Scroll Indicator - Hidden on very small screens */}
+        {/* Scroll Indicator */}
         <motion.div
           className="absolute bottom-20 sm:bottom-8 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
@@ -99,32 +97,6 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           </div>
         </motion.div>
       </div>
-
-      {/* Video Modal */}
-      {showVideo && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/95 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <button
-            onClick={() => setShowVideo(false)}
-            className="absolute top-4 right-4 sm:top-8 sm:right-8 p-2 text-linen hover:text-gold transition-colors z-10"
-            aria-label="Close video"
-          >
-            <X className="w-8 h-8" />
-          </button>
-          <div className="w-full max-w-2xl mx-4 aspect-video">
-            <video
-              src={villaTourVideo}
-              className="w-full h-full rounded-lg"
-              controls
-              autoPlay
-            />
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 };
