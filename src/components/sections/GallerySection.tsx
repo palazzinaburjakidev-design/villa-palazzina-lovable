@@ -280,7 +280,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full py-16 md:py-24">
       {/* Background Image with Zoom Effect */}
       <motion.div
         className="section-zoom"
@@ -294,7 +294,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
+      <div className="relative z-10 flex flex-col justify-center items-center px-4 sm:px-6">
         <motion.div
           className="text-center max-w-6xl w-full"
           variants={containerVariants}
