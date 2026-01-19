@@ -403,29 +403,98 @@ export const translations: Translations = {
     it: 'Burjaki 36, Trgetari 52224, Croazia',
     de: 'Burjaki 36, Trgetari 52224, Kroatien',
   },
-  'location.beach.title': {
+  // Location Categories
+  'location.category.beaches': {
+    en: 'Beaches',
+    hr: 'Plaže',
+    it: 'Spiagge',
+    de: 'Strände',
+  },
+  'location.category.towns': {
+    en: 'Towns & Cities',
+    hr: 'Gradovi',
+    it: 'Città',
+    de: 'Städte',
+  },
+  'location.category.transport': {
+    en: 'Transport',
+    hr: 'Prijevoz',
+    it: 'Trasporti',
+    de: 'Transport',
+  },
+  // Beaches
+  'location.santaMarina.title': {
     en: 'Santa Marina Beach',
     hr: 'Plaža Santa Marina',
     it: 'Spiaggia Santa Marina',
     de: 'Strand Santa Marina',
   },
-  'location.beach.distance': {
-    en: '800 m - 1 km',
-    hr: '800 m - 1 km',
-    it: '800 m - 1 km',
-    de: '800 m - 1 km',
+  'location.santaMarina.distance': {
+    en: '1 km',
+    hr: '1 km',
+    it: '1 km',
+    de: '1 km',
   },
+  'location.tunarica.title': {
+    en: 'Tunarica Beach',
+    hr: 'Plaža Tunarica',
+    it: 'Spiaggia Tunarica',
+    de: 'Strand Tunarica',
+  },
+  'location.tunarica.distance': {
+    en: '5 km',
+    hr: '5 km',
+    it: '5 km',
+    de: '5 km',
+  },
+  'location.ravni.title': {
+    en: 'Ravni Beach',
+    hr: 'Plaža Ravni',
+    it: 'Spiaggia Ravni',
+    de: 'Strand Ravni',
+  },
+  'location.ravni.distance': {
+    en: '7 km',
+    hr: '7 km',
+    it: '7 km',
+    de: '7 km',
+  },
+  'location.rabacBeaches.title': {
+    en: 'Rabac Beaches',
+    hr: 'Plaže Rabac',
+    it: 'Spiagge di Rabac',
+    de: 'Strände Rabac',
+  },
+  'location.rabacBeaches.distance': {
+    en: '15 km',
+    hr: '15 km',
+    it: '15 km',
+    de: '15 km',
+  },
+  // Towns & Cities
   'location.labin.title': {
-    en: 'Labin',
-    hr: 'Labin',
-    it: 'Albona',
-    de: 'Labin',
+    en: 'Labin Old Town',
+    hr: 'Stari grad Labin',
+    it: 'Città vecchia di Albona',
+    de: 'Altstadt Labin',
   },
   'location.labin.distance': {
     en: '12 km',
     hr: '12 km',
     it: '12 km',
     de: '12 km',
+  },
+  'location.rabac.title': {
+    en: 'Rabac',
+    hr: 'Rabac',
+    it: 'Rabac',
+    de: 'Rabac',
+  },
+  'location.rabac.distance': {
+    en: '15 km',
+    hr: '15 km',
+    it: '15 km',
+    de: '15 km',
   },
   'location.rovinj.title': {
     en: 'Rovinj',
@@ -439,17 +508,30 @@ export const translations: Translations = {
     it: '35 km',
     de: '35 km',
   },
+  'location.pula.title': {
+    en: 'Pula',
+    hr: 'Pula',
+    it: 'Pola',
+    de: 'Pula',
+  },
+  'location.pula.distance': {
+    en: '50 km',
+    hr: '50 km',
+    it: '50 km',
+    de: '50 km',
+  },
+  // Transport
   'location.airport.title': {
     en: 'Pula Airport',
-    hr: 'Zračna Luka Pula',
+    hr: 'Zračna luka Pula',
     it: 'Aeroporto di Pola',
     de: 'Flughafen Pula',
   },
   'location.airport.distance': {
-    en: '35 km',
-    hr: '35 km',
-    it: '35 km',
-    de: '35 km',
+    en: '50 km',
+    hr: '50 km',
+    it: '50 km',
+    de: '50 km',
   },
 
   // House Rules
