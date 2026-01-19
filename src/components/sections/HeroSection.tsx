@@ -56,7 +56,8 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
         >
           <motion.p
             variants={itemVariants}
-            className="text-gold-light uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4 text-shadow"
+            className="text-gold-light uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4"
+            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9)' }}
           >
             {t('hero.brand')}
           </motion.p>
