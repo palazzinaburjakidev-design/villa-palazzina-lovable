@@ -82,7 +82,10 @@ const AboutSection = ({
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-8 sm:pb-12 overflow-hidden">
+      <div 
+        data-scrollable="true"
+        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-20 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y"
+      >
         <motion.div className="max-w-4xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-3 sm:mb-4">
