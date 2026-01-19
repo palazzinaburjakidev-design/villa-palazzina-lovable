@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, Instagram } from 'lucide-react';
+import { Mail, Phone, Instagram, PawPrint, Ban } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import bedroomImage from '@/assets/gallery-bedroom.avif';
 
@@ -51,50 +51,75 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-32 sm:pb-24">
         <motion.div
-          className="text-center max-w-3xl w-full text-backdrop py-12 px-6"
+          className="text-center max-w-3xl w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 text-shadow"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-2 sm:mb-3 text-shadow"
           >
             {t('contact.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-12 text-shadow-sm"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 text-shadow-sm"
           >
             {t('contact.subtitle')}
+          </motion.p>
+
+          {/* Host Info */}
+          <motion.p
+            variants={itemVariants}
+            className="text-gold text-sm sm:text-base font-medium mb-4 sm:mb-6"
+          >
+            {t('contact.host')}
           </motion.p>
 
           {/* Contact Links */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
+            className="flex flex-col items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8"
           >
             <a
               href="mailto:info@palazzina-burjaki.com"
-              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2.5 sm:px-6 sm:py-3 rounded-full hover:bg-white/20 transition-colors w-full max-w-xs sm:max-w-none sm:w-auto"
+              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2 sm:px-5 sm:py-2.5 rounded-full hover:bg-white/20 transition-colors w-full max-w-xs sm:max-w-none sm:w-auto"
             >
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
-              <span className="text-linen text-sm sm:text-base truncate">info@palazzina-burjaki.com</span>
+              <Mail className="w-4 h-4 text-gold flex-shrink-0" />
+              <span className="text-linen text-sm truncate">info@palazzina-burjaki.com</span>
             </a>
 
             <a
               href="tel:+385123456789"
-              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2.5 sm:px-6 sm:py-3 rounded-full hover:bg-white/20 transition-colors"
+              className="flex items-center gap-2 sm:gap-3 glass-card px-4 py-2 sm:px-5 sm:py-2.5 rounded-full hover:bg-white/20 transition-colors"
             >
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
-              <span className="text-linen text-sm sm:text-base">+385 123 456 789</span>
+              <Phone className="w-4 h-4 text-gold flex-shrink-0" />
+              <span className="text-linen text-sm">+385 123 456 789</span>
             </a>
           </motion.div>
 
+          {/* House Rules */}
+          <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
+            <p className="text-linen/50 text-xs uppercase tracking-widest mb-3">
+              {t('contact.rules.title')}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
+                <PawPrint className="w-3.5 h-3.5 text-gold" />
+                {t('contact.rules.noPets')}
+              </span>
+              <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
+                <Ban className="w-3.5 h-3.5 text-gold" />
+                {t('contact.rules.noSmoking')}
+              </span>
+            </div>
+          </motion.div>
+
           {/* Social */}
-          <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
-            <p className="text-linen/50 text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4">
+          <motion.div variants={itemVariants}>
+            <p className="text-linen/50 text-xs uppercase tracking-widest mb-2">
               {t('contact.social')}
             </p>
             <a
@@ -103,8 +128,8 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
             >
-              <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="font-medium text-sm sm:text-base">@palazzina.burjaki</span>
+              <Instagram className="w-5 h-5" />
+              <span className="font-medium text-sm">@palazzina.burjaki</span>
             </a>
           </motion.div>
         </motion.div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Sparkles, Wifi, Flame } from 'lucide-react';
+import { Waves, Sparkles, Dumbbell, CircleDot, Wifi, Flame, AirVent, Gamepad2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import poolImage from '@/assets/gallery-pool.avif';
 
@@ -41,8 +41,18 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
     },
     {
       icon: Sparkles,
-      title: t('amenities.jacuzzi.title'),
-      description: t('amenities.jacuzzi.description'),
+      title: t('amenities.wellness.title'),
+      description: t('amenities.wellness.description'),
+    },
+    {
+      icon: Dumbbell,
+      title: t('amenities.fitness.title'),
+      description: t('amenities.fitness.description'),
+    },
+    {
+      icon: CircleDot,
+      title: t('amenities.basketball.title'),
+      description: t('amenities.basketball.description'),
     },
     {
       icon: Wifi,
@@ -53,6 +63,16 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       icon: Flame,
       title: t('amenities.bbq.title'),
       description: t('amenities.bbq.description'),
+    },
+    {
+      icon: AirVent,
+      title: t('amenities.ac.title'),
+      description: t('amenities.ac.description'),
+    },
+    {
+      icon: Gamepad2,
+      title: t('amenities.entertainment.title'),
+      description: t('amenities.entertainment.description'),
     },
   ];
 
@@ -73,7 +93,7 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
         <motion.div
-          className="text-center max-w-5xl w-full text-backdrop py-12 px-6"
+          className="text-center max-w-6xl w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
@@ -87,35 +107,35 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 text-shadow"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-3 sm:mb-4 text-shadow"
           >
             {t('amenities.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-10 lg:mb-12 text-shadow-sm"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 lg:mb-10 text-shadow-sm"
           >
             {t('amenities.subtitle')}
           </motion.p>
 
-          {/* Amenity Cards Grid */}
+          {/* Amenity Cards Grid - 8 items */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 px-2"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 px-2"
           >
             {amenities.map((amenity, index) => {
               const Icon = amenity.icon;
               return (
                 <div
                   key={index}
-                  className="amenity-card text-center"
+                  className="amenity-card text-center py-4 sm:py-5"
                 >
-                  <Icon className="amenity-icon w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-4 text-linen/80 transition-colors duration-300" />
-                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1 sm:mb-2">
+                  <Icon className="amenity-icon w-7 h-7 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3 text-linen/80 transition-colors duration-300" />
+                  <h3 className="font-display text-xs sm:text-sm lg:text-base text-linen mb-1">
                     {amenity.title}
                   </h3>
-                  <p className="text-linen/60 text-xs sm:text-sm leading-relaxed line-clamp-2 sm:line-clamp-none">
+                  <p className="text-linen/60 text-[10px] sm:text-xs leading-relaxed line-clamp-2">
                     {amenity.description}
                   </p>
                 </div>
