@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Umbrella, UtensilsCrossed, Building2, Plane } from 'lucide-react';
+import { Umbrella, MapPin, Building2, Plane } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -40,14 +40,14 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
       distance: t('location.beach.distance'),
     },
     {
-      icon: UtensilsCrossed,
-      title: t('location.dining.title'),
-      distance: t('location.dining.distance'),
+      icon: MapPin,
+      title: t('location.rovinj.title'),
+      distance: t('location.rovinj.distance'),
     },
     {
       icon: Building2,
-      title: t('location.oldtown.title'),
-      distance: t('location.oldtown.distance'),
+      title: t('location.porec.title'),
+      distance: t('location.porec.distance'),
     },
     {
       icon: Plane,

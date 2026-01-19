@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Waves, Mountain, Wifi, Sparkles } from 'lucide-react';
+import { Waves, Sparkles, Wifi, Flame } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import poolImage from '@/assets/gallery-pool.avif';
 
@@ -40,9 +40,9 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       description: t('amenities.pool.description'),
     },
     {
-      icon: Mountain,
-      title: t('amenities.sea.title'),
-      description: t('amenities.sea.description'),
+      icon: Sparkles,
+      title: t('amenities.jacuzzi.title'),
+      description: t('amenities.jacuzzi.description'),
     },
     {
       icon: Wifi,
@@ -50,9 +50,9 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       description: t('amenities.wifi.description'),
     },
     {
-      icon: Sparkles,
-      title: t('amenities.wellness.title'),
-      description: t('amenities.wellness.description'),
+      icon: Flame,
+      title: t('amenities.bbq.title'),
+      description: t('amenities.bbq.description'),
     },
   ];
 
