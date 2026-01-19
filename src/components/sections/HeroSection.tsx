@@ -65,7 +65,7 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           {/* Small Video Window */}
           <motion.div
             variants={itemVariants}
-            className="mx-auto mb-6 sm:mb-8 w-full max-w-[280px] sm:max-w-xs"
+            className="mx-auto mb-6 sm:mb-8 w-full max-w-[168px] sm:max-w-[192px]"
           >
             <div className="relative rounded-xl overflow-hidden shadow-2xl glass-card p-1">
               <video
