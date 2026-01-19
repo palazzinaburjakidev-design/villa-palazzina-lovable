@@ -28,7 +28,7 @@ const Index = () => {
 
   return (
     <LanguageProvider>
-      <div className="h-screen w-screen overflow-hidden bg-charcoal">
+      <div className="relative h-screen w-screen overflow-hidden bg-charcoal">
         <Header currentSection={currentSection} scrollToSection={scrollToSection} />
         <SectionIndicator
           totalSections={TOTAL_SECTIONS}
