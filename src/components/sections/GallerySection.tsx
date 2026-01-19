@@ -90,13 +90,25 @@ interface Album {
   cover: string;
   images: string[];
   count: number;
+  category: 'exterior' | 'living' | 'bedrooms' | 'bathrooms' | 'other';
 }
+
+type CategoryKey = 'all' | 'exterior' | 'living' | 'bedrooms' | 'bathrooms';
+
+const categories: { key: CategoryKey; label: string }[] = [
+  { key: 'all', label: 'Sve' },
+  { key: 'exterior', label: 'Eksterijer' },
+  { key: 'living', label: 'Dnevni prostori' },
+  { key: 'bedrooms', label: 'Spavaće sobe' },
+  { key: 'bathrooms', label: 'Kupaonice' },
+];
 
 const GallerySection = ({ isActive }: GallerySectionProps) => {
   const { t } = useLanguage();
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -130,6 +142,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: pool1,
       images: [pool1, pool2, pool3, pool4, pool5, pool6],
       count: 6,
+      category: 'exterior',
     },
     {
       id: 'terrace',
@@ -137,6 +150,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: terrace1,
       images: [terrace1, terrace2, terrace3, terrace4, terrace5, terrace6],
       count: 6,
+      category: 'exterior',
     },
     {
       id: 'backyard',
@@ -144,6 +158,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: backyard1,
       images: [backyard1, backyard2, backyard3],
       count: 3,
+      category: 'exterior',
     },
     // Dnevni prostori
     {
@@ -152,6 +167,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: livingRoom1,
       images: [livingRoom1, livingRoom2, livingRoom3, livingRoom4, livingRoom5, livingRoom6],
       count: 6,
+      category: 'living',
     },
     {
       id: 'dining',
@@ -159,6 +175,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: diningRoom1,
       images: [diningRoom1, diningRoom2, diningRoom3, diningRoom4, diningRoom5],
       count: 5,
+      category: 'living',
     },
     {
       id: 'kitchen',
@@ -166,6 +183,23 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: kitchen1,
       images: [kitchen1, kitchen2, kitchen3, kitchen4],
       count: 4,
+      category: 'living',
+    },
+    {
+      id: 'gym-spa',
+      title: 'Gym & Spa',
+      cover: gymSpa1,
+      images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
+      count: 5,
+      category: 'living',
+    },
+    {
+      id: 'laundry',
+      title: 'Vešeraj',
+      cover: laundry1,
+      images: [laundry1, laundry2],
+      count: 2,
+      category: 'living',
     },
     // Spavaće sobe
     {
@@ -174,6 +208,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bedroom1_1,
       images: [bedroom1_1, bedroom1_2, bedroom1_3, bedroom1_4],
       count: 4,
+      category: 'bedrooms',
     },
     {
       id: 'bedroom2',
@@ -181,6 +216,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bedroom2_1,
       images: [bedroom2_1, bedroom2_2, bedroom2_3, bedroom2_4, bedroom2_5, bedroom2_6],
       count: 6,
+      category: 'bedrooms',
     },
     {
       id: 'bedroom3',
@@ -188,6 +224,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bedroom3_1,
       images: [bedroom3_1, bedroom3_2, bedroom3_3, bedroom3_4, bedroom3_5, bedroom3_6],
       count: 6,
+      category: 'bedrooms',
     },
     {
       id: 'bedroom4',
@@ -195,14 +232,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bedroom4_1,
       images: [bedroom4_1, bedroom4_2, bedroom4_3, bedroom4_4],
       count: 4,
-    },
-    // Wellness
-    {
-      id: 'gym-spa',
-      title: 'Gym & Spa',
-      cover: gymSpa1,
-      images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
-      count: 5,
+      category: 'bedrooms',
     },
     // Kupaonice
     {
@@ -211,6 +241,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bathroom1_1,
       images: [bathroom1_1, bathroom1_2],
       count: 2,
+      category: 'bathrooms',
     },
     {
       id: 'bathroom2',
@@ -218,6 +249,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bathroom2_1,
       images: [bathroom2_1, bathroom2_2, bathroom2_3],
       count: 3,
+      category: 'bathrooms',
     },
     {
       id: 'bathroom3',
@@ -225,6 +257,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bathroom3_1,
       images: [bathroom3_1, bathroom3_2, bathroom3_3, bathroom3_4],
       count: 4,
+      category: 'bathrooms',
     },
     {
       id: 'bathroom4',
@@ -232,6 +265,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bathroom4_1,
       images: [bathroom4_1, bathroom4_2, bathroom4_3, bathroom4_4],
       count: 4,
+      category: 'bathrooms',
     },
     {
       id: 'bathroom5',
@@ -239,16 +273,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: bathroom5_1,
       images: [bathroom5_1, bathroom5_2],
       count: 2,
-    },
-    // Ostalo
-    {
-      id: 'laundry',
-      title: 'Vešeraj',
-      cover: laundry1,
-      images: [laundry1, laundry2],
-      count: 2,
+      category: 'bathrooms',
     },
   ];
+
+  const filteredAlbums = activeCategory === 'all' 
+    ? albums 
+    : albums.filter(album => album.category === activeCategory);
 
   // Placeholder albums for future
   const upcomingAlbums: { id: string; title: string }[] = [];
@@ -316,6 +347,26 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             {t('gallery.title')}
           </motion.h2>
 
+          {/* Category Tabs */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-2 mb-4 sm:mb-6"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                  activeCategory === cat.key
+                    ? 'bg-gold text-charcoal'
+                    : 'glass-card text-linen/80 hover:text-linen hover:bg-linen/10'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </motion.div>
+
           {/* Scrollable Albums Grid */}
           <motion.div
             variants={itemVariants}
@@ -325,33 +376,35 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             onTouchMove={(e) => e.stopPropagation()}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-4">
-              {/* Video Album */}
-              <motion.div
-                variants={itemVariants}
-                className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
-                onClick={() => setShowVideo(true)}
-              >
-                <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
-                  <video
-                    src={villaTourVideo}
-                    className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                  />
-                  <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+              {/* Video Album - only show in 'all' */}
+              {activeCategory === 'all' && (
+                <motion.div
+                  variants={itemVariants}
+                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
+                  onClick={() => setShowVideo(true)}
+                >
+                  <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
+                    <video
+                      src={villaTourVideo}
+                      className="w-full h-full object-cover"
+                      muted
+                      playsInline
+                    />
+                    <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
-                  <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
-                  <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
-                </div>
-              </motion.div>
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
+                    <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
+                    <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
+                  </div>
+                </motion.div>
+              )}
 
               {/* Photo Albums */}
-              {albums.map((album) => (
+              {filteredAlbums.map((album) => (
                 <motion.div
                   key={album.id}
                   variants={itemVariants}
