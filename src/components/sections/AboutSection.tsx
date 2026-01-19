@@ -60,7 +60,7 @@ const AboutSection = ({ isActive, scrollToSection }: AboutSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-32 sm:pb-24 overflow-y-auto">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-32 sm:pb-24 overflow-hidden">
         <motion.div
           className="max-w-4xl w-full"
           variants={containerVariants}
