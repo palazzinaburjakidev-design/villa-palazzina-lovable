@@ -325,7 +325,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
+      <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20">
         <motion.div
           className="text-center max-w-6xl w-full h-full flex flex-col min-h-0"
           variants={containerVariants}
