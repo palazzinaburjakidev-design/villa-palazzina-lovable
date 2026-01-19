@@ -102,16 +102,16 @@ const AboutSection = ({
           <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
             {villaStats.map((stat, index) => <div key={index} className="glass-card rounded-xl p-3 sm:p-4 text-center">
                 <stat.icon className="w-5 h-5 text-gold mx-auto mb-2" />
-                <p className="text-linen font-display text-xl sm:text-2xl">
+                <p className="text-linen font-display text-xl sm:text-2xl text-shadow-sm">
                   {stat.value}<span className="text-gold text-sm">{stat.unit}</span>
                 </p>
-                <p className="text-linen/60 text-xs">{stat.label}</p>
+                <p className="text-linen/80 text-xs">{stat.label}</p>
               </div>)}
           </motion.div>
 
           {/* Description */}
           <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
-            <p className="text-linen/80 text-sm sm:text-base leading-relaxed text-center">
+            <p className="text-linen/90 text-sm sm:text-base leading-relaxed text-center text-shadow-sm">
               {t('about.description')}
             </p>
           </motion.div>
@@ -121,15 +121,15 @@ const AboutSection = ({
             <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
               <Clock className="w-4 h-4 text-gold flex-shrink-0" />
               <div>
-                <p className="text-linen/60 text-[10px]">{t('about.checkin')}</p>
-                <p className="text-linen text-xs font-medium">15:00</p>
+                <p className="text-linen/80 text-[10px]">{t('about.checkin')}</p>
+                <p className="text-linen text-xs font-medium text-shadow-sm">15:00</p>
               </div>
             </div>
             <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
               <CalendarCheck className="w-4 h-4 text-gold flex-shrink-0" />
               <div>
-                <p className="text-linen/60 text-[10px]">{t('about.checkout')}</p>
-                <p className="text-linen text-xs font-medium">10:00</p>
+                <p className="text-linen/80 text-[10px]">{t('about.checkout')}</p>
+                <p className="text-linen text-xs font-medium text-shadow-sm">10:00</p>
               </div>
             </div>
             <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
@@ -137,8 +137,8 @@ const AboutSection = ({
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.08c-.746 1.174-1.924 2.078-3.486 2.684-1.562.606-3.434.752-5.064.284-1.684-.482-3.09-1.472-4.012-2.75-.922-1.278-1.332-2.818-1.332-4.298 0-1.974.758-3.894 2.188-5.406.692-.732 1.53-1.324 2.466-1.73.936-.406 1.958-.608 2.988-.608 1.542 0 3.068.456 4.228 1.306 1.16.85 2.03 2.076 2.402 3.476l-5.494 2.08c-.25-.47-.68-.85-1.22-1.08-.54-.23-1.154-.29-1.736-.17-.582.12-1.114.406-1.512.814-.398.408-.658.924-.738 1.478-.08.554.02 1.12.282 1.614.262.494.68.894 1.188 1.142.508.248 1.078.336 1.62.25.542-.086 1.048-.342 1.44-.726l5.228 1.886c.202.284.372.586.508.9.136.314.238.642.306.98.068.338.1.686.1 1.034 0 .348-.032.696-.1 1.034-.068.338-.17.666-.306.98-.136.314-.306.616-.508.9z"/>
               </svg>
               <div>
-                <p className="text-linen/60 text-[10px]">Airbnb</p>
-                <p className="text-linen text-xs font-medium">4.97★ <span className="text-linen/50">(38)</span></p>
+                <p className="text-linen/80 text-[10px]">Airbnb</p>
+                <p className="text-linen text-xs font-medium text-shadow-sm">4.97★ <span className="text-linen/70">(38)</span></p>
               </div>
             </div>
             <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
@@ -149,8 +149,8 @@ const AboutSection = ({
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
               <div>
-                <p className="text-linen/60 text-[10px]">Google</p>
-                <p className="text-linen text-xs font-medium">5.0★ <span className="text-linen/50">(12)</span></p>
+                <p className="text-linen/80 text-[10px]">Google</p>
+                <p className="text-linen text-xs font-medium text-shadow-sm">5.0★ <span className="text-linen/70">(12)</span></p>
               </div>
             </div>
           </motion.div>
@@ -164,8 +164,8 @@ const AboutSection = ({
                   <Users className="w-6 h-6 text-gold" />
                 </div>
                 <div>
-                  <p className="text-linen/60 text-xs">{t('about.host')}</p>
-                  <p className="text-linen font-medium">Vedran Grubišić</p>
+                  <p className="text-linen/80 text-xs">{t('about.host')}</p>
+                  <p className="text-linen font-medium text-shadow-sm">Vedran Grubišić</p>
                 </div>
               </div>
 
@@ -173,15 +173,15 @@ const AboutSection = ({
               <div className="flex flex-wrap items-center gap-2">
                 <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
                   <Mail className="w-4 h-4 text-gold" />
-                  <span className="text-linen text-xs sm:text-sm">palazzinaburjaki@gmail.com</span>
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">palazzinaburjaki@gmail.com</span>
                 </a>
                 <a href="tel:+385123456789" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
                   <Phone className="w-4 h-4 text-gold" />
-                  <span className="text-linen text-xs sm:text-sm">+385 123 456 789</span>
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">+385 123 456 789</span>
                 </a>
                 <a href="https://instagram.com/palazzina.burjaki" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
                   <Instagram className="w-4 h-4 text-gold" />
-                  <span className="text-linen text-xs sm:text-sm">@palazzina.burjaki</span>
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">@palazzina.burjaki</span>
                 </a>
               </div>
             </div>

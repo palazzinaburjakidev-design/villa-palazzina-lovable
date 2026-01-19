@@ -77,6 +77,11 @@
 @layer components {
   /* Glassmorphism cards */
   .glass-card {
+    @apply backdrop-blur-xl border border-white/20;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card-light {
     @apply backdrop-blur-xl border border-white/25;
     background: rgba(255, 255, 255, 0.15);
   }
@@ -88,7 +93,7 @@
 
   .glass-dark {
     @apply backdrop-blur-xl border border-white/10;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   /* Gold gradient text */
