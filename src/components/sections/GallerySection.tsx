@@ -121,8 +121,31 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
   };
 
-  // Albums with images
+  // Albums with images - organized by category
   const albums: Album[] = [
+    // Eksterijer
+    {
+      id: 'pool',
+      title: 'Bazen & Okoliš',
+      cover: pool1,
+      images: [pool1, pool2, pool3, pool4, pool5, pool6],
+      count: 6,
+    },
+    {
+      id: 'terrace',
+      title: 'Terasa',
+      cover: terrace1,
+      images: [terrace1, terrace2, terrace3, terrace4, terrace5, terrace6],
+      count: 6,
+    },
+    {
+      id: 'backyard',
+      title: 'Stražnje dvorište',
+      cover: backyard1,
+      images: [backyard1, backyard2, backyard3],
+      count: 3,
+    },
+    // Dnevni prostori
     {
       id: 'living',
       title: 'Dnevni boravak',
@@ -137,6 +160,14 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [diningRoom1, diningRoom2, diningRoom3, diningRoom4, diningRoom5],
       count: 5,
     },
+    {
+      id: 'kitchen',
+      title: 'Kuhinja',
+      cover: kitchen1,
+      images: [kitchen1, kitchen2, kitchen3, kitchen4],
+      count: 4,
+    },
+    // Spavaće sobe
     {
       id: 'bedroom1',
       title: 'Spavaća soba 1',
@@ -165,27 +196,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [bedroom4_1, bedroom4_2, bedroom4_3, bedroom4_4],
       count: 4,
     },
-    {
-      id: 'pool',
-      title: 'Bazen & Okoliš',
-      cover: pool1,
-      images: [pool1, pool2, pool3, pool4, pool5, pool6],
-      count: 6,
-    },
-    {
-      id: 'terrace',
-      title: 'Terasa',
-      cover: terrace1,
-      images: [terrace1, terrace2, terrace3, terrace4, terrace5, terrace6],
-      count: 6,
-    },
-    {
-      id: 'kitchen',
-      title: 'Kuhinja',
-      cover: kitchen1,
-      images: [kitchen1, kitchen2, kitchen3, kitchen4],
-      count: 4,
-    },
+    // Wellness
     {
       id: 'gym-spa',
       title: 'Gym & Spa',
@@ -193,13 +204,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
       count: 5,
     },
-    {
-      id: 'backyard',
-      title: 'Stražnje dvorište',
-      cover: backyard1,
-      images: [backyard1, backyard2, backyard3],
-      count: 3,
-    },
+    // Kupaonice
     {
       id: 'bathroom1',
       title: 'Kupaonica 1',
@@ -235,6 +240,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [bathroom5_1, bathroom5_2],
       count: 2,
     },
+    // Ostalo
     {
       id: 'laundry',
       title: 'Vešeraj',
