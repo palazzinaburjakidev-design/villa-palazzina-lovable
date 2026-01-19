@@ -108,7 +108,23 @@
     );
   }
 
-  /* Text backdrop with radial gradient */
+  /* Glass panel with blur and smooth fade edges */
+  .glass-panel {
+    background: linear-gradient(
+      to bottom,
+      hsla(var(--charcoal), 0.65) 0%,
+      hsla(var(--charcoal), 0.55) 50%,
+      hsla(var(--charcoal), 0.3) 80%,
+      transparent 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 40%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 40%, black 60%, transparent 100%);
+  }
+
+  /* Text backdrop with radial gradient (legacy) */
   .text-backdrop {
     background: radial-gradient(
       ellipse 80% 50% at 50% 50%,
