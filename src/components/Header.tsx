@@ -84,6 +84,16 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
               {t('nav.bookNow')}
             </a>
 
+            {/* Mobile Book Button */}
+            <a 
+              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden bg-gold text-charcoal font-semibold py-2 px-4 text-xs rounded-full"
+            >
+              {t('nav.bookNow')}
+            </a>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
