@@ -370,10 +370,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           {/* Scrollable Albums Grid */}
           <motion.div
             variants={itemVariants}
-            className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2"
-            onWheel={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
+            data-scrollable="true"
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2 touch-pan-y"
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-4">
               {/* Video Album - only show in 'all' */}
