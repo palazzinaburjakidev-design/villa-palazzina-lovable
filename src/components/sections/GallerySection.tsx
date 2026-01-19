@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import villaTourVideo from '@/assets/villa-tour.mp4';
 import galleryLiving from '@/assets/gallery-living.avif';
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
@@ -16,8 +18,19 @@ interface GallerySectionProps {
   isActive: boolean;
 }
 
+interface Album {
+  id: string;
+  title: string;
+  cover: string;
+  images: string[];
+  count: number;
+}
+
 const GallerySection = ({ isActive }: GallerySectionProps) => {
   const { t } = useLanguage();
+  const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showVideo, setShowVideo] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,29 +55,70 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
   };
 
-  // Living room images
-  const livingRoomImages = [
-    { src: livingRoom1, label: 'Dnevni boravak' },
-    { src: livingRoom2, label: 'Dnevni boravak' },
-    { src: livingRoom3, label: 'Dnevni boravak' },
-    { src: livingRoom4, label: 'Dnevni boravak' },
-    { src: livingRoom5, label: 'Dnevni boravak' },
-    { src: livingRoom6, label: 'Dnevni boravak' },
+  // Albums with images
+  const albums: Album[] = [
+    {
+      id: 'living',
+      title: 'Dnevni boravak',
+      cover: livingRoom1,
+      images: [livingRoom1, livingRoom2, livingRoom3, livingRoom4, livingRoom5, livingRoom6],
+      count: 6,
+    },
+    {
+      id: 'bedroom',
+      title: 'Spavaća soba',
+      cover: galleryBedroom,
+      images: [galleryBedroom],
+      count: 1,
+    },
+    {
+      id: 'pool',
+      title: 'Bazen',
+      cover: galleryPool,
+      images: [galleryPool],
+      count: 1,
+    },
+    {
+      id: 'terrace',
+      title: 'Terasa',
+      cover: galleryTerrace,
+      images: [galleryTerrace],
+      count: 1,
+    },
   ];
 
-  // Other gallery images
-  const galleryImages = [
-    { src: galleryBedroom, label: 'Spavaća soba', category: 'bedroom' },
-    { src: galleryPool, label: 'Bazen', category: 'pool' },
-    { src: galleryTerrace, label: 'Terasa', category: 'terrace' },
+  // Placeholder albums for future
+  const upcomingAlbums = [
+    { id: 'kitchen', title: 'Kuhinja' },
+    { id: 'gym', title: 'Gym' },
+    { id: 'bathroom', title: 'Kupatilo' },
   ];
 
-  // Placeholder categories for future images
-  const upcomingCategories = [
-    { label: 'Kuhinja', category: 'kitchen' },
-    { label: 'Gym', category: 'gym' },
-    { label: 'Kupatilo', category: 'bathroom' },
-  ];
+  const openAlbum = (album: Album) => {
+    setSelectedAlbum(album);
+    setCurrentImageIndex(0);
+  };
+
+  const closeAlbum = () => {
+    setSelectedAlbum(null);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    if (selectedAlbum) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedAlbum.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedAlbum) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedAlbum.images.length - 1 : prev - 1
+      );
+    }
+  };
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -103,74 +157,75 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             {t('gallery.title')}
           </motion.h2>
 
-          {/* Video + Gallery Grid */}
+          {/* Albums Grid */}
           <motion.div
             variants={itemVariants}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-6"
           >
-            {/* Video - spans 2 columns on mobile, 1 on larger */}
-            <div className="col-span-2 md:col-span-1 lg:col-span-2">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl glass-card p-1 h-full">
+            {/* Video Album */}
+            <motion.div
+              variants={itemVariants}
+              className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
+              onClick={() => setShowVideo(true)}
+            >
+              <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
                 <video
                   src={villaTourVideo}
-                  className="w-full h-full object-cover rounded-lg aspect-video"
-                  controls
+                  className="w-full h-full object-cover"
+                  muted
                   playsInline
                 />
-                <div className="absolute bottom-2 left-2 px-2 py-1 bg-charcoal/80 rounded text-gold text-xs">
-                  Video tura
+                <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
+                <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
+                <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
+              </div>
+            </motion.div>
 
-            {/* Living room images */}
-            {livingRoomImages.map((image, index) => (
+            {/* Photo Albums */}
+            {albums.map((album) => (
               <motion.div
-                key={`living-${index}`}
+                key={album.id}
                 variants={itemVariants}
                 className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
+                onClick={() => openAlbum(album)}
               >
                 <img
-                  src={image.src}
-                  alt={image.label}
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  src={album.cover}
+                  alt={album.title}
+                  className="w-full h-40 sm:h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-                <div className="absolute bottom-2 left-2 px-2 py-1 bg-charcoal/80 rounded text-linen text-xs">
-                  {image.label}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <h3 className="text-linen font-display text-sm sm:text-base">{album.title}</h3>
+                  <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? 'slika' : 'slika'}</p>
                 </div>
+                {/* Stack effect for albums with multiple images */}
+                {album.count > 1 && (
+                  <>
+                    <div className="absolute -bottom-1 -right-1 w-full h-full rounded-xl border-2 border-gold/20 -z-10" />
+                    <div className="absolute -bottom-2 -right-2 w-full h-full rounded-xl border-2 border-gold/10 -z-20" />
+                  </>
+                )}
               </motion.div>
             ))}
 
-            {/* Other gallery images */}
-            {galleryImages.map((image, index) => (
+            {/* Placeholder albums */}
+            {upcomingAlbums.map((album) => (
               <motion.div
-                key={image.category}
+                key={album.id}
                 variants={itemVariants}
-                className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
-              >
-                <img
-                  src={image.src}
-                  alt={image.label}
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-                <div className="absolute bottom-2 left-2 px-2 py-1 bg-charcoal/80 rounded text-linen text-xs">
-                  {image.label}
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Placeholder tiles for upcoming images */}
-            {upcomingCategories.map((category) => (
-              <motion.div
-                key={category.category}
-                variants={itemVariants}
-                className="relative rounded-xl overflow-hidden shadow-lg glass-card flex items-center justify-center h-32 sm:h-40 md:h-48 border border-gold/20"
+                className="relative rounded-xl overflow-hidden shadow-lg glass-card flex items-center justify-center h-40 sm:h-48 md:h-56 border border-gold/20"
               >
                 <div className="text-center">
-                  <div className="text-gold/50 text-2xl mb-2">📷</div>
-                  <span className="text-linen/50 text-xs">{category.label}</span>
+                  <div className="text-gold/50 text-3xl mb-2">📷</div>
+                  <span className="text-linen/50 text-sm">{album.title}</span>
+                  <p className="text-linen/30 text-xs mt-1">Uskoro</p>
                 </div>
               </motion.div>
             ))}
@@ -185,6 +240,137 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           </motion.p>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {showVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
+            onClick={() => setShowVideo(false)}
+          >
+            <button
+              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2"
+              onClick={() => setShowVideo(false)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="w-full max-w-5xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={villaTourVideo}
+                className="w-full rounded-xl"
+                controls
+                autoPlay
+                playsInline
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Album Lightbox */}
+      <AnimatePresence>
+        {selectedAlbum && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center"
+            onClick={closeAlbum}
+          >
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2 z-10"
+              onClick={closeAlbum}
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Album title */}
+            <div className="absolute top-4 left-4 text-linen z-10">
+              <h3 className="font-display text-xl">{selectedAlbum.title}</h3>
+              <p className="text-linen/60 text-sm">
+                {currentImageIndex + 1} / {selectedAlbum.images.length}
+              </p>
+            </div>
+
+            {/* Navigation arrows */}
+            {selectedAlbum.images.length > 1 && (
+              <>
+                <button
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-linen/80 hover:text-linen p-2 z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                >
+                  <ChevronLeft className="w-10 h-10" />
+                </button>
+                <button
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-linen/80 hover:text-linen p-2 z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                >
+                  <ChevronRight className="w-10 h-10" />
+                </button>
+              </>
+            )}
+
+            {/* Image */}
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-6xl max-h-[80vh] px-16"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedAlbum.images[currentImageIndex]}
+                alt={`${selectedAlbum.title} ${currentImageIndex + 1}`}
+                className="max-w-full max-h-[80vh] object-contain rounded-lg"
+              />
+            </motion.div>
+
+            {/* Thumbnail strip */}
+            {selectedAlbum.images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 glass-card rounded-lg">
+                {selectedAlbum.images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    className={`w-12 h-12 sm:w-16 sm:h-16 rounded overflow-hidden border-2 transition-all ${
+                      index === currentImageIndex
+                        ? 'border-gold scale-110'
+                        : 'border-transparent opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
