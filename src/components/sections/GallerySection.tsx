@@ -77,6 +77,8 @@ import bathroom4_3 from '@/assets/bathroom4-3.avif';
 import bathroom4_4 from '@/assets/bathroom4-4.webp';
 import bathroom5_1 from '@/assets/bathroom5-1.avif';
 import bathroom5_2 from '@/assets/bathroom5-2.avif';
+import laundry1 from '@/assets/laundry-1.avif';
+import laundry2 from '@/assets/laundry-2.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -231,6 +233,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       title: 'Kupaonica 5',
       cover: bathroom5_1,
       images: [bathroom5_1, bathroom5_2],
+      count: 2,
+    },
+    {
+      id: 'laundry',
+      title: 'Vešeraj',
+      cover: laundry1,
+      images: [laundry1, laundry2],
       count: 2,
     },
   ];
