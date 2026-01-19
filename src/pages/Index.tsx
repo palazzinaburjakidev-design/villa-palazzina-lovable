@@ -6,7 +6,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import GallerySection from '@/components/sections/GallerySection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
 import LocationSection from '@/components/sections/LocationSection';
-import ContactSection from '@/components/sections/ContactSection';
+import AboutSection from '@/components/sections/AboutSection';
 import MobileBookButton from '@/components/MobileBookButton';
 
 const TOTAL_SECTIONS = 5;
@@ -22,7 +22,7 @@ const Index = () => {
     { Component: GallerySection, key: 'gallery' },
     { Component: AmenitiesSection, key: 'amenities' },
     { Component: LocationSection, key: 'location' },
-    { Component: ContactSection, key: 'contact' },
+    { Component: AboutSection, key: 'about' },
   ];
 
   return (
@@ -45,8 +45,8 @@ const Index = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {key === 'contact' ? (
-                <ContactSection isActive={currentSection === index} scrollToSection={scrollToSection} />
+              {key === 'about' ? (
+                <AboutSection isActive={currentSection === index} scrollToSection={scrollToSection} />
               ) : (
                 <Component isActive={currentSection === index} />
               )}

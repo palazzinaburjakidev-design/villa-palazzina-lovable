@@ -32,10 +32,10 @@ export const translations: Translations = {
     de: 'Lage',
   },
   'nav.contact': {
-    en: 'Contact',
-    hr: 'Kontakt',
-    it: 'Contatto',
-    de: 'Kontakt',
+    en: 'About',
+    hr: 'O nama',
+    it: 'Chi siamo',
+    de: 'Über uns',
   },
   'nav.bookNow': {
     en: 'Book Now',
@@ -350,7 +350,79 @@ export const translations: Translations = {
     de: 'Gastgeber: Vedran Grubišić',
   },
 
-  // Contact
+  // About Section
+  'about.label': {
+    en: 'About the Villa',
+    hr: 'O Vili',
+    it: 'Sulla Villa',
+    de: 'Über die Villa',
+  },
+  'about.title': {
+    en: 'Villa Palazzina Burjaki',
+    hr: 'Villa Palazzina Burjaki',
+    it: 'Villa Palazzina Burjaki',
+    de: 'Villa Palazzina Burjaki',
+  },
+  'about.subtitle': {
+    en: 'A luxurious 350m² villa with 4 bedrooms, 5 bathrooms, private pool, jacuzzi, sauna, and fitness center in the heart of Istria.',
+    hr: 'Luksuzna vila od 350m² sa 4 spavaće sobe, 5 kupaonica, privatnim bazenom, jacuzzijem, saunom i fitness centrom u srcu Istre.',
+    it: 'Una lussuosa villa di 350m² con 4 camere da letto, 5 bagni, piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria.',
+    de: 'Eine luxuriöse 350m² Villa mit 4 Schlafzimmern, 5 Badezimmern, privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens.',
+  },
+  'about.description': {
+    en: 'Villa Palazzina Burjaki is a stunning holiday home located in the picturesque village of Trget, Istria. This elegant property combines authentic Istrian charm with modern luxury, offering guests an unforgettable Mediterranean experience. Just 800m from Santa Marina beach, the villa features a seasonal private pool, wellness zone with jacuzzi and sauna, fully equipped fitness center, and a basketball court for active recreation.',
+    hr: 'Villa Palazzina Burjaki je prekrasna kuća za odmor smještena u slikovitom selu Trget u Istri. Ovaj elegantni objekt kombinira autentični istarski šarm s modernim luksuzom, nudeći gostima nezaboravno mediteransko iskustvo. Samo 800m od plaže Santa Marina, vila ima sezonski privatni bazen, wellness zonu s jacuzzijem i saunom, potpuno opremljen fitness centar i košarkaški teren za aktivnu rekreaciju.',
+    it: 'Villa Palazzina Burjaki è una splendida casa vacanze situata nel pittoresco villaggio di Trget, in Istria. Questa elegante proprietà combina l\'autentico fascino istriano con il lusso moderno, offrendo agli ospiti un\'esperienza mediterranea indimenticabile. A soli 800m dalla spiaggia di Santa Marina, la villa dispone di una piscina privata stagionale, zona benessere con jacuzzi e sauna, centro fitness completamente attrezzato e campo da basket per la ricreazione attiva.',
+    de: 'Villa Palazzina Burjaki ist ein atemberaubendes Ferienhaus im malerischen Dorf Trget in Istrien. Dieses elegante Anwesen verbindet authentischen istrischen Charme mit modernem Luxus und bietet Gästen ein unvergessliches mediterranes Erlebnis. Nur 800m vom Strand Santa Marina entfernt, verfügt die Villa über einen saisonalen Privatpool, Wellnessbereich mit Whirlpool und Sauna, voll ausgestattetes Fitnesscenter und Basketballplatz für aktive Erholung.',
+  },
+  'about.stats.area': {
+    en: 'Living Area',
+    hr: 'Stambena Površina',
+    it: 'Superficie Abitabile',
+    de: 'Wohnfläche',
+  },
+  'about.stats.bedrooms': {
+    en: 'Bedrooms',
+    hr: 'Spavaće Sobe',
+    it: 'Camere da Letto',
+    de: 'Schlafzimmer',
+  },
+  'about.stats.bathrooms': {
+    en: 'Bathrooms',
+    hr: 'Kupaonice',
+    it: 'Bagni',
+    de: 'Badezimmer',
+  },
+  'about.stats.guests': {
+    en: 'Max Guests',
+    hr: 'Maks. Gostiju',
+    it: 'Max Ospiti',
+    de: 'Max. Gäste',
+  },
+  'about.checkin': {
+    en: 'Check-in',
+    hr: 'Prijava',
+    it: 'Check-in',
+    de: 'Check-in',
+  },
+  'about.checkout': {
+    en: 'Check-out',
+    hr: 'Odjava',
+    it: 'Check-out',
+    de: 'Check-out',
+  },
+  'about.rating': {
+    en: 'Guest Rating',
+    hr: 'Ocjena Gostiju',
+    it: 'Valutazione Ospiti',
+    de: 'Gästebewertung',
+  },
+  'about.host': {
+    en: 'Your Host',
+    hr: 'Vaš Domaćin',
+    it: 'Il Tuo Host',
+    de: 'Ihr Gastgeber',
+  },
   'contact.title': {
     en: 'Get in Touch',
     hr: 'Kontaktirajte Nas',
