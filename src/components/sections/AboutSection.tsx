@@ -170,17 +170,17 @@ const AboutSection = ({
               </div>
 
               {/* Contact Links */}
-              <div className="flex flex-wrap items-center gap-2">
-                <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
-                  <Mail className="w-4 h-4 text-gold" />
-                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">palazzinaburjaki@gmail.com</span>
+              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
+                  <Mail className="w-4 h-4 text-gold flex-shrink-0" />
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm truncate">palazzinaburjaki@gmail.com</span>
                 </a>
-                <a href="tel:+385123456789" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
-                  <Phone className="w-4 h-4 text-gold" />
+                <a href="tel:+385123456789" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
+                  <Phone className="w-4 h-4 text-gold flex-shrink-0" />
                   <span className="text-linen text-xs sm:text-sm text-shadow-sm">+385 123 456 789</span>
                 </a>
-                <a href="https://instagram.com/palazzina.burjaki" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
-                  <Instagram className="w-4 h-4 text-gold" />
+                <a href="https://instagram.com/palazzina.burjaki" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
+                  <Instagram className="w-4 h-4 text-gold flex-shrink-0" />
                   <span className="text-linen text-xs sm:text-sm text-shadow-sm">@palazzina.burjaki</span>
                 </a>
               </div>
