@@ -62,6 +62,8 @@ import pool3 from '@/assets/pool-3.avif';
 import pool4 from '@/assets/pool-4.avif';
 import pool5 from '@/assets/pool-5.avif';
 import pool6 from '@/assets/pool-6.avif';
+import bathroom1_1 from '@/assets/bathroom1-1.avif';
+import bathroom1_2 from '@/assets/bathroom1-2.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -183,12 +185,17 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [backyard1, backyard2, backyard3],
       count: 3,
     },
+    {
+      id: 'bathroom1',
+      title: 'Kupaonica 1',
+      cover: bathroom1_1,
+      images: [bathroom1_1, bathroom1_2],
+      count: 2,
+    },
   ];
 
   // Placeholder albums for future
-  const upcomingAlbums = [
-    { id: 'bathroom', title: 'Kupatilo' },
-  ];
+  const upcomingAlbums: { id: string; title: string }[] = [];
 
   const openAlbum = (album: Album) => {
     setSelectedAlbum(album);
