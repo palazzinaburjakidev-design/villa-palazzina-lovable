@@ -1,0 +1,133 @@
+import { motion } from 'framer-motion';
+import { Waves, Mountain, Wifi, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import poolImage from '@/assets/gallery-pool.avif';
+
+interface AmenitiesSectionProps {
+  isActive: boolean;
+}
+
+const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
+  const { t } = useLanguage();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    },
+  };
+
+  const amenities = [
+    {
+      icon: Waves,
+      title: t('amenities.pool.title'),
+      description: t('amenities.pool.description'),
+    },
+    {
+      icon: Mountain,
+      title: t('amenities.sea.title'),
+      description: t('amenities.sea.description'),
+    },
+    {
+      icon: Wifi,
+      title: t('amenities.wifi.title'),
+      description: t('amenities.wifi.description'),
+    },
+    {
+      icon: Sparkles,
+      title: t('amenities.wellness.title'),
+      description: t('amenities.wellness.description'),
+    },
+  ];
+
+  return (
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Image with Zoom Effect */}
+      <motion.div
+        className="section-zoom"
+        style={{ backgroundImage: `url(${poolImage})` }}
+        initial={{ scale: 1.4, opacity: 0 }}
+        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 hero-overlay" />
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 pt-20">
+        <motion.div
+          className="text-center max-w-5xl w-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isActive ? 'visible' : 'hidden'}
+        >
+          <motion.span
+            variants={itemVariants}
+            className="inline-block px-4 py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-6"
+          >
+            {t('amenities.label')}
+          </motion.span>
+
+          <motion.h2
+            variants={itemVariants}
+            className="font-display text-3xl sm:text-4xl lg:text-6xl text-linen mb-4"
+          >
+            {t('amenities.title')}
+          </motion.h2>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-linen/70 text-lg mb-12"
+          >
+            {t('amenities.subtitle')}
+          </motion.p>
+
+          {/* Amenity Cards Grid */}
+          <motion.div
+            variants={itemVariants}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+          >
+            {amenities.map((amenity, index) => {
+              const Icon = amenity.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="amenity-card text-center"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Icon className="amenity-icon w-10 h-10 mx-auto mb-4 text-linen/80 transition-colors duration-300" />
+                  <h3 className="font-display text-lg text-linen mb-2">
+                    {amenity.title}
+                  </h3>
+                  <p className="text-linen/60 text-sm leading-relaxed">
+                    {amenity.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default AmenitiesSection;

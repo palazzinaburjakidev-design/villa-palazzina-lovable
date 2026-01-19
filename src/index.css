@@ -1,96 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core palette */
+    --charcoal: 0 0% 10%;
+    --linen: 0 0% 96%;
+    --gold: 43 56% 52%;
+    --gold-light: 43 56% 70%;
+    --gold-dark: 43 56% 40%;
+
+    /* Semantic mappings */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 96%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 43 56% 52%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 43 56% 52%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 43 56% 52%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -99,7 +51,200 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: auto;
+    overflow: hidden;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Glassmorphism cards */
+  .glass-card {
+    @apply backdrop-blur-xl border border-white/25;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-card-solid {
+    @apply backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl border border-white/10;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 100%);
+  }
+
+  /* Hero overlay gradient */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsla(var(--charcoal), 0.3) 0%,
+      hsla(var(--charcoal), 0.2) 50%,
+      hsla(var(--charcoal), 0.6) 100%
+    );
+  }
+
+  /* Section zoom animation container */
+  .section-zoom {
+    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+    will-change: transform;
+  }
+
+  /* Scroll indicator animation */
+  .scroll-indicator {
+    @apply w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-1;
+  }
+
+  .scroll-indicator-dot {
+    @apply w-1.5 h-1.5 bg-white rounded-full;
+    animation: scrollBounce 1.5s ease-in-out infinite;
+  }
+
+  /* Scroll to top indicator */
+  .scroll-top-indicator {
+    @apply w-6 h-10 border-2 border-white/50 rounded-full flex items-end justify-center p-1;
+  }
+
+  .scroll-top-dot {
+    @apply w-1.5 h-1.5 bg-white rounded-full;
+    animation: scrollBounceUp 1.5s ease-in-out infinite;
+  }
+
+  /* Feature pill */
+  .feature-pill {
+    @apply glass-card px-4 py-2 rounded-full text-sm font-medium text-linen;
+  }
+
+  /* Amenity card */
+  .amenity-card {
+    @apply glass-card p-6 rounded-2xl transition-all duration-300 hover:border-gold/50;
+  }
+
+  .amenity-card:hover .amenity-icon {
+    @apply text-gold;
+  }
+
+  /* Location card */
+  .location-card {
+    @apply text-center p-4;
+  }
+
+  /* Book button variants */
+  .btn-gold {
+    @apply bg-gold text-charcoal font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20;
+  }
+
+  .btn-gold-outline {
+    @apply border-2 border-gold text-gold font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply hover:bg-gold hover:text-charcoal;
+  }
+
+  /* Section dots */
+  .section-dot {
+    @apply w-2 h-2 rounded-full bg-white/40 transition-all duration-300 cursor-pointer;
+  }
+
+  .section-dot.active {
+    @apply w-3 h-3 bg-white;
+  }
+
+  .section-dot:hover {
+    @apply bg-white/70;
+  }
+
+  /* Mobile book button */
+  .mobile-book-btn {
+    @apply fixed bottom-4 left-4 right-4 z-50 btn-gold text-center md:hidden;
+  }
+}
+
+@layer utilities {
+  /* Custom font families */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Custom colors */
+  .text-charcoal {
+    color: hsl(var(--charcoal));
+  }
+
+  .bg-charcoal {
+    background-color: hsl(var(--charcoal));
+  }
+
+  .text-linen {
+    color: hsl(var(--linen));
+  }
+
+  .bg-linen {
+    background-color: hsl(var(--linen));
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .bg-gold-light {
+    background-color: hsl(var(--gold-light));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .border-gold\/50 {
+    border-color: hsla(var(--gold), 0.5);
+  }
+
+  .shadow-gold\/20 {
+    --tw-shadow-color: hsla(var(--gold), 0.2);
+  }
+}
+
+/* Keyframe animations */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes scrollBounceUp {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-12px);
+    opacity: 0.5;
   }
 }
