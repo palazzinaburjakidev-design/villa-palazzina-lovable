@@ -22,6 +22,10 @@ import kitchen1 from '@/assets/kitchen-1.avif';
 import kitchen2 from '@/assets/kitchen-2.avif';
 import kitchen3 from '@/assets/kitchen-3.avif';
 import kitchen4 from '@/assets/kitchen-4.avif';
+import bedroom1_1 from '@/assets/bedroom1-1.avif';
+import bedroom1_2 from '@/assets/bedroom1-2.avif';
+import bedroom1_3 from '@/assets/bedroom1-3.avif';
+import bedroom1_4 from '@/assets/bedroom1-4.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -81,11 +85,11 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       count: 5,
     },
     {
-      id: 'bedroom',
-      title: 'Spavaća soba',
-      cover: galleryBedroom,
-      images: [galleryBedroom],
-      count: 1,
+      id: 'bedroom1',
+      title: 'Spavaća soba 1',
+      cover: bedroom1_1,
+      images: [bedroom1_1, bedroom1_2, bedroom1_3, bedroom1_4],
+      count: 4,
     },
     {
       id: 'pool',
