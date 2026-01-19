@@ -219,9 +219,9 @@
 
   /* Mobile book button */
   .mobile-book-btn {
-    @apply fixed bottom-0 left-0 right-0 z-50 bg-gold text-charcoal font-semibold py-4 text-center text-base;
-    @apply hidden active:bg-gold-light transition-colors;
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    @apply fixed bottom-4 right-4 z-50 bg-gold text-charcoal font-semibold py-3 px-5 text-sm rounded-full shadow-lg;
+    @apply hidden active:bg-gold-light transition-all duration-300 hover:scale-105;
+    padding-bottom: max(0.75rem, calc(env(safe-area-inset-bottom) + 0.75rem));
   }
 
   @media (max-width: 767px) {
@@ -244,8 +244,7 @@
   /* Landscape mode adjustments */
   @media (max-height: 500px) and (orientation: landscape) {
     .mobile-book-btn {
-      @apply py-2;
-      padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+      @apply py-2 px-4 text-xs bottom-2 right-2;
     }
   }
 }
