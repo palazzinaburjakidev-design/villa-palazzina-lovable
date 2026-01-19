@@ -60,7 +60,7 @@ const AboutSection = ({
     unit: '',
     label: t('about.stats.guests')
   }];
-  return <section className="relative h-screen w-full overflow-hidden">
+  return <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
       <motion.div className="section-zoom" style={{
       backgroundImage: `url(${bedroomImage})`
@@ -84,7 +84,7 @@ const AboutSection = ({
       {/* Content */}
       <div 
         data-scrollable="true"
-        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-20 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y"
+        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-32 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
       >
         <motion.div className="max-w-4xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
           {/* Header */}
@@ -208,7 +208,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Footer */}
-        <motion.footer className="absolute bottom-8 sm:bottom-0 left-0 right-0 py-2 sm:py-4 px-4" initial={{
+        <motion.footer className="relative mt-6 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 py-2 sm:py-4 px-4 w-full" initial={{
         opacity: 0
       }} animate={isActive ? {
         opacity: 1

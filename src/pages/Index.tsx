@@ -26,7 +26,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-charcoal">
+    <div className="relative h-[100dvh] w-screen overflow-hidden bg-charcoal">
       <Header currentSection={currentSection} scrollToSection={scrollToSection} />
       <SectionIndicator
         totalSections={TOTAL_SECTIONS}

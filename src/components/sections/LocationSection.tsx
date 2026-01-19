@@ -57,7 +57,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
       <motion.div
         className="section-zoom"
