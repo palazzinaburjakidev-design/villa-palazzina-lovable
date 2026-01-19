@@ -157,9 +157,9 @@ const AboutSection = ({
 
               {/* Contact Links */}
               <div className="flex flex-wrap items-center gap-2">
-                <a href="mailto:info@palazzina-burjaki.com" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
+                <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
                   <Mail className="w-4 h-4 text-gold" />
-                  <span className="text-linen text-xs sm:text-sm">info@palazzina-burjaki.com</span>
+                  <span className="text-linen text-xs sm:text-sm">palazzinaburjaki@gmail.com</span>
                 </a>
                 <a href="tel:+385123456789" className="inline-flex items-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 transition-colors">
                   <Phone className="w-4 h-4 text-gold" />
