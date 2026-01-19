@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { LanguageProvider } from '@/contexts/LanguageContext';
 import { useFullPageScroll } from '@/hooks/useFullPageScroll';
 import Header from '@/components/Header';
 import SectionIndicator from '@/components/SectionIndicator';
@@ -27,39 +26,37 @@ const Index = () => {
   ];
 
   return (
-    <LanguageProvider>
-      <div className="relative h-screen w-screen overflow-hidden bg-charcoal">
-        <Header currentSection={currentSection} scrollToSection={scrollToSection} />
-        <SectionIndicator
-          totalSections={TOTAL_SECTIONS}
-          currentSection={currentSection}
-          scrollToSection={scrollToSection}
-        />
+    <div className="relative h-screen w-screen overflow-hidden bg-charcoal">
+      <Header currentSection={currentSection} scrollToSection={scrollToSection} />
+      <SectionIndicator
+        totalSections={TOTAL_SECTIONS}
+        currentSection={currentSection}
+        scrollToSection={scrollToSection}
+      />
 
-        <AnimatePresence mode="wait">
-          {sections.map(({ Component, key }, index) => (
-            currentSection === index && (
-              <motion.div
-                key={key}
-                className="absolute inset-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {key === 'contact' ? (
-                  <ContactSection isActive={currentSection === index} scrollToSection={scrollToSection} />
-                ) : (
-                  <Component isActive={currentSection === index} />
-                )}
-              </motion.div>
-            )
-          ))}
-        </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {sections.map(({ Component, key }, index) => (
+          currentSection === index && (
+            <motion.div
+              key={key}
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {key === 'contact' ? (
+                <ContactSection isActive={currentSection === index} scrollToSection={scrollToSection} />
+              ) : (
+                <Component isActive={currentSection === index} />
+              )}
+            </motion.div>
+          )
+        ))}
+      </AnimatePresence>
 
-        <MobileBookButton />
-      </div>
-    </LanguageProvider>
+      <MobileBookButton />
+    </div>
   );
 };
 
