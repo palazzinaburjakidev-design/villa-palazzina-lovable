@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import heroImage from '@/assets/hero-villa.jpg';
+import heroImage from '@/assets/hero-villa.avif';
 
 interface HeroSectionProps {
   isActive: boolean;
