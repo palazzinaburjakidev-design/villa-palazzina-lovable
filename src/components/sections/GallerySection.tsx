@@ -50,6 +50,12 @@ import gymSpa5 from '@/assets/gym-spa-5.avif';
 import backyard1 from '@/assets/backyard-1.avif';
 import backyard2 from '@/assets/backyard-2.avif';
 import backyard3 from '@/assets/backyard-3.avif';
+import terrace1 from '@/assets/terrace-1.avif';
+import terrace2 from '@/assets/terrace-2.avif';
+import terrace3 from '@/assets/terrace-3.avif';
+import terrace4 from '@/assets/terrace-4.avif';
+import terrace5 from '@/assets/terrace-5.avif';
+import terrace6 from '@/assets/terrace-6.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -146,9 +152,9 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     {
       id: 'terrace',
       title: 'Terasa',
-      cover: galleryTerrace,
-      images: [galleryTerrace],
-      count: 1,
+      cover: terrace1,
+      images: [terrace1, terrace2, terrace3, terrace4, terrace5, terrace6],
+      count: 6,
     },
     {
       id: 'kitchen',
