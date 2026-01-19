@@ -56,6 +56,12 @@ import terrace3 from '@/assets/terrace-3.avif';
 import terrace4 from '@/assets/terrace-4.avif';
 import terrace5 from '@/assets/terrace-5.avif';
 import terrace6 from '@/assets/terrace-6.avif';
+import pool1 from '@/assets/pool-1.avif';
+import pool2 from '@/assets/pool-2.avif';
+import pool3 from '@/assets/pool-3.avif';
+import pool4 from '@/assets/pool-4.avif';
+import pool5 from '@/assets/pool-5.avif';
+import pool6 from '@/assets/pool-6.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -144,10 +150,10 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'pool',
-      title: 'Bazen',
-      cover: galleryPool,
-      images: [galleryPool],
-      count: 1,
+      title: 'Bazen & Okoliš',
+      cover: pool1,
+      images: [pool1, pool2, pool3, pool4, pool5, pool6],
+      count: 6,
     },
     {
       id: 'terrace',
