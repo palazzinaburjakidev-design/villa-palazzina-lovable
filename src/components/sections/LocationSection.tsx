@@ -131,7 +131,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
             className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden glass-card p-1"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808.8!2d14.1147!3d45.0089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477cd2d3a6e9b8e7%3A0x1234567890abcdef!2sTrgetari%2C%20Croatia!5e0!3m2!1sen!2shr!4v1700000000000!5m2!1sen!2shr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.5!2d14.0631!3d45.0567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477c9e8d8f8d8d8d%3A0x8d8d8d8d8d8d8d8d!2sBurjaki%2036%2C%2052223%2C%20Trget%2C%20Croatia!5e0!3m2!1sen!2shr!4v1705700000000!5m2!1sen!2shr&q=Burjaki+36,+Trget,+52223,+Raša,+Croatia"
               width="100%"
               height="200"
               style={{ border: 0 }}
