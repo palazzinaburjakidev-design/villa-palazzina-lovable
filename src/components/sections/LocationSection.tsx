@@ -73,28 +73,28 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
         <motion.div
-          className="text-center max-w-4xl w-full"
+          className="text-center max-w-4xl w-full text-backdrop py-12 px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow-sm"
           >
             {t('location.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 text-shadow"
           >
             {t('location.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-12"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 lg:mb-12 text-shadow-sm"
           >
             {t('location.subtitle')}
           </motion.p>

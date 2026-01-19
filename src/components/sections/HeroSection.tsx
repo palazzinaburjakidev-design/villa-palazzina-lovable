@@ -49,28 +49,28 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-32">
         <motion.div
-          className="text-center max-w-4xl w-full bg-charcoal/50 backdrop-blur-sm rounded-2xl py-8 px-6 sm:py-12 sm:px-10"
+          className="text-center max-w-4xl w-full text-backdrop py-12 px-6 sm:py-16 sm:px-10"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
           <motion.p
             variants={itemVariants}
-            className="text-gold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4 drop-shadow-lg"
+            className="text-gold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4 text-shadow-sm"
           >
             {t('hero.brand')}
           </motion.p>
 
           <motion.h1
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-linen mb-4 sm:mb-6 leading-tight px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-linen mb-4 sm:mb-6 leading-tight px-2 text-shadow"
           >
             {t('hero.title')}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 drop-shadow-lg"
+            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm"
           >
             {t('hero.subtitle')}
           </motion.p>

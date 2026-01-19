@@ -51,21 +51,21 @@ const ContactSection = ({ isActive, scrollToSection }: ContactSectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-32 sm:pb-24">
         <motion.div
-          className="text-center max-w-3xl w-full"
+          className="text-center max-w-3xl w-full text-backdrop py-12 px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 text-shadow"
           >
             {t('contact.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-12"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-8 sm:mb-12 text-shadow-sm"
           >
             {t('contact.subtitle')}
           </motion.p>

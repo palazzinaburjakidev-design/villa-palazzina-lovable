@@ -55,35 +55,35 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
         <motion.div
-          className="text-center max-w-3xl w-full"
+          className="text-center max-w-3xl w-full text-backdrop py-12 px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow-sm"
           >
             {t('gallery.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 px-2"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4 px-2 text-shadow"
           >
             {t('gallery.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-gold text-sm sm:text-base lg:text-xl mb-4 sm:mb-6"
+            className="text-gold text-sm sm:text-base lg:text-xl mb-4 sm:mb-6 text-shadow-sm"
           >
             {t('gallery.subtitle')}
           </motion.p>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg max-w-xl lg:max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 px-2"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg max-w-xl lg:max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 px-2 text-shadow-sm"
           >
             {t('gallery.description')}
           </motion.p>
