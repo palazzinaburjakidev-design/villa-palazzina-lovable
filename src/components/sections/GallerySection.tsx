@@ -42,6 +42,11 @@ import bedroom4_1 from '@/assets/bedroom4-1.avif';
 import bedroom4_2 from '@/assets/bedroom4-2.avif';
 import bedroom4_3 from '@/assets/bedroom4-3.avif';
 import bedroom4_4 from '@/assets/bedroom4-4.avif';
+import gymSpa1 from '@/assets/gym-spa-1.avif';
+import gymSpa2 from '@/assets/gym-spa-2.avif';
+import gymSpa3 from '@/assets/gym-spa-3.avif';
+import gymSpa4 from '@/assets/gym-spa-4.avif';
+import gymSpa5 from '@/assets/gym-spa-5.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -149,11 +154,17 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [kitchen1, kitchen2, kitchen3, kitchen4],
       count: 4,
     },
+    {
+      id: 'gym-spa',
+      title: 'Gym & Spa',
+      cover: gymSpa1,
+      images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
+      count: 5,
+    },
   ];
 
   // Placeholder albums for future
   const upcomingAlbums = [
-    { id: 'gym', title: 'Gym' },
     { id: 'bathroom', title: 'Kupatilo' },
   ];
 
