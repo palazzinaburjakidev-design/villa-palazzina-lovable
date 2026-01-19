@@ -71,7 +71,7 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 pt-20">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
         <motion.div
           className="text-center max-w-5xl w-full"
           variants={containerVariants}
@@ -80,21 +80,21 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-4 py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-6"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6"
           >
             {t('amenities.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl lg:text-6xl text-linen mb-4"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-linen mb-3 sm:mb-4"
           >
             {t('amenities.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-lg mb-12"
+            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-10 lg:mb-12"
           >
             {t('amenities.subtitle')}
           </motion.p>
@@ -102,25 +102,23 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
           {/* Amenity Cards Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 px-2"
           >
             {amenities.map((amenity, index) => {
               const Icon = amenity.icon;
               return (
-                <motion.div
+                <div
                   key={index}
                   className="amenity-card text-center"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
                 >
-                  <Icon className="amenity-icon w-10 h-10 mx-auto mb-4 text-linen/80 transition-colors duration-300" />
-                  <h3 className="font-display text-lg text-linen mb-2">
+                  <Icon className="amenity-icon w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-4 text-linen/80 transition-colors duration-300" />
+                  <h3 className="font-display text-sm sm:text-base lg:text-lg text-linen mb-1 sm:mb-2">
                     {amenity.title}
                   </h3>
-                  <p className="text-linen/60 text-sm leading-relaxed">
+                  <p className="text-linen/60 text-xs sm:text-sm leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {amenity.description}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </motion.div>

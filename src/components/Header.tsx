@@ -28,18 +28,18 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-charcoal/30 border-b border-white/10">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection(0)}
-            className="font-display text-xl lg:text-2xl text-linen tracking-wide hover:text-gold transition-colors"
+            className="font-display text-lg sm:text-xl lg:text-2xl text-linen tracking-wide hover:text-gold transition-colors"
           >
             Palazzina Burjaki
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
               <button
                 key={item.section}
@@ -56,14 +56,14 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center gap-4">
-            {/* Language Switcher */}
-            <div className="hidden sm:flex items-center gap-1">
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Language Switcher - Desktop */}
+            <div className="hidden sm:flex items-center gap-0.5 sm:gap-1">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
-                  className={`px-2 py-1 text-xs font-medium transition-colors rounded ${
+                  className={`px-1.5 sm:px-2 py-1 text-xs font-medium transition-colors rounded ${
                     language === lang.code
                       ? 'bg-gold text-charcoal'
                       : 'text-linen/60 hover:text-linen'
@@ -74,15 +74,16 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
               ))}
             </div>
 
-            {/* Book Now Button */}
-            <button className="hidden md:block btn-gold text-sm py-2">
+            {/* Book Now Button - Desktop */}
+            <button className="hidden md:block btn-gold text-sm py-2 px-4 lg:px-6">
               {t('nav.bookNow')}
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-linen"
+              className="md:hidden p-2 text-linen -mr-2"
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -97,9 +98,10 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-charcoal/95 backdrop-blur-xl border-b border-white/10"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-charcoal/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
-            <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
+            <nav className="container mx-auto px-4 py-4 sm:py-6 flex flex-col gap-1">
               {navItems.map((item) => (
                 <button
                   key={item.section}
@@ -107,10 +109,10 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                     scrollToSection(item.section);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`text-left text-lg font-medium py-2 transition-colors ${
+                  className={`text-left text-base sm:text-lg font-medium py-3 px-2 rounded-lg transition-colors ${
                     currentSection === item.section
-                      ? 'text-gold'
-                      : 'text-linen/80'
+                      ? 'text-gold bg-white/5'
+                      : 'text-linen/80 active:bg-white/10'
                   }`}
                 >
                   {item.label}
@@ -118,15 +120,15 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
               ))}
               
               {/* Mobile Language Switcher */}
-              <div className="flex items-center gap-2 pt-4 border-t border-white/10">
+              <div className="flex items-center gap-2 pt-4 mt-2 border-t border-white/10">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code)}
-                    className={`px-3 py-2 text-sm font-medium transition-colors rounded ${
+                    className={`flex-1 px-3 py-2.5 text-sm font-medium transition-colors rounded-lg ${
                       language === lang.code
                         ? 'bg-gold text-charcoal'
-                        : 'text-linen/60 border border-white/20'
+                        : 'text-linen/60 border border-white/20 active:bg-white/10'
                     }`}
                   >
                     {lang.label}
