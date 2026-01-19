@@ -18,6 +18,10 @@ import diningRoom2 from '@/assets/dining-room-2.avif';
 import diningRoom3 from '@/assets/dining-room-3.avif';
 import diningRoom4 from '@/assets/dining-room-4.avif';
 import diningRoom5 from '@/assets/dining-room-5.avif';
+import kitchen1 from '@/assets/kitchen-1.avif';
+import kitchen2 from '@/assets/kitchen-2.avif';
+import kitchen3 from '@/assets/kitchen-3.avif';
+import kitchen4 from '@/assets/kitchen-4.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -97,11 +101,17 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       images: [galleryTerrace],
       count: 1,
     },
+    {
+      id: 'kitchen',
+      title: 'Kuhinja',
+      cover: kitchen1,
+      images: [kitchen1, kitchen2, kitchen3, kitchen4],
+      count: 4,
+    },
   ];
 
   // Placeholder albums for future
   const upcomingAlbums = [
-    { id: 'kitchen', title: 'Kuhinja' },
     { id: 'gym', title: 'Gym' },
     { id: 'bathroom', title: 'Kupatilo' },
   ];
