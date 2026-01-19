@@ -102,7 +102,7 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
           {/* Location Cards Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8"
           >
             {locations.map((location, index) => {
               const Icon = location.icon;
@@ -123,6 +123,24 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
                 </div>
               );
             })}
+          </motion.div>
+
+          {/* Google Map */}
+          <motion.div
+            variants={itemVariants}
+            className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden glass-card p-1"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808.8!2d14.1147!3d45.0089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477cd2d3a6e9b8e7%3A0x1234567890abcdef!2sTrgetari%2C%20Croatia!5e0!3m2!1sen!2shr!4v1700000000000!5m2!1sen!2shr"
+              width="100%"
+              height="200"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg"
+              title="Villa Palazzina Burjaki location"
+            />
           </motion.div>
         </motion.div>
       </div>
