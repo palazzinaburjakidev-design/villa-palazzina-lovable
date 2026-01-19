@@ -380,10 +380,10 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
               {activeCategory === 'all' && (
                 <motion.div
                   variants={itemVariants}
-                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2"
+                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 row-span-2"
                   onClick={() => setShowVideo(true)}
                 >
-                  <div className="relative h-28 sm:h-32 md:h-40 bg-charcoal">
+                  <div className="relative h-full bg-charcoal">
                     <video
                       src={villaTourVideo}
                       className="w-full h-full object-cover"
