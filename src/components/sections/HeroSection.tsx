@@ -75,6 +75,17 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           >
             {t('hero.subtitle')}
           </motion.p>
+
+          <motion.a
+            variants={itemVariants}
+            href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 sm:mt-8 px-8 py-3 sm:px-10 sm:py-4 bg-gold hover:bg-gold-light text-charcoal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
+            style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }}
+          >
+            Rezerviraj sada
+          </motion.a>
         </motion.div>
 
         {/* Scroll Indicator */}
