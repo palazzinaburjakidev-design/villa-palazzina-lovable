@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 
+// Full-page scroll hook with scrollable element detection
 interface UseFullPageScrollProps {
   totalSections: number;
   debounceTime?: number;
