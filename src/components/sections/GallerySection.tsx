@@ -13,6 +13,11 @@ import livingRoom3 from '@/assets/living-room-3.avif';
 import livingRoom4 from '@/assets/living-room-4.avif';
 import livingRoom5 from '@/assets/living-room-5.avif';
 import livingRoom6 from '@/assets/living-room-6.avif';
+import diningRoom1 from '@/assets/dining-room-1.avif';
+import diningRoom2 from '@/assets/dining-room-2.avif';
+import diningRoom3 from '@/assets/dining-room-3.avif';
+import diningRoom4 from '@/assets/dining-room-4.avif';
+import diningRoom5 from '@/assets/dining-room-5.avif';
 
 interface GallerySectionProps {
   isActive: boolean;
@@ -63,6 +68,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       cover: livingRoom1,
       images: [livingRoom1, livingRoom2, livingRoom3, livingRoom4, livingRoom5, livingRoom6],
       count: 6,
+    },
+    {
+      id: 'dining',
+      title: 'Blagovaonica',
+      cover: diningRoom1,
+      images: [diningRoom1, diningRoom2, diningRoom3, diningRoom4, diningRoom5],
+      count: 5,
     },
     {
       id: 'bedroom',
