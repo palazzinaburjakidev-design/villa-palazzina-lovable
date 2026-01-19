@@ -266,6 +266,10 @@
     background-color: hsl(var(--gold-light));
   }
 
+  .text-gold-light {
+    color: hsl(var(--gold-light));
+  }
+
   .border-gold {
     border-color: hsl(var(--gold));
   }
