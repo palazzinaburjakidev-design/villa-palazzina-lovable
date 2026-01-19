@@ -84,7 +84,7 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             className="inline-block mt-6 sm:mt-8 px-8 py-3 sm:px-10 sm:py-4 bg-gold hover:bg-gold-light text-charcoal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
             style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }}
           >
-            Rezerviraj sada
+            {t('hero.reserveNow')}
           </motion.a>
         </motion.div>
 
