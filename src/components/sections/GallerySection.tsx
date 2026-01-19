@@ -280,7 +280,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   };
 
   return (
-    <section className="relative min-h-screen w-full py-16 md:py-24">
+    <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
       <motion.div
         className="section-zoom"
@@ -294,9 +294,9 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center items-center px-4 sm:px-6">
+      <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-20">
         <motion.div
-          className="text-center max-w-6xl w-full"
+          className="text-center max-w-6xl w-full h-full flex flex-col min-h-0"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
@@ -304,96 +304,101 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           {/* Header */}
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 self-center"
           >
             {t('gallery.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-6 sm:mb-8"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-4 sm:mb-6"
           >
             {t('gallery.title')}
           </motion.h2>
 
-          {/* Albums Grid */}
+          {/* Scrollable Albums Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-6"
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
           >
-            {/* Video Album */}
-            <motion.div
-              variants={itemVariants}
-              className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
-              onClick={() => setShowVideo(true)}
-            >
-              <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
-                <video
-                  src={villaTourVideo}
-                  className="w-full h-full object-cover"
-                  muted
-                  playsInline
-                />
-                <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 pb-4">
+              {/* Video Album */}
+              <motion.div
+                variants={itemVariants}
+                className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 md:col-span-1"
+                onClick={() => setShowVideo(true)}
+              >
+                <div className="relative h-40 sm:h-48 md:h-56 bg-charcoal">
+                  <video
+                    src={villaTourVideo}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
+                  />
+                  <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
-                <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
-                <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
-              </div>
-            </motion.div>
-
-            {/* Photo Albums */}
-            {albums.map((album) => (
-              <motion.div
-                key={album.id}
-                variants={itemVariants}
-                className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
-                onClick={() => openAlbum(album)}
-              >
-                <img
-                  src={album.cover}
-                  alt={album.title}
-                  className="w-full h-40 sm:h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <h3 className="text-linen font-display text-sm sm:text-base">{album.title}</h3>
-                  <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? 'slika' : 'slika'}</p>
-                </div>
-                {/* Stack effect for albums with multiple images */}
-                {album.count > 1 && (
-                  <>
-                    <div className="absolute -bottom-1 -right-1 w-full h-full rounded-xl border-2 border-gold/20 -z-10" />
-                    <div className="absolute -bottom-2 -right-2 w-full h-full rounded-xl border-2 border-gold/10 -z-20" />
-                  </>
-                )}
-              </motion.div>
-            ))}
-
-            {/* Placeholder albums */}
-            {upcomingAlbums.map((album) => (
-              <motion.div
-                key={album.id}
-                variants={itemVariants}
-                className="relative rounded-xl overflow-hidden shadow-lg glass-card flex items-center justify-center h-40 sm:h-48 md:h-56 border border-gold/20"
-              >
-                <div className="text-center">
-                  <div className="text-gold/50 text-3xl mb-2">📷</div>
-                  <span className="text-linen/50 text-sm">{album.title}</span>
-                  <p className="text-linen/30 text-xs mt-1">Uskoro</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
+                  <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
+                  <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
                 </div>
               </motion.div>
-            ))}
+
+              {/* Photo Albums */}
+              {albums.map((album) => (
+                <motion.div
+                  key={album.id}
+                  variants={itemVariants}
+                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
+                  onClick={() => openAlbum(album)}
+                >
+                  <img
+                    src={album.cover}
+                    alt={album.title}
+                    className="w-full h-40 sm:h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <h3 className="text-linen font-display text-sm sm:text-base">{album.title}</h3>
+                    <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? 'slika' : 'slika'}</p>
+                  </div>
+                  {/* Stack effect for albums with multiple images */}
+                  {album.count > 1 && (
+                    <>
+                      <div className="absolute -bottom-1 -right-1 w-full h-full rounded-xl border-2 border-gold/20 -z-10" />
+                      <div className="absolute -bottom-2 -right-2 w-full h-full rounded-xl border-2 border-gold/10 -z-20" />
+                    </>
+                  )}
+                </motion.div>
+              ))}
+
+              {/* Placeholder albums */}
+              {upcomingAlbums.map((album) => (
+                <motion.div
+                  key={album.id}
+                  variants={itemVariants}
+                  className="relative rounded-xl overflow-hidden shadow-lg glass-card flex items-center justify-center h-40 sm:h-48 md:h-56 border border-gold/20"
+                >
+                  <div className="text-center">
+                    <div className="text-gold/50 text-3xl mb-2">📷</div>
+                    <span className="text-linen/50 text-sm">{album.title}</span>
+                    <p className="text-linen/30 text-xs mt-1">Uskoro</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base max-w-2xl mx-auto"
+            className="text-linen/70 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0"
           >
             {t('gallery.description')}
           </motion.p>
