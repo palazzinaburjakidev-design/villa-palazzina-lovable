@@ -5,10 +5,26 @@ interface UseFullPageScrollProps {
   debounceTime?: number;
 }
 
+// Helper to check if touch is inside a scrollable element and if it can scroll
+const getScrollableInfo = (target: EventTarget | null) => {
+  if (!target || !(target instanceof HTMLElement)) return null;
+  
+  const scrollableParent = target.closest('[data-scrollable="true"]') as HTMLElement | null;
+  if (!scrollableParent) return null;
+  
+  const { scrollTop, scrollHeight, clientHeight } = scrollableParent;
+  const isAtTop = scrollTop <= 5;
+  const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+  const canScroll = scrollHeight > clientHeight;
+  
+  return { scrollableParent, isAtTop, isAtBottom, canScroll };
+};
+
 export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFullPageScrollProps) => {
   const [currentSection, setCurrentSection] = useState(0);
   const isScrolling = useRef(false);
   const touchStartY = useRef(0);
+  const touchStartTarget = useRef<EventTarget | null>(null);
 
   const scrollToSection = useCallback((index: number) => {
     if (index < 0 || index >= totalSections || isScrolling.current) return;
@@ -32,6 +48,19 @@ export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFull
   // Wheel scroll handler
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      // Check if wheel is inside scrollable element
+      const scrollInfo = getScrollableInfo(e.target);
+      
+      if (scrollInfo && scrollInfo.canScroll) {
+        const isScrollingDown = e.deltaY > 0;
+        const isScrollingUp = e.deltaY < 0;
+        
+        // Allow internal scroll if not at boundaries
+        if ((isScrollingDown && !scrollInfo.isAtBottom) || (isScrollingUp && !scrollInfo.isAtTop)) {
+          return; // Don't prevent default, let internal scroll happen
+        }
+      }
+      
       e.preventDefault();
       if (isScrolling.current) return;
 
@@ -81,6 +110,7 @@ export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFull
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY;
+      touchStartTarget.current = e.target;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
@@ -89,6 +119,22 @@ export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFull
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY.current - touchEndY;
       const threshold = 50;
+
+      // Check if touch started in a scrollable element
+      const scrollInfo = getScrollableInfo(touchStartTarget.current);
+      
+      if (scrollInfo && scrollInfo.canScroll) {
+        const isSwipingUp = diff > threshold; // Swiping up = scroll down / next section
+        const isSwipingDown = diff < -threshold; // Swiping down = scroll up / prev section
+        
+        // Only trigger section change if at boundary
+        if (isSwipingUp && !scrollInfo.isAtBottom) {
+          return; // Let internal scroll continue
+        }
+        if (isSwipingDown && !scrollInfo.isAtTop) {
+          return; // Let internal scroll continue
+        }
+      }
 
       if (Math.abs(diff) > threshold) {
         if (diff > 0) {
