@@ -95,20 +95,20 @@ interface Album {
 
 type CategoryKey = 'all' | 'exterior' | 'living' | 'bedrooms' | 'bathrooms';
 
-const categories: { key: CategoryKey; label: string }[] = [
-  { key: 'all', label: 'Sve' },
-  { key: 'exterior', label: 'Eksterijer' },
-  { key: 'living', label: 'Dnevni prostori' },
-  { key: 'bedrooms', label: 'Spavaće sobe' },
-  { key: 'bathrooms', label: 'Kupaonice' },
-];
-
 const GallerySection = ({ isActive }: GallerySectionProps) => {
   const { t } = useLanguage();
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
+
+  const categories: { key: CategoryKey; label: string }[] = [
+    { key: 'all', label: t('gallery.category.all') },
+    { key: 'exterior', label: t('gallery.category.exterior') },
+    { key: 'living', label: t('gallery.category.living') },
+    { key: 'bedrooms', label: t('gallery.category.bedrooms') },
+    { key: 'bathrooms', label: t('gallery.category.bathrooms') },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -138,7 +138,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Eksterijer
     {
       id: 'pool',
-      title: 'Bazen & Okoliš',
+      title: t('gallery.album.pool'),
       cover: pool1,
       images: [pool1, pool2, pool3, pool4, pool5, pool6],
       count: 6,
@@ -146,7 +146,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'terrace',
-      title: 'Terasa',
+      title: t('gallery.album.terrace'),
       cover: terrace1,
       images: [terrace1, terrace2, terrace3, terrace4, terrace5, terrace6],
       count: 6,
@@ -154,7 +154,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'backyard',
-      title: 'Stražnje dvorište',
+      title: t('gallery.album.backyard'),
       cover: backyard1,
       images: [backyard1, backyard2, backyard3],
       count: 3,
@@ -163,7 +163,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Dnevni prostori
     {
       id: 'living',
-      title: 'Dnevni boravak',
+      title: t('gallery.album.living'),
       cover: livingRoom1,
       images: [livingRoom1, livingRoom2, livingRoom3, livingRoom4, livingRoom5, livingRoom6],
       count: 6,
@@ -171,7 +171,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'dining',
-      title: 'Blagovaonica',
+      title: t('gallery.album.dining'),
       cover: diningRoom1,
       images: [diningRoom1, diningRoom2, diningRoom3, diningRoom4, diningRoom5],
       count: 5,
@@ -179,7 +179,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'kitchen',
-      title: 'Kuhinja',
+      title: t('gallery.album.kitchen'),
       cover: kitchen1,
       images: [kitchen1, kitchen2, kitchen3, kitchen4],
       count: 4,
@@ -187,7 +187,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'gym-spa',
-      title: 'Gym & Spa',
+      title: t('gallery.album.gymSpa'),
       cover: gymSpa1,
       images: [gymSpa1, gymSpa2, gymSpa3, gymSpa4, gymSpa5],
       count: 5,
@@ -195,7 +195,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'laundry',
-      title: 'Vešeraj',
+      title: t('gallery.album.laundry'),
       cover: laundry1,
       images: [laundry1, laundry2],
       count: 2,
@@ -204,7 +204,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Spavaće sobe
     {
       id: 'bedroom1',
-      title: 'Spavaća soba 1',
+      title: `${t('gallery.album.bedroom')} 1`,
       cover: bedroom1_1,
       images: [bedroom1_1, bedroom1_2, bedroom1_3, bedroom1_4],
       count: 4,
@@ -212,7 +212,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom2',
-      title: 'Spavaća soba 2',
+      title: `${t('gallery.album.bedroom')} 2`,
       cover: bedroom2_1,
       images: [bedroom2_1, bedroom2_2, bedroom2_3, bedroom2_4, bedroom2_5, bedroom2_6],
       count: 6,
@@ -220,7 +220,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom3',
-      title: 'Spavaća soba 3',
+      title: `${t('gallery.album.bedroom')} 3`,
       cover: bedroom3_1,
       images: [bedroom3_1, bedroom3_2, bedroom3_3, bedroom3_4, bedroom3_5, bedroom3_6],
       count: 6,
@@ -228,7 +228,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom4',
-      title: 'Spavaća soba 4',
+      title: `${t('gallery.album.bedroom')} 4`,
       cover: bedroom4_1,
       images: [bedroom4_1, bedroom4_2, bedroom4_3, bedroom4_4],
       count: 4,
@@ -237,7 +237,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Kupaonice
     {
       id: 'bathroom1',
-      title: 'Kupaonica 1',
+      title: `${t('gallery.album.bathroom')} 1`,
       cover: bathroom1_1,
       images: [bathroom1_1, bathroom1_2],
       count: 2,
@@ -245,7 +245,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom2',
-      title: 'Kupaonica 2',
+      title: `${t('gallery.album.bathroom')} 2`,
       cover: bathroom2_1,
       images: [bathroom2_1, bathroom2_2, bathroom2_3],
       count: 3,
@@ -253,7 +253,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom3',
-      title: 'Kupaonica 3',
+      title: `${t('gallery.album.bathroom')} 3`,
       cover: bathroom3_1,
       images: [bathroom3_1, bathroom3_2, bathroom3_3, bathroom3_4],
       count: 4,
@@ -261,7 +261,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom4',
-      title: 'Kupaonica 4',
+      title: `${t('gallery.album.bathroom')} 4`,
       cover: bathroom4_1,
       images: [bathroom4_1, bathroom4_2, bathroom4_3, bathroom4_4],
       count: 4,
@@ -269,7 +269,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom5',
-      title: 'Kupaonica 5',
+      title: `${t('gallery.album.bathroom')} 5`,
       cover: bathroom5_1,
       images: [bathroom5_1, bathroom5_2],
       count: 2,
@@ -397,8 +397,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
-                    <h3 className="text-linen font-display text-sm sm:text-base">Video tura</h3>
-                    <p className="text-linen/60 text-xs">Virtualna šetnja vilom</p>
+                    <h3 className="text-linen font-display text-sm sm:text-base">{t('gallery.video.title')}</h3>
+                    <p className="text-linen/60 text-xs">{t('gallery.video.subtitle')}</p>
                   </div>
                 </motion.div>
               )}
@@ -419,7 +419,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <h3 className="text-linen font-display text-sm sm:text-base">{album.title}</h3>
-                    <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? 'slika' : 'slika'}</p>
+                    <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? t('gallery.photo') : t('gallery.photos')}</p>
                   </div>
                   {/* Stack effect for albums with multiple images */}
                   {album.count > 1 && (
