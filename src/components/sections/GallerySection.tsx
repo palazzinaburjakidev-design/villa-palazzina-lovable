@@ -204,7 +204,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Spavaće sobe
     {
       id: 'bedroom1',
-      title: `${t('gallery.album.bedroom')} 1`,
+      title: t('gallery.album.bedroom1'),
       cover: bedroom1_1,
       images: [bedroom1_1, bedroom1_2, bedroom1_3, bedroom1_4],
       count: 4,
@@ -212,7 +212,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom2',
-      title: `${t('gallery.album.bedroom')} 2`,
+      title: t('gallery.album.bedroom2'),
       cover: bedroom2_1,
       images: [bedroom2_1, bedroom2_2, bedroom2_3, bedroom2_4, bedroom2_5, bedroom2_6],
       count: 6,
@@ -228,7 +228,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom4',
-      title: `${t('gallery.album.bedroom')} 4`,
+      title: t('gallery.album.bedroom4'),
       cover: bedroom4_1,
       images: [bedroom4_1, bedroom4_2, bedroom4_3, bedroom4_4],
       count: 4,

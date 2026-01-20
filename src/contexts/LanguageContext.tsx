@@ -239,6 +239,24 @@ export const translations: Translations = {
     it: 'Camera da letto',
     de: 'Schlafzimmer',
   },
+  'gallery.album.bedroom1': {
+    en: 'Ground Floor Bedroom',
+    hr: 'Spavaća soba u prizemlju',
+    it: 'Camera da letto al piano terra',
+    de: 'Schlafzimmer im Erdgeschoss',
+  },
+  'gallery.album.bedroom2': {
+    en: 'Bunk Bed Bedroom',
+    hr: 'Spavaća soba s krevetima na kat',
+    it: 'Camera con letti a castello',
+    de: 'Schlafzimmer mit Etagenbetten',
+  },
+  'gallery.album.bedroom4': {
+    en: 'Master Bedroom',
+    hr: 'Glavna spavaća soba',
+    it: 'Camera da letto principale',
+    de: 'Hauptschlafzimmer',
+  },
   'gallery.album.bathroom': {
     en: 'Bathroom',
     hr: 'Kupaonica',
