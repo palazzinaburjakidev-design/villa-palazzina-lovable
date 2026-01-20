@@ -49,6 +49,9 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
 
   const transport = [
     { title: t('location.airport.title'), distance: t('location.airport.distance') },
+    { title: t('location.triesteAirport.title'), distance: t('location.triesteAirport.distance') },
+    { title: t('location.zagrebAirport.title'), distance: t('location.zagrebAirport.distance') },
+    { title: t('location.busStation.title'), distance: t('location.busStation.distance') },
   ];
 
   return (
