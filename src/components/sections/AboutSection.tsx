@@ -172,7 +172,7 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
           </motion.div>
 
           {/* Host & Contact */}
-          <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4 mb-2 sm:mb-3">
+          <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               {/* Host Info */}
               <div className="flex items-center gap-3">
@@ -187,6 +187,11 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
 
               {/* Contact Links */}
               <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                {/* Address */}
+                <span className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full text-linen/80">
+                  <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                  <span className="text-linen text-xs sm:text-sm text-shadow-sm">Burjaki 36, Trgetari 52224</span>
+                </span>
                 <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
                   <Mail className="w-4 h-4 text-gold flex-shrink-0" />
                   <span className="text-linen text-xs sm:text-sm text-shadow-sm truncate">palazzinaburjaki@gmail.com</span>
@@ -207,14 +212,6 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
                 </a>
               </div>
             </div>
-          </motion.div>
-
-          {/* Address Tag */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <MapPin className="w-3.5 h-3.5 text-gold" />
-              Burjaki 36, Trgetari 52224
-            </span>
           </motion.div>
         </motion.div>
 
