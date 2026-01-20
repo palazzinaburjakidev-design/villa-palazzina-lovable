@@ -77,6 +77,13 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.subtitle')}
           </motion.p>
 
+          <motion.p
+            variants={itemVariants}
+            className="text-linen/80 text-xs sm:text-sm max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 mt-3 text-shadow-sm"
+          >
+            {t('about.description')}
+          </motion.p>
+
           <motion.div variants={itemVariants} className="mt-6 sm:mt-8">
             <Tooltip>
               <TooltipTrigger asChild>

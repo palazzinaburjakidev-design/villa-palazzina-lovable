@@ -110,12 +110,6 @@ const AboutSection = ({
               </div>)}
           </motion.div>
 
-          {/* Description */}
-          <motion.div variants={itemVariants} className="glass-card rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
-            <p className="text-linen/90 text-sm sm:text-base leading-relaxed text-center text-shadow-sm">
-              {t('about.description')}
-            </p>
-          </motion.div>
 
           {/* Times, Rules and Ratings Row */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-3 sm:mb-4">
@@ -126,7 +120,7 @@ const AboutSection = ({
                 <p className="text-linen/80 text-[10px] sm:text-xs">{t('about.arrivalTime')}</p>
               </div>
               <p className="text-linen text-xs sm:text-sm font-medium text-shadow-sm ml-6">16:00 – 00:00</p>
-              <p className="text-linen/70 text-[10px] sm:text-xs mt-1 ml-6">{t('about.departureTime')}: 10:00</p>
+              <p className="text-linen text-[11px] sm:text-sm mt-1.5 ml-6 font-medium">{t('about.departureTime')}: <span className="text-gold">10:00</span></p>
             </div>
 
             {/* House Rules - spans 2 columns */}
@@ -136,10 +130,6 @@ const AboutSection = ({
                 <p className="text-linen/80 text-[10px] sm:text-xs">{t('contact.rules.title')}</p>
               </div>
               <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 ml-6">
-                <p className="text-linen text-[10px] sm:text-xs flex items-center gap-1">
-                  <Users className="w-3 h-3 text-gold/70" />
-                  {t('contact.rules.maxGuests')}
-                </p>
                 <p className="text-linen text-[10px] sm:text-xs flex items-center gap-1">
                   <Moon className="w-3 h-3 text-gold/70" />
                   22:00 – 07:00
@@ -152,7 +142,7 @@ const AboutSection = ({
                   <Ban className="w-3 h-3 text-gold/70" />
                   {t('contact.rules.noSmoking')}
                 </p>
-                <p className="text-linen text-[10px] sm:text-xs flex items-center gap-1 col-span-2 sm:col-span-1">
+                <p className="text-linen text-[10px] sm:text-xs flex items-center gap-1">
                   <PartyPopper className="w-3 h-3 text-gold/70" />
                   {t('contact.rules.noParties')}
                 </p>
