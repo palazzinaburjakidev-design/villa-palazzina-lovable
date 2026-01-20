@@ -4,72 +4,88 @@ import { Home, Users, Bed, Bath, Maximize, MapPin, Mail, Phone, Instagram, PawPr
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import bedroomImage from '@/assets/gallery-bedroom.avif';
-
 interface AboutSectionProps {
   isActive: boolean;
   scrollToSection: (index: number) => void;
 }
-
-const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => {
-  const { t } = useLanguage();
-
+const AboutSection = memo(({
+  isActive,
+  scrollToSection
+}: AboutSectionProps) => {
+  const {
+    t
+  } = useLanguage();
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0
+    },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.08,
-        delayChildren: 0.15,
-      },
-    },
+        delayChildren: 0.15
+      }
+    }
   };
-
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: {
+      opacity: 0,
+      y: 20
+    },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1] as const,
-      },
-    },
+        ease: [0.22, 1, 0.36, 1] as const
+      }
+    }
   };
-
-  const villaStats = [
-    { icon: Maximize, value: '350', unit: 'm²', label: t('about.stats.area') },
-    { icon: Bed, value: '4', unit: '', label: t('about.stats.bedrooms') },
-    { icon: Bath, value: '5', unit: '', label: t('about.stats.bathrooms') },
-    { icon: Users, value: '8', unit: '', label: t('about.stats.guests') },
-  ];
-
-  return (
-    <section className="relative h-full w-full overflow-hidden">
+  const villaStats = [{
+    icon: Maximize,
+    value: '350',
+    unit: 'm²',
+    label: t('about.stats.area')
+  }, {
+    icon: Bed,
+    value: '4',
+    unit: '',
+    label: t('about.stats.bedrooms')
+  }, {
+    icon: Bath,
+    value: '5',
+    unit: '',
+    label: t('about.stats.bathrooms')
+  }, {
+    icon: Users,
+    value: '8',
+    unit: '',
+    label: t('about.stats.guests')
+  }];
+  return <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
-      <motion.div
-        className="section-zoom"
-        style={{ backgroundImage: `url(${bedroomImage})` }}
-        role="img"
-        aria-label="Elegant bedroom interior at Villa Palazzina Burjaki"
-        initial={{ scale: 1.4, opacity: 0 }}
-        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      />
+      <motion.div className="section-zoom" style={{
+      backgroundImage: `url(${bedroomImage})`
+    }} role="img" aria-label="Elegant bedroom interior at Villa Palazzina Burjaki" initial={{
+      scale: 1.4,
+      opacity: 0
+    }} animate={isActive ? {
+      scale: 1,
+      opacity: 1
+    } : {
+      scale: 1.4,
+      opacity: 0
+    }} transition={{
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1]
+    }} />
 
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div
-        data-scrollable="true"
-        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-32 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
-      >
-        <motion.div
-          className="max-w-6xl w-full"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isActive ? 'visible' : 'hidden'}
-        >
+      <div data-scrollable="true" className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-32 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain">
+        <motion.div className="max-w-6xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-3 sm:mb-4">
             <span className="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full text-gold text-xs uppercase tracking-widest mb-3">
@@ -79,22 +95,18 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-2 text-shadow">
               {t('about.title')}
             </h2>
-            <p className="text-linen/70 text-sm sm:text-base max-w-2xl mx-auto text-shadow-sm">
-              {t('about.subtitle')}
-            </p>
+            
           </motion.div>
 
           {/* Villa Stats */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
-            {villaStats.map((stat, index) => (
-              <div key={index} className="glass-card rounded-xl p-3 sm:p-4 text-center">
+            {villaStats.map((stat, index) => <div key={index} className="glass-card rounded-xl p-3 sm:p-4 text-center">
                 <stat.icon className="w-5 h-5 text-gold mx-auto mb-2" />
                 <p className="text-linen font-display text-xl sm:text-2xl text-shadow-sm">
                   {stat.value}<span className="text-gold text-sm">{stat.unit}</span>
                 </p>
                 <p className="text-linen/80 text-xs">{stat.label}</p>
-              </div>
-            ))}
+              </div>)}
           </motion.div>
 
           {/* Times, Rules and Ratings Row */}
@@ -136,14 +148,9 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
             </div>
 
             {/* Airbnb Rating */}
-            <a
-              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card rounded-xl p-3 sm:p-4 flex items-center gap-3 hover:bg-white/20 transition-colors cursor-pointer"
-            >
+            <a href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA" target="_blank" rel="noopener noreferrer" className="glass-card rounded-xl p-3 sm:p-4 flex items-center gap-3 hover:bg-white/20 transition-colors cursor-pointer">
               <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 64 64" fill="#FF5A5F" fillRule="evenodd">
-                <path d="M60.9 45.487l-.966-2.305-1.475-3.27-.062-.062a661.83 661.83 0 0 0-14.15-28.957l-.198-.384-1.524-3.073a18.4 18.4 0 0 0-2.305-3.52A10.35 10.35 0 0 0 32.027 0a10.76 10.76 0 0 0-8.203 3.84 22.1 22.1 0 0 0-2.305 3.52l-1.735 3.395c-4.956 9.615-9.74 19.342-14.163 28.957l-.062.124c-.384 1.053-.892 2.13-1.413 3.284-.322.702-.644 1.47-.966 2.305a14.4 14.4 0 0 0-.768 6.914 13.63 13.63 0 0 0 8.327 10.631 13.16 13.16 0 0 0 5.192 1.028 14.57 14.57 0 0 0 1.66-.124 16.93 16.93 0 0 0 6.406-2.18 32.44 32.44 0 0 0 7.943-6.666 33.62 33.62 0 0 0 7.943 6.666 16.92 16.92 0 0 0 6.406 2.18c.55.073 1.105.114 1.66.124 1.783.018 3.55-.332 5.192-1.028a13.63 13.63 0 0 0 8.327-10.631 12.11 12.11 0 0 0-.582-6.852zM32.026 48.82c-3.457-4.362-5.7-8.45-6.468-11.92-.314-1.277-.38-2.6-.198-3.903.127-.965.48-1.886 1.028-2.7a6.79 6.79 0 0 1 5.638-2.825c2.236-.086 4.362.974 5.638 2.813a6.17 6.17 0 0 1 1.028 2.69 10.3 10.3 0 0 1-.198 3.903c-.768 3.395-3 7.435-6.468 11.92zm25.562 3c-.5 3.337-2.7 6.166-5.836 7.435a9.7 9.7 0 0 1-4.857.706 12.6 12.6 0 0 1-4.87-1.66 29.91 29.91 0 0 1-7.298-6.195c4.225-5.192 6.8-9.913 7.757-14.163a16.11 16.11 0 0 0 .322-5.452c-.238-1.567-.832-3.06-1.735-4.362-2.062-2.942-5.453-4.666-9.045-4.597-3.572-.046-6.942 1.65-9.033 4.547-.903 1.303-1.497 2.794-1.735 4.362a13.31 13.31 0 0 0 .322 5.452c.966 4.225 3.593 9.033 7.757 14.225a28.79 28.79 0 0 1-7.298 6.195 12.6 12.6 0 0 1-4.882 1.71 10.26 10.26 0 0 1-4.87-.644C9.16 58.12 6.94 55.292 6.45 51.954a10.61 10.61 0 0 1 .582-4.956c.198-.644.508-1.24.83-2.044.446-1.028.966-2.12 1.475-3.2l.062-.124c4.424-9.54 9.157-19.28 14.1-28.772l.186-.458 1.536-2.95a14.05 14.05 0 0 1 1.846-2.838 6.73 6.73 0 0 1 10.247 0 13.87 13.87 0 0 1 1.747 2.813l1.536 2.95.186.384c4.87 9.553 9.628 19.28 14.04 28.834v.062c.508 1.028.966 2.18 1.475 3.2.322.768.644 1.413.83 2.044a10.81 10.81 0 0 1 .446 4.956z"/>
+                <path d="M60.9 45.487l-.966-2.305-1.475-3.27-.062-.062a661.83 661.83 0 0 0-14.15-28.957l-.198-.384-1.524-3.073a18.4 18.4 0 0 0-2.305-3.52A10.35 10.35 0 0 0 32.027 0a10.76 10.76 0 0 0-8.203 3.84 22.1 22.1 0 0 0-2.305 3.52l-1.735 3.395c-4.956 9.615-9.74 19.342-14.163 28.957l-.062.124c-.384 1.053-.892 2.13-1.413 3.284-.322.702-.644 1.47-.966 2.305a14.4 14.4 0 0 0-.768 6.914 13.63 13.63 0 0 0 8.327 10.631 13.16 13.16 0 0 0 5.192 1.028 14.57 14.57 0 0 0 1.66-.124 16.93 16.93 0 0 0 6.406-2.18 32.44 32.44 0 0 0 7.943-6.666 33.62 33.62 0 0 0 7.943 6.666 16.92 16.92 0 0 0 6.406 2.18c.55.073 1.105.114 1.66.124 1.783.018 3.55-.332 5.192-1.028a13.63 13.63 0 0 0 8.327-10.631 12.11 12.11 0 0 0-.582-6.852zM32.026 48.82c-3.457-4.362-5.7-8.45-6.468-11.92-.314-1.277-.38-2.6-.198-3.903.127-.965.48-1.886 1.028-2.7a6.79 6.79 0 0 1 5.638-2.825c2.236-.086 4.362.974 5.638 2.813a6.17 6.17 0 0 1 1.028 2.69 10.3 10.3 0 0 1-.198 3.903c-.768 3.395-3 7.435-6.468 11.92zm25.562 3c-.5 3.337-2.7 6.166-5.836 7.435a9.7 9.7 0 0 1-4.857.706 12.6 12.6 0 0 1-4.87-1.66 29.91 29.91 0 0 1-7.298-6.195c4.225-5.192 6.8-9.913 7.757-14.163a16.11 16.11 0 0 0 .322-5.452c-.238-1.567-.832-3.06-1.735-4.362-2.062-2.942-5.453-4.666-9.045-4.597-3.572-.046-6.942 1.65-9.033 4.547-.903 1.303-1.497 2.794-1.735 4.362a13.31 13.31 0 0 0 .322 5.452c.966 4.225 3.593 9.033 7.757 14.225a28.79 28.79 0 0 1-7.298 6.195 12.6 12.6 0 0 1-4.882 1.71 10.26 10.26 0 0 1-4.87-.644C9.16 58.12 6.94 55.292 6.45 51.954a10.61 10.61 0 0 1 .582-4.956c.198-.644.508-1.24.83-2.044.446-1.028.966-2.12 1.475-3.2l.062-.124c4.424-9.54 9.157-19.28 14.1-28.772l.186-.458 1.536-2.95a14.05 14.05 0 0 1 1.846-2.838 6.73 6.73 0 0 1 10.247 0 13.87 13.87 0 0 1 1.747 2.813l1.536 2.95.186.384c4.87 9.553 9.628 19.28 14.04 28.834v.062c.508 1.028.966 2.18 1.475 3.2.322.768.644 1.413.83 2.044a10.81 10.81 0 0 1 .446 4.956z" />
               </svg>
               <div>
                 <p className="text-linen/80 text-xs sm:text-sm">Airbnb</p>
@@ -152,12 +159,7 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
             </a>
 
             {/* Google Rating */}
-            <a
-              href="https://share.google/KNtMhXhU9m7ieTJaM"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card rounded-xl p-3 sm:p-4 flex items-center gap-3 hover:bg-white/20 transition-colors cursor-pointer"
-            >
+            <a href="https://share.google/KNtMhXhU9m7ieTJaM" target="_blank" rel="noopener noreferrer" className="glass-card rounded-xl p-3 sm:p-4 flex items-center gap-3 hover:bg-white/20 transition-colors cursor-pointer">
               <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -216,12 +218,15 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
         </motion.div>
 
         {/* Footer */}
-        <motion.footer
-          className="relative mt-6 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 py-2 sm:py-4 px-4 w-full bg-black/40 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.8 }}
-        >
+        <motion.footer className="relative mt-6 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 py-2 sm:py-4 px-4 w-full bg-black/40 backdrop-blur-sm" initial={{
+        opacity: 0
+      }} animate={isActive ? {
+        opacity: 1
+      } : {
+        opacity: 0
+      }} transition={{
+        delay: 0.8
+      }}>
           <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
             <p className="text-linen/40 text-xs sm:text-sm text-center sm:text-left">
               {t('contact.copyright')}
@@ -238,21 +243,23 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
         </motion.footer>
 
         {/* Scroll to Top Indicator - Hidden on mobile due to Book button */}
-        <motion.button
-          onClick={() => scrollToSection(0)}
-          className="hidden sm:block absolute bottom-24 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <motion.button onClick={() => scrollToSection(0)} className="hidden sm:block absolute bottom-24 left-1/2 -translate-x-1/2" initial={{
+        opacity: 0
+      }} animate={isActive ? {
+        opacity: 1
+      } : {
+        opacity: 0
+      }} transition={{
+        delay: 1,
+        duration: 0.5
+      }} whileHover={{
+        scale: 1.1
+      }} whileTap={{
+        scale: 0.95
+      }}>
         </motion.button>
       </div>
-    </section>
-  );
+    </section>;
 });
-
 AboutSection.displayName = 'AboutSection';
-
 export default AboutSection;
