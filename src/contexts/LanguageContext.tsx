@@ -791,6 +791,12 @@ export const translations: Translations = {
     it: 'Tutti i diritti riservati.',
     de: 'Alle Rechte vorbehalten.',
   },
+  'footer.legalDisclaimer': {
+    en: 'All reservations are made exclusively through the Airbnb platform. This website does not enable online payments or booking processing.',
+    hr: 'Sve rezervacije obavljaju se isključivo putem platforme Airbnb. Ova web stranica ne omogućuje online plaćanja niti obradu rezervacija.',
+    it: 'Tutte le prenotazioni vengono effettuate esclusivamente tramite la piattaforma Airbnb. Questo sito web non consente pagamenti online né elaborazione di prenotazioni.',
+    de: 'Alle Reservierungen erfolgen ausschließlich über die Airbnb-Plattform. Diese Website ermöglicht keine Online-Zahlungen oder Buchungsabwicklung.',
+  },
 
   // Legal Pages Common
   'legal.backToHome': {
