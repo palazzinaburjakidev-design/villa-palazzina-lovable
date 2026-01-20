@@ -98,6 +98,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   const { t } = useLanguage();
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showVideo, setShowVideo] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
 
   const categories: { key: CategoryKey; label: string }[] = [
@@ -379,7 +380,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 <motion.div
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 row-span-2"
-                  onClick={() => window.open('https://www.youtube.com/watch?v=v_qexUFcnhs', '_blank', 'noopener,noreferrer')}
+                  onClick={() => setShowVideo(true)}
                 >
                   <div className="relative h-full bg-charcoal">
                     {/* Use static image instead of video for faster loading */}
@@ -459,6 +460,40 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
         </motion.div>
       </div>
 
+      {/* YouTube Video Modal */}
+      <AnimatePresence>
+        {showVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
+            onClick={() => setShowVideo(false)}
+          >
+            <button
+              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2 z-10"
+              onClick={() => setShowVideo(false)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="w-full max-w-5xl aspect-video"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1&rel=0"
+                title="Villa Palazzina Burjaki Video Tour"
+                className="w-full h-full rounded-xl"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Album Lightbox */}
       <AnimatePresence>
