@@ -10,18 +10,20 @@ const sectionNames = ['Hero', 'Gallery', 'Amenities', 'Location', 'Contact'];
 
 const SectionIndicator = ({ totalSections, currentSection, scrollToSection }: SectionIndicatorProps) => {
   return (
-    <div className="fixed right-3 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2 sm:gap-3">
+    <div className="fixed right-1 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-0 sm:gap-1">
       {Array.from({ length: totalSections }).map((_, index) => (
         <div key={index} className="relative group">
           <motion.button
             onClick={() => scrollToSection(index)}
-            className={`section-dot ${currentSection === index ? 'active' : ''}`}
+            className={`p-2 sm:p-1.5 ${currentSection === index ? '' : ''}`}
             whileTap={{ scale: 0.9 }}
             aria-label={`Go to ${sectionNames[index]} section`}
-          />
+          >
+            <span className={`section-dot block ${currentSection === index ? 'active' : ''}`} />
+          </motion.button>
           
           {/* Section name tooltip - desktop only */}
-          <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+          <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 pointer-events-none">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-charcoal/80 text-linen text-xs px-2 py-1 rounded whitespace-nowrap">
               {sectionNames[index]}
             </span>
