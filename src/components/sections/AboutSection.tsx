@@ -133,15 +133,20 @@ const AboutSection = ({
                 <p className="text-linen text-xs font-medium text-shadow-sm">10:00</p>
               </div>
             </div>
-            <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
+            <a 
+              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2 hover:bg-white/20 transition-colors cursor-pointer"
+            >
               <svg className="w-4 h-4 text-[#FF5A5F] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.08c-.746 1.174-1.924 2.078-3.486 2.684-1.562.606-3.434.752-5.064.284-1.684-.482-3.09-1.472-4.012-2.75-.922-1.278-1.332-2.818-1.332-4.298 0-1.974.758-3.894 2.188-5.406.692-.732 1.53-1.324 2.466-1.73.936-.406 1.958-.608 2.988-.608 1.542 0 3.068.456 4.228 1.306 1.16.85 2.03 2.076 2.402 3.476l-5.494 2.08c-.25-.47-.68-.85-1.22-1.08-.54-.23-1.154-.29-1.736-.17-.582.12-1.114.406-1.512.814-.398.408-.658.924-.738 1.478-.08.554.02 1.12.282 1.614.262.494.68.894 1.188 1.142.508.248 1.078.336 1.62.25.542-.086 1.048-.342 1.44-.726l5.228 1.886c.202.284.372.586.508.9.136.314.238.642.306.98.068.338.1.686.1 1.034 0 .348-.032.696-.1 1.034-.068.338-.17.666-.306.98-.136.314-.306.616-.508.9z" />
               </svg>
               <div>
                 <p className="text-linen/80 text-[10px]">Airbnb</p>
-                <p className="text-linen text-xs font-medium text-shadow-sm">4.97★ <span className="text-linen/70">(38)</span></p>
+                <p className="text-linen text-xs font-medium text-shadow-sm">4.93★ <span className="text-linen/70">(54)</span></p>
               </div>
-            </div>
+            </a>
             <a 
               href="https://share.google/KNtMhXhU9m7ieTJaM" 
               target="_blank" 
