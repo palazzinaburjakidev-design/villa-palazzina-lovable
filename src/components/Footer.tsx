@@ -84,6 +84,13 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Legal Disclaimer */}
+        <div className="border-t border-white/10 pt-6 mb-6">
+          <p className="text-linen/60 text-xs sm:text-sm text-center italic">
+            {t('footer.legalDisclaimer')}
+          </p>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-linen/50 text-xs sm:text-sm text-center sm:text-left">
