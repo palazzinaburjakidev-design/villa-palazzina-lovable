@@ -1270,13 +1270,30 @@ const LanguageContext = createContext<LanguageContextType>(defaultLanguageContex
 
 const LANGUAGE_STORAGE_KEY = 'villa-palazzina-language';
 
+const SUPPORTED_LANGUAGES: Language[] = ['en', 'hr', 'it', 'de'];
+
 const getInitialLanguage = (): Language => {
-  if (typeof window !== 'undefined') {
-    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored && ['en', 'hr', 'it', 'de'].includes(stored)) {
-      return stored as Language;
+  if (typeof window === 'undefined') {
+    return 'en';
+  }
+
+  // 1. Prioritet: korisnička preferencija iz localStorage
+  const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+  if (stored && SUPPORTED_LANGUAGES.includes(stored as Language)) {
+    return stored as Language;
+  }
+
+  // 2. Detekcija jezika browsera
+  const browserLanguages = navigator.languages || [navigator.language];
+  
+  for (const browserLang of browserLanguages) {
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    if (SUPPORTED_LANGUAGES.includes(langCode as Language)) {
+      return langCode as Language;
     }
   }
+
+  // 3. Fallback na engleski
   return 'en';
 };
 
