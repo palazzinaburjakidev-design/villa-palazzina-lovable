@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
-import villaTourVideo from '@/assets/villa-tour.mp4';
 import galleryLiving from '@/assets/gallery-living.avif';
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
 import galleryPool from '@/assets/gallery-pool.avif';
@@ -99,7 +98,6 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   const { t } = useLanguage();
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showVideo, setShowVideo] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
 
   const categories: { key: CategoryKey; label: string }[] = [
@@ -381,7 +379,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 <motion.div
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 row-span-2"
-                  onClick={() => setShowVideo(true)}
+                  onClick={() => window.open('https://www.youtube.com/watch?v=v_qexUFcnhs', '_blank', 'noopener,noreferrer')}
                 >
                   <div className="relative h-full bg-charcoal">
                     {/* Use static image instead of video for faster loading */}
@@ -461,41 +459,6 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
         </motion.div>
       </div>
 
-      {/* Video Modal */}
-      <AnimatePresence>
-        {showVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
-            onClick={() => setShowVideo(false)}
-          >
-            <button
-              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2"
-              onClick={() => setShowVideo(false)}
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="w-full max-w-5xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <video
-                src={villaTourVideo}
-                className="w-full rounded-xl"
-                controls
-                autoPlay
-                playsInline
-                preload="auto"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Album Lightbox */}
       <AnimatePresence>
