@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Home, Users, Bed, Bath, Maximize, MapPin, Mail, Phone, Instagram, PawPrint, Ban, Clock, CalendarCheck, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 import bedroomImage from '@/assets/gallery-bedroom.avif';
 interface AboutSectionProps {
   isActive: boolean;
@@ -225,12 +226,12 @@ const AboutSection = ({
               {t('contact.copyright')}
             </p>
             <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
-              <a href="#" className="text-linen/40 hover:text-linen transition-colors">
-                {t('contact.privacy')}
-              </a>
-              <a href="#" className="text-linen/40 hover:text-linen transition-colors">
-                {t('contact.terms')}
-              </a>
+              <Link to="/privacy-policy" className="text-linen/40 hover:text-linen transition-colors">
+                {t('footer.privacyPolicy')}
+              </Link>
+              <Link to="/cookie-policy" className="text-linen/40 hover:text-linen transition-colors">
+                {t('footer.cookiePolicy')}
+              </Link>
             </div>
           </div>
         </motion.footer>
