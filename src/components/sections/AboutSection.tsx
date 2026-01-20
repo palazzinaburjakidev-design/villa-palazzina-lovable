@@ -212,7 +212,7 @@ const AboutSection = ({
         </motion.div>
 
         {/* Footer */}
-        <motion.footer className="relative mt-6 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 py-2 sm:py-4 px-4 w-full" initial={{
+        <motion.footer className="relative mt-6 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 py-2 sm:py-4 px-4 w-full bg-black/40 backdrop-blur-sm" initial={{
         opacity: 0
       }} animate={isActive ? {
         opacity: 1
