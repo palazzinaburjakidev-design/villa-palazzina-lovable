@@ -84,7 +84,7 @@ const AboutSection = ({
 
       {/* Content */}
       <div data-scrollable="true" className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-32 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain">
-        <motion.div className="max-w-4xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
+        <motion.div className="max-w-6xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-3 sm:mb-4">
             <span className="inline-flex items-center gap-2 glass-card px-3 py-1.5 rounded-full text-gold text-xs uppercase tracking-widest mb-3">
