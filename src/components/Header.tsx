@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface HeaderProps {
   currentSection: number;
@@ -75,24 +76,38 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
             </div>
 
             {/* Book Now Button - Desktop */}
-            <a 
-              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:block btn-gold text-sm py-2 px-4 lg:px-6"
-            >
-              {t('nav.bookNow')}
-            </a>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a 
+                  href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:block btn-gold text-sm py-2 px-4 lg:px-6"
+                >
+                  {t('nav.bookNow')}
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+                {t('hero.externalBookingNotice')}
+              </TooltipContent>
+            </Tooltip>
 
             {/* Mobile Book Button */}
-            <a 
-              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="md:hidden bg-gold text-charcoal font-semibold py-2 px-4 text-xs rounded-full"
-            >
-              {t('nav.bookNow')}
-            </a>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a 
+                  href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="md:hidden bg-gold text-charcoal font-semibold py-2 px-4 text-xs rounded-full"
+                >
+                  {t('nav.bookNow')}
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+                {t('hero.externalBookingNotice')}
+              </TooltipContent>
+            </Tooltip>
 
             {/* Mobile Menu Button */}
             <button
