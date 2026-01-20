@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
@@ -100,6 +100,17 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
+
+  // Auto-stop video when section becomes inactive or category changes
+  useEffect(() => {
+    if (!isActive) {
+      setShowVideo(false);
+    }
+  }, [isActive]);
+
+  useEffect(() => {
+    setShowVideo(false);
+  }, [activeCategory]);
 
   const categories: { key: CategoryKey; label: string }[] = [
     { key: 'all', label: t('gallery.category.all') },
