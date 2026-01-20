@@ -1067,6 +1067,26 @@ export const translations: Translations = {
     it: 'Ultimo aggiornamento',
     de: 'Zuletzt aktualisiert',
   },
+
+  // Cookie Consent Banner
+  'cookieConsent.message': {
+    en: 'This website uses essential cookies and third-party services (Google Maps, Airbnb) to enhance your experience.',
+    hr: 'Ova web stranica koristi osnovne kolačiće i usluge trećih strana (Google Maps, Airbnb) kako bi poboljšala vaše iskustvo.',
+    it: 'Questo sito web utilizza cookie essenziali e servizi di terze parti (Google Maps, Airbnb) per migliorare la tua esperienza.',
+    de: 'Diese Website verwendet essenzielle Cookies und Dienste von Drittanbietern (Google Maps, Airbnb), um Ihr Erlebnis zu verbessern.',
+  },
+  'cookieConsent.learnMore': {
+    en: 'Learn more',
+    hr: 'Saznaj više',
+    it: 'Scopri di più',
+    de: 'Mehr erfahren',
+  },
+  'cookieConsent.accept': {
+    en: 'Accept',
+    hr: 'Prihvati',
+    it: 'Accetta',
+    de: 'Akzeptieren',
+  },
 };
 
 interface LanguageContextType {
