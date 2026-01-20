@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Home, Users, Bed, Bath, Maximize, MapPin, Mail, Phone, Instagram, PawPrint, Ban, Clock, CalendarCheck, Star } from 'lucide-react';
+import { Home, Users, Bed, Bath, Maximize, MapPin, Mail, Phone, Instagram, PawPrint, Ban, Clock, Star, Moon, PartyPopper, Volume2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import bedroomImage from '@/assets/gallery-bedroom.avif';
@@ -117,22 +117,37 @@ const AboutSection = ({
             </p>
           </motion.div>
 
-          {/* Check-in/out and Ratings */}
+          {/* Times and Ratings Row */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-3 sm:mb-4">
-            <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-gold flex-shrink-0" />
-              <div>
-                <p className="text-linen/80 text-[10px]">{t('about.checkin')}</p>
-                <p className="text-linen text-xs font-medium text-shadow-sm">15:00</p>
+            {/* Check-in/out Combined */}
+            <div className="glass-card rounded-xl p-2 sm:p-3">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Clock className="w-4 h-4 text-gold flex-shrink-0" />
+                <p className="text-linen/80 text-[10px]">{t('about.arrivalTime')}</p>
+              </div>
+              <p className="text-linen text-xs font-medium text-shadow-sm ml-6">16:00 – 00:00</p>
+              <p className="text-linen/70 text-[10px] mt-1 ml-6">{t('about.departureTime')}: 10:00</p>
+            </div>
+
+            {/* House Rules */}
+            <div className="glass-card rounded-xl p-2 sm:p-3">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Home className="w-4 h-4 text-gold flex-shrink-0" />
+                <p className="text-linen/80 text-[10px]">{t('contact.rules.title')}</p>
+              </div>
+              <div className="space-y-0.5 ml-6">
+                <p className="text-linen text-[10px] flex items-center gap-1">
+                  <Users className="w-3 h-3 text-gold/70" />
+                  {t('contact.rules.maxGuests')}
+                </p>
+                <p className="text-linen text-[10px] flex items-center gap-1">
+                  <Moon className="w-3 h-3 text-gold/70" />
+                  22:00 – 07:00
+                </p>
               </div>
             </div>
-            <div className="glass-card rounded-xl p-2 sm:p-3 flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-gold flex-shrink-0" />
-              <div>
-                <p className="text-linen/80 text-[10px]">{t('about.checkout')}</p>
-                <p className="text-linen text-xs font-medium text-shadow-sm">10:00</p>
-              </div>
-            </div>
+
+            {/* Airbnb Rating */}
             <a 
               href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
               target="_blank"
@@ -147,6 +162,8 @@ const AboutSection = ({
                 <p className="text-linen text-xs font-medium text-shadow-sm">4.93★ <span className="text-linen/70">(54)</span></p>
               </div>
             </a>
+
+            {/* Google Rating */}
             <a 
               href="https://share.google/KNtMhXhU9m7ieTJaM" 
               target="_blank" 
@@ -164,6 +181,22 @@ const AboutSection = ({
                 <p className="text-linen text-xs font-medium text-shadow-sm">4.8★ <span className="text-linen/70">(17)</span></p>
               </div>
             </a>
+          </motion.div>
+
+          {/* Additional House Rules Tags */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2 mb-3 sm:mb-4">
+            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
+              <PawPrint className="w-3.5 h-3.5 text-gold" />
+              {t('contact.rules.noPets')}
+            </span>
+            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
+              <Ban className="w-3.5 h-3.5 text-gold" />
+              {t('contact.rules.noSmoking')}
+            </span>
+            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
+              <PartyPopper className="w-3.5 h-3.5 text-gold" />
+              {t('contact.rules.noParties')}
+            </span>
           </motion.div>
 
           {/* Host & Contact */}
@@ -204,16 +237,8 @@ const AboutSection = ({
             </div>
           </motion.div>
 
-          {/* House Rules */}
+          {/* Address Tag */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <PawPrint className="w-3.5 h-3.5 text-gold" />
-              {t('contact.rules.noPets')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <Ban className="w-3.5 h-3.5 text-gold" />
-              {t('contact.rules.noSmoking')}
-            </span>
             <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
               <MapPin className="w-3.5 h-3.5 text-gold" />
               Burjaki 36, Trgetari 52224

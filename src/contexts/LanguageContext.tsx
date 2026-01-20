@@ -579,7 +579,7 @@ export const translations: Translations = {
   // House Rules
   'contact.rules.title': {
     en: 'House Rules',
-    hr: 'Pravila Kuće',
+    hr: 'Kućni red',
     it: 'Regole della Casa',
     de: 'Hausregeln',
   },
@@ -594,6 +594,36 @@ export const translations: Translations = {
     hr: 'Zabranjeno pušenje',
     it: 'Vietato fumare',
     de: 'Rauchen verboten',
+  },
+  'contact.rules.maxGuests': {
+    en: 'Maximum 8 guests',
+    hr: 'Maksimalno 8 gostiju',
+    it: 'Massimo 8 ospiti',
+    de: 'Maximal 8 Gäste',
+  },
+  'contact.rules.quietHours': {
+    en: 'Quiet hours: 22:00 – 07:00',
+    hr: 'Vrijeme tišine: 22:00 – 07:00',
+    it: 'Ore di silenzio: 22:00 – 07:00',
+    de: 'Ruhezeiten: 22:00 – 07:00',
+  },
+  'contact.rules.noParties': {
+    en: 'No parties or events',
+    hr: 'Zabrane zabave i događaji',
+    it: 'Feste ed eventi vietati',
+    de: 'Keine Partys oder Veranstaltungen',
+  },
+  'about.arrivalTime': {
+    en: 'Arrival time',
+    hr: 'Vrijeme dolaska',
+    it: 'Orario di arrivo',
+    de: 'Ankunftszeit',
+  },
+  'about.departureTime': {
+    en: 'Departure by',
+    hr: 'Odlazak do',
+    it: 'Partenza entro',
+    de: 'Abreise bis',
   },
   'contact.host': {
     en: 'Host: Vedran Grubišić',
