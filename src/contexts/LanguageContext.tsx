@@ -452,10 +452,10 @@ export const translations: Translations = {
 
   // Location
   'location.label': {
-    en: 'Trget, Istria',
-    hr: 'Trget, Istra',
-    it: 'Trget, Istria',
-    de: 'Trget, Istrien',
+    en: 'Burjaki, Istria',
+    hr: 'Burjaki, Istra',
+    it: 'Burjaki, Istria',
+    de: 'Burjaki, Istrien',
   },
   'location.title': {
     en: 'Perfect Location',
