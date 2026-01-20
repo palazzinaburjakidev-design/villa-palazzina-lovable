@@ -98,7 +98,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/80 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 text-shadow-sm"
+            className="text-linen/80 text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 text-shadow"
           >
             {t('location.subtitle')}
           </motion.p>
