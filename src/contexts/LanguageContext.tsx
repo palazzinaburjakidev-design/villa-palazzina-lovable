@@ -424,10 +424,10 @@ export const translations: Translations = {
   },
   // Beaches
   'location.santaMarina.title': {
-    en: 'Santa Marina Beach',
-    hr: 'Plaža Santa Marina',
-    it: 'Spiaggia Santa Marina',
-    de: 'Strand Santa Marina',
+    en: 'Sveta Marina Beach',
+    hr: 'Plaža Sveta Marina',
+    it: 'Spiaggia Sveta Marina',
+    de: 'Strand Sveta Marina',
   },
   'location.santaMarina.distance': {
     en: '1 km',
