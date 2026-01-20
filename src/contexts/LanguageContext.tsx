@@ -44,10 +44,10 @@ export const translations: Translations = {
     de: 'Buchen',
   },
   'hero.reserveNow': {
-    en: 'Reserve Now',
-    hr: 'Rezerviraj sada',
-    it: 'Prenota ora',
-    de: 'Jetzt buchen',
+    en: 'Book Now',
+    hr: 'Rezerviraj',
+    it: 'Prenota',
+    de: 'Buchen',
   },
   'hero.externalBookingNotice': {
     en: 'Redirects to Airbnb · Their terms apply',
