@@ -188,10 +188,10 @@ const AboutSection = memo(({ isActive, scrollToSection }: AboutSectionProps) => 
               {/* Contact Links */}
               <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
                 {/* Address */}
-                <span className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full text-linen/80">
+                <a href="https://www.google.com/maps/search/?api=1&query=Burjaki+36,+Trgetari+52224,+Croatia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
                   <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
                   <span className="text-linen text-xs sm:text-sm text-shadow-sm">Burjaki 36, Trgetari 52224</span>
-                </span>
+                </a>
                 <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center justify-center gap-2 glass-card px-3 py-2 rounded-full hover:bg-white/20 active:bg-white/30 transition-colors">
                   <Mail className="w-4 h-4 text-gold flex-shrink-0" />
                   <span className="text-linen text-xs sm:text-sm text-shadow-sm truncate">palazzinaburjaki@gmail.com</span>
