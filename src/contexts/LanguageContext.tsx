@@ -625,6 +625,18 @@ export const translations: Translations = {
     it: 'Partenza entro',
     de: 'Abreise bis',
   },
+  'about.arrival': {
+    en: 'Arrival',
+    hr: 'Dolazak',
+    it: 'Arrivo',
+    de: 'Ankunft',
+  },
+  'about.departure': {
+    en: 'Departure by',
+    hr: 'Odlazak do',
+    it: 'Partenza entro',
+    de: 'Abreise bis',
+  },
   'contact.host': {
     en: 'Host: Vedran Grubišić',
     hr: 'Domaćin: Vedran Grubišić',

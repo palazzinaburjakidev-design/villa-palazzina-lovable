@@ -119,8 +119,8 @@ const AboutSection = ({
                 <Clock className="w-4 h-4 text-gold flex-shrink-0" />
                 <p className="text-linen/80 text-[10px] sm:text-xs">{t('about.arrivalTime')}</p>
               </div>
-              <p className="text-linen text-xs sm:text-sm font-medium text-shadow-sm ml-6">16:00 – 00:00</p>
-              <p className="text-linen text-[11px] sm:text-sm mt-1.5 ml-6 font-medium">{t('about.departureTime')}: <span className="text-gold">10:00</span></p>
+              <p className="text-linen text-xs sm:text-sm font-medium text-shadow-sm ml-6">{t('about.arrival')} 16:00 – 00:00</p>
+              <p className="text-linen text-xs sm:text-sm font-medium text-shadow-sm ml-6 mt-1">{t('about.departure')} 10:00</p>
             </div>
 
             {/* House Rules - spans 2 columns */}
