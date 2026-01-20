@@ -65,7 +65,7 @@ const AboutSection = ({
       {/* Background Image with Zoom Effect */}
       <motion.div className="section-zoom" style={{
       backgroundImage: `url(${bedroomImage})`
-    }} initial={{
+    }} role="img" aria-label="Elegant bedroom interior at Villa Palazzina Burjaki" initial={{
       scale: 1.4,
       opacity: 0
     }} animate={isActive ? {

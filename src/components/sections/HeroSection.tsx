@@ -39,6 +39,8 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
       <motion.div
         className="section-zoom"
         style={{ backgroundImage: `url(${heroImage})` }}
+        role="img"
+        aria-label="Villa Palazzina Burjaki exterior view with pool and terrace in Istria"
         initial={{ scale: 1.4, opacity: 0 }}
         animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
