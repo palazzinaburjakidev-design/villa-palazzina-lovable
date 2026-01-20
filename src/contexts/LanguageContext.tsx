@@ -430,10 +430,10 @@ export const translations: Translations = {
     de: 'Strand Sveta Marina',
   },
   'location.santaMarina.distance': {
-    en: '1 km',
-    hr: '1 km',
-    it: '1 km',
-    de: '1 km',
+    en: '16 km',
+    hr: '16 km',
+    it: '16 km',
+    de: '16 km',
   },
   'location.tunarica.title': {
     en: 'Tunarica Beach',
