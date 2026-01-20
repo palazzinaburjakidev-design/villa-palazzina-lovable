@@ -479,10 +479,10 @@ export const translations: Translations = {
     de: 'Altstadt Labin',
   },
   'location.labin.distance': {
-    en: '12 km',
-    hr: '12 km',
-    it: '12 km',
-    de: '12 km',
+    en: '11 km',
+    hr: '11 km',
+    it: '11 km',
+    de: '11 km',
   },
   'location.rabac.title': {
     en: 'Rabac',
@@ -491,10 +491,10 @@ export const translations: Translations = {
     de: 'Rabac',
   },
   'location.rabac.distance': {
-    en: '15 km',
-    hr: '15 km',
-    it: '15 km',
-    de: '15 km',
+    en: '16 km',
+    hr: '16 km',
+    it: '16 km',
+    de: '16 km',
   },
   'location.rovinj.title': {
     en: 'Rovinj',
@@ -503,10 +503,10 @@ export const translations: Translations = {
     de: 'Rovinj',
   },
   'location.rovinj.distance': {
-    en: '35 km',
-    hr: '35 km',
-    it: '35 km',
-    de: '35 km',
+    en: '53 km',
+    hr: '53 km',
+    it: '53 km',
+    de: '53 km',
   },
   'location.pula.title': {
     en: 'Pula',
@@ -515,10 +515,10 @@ export const translations: Translations = {
     de: 'Pula',
   },
   'location.pula.distance': {
-    en: '50 km',
-    hr: '50 km',
-    it: '50 km',
-    de: '50 km',
+    en: '40 km',
+    hr: '40 km',
+    it: '40 km',
+    de: '40 km',
   },
   // Transport
   'location.airport.title': {
