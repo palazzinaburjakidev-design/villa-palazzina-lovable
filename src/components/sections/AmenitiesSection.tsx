@@ -120,7 +120,7 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 lg:mb-10 text-shadow-sm"
+            className="text-linen/80 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 lg:mb-10 text-shadow"
           >
             {t('amenities.subtitle')}
           </motion.p>
