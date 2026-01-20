@@ -251,6 +251,12 @@ export const translations: Translations = {
     it: 'Camera con letti a castello',
     de: 'Schlafzimmer mit Etagenbetten',
   },
+  'gallery.album.bedroom3': {
+    en: 'Guest Bedroom',
+    hr: 'Gostinjska spavaća soba',
+    it: 'Camera degli ospiti',
+    de: 'Gästezimmer',
+  },
   'gallery.album.bedroom4': {
     en: 'Master Bedroom',
     hr: 'Glavna spavaća soba',
