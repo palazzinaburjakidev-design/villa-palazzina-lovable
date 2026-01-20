@@ -379,26 +379,48 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
               {activeCategory === 'all' && (
                 <motion.div
                   variants={itemVariants}
-                  className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer col-span-2 row-span-2"
-                  onClick={() => setShowVideo(true)}
+                  className="relative rounded-xl overflow-hidden shadow-lg group col-span-2 row-span-2"
                 >
                   <div className="relative h-full bg-charcoal">
-                    {/* Use static image instead of video for faster loading */}
-                    <img
-                      src={galleryLiving}
-                      alt="Villa Palazzina Burjaki video tour preview showing living room"
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                    {showVideo ? (
+                      <div className="relative w-full h-full">
+                        <iframe
+                          src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1&rel=0"
+                          title="Villa Palazzina Burjaki Video Tour"
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                        <button
+                          onClick={() => setShowVideo(false)}
+                          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-charcoal/80 flex items-center justify-center text-linen hover:bg-charcoal transition-colors z-10"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
                       </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent">
-                    <h3 className="text-linen font-display text-sm sm:text-base">{t('gallery.video.title')}</h3>
-                    <p className="text-linen/60 text-xs">{t('gallery.video.subtitle')}</p>
+                    ) : (
+                      <>
+                        <img
+                          src={galleryLiving}
+                          alt="Villa Palazzina Burjaki video tour preview showing living room"
+                          className="w-full h-full object-cover cursor-pointer"
+                          loading="lazy"
+                          onClick={() => setShowVideo(true)}
+                        />
+                        <div 
+                          className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors cursor-pointer"
+                          onClick={() => setShowVideo(true)}
+                        >
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                          </div>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent pointer-events-none">
+                          <h3 className="text-linen font-display text-sm sm:text-base">{t('gallery.video.title')}</h3>
+                          <p className="text-linen/60 text-xs">{t('gallery.video.subtitle')}</p>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </motion.div>
               )}
@@ -459,41 +481,6 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           </motion.p>
         </motion.div>
       </div>
-
-      {/* YouTube Video Modal */}
-      <AnimatePresence>
-        {showVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
-            onClick={() => setShowVideo(false)}
-          >
-            <button
-              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2 z-10"
-              onClick={() => setShowVideo(false)}
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="w-[calc(50%-0.75rem)] max-w-md aspect-square sm:aspect-video"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1&rel=0"
-                title="Villa Palazzina Burjaki Video Tour"
-                className="w-full h-full rounded-xl"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Album Lightbox */}
       <AnimatePresence>
