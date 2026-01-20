@@ -220,7 +220,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bedroom3',
-      title: `${t('gallery.album.bedroom')} 3`,
+      title: t('gallery.album.bedroom3'),
       cover: bedroom3_1,
       images: [bedroom3_1, bedroom3_2, bedroom3_3, bedroom3_4, bedroom3_5, bedroom3_6],
       count: 6,
