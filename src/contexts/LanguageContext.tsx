@@ -528,10 +528,46 @@ export const translations: Translations = {
     de: 'Flughafen Pula',
   },
   'location.airport.distance': {
-    en: '50 km',
-    hr: '50 km',
-    it: '50 km',
-    de: '50 km',
+    en: '36 km',
+    hr: '36 km',
+    it: '36 km',
+    de: '36 km',
+  },
+  'location.triesteAirport.title': {
+    en: 'Trieste Airport',
+    hr: 'Zračna luka Trst',
+    it: 'Aeroporto di Trieste',
+    de: 'Flughafen Triest',
+  },
+  'location.triesteAirport.distance': {
+    en: '165 km',
+    hr: '165 km',
+    it: '165 km',
+    de: '165 km',
+  },
+  'location.zagrebAirport.title': {
+    en: 'Zagreb Airport',
+    hr: 'Zračna luka Zagreb',
+    it: 'Aeroporto di Zagabria',
+    de: 'Flughafen Zagreb',
+  },
+  'location.zagrebAirport.distance': {
+    en: '241 km',
+    hr: '241 km',
+    it: '241 km',
+    de: '241 km',
+  },
+  'location.busStation.title': {
+    en: 'Bus Station Labin',
+    hr: 'Autobusni kolodvor Labin',
+    it: 'Stazione autobus Albona',
+    de: 'Busbahnhof Labin',
+  },
+  'location.busStation.distance': {
+    en: '13 km',
+    hr: '13 km',
+    it: '13 km',
+    de: '13 km',
   },
 
   // House Rules
