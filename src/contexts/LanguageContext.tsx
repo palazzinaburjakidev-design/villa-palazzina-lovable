@@ -64,10 +64,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'hero.title': {
-    en: 'Experience Istrian Luxury',
-    hr: 'Doživite Istarsku Raskoš',
-    it: 'Vivi il Lusso Istriano',
-    de: 'Erleben Sie Istrischen Luxus',
+    en: 'Villa Palazzina Burjaki – Luxury Retreat in Istria',
+    hr: 'Villa Palazzina Burjaki – Luksuzno Utočište u Istri',
+    it: 'Villa Palazzina Burjaki – Rifugio di Lusso in Istria',
+    de: 'Villa Palazzina Burjaki – Luxuriöses Refugium in Istrien',
   },
   'hero.watchVideo': {
     en: 'Watch Video Tour',
@@ -76,10 +76,16 @@ export const translations: Translations = {
     de: 'Video-Tour ansehen',
   },
   'hero.subtitle': {
-    en: 'Luxurious villa with private pool, jacuzzi, sauna, and fitness center in the heart of Istria. Trget, Croatia.',
-    hr: 'Luksuzna vila s privatnim bazenom, jacuzzijem, saunom i fitness centrom u srcu Istre. Trget, Hrvatska.',
-    it: 'Villa lussuosa con piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria. Trget, Croazia.',
-    de: 'Luxuriöse Villa mit privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens. Trget, Kroatien.',
+    en: 'Private pool, jacuzzi, sauna & gym. Perfect for families and groups up to 8 guests.',
+    hr: 'Privatni bazen, jacuzzi, sauna i teretana. Idealno za obitelji i grupe do 8 gostiju.',
+    it: 'Piscina privata, jacuzzi, sauna e palestra. Perfetta per famiglie e gruppi fino a 8 ospiti.',
+    de: 'Privatpool, Whirlpool, Sauna & Fitnessraum. Ideal für Familien und Gruppen bis 8 Gäste.',
+  },
+  'hero.airbnbNote': {
+    en: 'Reservations exclusively via Airbnb',
+    hr: 'Rezervacije isključivo putem Airbnb-a',
+    it: 'Prenotazioni esclusivamente tramite Airbnb',
+    de: 'Reservierungen ausschließlich über Airbnb',
   },
 
   // Booking Widget
