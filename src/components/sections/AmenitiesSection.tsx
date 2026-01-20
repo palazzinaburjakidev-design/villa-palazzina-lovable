@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Waves, Sparkles, Dumbbell, CircleDot, Wifi, Flame, AirVent, Gamepad2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -7,7 +8,7 @@ interface AmenitiesSectionProps {
   isActive: boolean;
 }
 
-const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
+const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
   const { t } = useLanguage();
 
   const containerVariants = {
@@ -151,6 +152,8 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       </div>
     </section>
   );
-};
+});
+
+AmenitiesSection.displayName = 'AmenitiesSection';
 
 export default AmenitiesSection;

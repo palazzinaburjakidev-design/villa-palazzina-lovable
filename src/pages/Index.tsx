@@ -1,16 +1,24 @@
+import React, { Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useFullPageScroll } from '@/hooks/useFullPageScroll';
 import Header from '@/components/Header';
 import SectionIndicator from '@/components/SectionIndicator';
-import HeroSection from '@/components/sections/HeroSection';
-import GallerySection from '@/components/sections/GallerySection';
-import AmenitiesSection from '@/components/sections/AmenitiesSection';
-import LocationSection from '@/components/sections/LocationSection';
-import AboutSection from '@/components/sections/AboutSection';
 
-
+// Lazy load sections for better initial load performance
+const HeroSection = React.lazy(() => import('@/components/sections/HeroSection'));
+const GallerySection = React.lazy(() => import('@/components/sections/GallerySection'));
+const AmenitiesSection = React.lazy(() => import('@/components/sections/AmenitiesSection'));
+const LocationSection = React.lazy(() => import('@/components/sections/LocationSection'));
+const AboutSection = React.lazy(() => import('@/components/sections/AboutSection'));
 
 const TOTAL_SECTIONS = 5;
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div className="h-full w-full flex items-center justify-center bg-charcoal">
+    <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const Index = () => {
   const { currentSection, scrollToSection } = useFullPageScroll({
@@ -46,17 +54,17 @@ const Index = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {key === 'about' ? (
-                <AboutSection isActive={currentSection === index} scrollToSection={scrollToSection} />
-              ) : (
-                <Component isActive={currentSection === index} />
-              )}
+              <Suspense fallback={<SectionLoader />}>
+                {key === 'about' ? (
+                  <AboutSection isActive={currentSection === index} scrollToSection={scrollToSection} />
+                ) : (
+                  <Component isActive={currentSection === index} />
+                )}
+              </Suspense>
             </motion.div>
           )
         ))}
       </AnimatePresence>
-
-      
     </div>
   );
 };

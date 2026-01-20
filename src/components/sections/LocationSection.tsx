@@ -1,5 +1,6 @@
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Waves, Building2, MapPin, Plane } from 'lucide-react';
+import { Waves, Building2, Plane } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -7,7 +8,7 @@ interface LocationSectionProps {
   isActive: boolean;
 }
 
-const LocationSection = ({ isActive }: LocationSectionProps) => {
+const LocationSection = memo(({ isActive }: LocationSectionProps) => {
   const { t } = useLanguage();
 
   const containerVariants = {
@@ -171,6 +172,8 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
       </div>
     </section>
   );
-};
+});
+
+LocationSection.displayName = 'LocationSection';
 
 export default LocationSection;
