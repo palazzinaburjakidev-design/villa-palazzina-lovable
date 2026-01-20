@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-charcoal overflow-y-auto h-screen">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
