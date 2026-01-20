@@ -392,13 +392,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group col-span-2 row-span-2"
                 >
-                  <div className="relative h-full bg-charcoal">
+                  <div className="relative h-full bg-charcoal aspect-video">
                     {showVideo ? (
                       <div className="relative w-full h-full">
                         <iframe
                           src="https://www.youtube.com/embed/v_qexUFcnhs?autoplay=1&rel=0"
                           title="Villa Palazzina Burjaki Video Tour"
-                          className="w-full h-full"
+                          className="absolute inset-0 w-full h-full"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                         />

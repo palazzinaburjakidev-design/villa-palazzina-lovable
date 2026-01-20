@@ -71,7 +71,10 @@ const LocationSection = ({ isActive }: LocationSectionProps) => {
       <div className="absolute inset-0 hero-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-24 sm:pb-20 overflow-y-auto">
+      <div 
+        className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-24 sm:pb-20 overflow-y-auto overscroll-contain touch-pan-y"
+        data-scrollable="true"
+      >
         <motion.div
           className="text-center max-w-5xl w-full text-backdrop py-8 px-6"
           variants={containerVariants}

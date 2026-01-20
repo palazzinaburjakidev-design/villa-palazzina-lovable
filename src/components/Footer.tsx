@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="bg-black/80 border-t border-white/10">
       <div className="container mx-auto px-4 py-8 sm:py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
           {/* Impressum / Legal Info */}
           <div>
             <h3 className="text-gold font-display text-lg mb-4">{t('footer.impressum')}</h3>
