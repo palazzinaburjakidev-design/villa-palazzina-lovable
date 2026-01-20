@@ -480,7 +480,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="w-full max-w-5xl aspect-video"
+              className="w-[calc(50%-0.75rem)] max-w-md aspect-square sm:aspect-video"
               onClick={(e) => e.stopPropagation()}
             >
               <iframe
