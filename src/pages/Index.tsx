@@ -7,7 +7,7 @@ import GallerySection from '@/components/sections/GallerySection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
 import LocationSection from '@/components/sections/LocationSection';
 import AboutSection from '@/components/sections/AboutSection';
-import CookieConsent from '@/components/CookieConsent';
+
 
 
 const TOTAL_SECTIONS = 5;
@@ -56,7 +56,7 @@ const Index = () => {
         ))}
       </AnimatePresence>
 
-      <CookieConsent />
+      
     </div>
   );
 };
