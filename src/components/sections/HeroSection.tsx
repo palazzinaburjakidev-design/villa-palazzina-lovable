@@ -77,13 +77,6 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.subtitle')}
           </motion.p>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-gold/90 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed px-4 mt-4 uppercase tracking-wider"
-            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}
-          >
-            {t('hero.airbnbNote')}
-          </motion.p>
 
           <motion.div variants={itemVariants} className="mt-6 sm:mt-8">
             <Tooltip>
