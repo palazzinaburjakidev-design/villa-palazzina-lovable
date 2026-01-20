@@ -49,6 +49,12 @@ export const translations: Translations = {
     it: 'Prenota ora',
     de: 'Jetzt buchen',
   },
+  'hero.externalBookingNotice': {
+    en: 'Redirects to Airbnb · Their terms apply',
+    hr: 'Preusmjerava na Airbnb · Vrijede njihovi uvjeti',
+    it: 'Reindirizza a Airbnb · Si applicano i loro termini',
+    de: 'Weiterleitung zu Airbnb · Es gelten deren Bedingungen',
+  },
 
   // Hero
   'hero.brand': {
