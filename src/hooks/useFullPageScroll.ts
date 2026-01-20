@@ -119,7 +119,7 @@ export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFull
       
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY.current - touchEndY;
-      const threshold = 50;
+      const threshold = 100; // Increased threshold for more intentional swipes
 
       // Check if touch started in a scrollable element
       const scrollInfo = getScrollableInfo(touchStartTarget.current);
