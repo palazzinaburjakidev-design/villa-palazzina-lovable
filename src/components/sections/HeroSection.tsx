@@ -55,20 +55,20 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
         >
-          <motion.p
-            variants={itemVariants}
-            className="text-gold-light uppercase tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3 sm:mb-4"
-            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9)' }}
-          >
-            {t('hero.brand')}
-          </motion.p>
-
           <motion.h1
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-linen mb-4 sm:mb-6 text-shadow"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gold-light mb-3 sm:mb-4"
+            style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.9), 0 4px 24px rgba(0, 0, 0, 0.6)' }}
+          >
+            {t('hero.brand')}
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl text-linen mb-4 sm:mb-6 text-shadow"
           >
             {t('hero.title')}
-          </motion.h1>
+          </motion.p>
 
           <motion.p
             variants={itemVariants}

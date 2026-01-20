@@ -64,10 +64,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'hero.title': {
-    en: 'Villa Palazzina Burjaki – Luxury Retreat in Istria',
-    hr: 'Villa Palazzina Burjaki – Luksuzno Utočište u Istri',
-    it: 'Villa Palazzina Burjaki – Rifugio di Lusso in Istria',
-    de: 'Villa Palazzina Burjaki – Luxuriöses Refugium in Istrien',
+    en: 'Luxury Retreat in Istria',
+    hr: 'Luksuzno Utočište u Istri',
+    it: 'Rifugio di Lusso in Istria',
+    de: 'Luxuriöses Refugium in Istrien',
   },
   'hero.watchVideo': {
     en: 'Watch Video Tour',
