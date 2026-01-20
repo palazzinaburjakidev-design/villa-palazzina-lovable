@@ -79,9 +79,10 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/80 text-xs sm:text-sm max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 mt-3 text-shadow-sm"
+            className="text-gold/90 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed px-4 mt-4 uppercase tracking-wider"
+            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}
           >
-            {t('about.description')}
+            {t('hero.airbnbNote')}
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-6 sm:mt-8">
