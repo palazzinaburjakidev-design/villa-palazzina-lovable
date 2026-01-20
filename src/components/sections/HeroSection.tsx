@@ -75,7 +75,7 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
 
           <motion.p
             variants={itemVariants}
-            className="text-linen text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow-sm"
+            className="text-linen/90 text-sm sm:text-base lg:text-xl max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-4 text-shadow"
           >
             {t('hero.subtitle')}
           </motion.p>
