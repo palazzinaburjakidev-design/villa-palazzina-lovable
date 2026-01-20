@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type Language = 'en' | 'hr' | 'it' | 'de';
 
@@ -1218,8 +1218,33 @@ const defaultLanguageContext: LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType>(defaultLanguageContext);
 
+const LANGUAGE_STORAGE_KEY = 'villa-palazzina-language';
+
+const getInitialLanguage = (): Language => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored && ['en', 'hr', 'it', 'de'].includes(stored)) {
+      return stored as Language;
+    }
+  }
+  return 'en';
+};
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+  };
+
+  // Sync with localStorage on mount (handles SSR hydration edge cases)
+  useEffect(() => {
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored && ['en', 'hr', 'it', 'de'].includes(stored) && stored !== language) {
+      setLanguageState(stored as Language);
+    }
+  }, []);
 
   const t = (key: string): string => {
     const translation = translations[key];
