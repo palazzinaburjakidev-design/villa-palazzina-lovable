@@ -994,10 +994,10 @@ export const translations: Translations = {
     de: 'Airbnb - für Buchungsweiterleitungen (externe Plattform)',
   },
   'privacy.thirdParties.item3': {
-    en: 'YouTube (Google) - for displaying video content only. This website does not collect personal data through embedded videos.',
-    hr: 'YouTube (Google) - isključivo za prikaz video sadržaja. Ova web stranica ne prikuplja osobne podatke putem ugrađenih videozapisa.',
-    it: 'YouTube (Google) - solo per la visualizzazione di contenuti video. Questo sito web non raccoglie dati personali tramite i video incorporati.',
-    de: 'YouTube (Google) - nur zur Anzeige von Videoinhalten. Diese Website erfasst keine persönlichen Daten über eingebettete Videos.',
+    en: 'YouTube (Google) - for displaying video content. Embedded videos may set third-party cookies in accordance with YouTube\'s privacy policy.',
+    hr: 'YouTube (Google) – za prikaz video sadržaja. Ugrađeni videozapisi mogu postavljati kolačiće trećih strana u skladu s pravilima privatnosti YouTubea.',
+    it: 'YouTube (Google) - per la visualizzazione di contenuti video. I video incorporati possono impostare cookie di terze parti in conformità con l\'informativa sulla privacy di YouTube.',
+    de: 'YouTube (Google) - zur Anzeige von Videoinhalten. Eingebettete Videos können Cookies von Drittanbietern gemäß den Datenschutzrichtlinien von YouTube setzen.',
   },
   'privacy.gdprRights.title': {
     en: 'Your Rights Under GDPR',
