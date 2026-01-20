@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import heroImage from '@/assets/hero-villa.avif';
 
 interface HeroSectionProps {
@@ -76,19 +77,23 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
             {t('hero.subtitle')}
           </motion.p>
 
-          <motion.div variants={itemVariants} className="mt-6 sm:mt-8 flex flex-col items-center gap-2">
-            <a
-              href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-3 sm:px-10 sm:py-4 bg-gold hover:bg-gold-light text-charcoal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
-              style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }}
-            >
-              {t('hero.reserveNow')}
-            </a>
-            <span className="text-linen/60 text-xs sm:text-sm italic" style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>
-              {t('hero.externalBookingNotice')}
-            </span>
+          <motion.div variants={itemVariants} className="mt-6 sm:mt-8">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a
+                  href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3 sm:px-10 sm:py-4 bg-gold hover:bg-gold-light text-charcoal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
+                  style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }}
+                >
+                  {t('hero.reserveNow')}
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+                {t('hero.externalBookingNotice')}
+              </TooltipContent>
+            </Tooltip>
           </motion.div>
         </motion.div>
 
