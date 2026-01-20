@@ -83,6 +83,7 @@ const PrivacyPolicy = () => {
               <ul className="list-disc list-inside text-linen/80 space-y-2">
                 <li>{t('privacy.thirdParties.item1')}</li>
                 <li>{t('privacy.thirdParties.item2')}</li>
+                <li>{t('privacy.thirdParties.item3')}</li>
               </ul>
             </section>
 

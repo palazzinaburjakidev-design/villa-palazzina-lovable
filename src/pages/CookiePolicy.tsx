@@ -90,6 +90,42 @@ const CookiePolicy = () => {
               <ul className="list-disc list-inside text-linen/80 space-y-2">
                 <li>{t('cookie.thirdPartyServices.item1')}</li>
                 <li>{t('cookie.thirdPartyServices.item2')}</li>
+                <li>{t('cookie.thirdPartyServices.item3')}</li>
+              </ul>
+            </section>
+
+            {/* YouTube Embedded Videos */}
+            <section>
+              <h2 className="font-display text-xl text-gold mb-4">
+                {t('cookie.youtube.title')}
+              </h2>
+              <p className="text-linen/80 leading-relaxed mb-4">
+                {t('cookie.youtube.text')}
+              </p>
+              <p className="text-linen/80 leading-relaxed mb-4">
+                {t('cookie.youtube.noControl')}
+              </p>
+              <ul className="list-disc list-inside text-linen/80 space-y-2">
+                <li>
+                  <a 
+                    href="https://policies.google.com/privacy" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gold hover:underline"
+                  >
+                    {t('cookie.youtube.googlePrivacy')}
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://www.youtube.com/t/terms" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gold hover:underline"
+                  >
+                    {t('cookie.youtube.youtubeTerms')}
+                  </a>
+                </li>
               </ul>
             </section>
 

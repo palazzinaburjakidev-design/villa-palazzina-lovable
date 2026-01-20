@@ -993,6 +993,12 @@ export const translations: Translations = {
     it: 'Airbnb - per i reindirizzamenti delle prenotazioni (piattaforma esterna)',
     de: 'Airbnb - für Buchungsweiterleitungen (externe Plattform)',
   },
+  'privacy.thirdParties.item3': {
+    en: 'YouTube (Google) - for displaying video content only. This website does not collect personal data through embedded videos.',
+    hr: 'YouTube (Google) - isključivo za prikaz video sadržaja. Ova web stranica ne prikuplja osobne podatke putem ugrađenih videozapisa.',
+    it: 'YouTube (Google) - solo per la visualizzazione di contenuti video. Questo sito web non raccoglie dati personali tramite i video incorporati.',
+    de: 'YouTube (Google) - nur zur Anzeige von Videoinhalten. Diese Website erfasst keine persönlichen Daten über eingebettete Videos.',
+  },
   'privacy.gdprRights.title': {
     en: 'Your Rights Under GDPR',
     hr: 'Vaša prava prema GDPR-u',
@@ -1138,6 +1144,44 @@ export const translations: Translations = {
     hr: 'Airbnb - za integraciju platforme za rezervacije (vanjska veza)',
     it: 'Airbnb - per l\'integrazione della piattaforma di prenotazione (link esterno)',
     de: 'Airbnb - für Buchungsplattform-Integration (externer Link)',
+  },
+  'cookie.thirdPartyServices.item3': {
+    en: 'YouTube (Google) - for embedded video content',
+    hr: 'YouTube (Google) - za ugrađeni video sadržaj',
+    it: 'YouTube (Google) - per contenuti video incorporati',
+    de: 'YouTube (Google) - für eingebettete Videoinhalte',
+  },
+
+  // YouTube Section
+  'cookie.youtube.title': {
+    en: 'YouTube Embedded Videos',
+    hr: 'Ugrađeni YouTube videozapisi',
+    it: 'Video YouTube incorporati',
+    de: 'Eingebettete YouTube-Videos',
+  },
+  'cookie.youtube.text': {
+    en: 'This website uses embedded YouTube videos to display video content of Villa Palazzina Burjaki. When you play a YouTube video, YouTube (operated by Google) may set cookies and collect data according to their privacy policy.',
+    hr: 'Ova web stranica koristi ugrađene YouTube videozapise za prikaz video sadržaja Ville Palazzina Burjaki. Kada pokrenete YouTube video, YouTube (kojim upravlja Google) može postaviti kolačiće i prikupljati podatke prema svojim pravilima o privatnosti.',
+    it: 'Questo sito web utilizza video YouTube incorporati per visualizzare contenuti video di Villa Palazzina Burjaki. Quando riproduci un video YouTube, YouTube (gestito da Google) potrebbe impostare cookie e raccogliere dati secondo la propria informativa sulla privacy.',
+    de: 'Diese Website verwendet eingebettete YouTube-Videos zur Anzeige von Videoinhalten der Villa Palazzina Burjaki. Wenn Sie ein YouTube-Video abspielen, kann YouTube (betrieben von Google) Cookies setzen und Daten gemäß ihrer Datenschutzrichtlinie erfassen.',
+  },
+  'cookie.youtube.noControl': {
+    en: 'The website owner has no control over the data collected by YouTube/Google. For more information about how YouTube handles your data, please refer to:',
+    hr: 'Vlasnik web stranice nema kontrolu nad podacima koje prikuplja YouTube/Google. Za više informacija o tome kako YouTube obrađuje vaše podatke, molimo pogledajte:',
+    it: 'Il proprietario del sito web non ha alcun controllo sui dati raccolti da YouTube/Google. Per ulteriori informazioni su come YouTube gestisce i tuoi dati, consulta:',
+    de: 'Der Website-Betreiber hat keine Kontrolle über die von YouTube/Google erfassten Daten. Weitere Informationen darüber, wie YouTube Ihre Daten verarbeitet, finden Sie unter:',
+  },
+  'cookie.youtube.googlePrivacy': {
+    en: 'Google Privacy Policy',
+    hr: 'Google pravila o privatnosti',
+    it: 'Informativa sulla privacy di Google',
+    de: 'Google Datenschutzerklärung',
+  },
+  'cookie.youtube.youtubeTerms': {
+    en: 'YouTube Terms of Service',
+    hr: 'YouTube uvjeti korištenja',
+    it: 'Termini di servizio di YouTube',
+    de: 'YouTube Nutzungsbedingungen',
   },
   'cookie.consent.title': {
     en: 'Your Consent',
