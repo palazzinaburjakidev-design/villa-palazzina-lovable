@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,8 +7,18 @@ import Footer from '@/components/Footer';
 const PrivacyPolicy = () => {
   const { t } = useLanguage();
 
+  // Enable scrolling on this page by overriding global overflow:hidden
+  React.useEffect(() => {
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    return () => {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-charcoal overflow-y-auto h-screen">
+    <div className="min-h-screen bg-charcoal">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
