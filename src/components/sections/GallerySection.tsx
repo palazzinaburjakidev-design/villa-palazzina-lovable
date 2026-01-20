@@ -449,6 +449,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   <img
                     src={album.cover}
                     alt={`${album.title} - Villa Palazzina Burjaki`}
+                    loading="lazy"
                     className="w-full h-28 sm:h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />

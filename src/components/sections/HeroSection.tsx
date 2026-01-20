@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -7,7 +8,7 @@ interface HeroSectionProps {
   isActive: boolean;
 }
 
-const HeroSection = ({ isActive }: HeroSectionProps) => {
+const HeroSection = memo(({ isActive }: HeroSectionProps) => {
   const { t } = useLanguage();
 
   const containerVariants = {
@@ -114,6 +115,8 @@ const HeroSection = ({ isActive }: HeroSectionProps) => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = 'HeroSection';
 
 export default HeroSection;
