@@ -354,7 +354,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-4 sm:mb-6"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-4 sm:mb-6 text-shadow"
           >
             {t('gallery.title')}
           </motion.h2>
