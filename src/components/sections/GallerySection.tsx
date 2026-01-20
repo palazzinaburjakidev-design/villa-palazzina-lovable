@@ -487,7 +487,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-linen/70 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0"
+            className="text-linen/80 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0 text-shadow"
           >
             {t('gallery.description')}
           </motion.p>
