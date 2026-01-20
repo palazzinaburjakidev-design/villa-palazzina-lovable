@@ -237,7 +237,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     // Kupaonice
     {
       id: 'bathroom1',
-      title: `${t('gallery.album.bathroom')} 1`,
+      title: t('gallery.album.bathroom1'),
       cover: bathroom1_1,
       images: [bathroom1_1, bathroom1_2],
       count: 2,
@@ -245,7 +245,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom2',
-      title: `${t('gallery.album.bathroom')} 2`,
+      title: t('gallery.album.bathroom2'),
       cover: bathroom2_1,
       images: [bathroom2_1, bathroom2_2, bathroom2_3],
       count: 3,
@@ -253,7 +253,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom3',
-      title: `${t('gallery.album.bathroom')} 3`,
+      title: t('gallery.album.bathroom3'),
       cover: bathroom3_1,
       images: [bathroom3_1, bathroom3_2, bathroom3_3, bathroom3_4],
       count: 4,
@@ -261,7 +261,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom4',
-      title: `${t('gallery.album.bathroom')} 4`,
+      title: t('gallery.album.bathroom4'),
       cover: bathroom4_1,
       images: [bathroom4_1, bathroom4_2, bathroom4_3, bathroom4_4],
       count: 4,
@@ -269,7 +269,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
     },
     {
       id: 'bathroom5',
-      title: `${t('gallery.album.bathroom')} 5`,
+      title: t('gallery.album.bathroom5'),
       cover: bathroom5_1,
       images: [bathroom5_1, bathroom5_2],
       count: 2,

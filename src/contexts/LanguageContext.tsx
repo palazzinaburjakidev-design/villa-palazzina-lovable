@@ -269,6 +269,36 @@ export const translations: Translations = {
     it: 'Bagno',
     de: 'Badezimmer',
   },
+  'gallery.album.bathroom1': {
+    en: 'Ground Floor Bathroom',
+    hr: 'Kupaonica u prizemlju',
+    it: 'Bagno al piano terra',
+    de: 'Badezimmer im Erdgeschoss',
+  },
+  'gallery.album.bathroom2': {
+    en: 'Pool Bathroom',
+    hr: 'Kupaonica uz bazen',
+    it: 'Bagno piscina',
+    de: 'Pool-Badezimmer',
+  },
+  'gallery.album.bathroom3': {
+    en: 'Guest Bathroom',
+    hr: 'Gostinjska kupaonica',
+    it: 'Bagno ospiti',
+    de: 'Gästebad',
+  },
+  'gallery.album.bathroom4': {
+    en: 'Master Bathroom',
+    hr: 'Glavna kupaonica',
+    it: 'Bagno principale',
+    de: 'Hauptbadezimmer',
+  },
+  'gallery.album.bathroom5': {
+    en: 'Upstairs Bathroom',
+    hr: 'Kupaonica na katu',
+    it: 'Bagno al piano superiore',
+    de: 'Badezimmer im Obergeschoss',
+  },
 
   // Gallery Video
   'gallery.video.title': {
