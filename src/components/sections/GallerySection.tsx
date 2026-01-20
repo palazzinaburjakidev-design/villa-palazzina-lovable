@@ -382,11 +382,12 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   onClick={() => setShowVideo(true)}
                 >
                   <div className="relative h-full bg-charcoal">
-                    <video
-                      src={villaTourVideo}
+                    {/* Use static image instead of video for faster loading */}
+                    <img
+                      src={galleryLiving}
+                      alt="Video Tour Preview"
                       className="w-full h-full object-cover"
-                      muted
-                      playsInline
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -485,6 +486,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 controls
                 autoPlay
                 playsInline
+                preload="auto"
               />
             </motion.div>
           </motion.div>
