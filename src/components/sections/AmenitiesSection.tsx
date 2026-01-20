@@ -82,6 +82,8 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
       <motion.div
         className="section-zoom"
         style={{ backgroundImage: `url(${poolImage})` }}
+        role="img"
+        aria-label="Private swimming pool at Villa Palazzina Burjaki"
         initial={{ scale: 1.4, opacity: 0 }}
         animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}

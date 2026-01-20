@@ -316,6 +316,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
       <motion.div
         className="section-zoom"
         style={{ backgroundImage: `url(${galleryLiving})` }}
+        role="img"
+        aria-label="Living room interior at Villa Palazzina Burjaki"
         initial={{ scale: 1.4, opacity: 0 }}
         animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
@@ -385,7 +387,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                     {/* Use static image instead of video for faster loading */}
                     <img
                       src={galleryLiving}
-                      alt="Video Tour Preview"
+                      alt="Villa Palazzina Burjaki video tour preview showing living room"
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -409,10 +411,12 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer"
                   onClick={() => openAlbum(album)}
+                  role="button"
+                  aria-label={`View ${album.title} photo album`}
                 >
                   <img
                     src={album.cover}
-                    alt={album.title}
+                    alt={`${album.title} - Villa Palazzina Burjaki`}
                     className="w-full h-28 sm:h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
@@ -555,7 +559,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             >
               <img
                 src={selectedAlbum.images[currentImageIndex]}
-                alt={`${selectedAlbum.title} ${currentImageIndex + 1}`}
+                alt={`${selectedAlbum.title} - Villa Palazzina Burjaki - Photo ${currentImageIndex + 1}`}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
             </motion.div>
@@ -578,7 +582,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   >
                     <img
                       src={img}
-                      alt={`Thumbnail ${index + 1}`}
+                      alt={`${selectedAlbum.title} thumbnail ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </button>
