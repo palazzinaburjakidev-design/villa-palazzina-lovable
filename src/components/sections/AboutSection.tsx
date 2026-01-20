@@ -144,6 +144,18 @@ const AboutSection = ({
                   <Moon className="w-3 h-3 text-gold/70" />
                   22:00 – 07:00
                 </p>
+                <p className="text-linen text-[10px] flex items-center gap-1">
+                  <PawPrint className="w-3 h-3 text-gold/70" />
+                  {t('contact.rules.noPets')}
+                </p>
+                <p className="text-linen text-[10px] flex items-center gap-1">
+                  <Ban className="w-3 h-3 text-gold/70" />
+                  {t('contact.rules.noSmoking')}
+                </p>
+                <p className="text-linen text-[10px] flex items-center gap-1">
+                  <PartyPopper className="w-3 h-3 text-gold/70" />
+                  {t('contact.rules.noParties')}
+                </p>
               </div>
             </div>
 
@@ -181,22 +193,6 @@ const AboutSection = ({
                 <p className="text-linen text-xs font-medium text-shadow-sm">4.8★ <span className="text-linen/70">(17)</span></p>
               </div>
             </a>
-          </motion.div>
-
-          {/* Additional House Rules Tags */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2 mb-3 sm:mb-4">
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <PawPrint className="w-3.5 h-3.5 text-gold" />
-              {t('contact.rules.noPets')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <Ban className="w-3.5 h-3.5 text-gold" />
-              {t('contact.rules.noSmoking')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 glass-card px-3 py-1.5 rounded-full text-linen/80 text-xs">
-              <PartyPopper className="w-3.5 h-3.5 text-gold" />
-              {t('contact.rules.noParties')}
-            </span>
           </motion.div>
 
           {/* Host & Contact */}
