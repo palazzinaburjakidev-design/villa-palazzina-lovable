@@ -96,7 +96,7 @@ const AmenitiesSection = ({ isActive }: AmenitiesSectionProps) => {
         className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-28 sm:pb-20 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
       >
         <motion.div
-          className="text-center max-w-6xl w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
+          className="text-center max-w-7xl xl:max-w-[90%] w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
