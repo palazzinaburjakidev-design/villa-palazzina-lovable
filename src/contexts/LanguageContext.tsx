@@ -1203,7 +1203,20 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+// Default context prevents a blank screen if HMR/cache ever renders a component
+// outside the provider. Provider (below) will override this value in normal use.
+const defaultLanguageContext: LanguageContextType = {
+  language: 'en',
+  setLanguage: () => {
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.warn('LanguageProvider is missing: setLanguage() is a no-op.');
+    }
+  },
+  t: (key: string) => translations[key]?.en ?? key,
+};
+
+const LanguageContext = createContext<LanguageContextType>(defaultLanguageContext);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('en');
@@ -1223,8 +1236,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+  if (import.meta.env.DEV && context === defaultLanguageContext) {
+    // eslint-disable-next-line no-console
+    console.warn('useLanguage is being used outside LanguageProvider.');
   }
   return context;
 };
