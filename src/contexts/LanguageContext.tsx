@@ -635,6 +635,61 @@ export const translations: Translations = {
     it: '13 km',
     de: '13 km',
   },
+  // Restaurants
+  'location.category.restaurants': {
+    en: 'Restaurants',
+    hr: 'Restorani',
+    it: 'Ristoranti',
+    de: 'Restaurants',
+  },
+  'location.martinPescador.title': {
+    en: 'Martin Pescador',
+    hr: 'Martin Pescador',
+    it: 'Martin Pescador',
+    de: 'Martin Pescador',
+  },
+  'location.martinPescador.distance': {
+    en: '2 km',
+    hr: '2 km',
+    it: '2 km',
+    de: '2 km',
+  },
+  'location.konobaNando.title': {
+    en: 'Konoba Nando',
+    hr: 'Konoba Nando',
+    it: 'Konoba Nando',
+    de: 'Konoba Nando',
+  },
+  'location.konobaNando.distance': {
+    en: '2 km',
+    hr: '2 km',
+    it: '2 km',
+    de: '2 km',
+  },
+  'location.pizzeriaRumore.title': {
+    en: 'Pizzeria Rumore',
+    hr: 'Pizzeria Rumore',
+    it: 'Pizzeria Rumore',
+    de: 'Pizzeria Rumore',
+  },
+  'location.pizzeriaRumore.distance': {
+    en: '12 km',
+    hr: '12 km',
+    it: '12 km',
+    de: '12 km',
+  },
+  'location.stareStaze.title': {
+    en: 'Stare Staze',
+    hr: 'Stare Staze',
+    it: 'Stare Staze',
+    de: 'Stare Staze',
+  },
+  'location.stareStaze.distance': {
+    en: '23 km',
+    hr: '23 km',
+    it: '23 km',
+    de: '23 km',
+  },
 
   // House Rules
   'contact.rules.title': {
