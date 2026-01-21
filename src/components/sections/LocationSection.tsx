@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Waves, Building2, Plane, UtensilsCrossed } from 'lucide-react';
+import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -62,6 +62,13 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
     { title: t('location.stareStaze.title'), distance: t('location.stareStaze.distance') },
   ];
 
+  const supermarkets = [
+    { title: t('location.spar.title'), distance: t('location.spar.distance') },
+    { title: t('location.plodine.title'), distance: t('location.plodine.distance') },
+    { title: t('location.lidl.title'), distance: t('location.lidl.distance') },
+    { title: t('location.eurospin.title'), distance: t('location.eurospin.distance') },
+  ];
+
   return (
     <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
@@ -84,7 +91,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
         data-scrollable="true"
       >
         <motion.div
-          className="text-center max-w-5xl w-full text-backdrop py-8 px-6"
+          className="text-center max-w-6xl w-full text-backdrop py-8 px-6"
           variants={containerVariants}
           initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
@@ -110,10 +117,10 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
             {t('location.subtitle')}
           </motion.p>
 
-          {/* Location Categories Grid */}
+          {/* First Row: Beaches, Towns, Restaurants */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-4 lg:mb-6"
           >
             {/* Beaches Category */}
             <div className="glass-card rounded-xl p-5 sm:p-6">
@@ -174,7 +181,13 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
                 ))}
               </ul>
             </div>
+          </motion.div>
 
+          {/* Second Row: Transport, Supermarkets */}
+          <motion.div
+            variants={itemVariants}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto"
+          >
             {/* Transport Category */}
             <div className="glass-card rounded-xl p-5 sm:p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -190,6 +203,26 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
                   <li key={index} className="flex justify-between items-center text-sm sm:text-base">
                     <span className="text-linen/90">{item.title}</span>
                     <span className="text-gold-light font-semibold text-xs sm:text-sm">{item.distance}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Supermarkets Category */}
+            <div className="glass-card rounded-xl p-5 sm:p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center">
+                  <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-gold-light" />
+                </div>
+                <h3 className="font-display text-lg sm:text-xl text-linen text-shadow">
+                  {t('location.category.supermarkets')}
+                </h3>
+              </div>
+              <ul className="space-y-3">
+                {supermarkets.map((market, index) => (
+                  <li key={index} className="flex justify-between items-center text-sm sm:text-base">
+                    <span className="text-linen/90">{market.title}</span>
+                    <span className="text-gold-light font-semibold text-xs sm:text-sm">{market.distance}</span>
                   </li>
                 ))}
               </ul>

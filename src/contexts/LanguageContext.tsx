@@ -690,6 +690,61 @@ export const translations: Translations = {
     it: '23 km',
     de: '23 km',
   },
+  // Supermarkets
+  'location.category.supermarkets': {
+    en: 'Supermarkets',
+    hr: 'Supermarketi',
+    it: 'Supermercati',
+    de: 'Supermärkte',
+  },
+  'location.spar.title': {
+    en: 'Špar',
+    hr: 'Špar',
+    it: 'Špar',
+    de: 'Špar',
+  },
+  'location.spar.distance': {
+    en: '13 km',
+    hr: '13 km',
+    it: '13 km',
+    de: '13 km',
+  },
+  'location.plodine.title': {
+    en: 'Plodine',
+    hr: 'Plodine',
+    it: 'Plodine',
+    de: 'Plodine',
+  },
+  'location.plodine.distance': {
+    en: '12 km',
+    hr: '12 km',
+    it: '12 km',
+    de: '12 km',
+  },
+  'location.lidl.title': {
+    en: 'Lidl',
+    hr: 'Lidl',
+    it: 'Lidl',
+    de: 'Lidl',
+  },
+  'location.lidl.distance': {
+    en: '12 km',
+    hr: '12 km',
+    it: '12 km',
+    de: '12 km',
+  },
+  'location.eurospin.title': {
+    en: 'Eurospin',
+    hr: 'Eurospin',
+    it: 'Eurospin',
+    de: 'Eurospin',
+  },
+  'location.eurospin.distance': {
+    en: '15 km',
+    hr: '15 km',
+    it: '15 km',
+    de: '15 km',
+  },
 
   // House Rules
   'contact.rules.title': {
