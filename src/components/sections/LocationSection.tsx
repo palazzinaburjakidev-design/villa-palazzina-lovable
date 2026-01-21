@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Waves, Building2, Plane } from 'lucide-react';
+import { Waves, Building2, Plane, UtensilsCrossed } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -55,6 +55,13 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
     { title: t('location.busStation.title'), distance: t('location.busStation.distance') },
   ];
 
+  const restaurants = [
+    { title: t('location.martinPescador.title'), distance: t('location.martinPescador.distance') },
+    { title: t('location.konobaNando.title'), distance: t('location.konobaNando.distance') },
+    { title: t('location.pizzeriaRumore.title'), distance: t('location.pizzeriaRumore.distance') },
+    { title: t('location.stareStaze.title'), distance: t('location.stareStaze.distance') },
+  ];
+
   return (
     <section className="relative h-full w-full overflow-hidden">
       {/* Background Image with Zoom Effect */}
@@ -106,7 +113,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
           {/* Location Categories Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
           >
             {/* Beaches Category */}
             <div className="glass-card rounded-xl p-5 sm:p-6">
@@ -143,6 +150,26 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
                   <li key={index} className="flex justify-between items-center text-sm sm:text-base">
                     <span className="text-linen/90">{town.title}</span>
                     <span className="text-gold-light font-semibold text-xs sm:text-sm">{town.distance}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Restaurants Category */}
+            <div className="glass-card rounded-xl p-5 sm:p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center">
+                  <UtensilsCrossed className="w-5 h-5 sm:w-6 sm:h-6 text-gold-light" />
+                </div>
+                <h3 className="font-display text-lg sm:text-xl text-linen text-shadow">
+                  {t('location.category.restaurants')}
+                </h3>
+              </div>
+              <ul className="space-y-3">
+                {restaurants.map((restaurant, index) => (
+                  <li key={index} className="flex justify-between items-center text-sm sm:text-base">
+                    <span className="text-linen/90">{restaurant.title}</span>
+                    <span className="text-gold-light font-semibold text-xs sm:text-sm">{restaurant.distance}</span>
                   </li>
                 ))}
               </ul>
