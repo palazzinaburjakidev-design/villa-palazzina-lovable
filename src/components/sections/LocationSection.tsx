@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart } from 'lucide-react';
+import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -186,7 +186,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
           {/* Second Row: Transport, Supermarkets */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-4xl mx-auto mb-16 sm:mb-0"
           >
             {/* Transport Category */}
             <div className="glass-card rounded-xl p-4 sm:p-5">
@@ -227,6 +227,15 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
                 ))}
               </ul>
             </div>
+          </motion.div>
+
+          {/* Mobile swipe indicator */}
+          <motion.div
+            variants={itemVariants}
+            className="sm:hidden flex flex-col items-center mt-4 pb-4"
+          >
+            <span className="text-linen/60 text-xs mb-1">{t('location.swipeHint') || 'Swipe up'}</span>
+            <ChevronDown className="w-5 h-5 text-gold-light animate-bounce" />
           </motion.div>
         </motion.div>
       </div>
