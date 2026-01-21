@@ -150,6 +150,18 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-20 sm:bottom-8 left-1/2 -translate-x-1/2 z-20"
+        initial={{ opacity: 0 }}
+        animate={isActive ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <div className="scroll-indicator">
+          <div className="scroll-indicator-dot" />
+        </div>
+      </motion.div>
     </section>
   );
 });
