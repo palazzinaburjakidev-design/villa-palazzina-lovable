@@ -64,10 +64,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'hero.title': {
-    en: 'Luxury Retreat in Istria',
-    hr: 'Luksuzno Utočište u Istri',
-    it: 'Rifugio di Lusso in Istria',
-    de: 'Luxuriöses Refugium in Istrien',
+    en: 'Traditional Retreat in Istria',
+    hr: 'Tradicionalno Utočište u Istri',
+    it: 'Rifugio Tradizionale in Istria',
+    de: 'Traditionelles Refugium in Istrien',
   },
   'hero.watchVideo': {
     en: 'Watch Video Tour',
@@ -342,10 +342,10 @@ export const translations: Translations = {
     de: 'Villa Ausstattung',
   },
   'amenities.title': {
-    en: 'Luxury Amenities',
-    hr: 'Luksuzni Sadržaji',
-    it: 'Servizi di Lusso',
-    de: 'Luxuriöse Annehmlichkeiten',
+    en: 'Premium Amenities',
+    hr: 'Premium Sadržaji',
+    it: 'Servizi Premium',
+    de: 'Premium Ausstattung',
   },
   'amenities.subtitle': {
     en: 'Everything you need for an unforgettable stay',
@@ -828,10 +828,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'about.subtitle': {
-    en: 'A luxurious 350m² villa with 4 bedrooms, 5 bathrooms, private pool, jacuzzi, sauna, and fitness center in the heart of Istria.',
-    hr: 'Luksuzna vila od 350m² sa 4 spavaće sobe, 5 kupaonica, privatnim bazenom, jacuzzijem, saunom i fitness centrom u srcu Istre.',
-    it: 'Una lussuosa villa di 350m² con 4 camere da letto, 5 bagni, piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria.',
-    de: 'Eine luxuriöse 350m² Villa mit 4 Schlafzimmern, 5 Badezimmern, privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens.',
+    en: 'A traditional 350m² villa with 4 bedrooms, 5 bathrooms, private pool, jacuzzi, sauna, and fitness center in the heart of Istria.',
+    hr: 'Tradicionalna vila od 350m² sa 4 spavaće sobe, 5 kupaonica, privatnim bazenom, jacuzzijem, saunom i fitness centrom u srcu Istre.',
+    it: 'Una tradizionale villa di 350m² con 4 camere da letto, 5 bagni, piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria.',
+    de: 'Eine traditionelle 350m² Villa mit 4 Schlafzimmern, 5 Badezimmern, privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens.',
   },
   'about.description': {
     en: 'Nestled in the peaceful Istrian surroundings of Trgetari, Villa Burjaki offers the perfect blend of privacy, comfort, and authentic Mediterranean ambiance. Surrounded by nature and just a few minutes from the sea, the villa is an ideal choice for guests seeking tranquility while remaining close to the most beautiful beaches of eastern Istria.',
