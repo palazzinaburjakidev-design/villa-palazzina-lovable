@@ -14,8 +14,8 @@ const getScrollableInfo = (target: EventTarget | null) => {
   if (!scrollableParent) return null;
   
   const { scrollTop, scrollHeight, clientHeight } = scrollableParent;
-  const isAtTop = scrollTop <= 5;
-  const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+  const isAtTop = scrollTop <= 25;
+  const isAtBottom = scrollTop + clientHeight >= scrollHeight - 25;
   const canScroll = scrollHeight > clientHeight;
   
   return { scrollableParent, isAtTop, isAtBottom, canScroll };
@@ -119,7 +119,7 @@ export const useFullPageScroll = ({ totalSections, debounceTime = 800 }: UseFull
       
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY.current - touchEndY;
-      const threshold = 100; // Increased threshold for more intentional swipes
+      const threshold = 60; // Reduced threshold for easier mobile navigation
 
       // Check if touch started in a scrollable element
       const scrollInfo = getScrollableInfo(touchStartTarget.current);
