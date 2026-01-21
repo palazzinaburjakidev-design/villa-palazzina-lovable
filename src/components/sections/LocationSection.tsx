@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart, ChevronDown } from 'lucide-react';
+import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import terraceImage from '@/assets/gallery-terrace.avif';
 
@@ -87,7 +87,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
 
       {/* Content */}
       <div 
-        className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-24 sm:pt-28 pb-24 sm:pb-20 overflow-y-auto overscroll-contain touch-pan-y"
+        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20 overflow-y-auto overscroll-contain touch-pan-y"
         data-scrollable="true"
       >
         <motion.div
@@ -229,16 +229,20 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
             </div>
           </motion.div>
 
-          {/* Mobile swipe indicator */}
-          <motion.div
-            variants={itemVariants}
-            className="sm:hidden flex flex-col items-center mt-4 pb-4"
-          >
-            <span className="text-linen/60 text-xs mb-1">{t('location.swipeHint') || 'Swipe up'}</span>
-            <ChevronDown className="w-5 h-5 text-gold-light animate-bounce" />
-          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-20 sm:bottom-8 left-1/2 -translate-x-1/2 z-20"
+        initial={{ opacity: 0 }}
+        animate={isActive ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <div className="scroll-indicator">
+          <div className="scroll-indicator-dot" />
+        </div>
+      </motion.div>
     </section>
   );
 });
