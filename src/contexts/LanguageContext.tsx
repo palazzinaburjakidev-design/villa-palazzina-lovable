@@ -64,10 +64,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'hero.title': {
-    en: 'Traditional Retreat in Istria',
-    hr: 'Tradicionalno Utočište u Istri',
-    it: 'Rifugio Tradizionale in Istria',
-    de: 'Traditionelles Refugium in Istrien',
+    en: 'Authentic Istrian Escape',
+    hr: 'Autentični Istarski Bijeg',
+    it: 'Rifugio Autentico in Istria',
+    de: 'Authentisches Istrisches Refugium',
   },
   'hero.watchVideo': {
     en: 'Watch Video Tour',
@@ -828,10 +828,10 @@ export const translations: Translations = {
     de: 'Villa Palazzina Burjaki',
   },
   'about.subtitle': {
-    en: 'A traditional 350m² villa with 4 bedrooms, 5 bathrooms, private pool, jacuzzi, sauna, and fitness center in the heart of Istria.',
-    hr: 'Tradicionalna vila od 350m² sa 4 spavaće sobe, 5 kupaonica, privatnim bazenom, jacuzzijem, saunom i fitness centrom u srcu Istre.',
-    it: 'Una tradizionale villa di 350m² con 4 camere da letto, 5 bagni, piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria.',
-    de: 'Eine traditionelle 350m² Villa mit 4 Schlafzimmern, 5 Badezimmern, privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens.',
+    en: 'A 350m² villa with authentic Istrian character, 4 bedrooms, 5 bathrooms, private pool, jacuzzi, sauna, and fitness center in the heart of Istria.',
+    hr: 'Vila od 350m² s autentičnim istarskim karakterom, 4 spavaće sobe, 5 kupaonica, privatni bazen, jacuzzi, sauna i fitness centar u srcu Istre.',
+    it: 'Una villa di 350m² con autentico carattere istriano, 4 camere da letto, 5 bagni, piscina privata, jacuzzi, sauna e centro fitness nel cuore dell\'Istria.',
+    de: 'Eine 350m² Villa mit authentischem istrischem Charakter, 4 Schlafzimmern, 5 Badezimmern, privatem Pool, Whirlpool, Sauna und Fitnesscenter im Herzen Istriens.',
   },
   'about.description': {
     en: 'Nestled in the peaceful Istrian surroundings of Trgetari, Villa Burjaki offers the perfect blend of privacy, comfort, and authentic Mediterranean ambiance. Surrounded by nature and just a few minutes from the sea, the villa is an ideal choice for guests seeking tranquility while remaining close to the most beautiful beaches of eastern Istria.',
