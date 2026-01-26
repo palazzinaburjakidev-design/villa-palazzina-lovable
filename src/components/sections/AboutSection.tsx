@@ -62,7 +62,7 @@ const AboutSection = memo(({
     unit: '',
     label: t('about.stats.guests')
   }];
-  return <section className="relative h-full w-full overflow-hidden bg-coal">
+  return <section className="relative h-full w-full overflow-hidden bg-coal coal-texture">
       {/* Content */}
       <div data-scrollable="true" className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-32 sm:pb-12 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain">
         <motion.div className="max-w-6xl w-full" variants={containerVariants} initial="hidden" animate={isActive ? 'visible' : 'hidden'}>

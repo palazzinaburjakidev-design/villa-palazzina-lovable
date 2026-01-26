@@ -77,7 +77,7 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
   ];
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-coal">
+    <section className="relative h-full w-full overflow-hidden bg-coal coal-texture">
       {/* Content */}
       <div 
         data-scrollable="true"
