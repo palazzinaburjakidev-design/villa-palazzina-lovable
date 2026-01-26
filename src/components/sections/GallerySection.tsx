@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
-import galleryLiving from '@/assets/gallery-living.avif';
+
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
 import galleryPool from '@/assets/gallery-pool.avif';
 import galleryTerrace from '@/assets/gallery-terrace.avif';
@@ -321,21 +321,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   };
 
   return (
-    <section className="relative h-full w-full overflow-hidden">
-      {/* Background Image with Zoom Effect */}
-      <motion.div
-        className="section-zoom"
-        style={{ backgroundImage: `url(${galleryLiving})` }}
-        role="img"
-        aria-label="Living room interior at Villa Palazzina Burjaki"
-        initial={{ scale: 1.4, opacity: 0 }}
-        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      {/* Overlay - Coal theme */}
-      <div className="absolute inset-0 section-overlay-coal" />
-
+    <section className="relative h-full w-full overflow-hidden bg-coal">
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20">
         <motion.div
@@ -412,7 +398,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                     ) : (
                       <>
                         <img
-                          src={galleryLiving}
+                          src={livingRoom1}
                           alt="Villa Palazzina Burjaki video tour preview showing living room"
                           className="w-full h-full object-cover cursor-pointer"
                           loading="lazy"

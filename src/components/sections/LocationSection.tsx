@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Waves, Building2, Plane, UtensilsCrossed, ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import terraceImage from '@/assets/gallery-terrace.avif';
 
 interface LocationSectionProps {
   isActive: boolean;
@@ -70,21 +69,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
   ];
 
   return (
-    <section className="relative h-full w-full overflow-hidden">
-      {/* Background Image with Zoom Effect */}
-      <motion.div
-        className="section-zoom"
-        style={{ backgroundImage: `url(${terraceImage})` }}
-        role="img"
-        aria-label="Terrace with outdoor dining area at Villa Palazzina Burjaki"
-        initial={{ scale: 1.4, opacity: 0 }}
-        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      {/* Overlay - Coal theme */}
-      <div className="absolute inset-0 section-overlay-coal" />
-
+    <section className="relative h-full w-full overflow-hidden bg-coal">
       {/* Content */}
       <div 
         className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20 overflow-y-auto overscroll-contain touch-pan-y"

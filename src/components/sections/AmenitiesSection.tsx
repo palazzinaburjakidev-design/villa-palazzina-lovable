@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Waves, Sparkles, Dumbbell, CircleDot, Wifi, Flame, AirVent, Gamepad2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import poolImage from '@/assets/gallery-pool.avif';
 
 interface AmenitiesSectionProps {
   isActive: boolean;
@@ -78,21 +77,7 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
   ];
 
   return (
-    <section className="relative h-full w-full overflow-hidden">
-      {/* Background Image with Zoom Effect */}
-      <motion.div
-        className="section-zoom"
-        style={{ backgroundImage: `url(${poolImage})` }}
-        role="img"
-        aria-label="Private swimming pool at Villa Palazzina Burjaki"
-        initial={{ scale: 1.4, opacity: 0 }}
-        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 1.4, opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      {/* Overlay - Coal theme */}
-      <div className="absolute inset-0 section-overlay-coal" />
-
+    <section className="relative h-full w-full overflow-hidden bg-coal">
       {/* Content */}
       <div 
         data-scrollable="true"
