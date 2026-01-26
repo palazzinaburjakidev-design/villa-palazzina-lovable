@@ -144,7 +144,7 @@
     );
   }
 
-  /* Coal mine texture - subtle embossed details */
+  /* Coal mine texture - sophisticated geological layers */
   .coal-texture {
     position: relative;
     isolation: isolate;
@@ -155,75 +155,105 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    opacity: 0.40;
+    opacity: 0.35;
     pointer-events: none;
     mix-blend-mode: soft-light;
     background-image: 
-      /* Diagonal coal seams - embossed dual lines */
+      /* Primary diagonal strata - thick, soft geological layers */
       repeating-linear-gradient(
-        -45deg,
+        -35deg,
         transparent 0px,
-        transparent 54px,
-        hsl(var(--sandstone) / 0.25) 54px,
-        hsl(var(--sandstone) / 0.25) 55px,
-        hsl(var(--coal-deep) / 0.4) 55px,
-        hsl(var(--coal-deep) / 0.4) 56px,
-        transparent 56px,
-        transparent 110px
+        transparent 40px,
+        hsl(var(--sandstone) / 0.12) 40px,
+        hsl(var(--sandstone) / 0.18) 42px,
+        hsl(var(--coal-deep) / 0.25) 42px,
+        hsl(var(--coal-deep) / 0.3) 44px,
+        transparent 44px,
+        transparent 90px
       ),
-      /* Mining tunnel grid pattern - horizontal */
+      /* Secondary strata - opposing angle for complexity */
       repeating-linear-gradient(
-        90deg,
+        25deg,
         transparent 0px,
-        transparent 100px,
-        hsl(var(--sandstone) / 0.2) 100px,
-        hsl(var(--sandstone) / 0.2) 101px,
-        hsl(var(--coal-deep) / 0.35) 101px,
-        hsl(var(--coal-deep) / 0.35) 102px
+        transparent 70px,
+        hsl(var(--graphite) / 0.15) 70px,
+        hsl(var(--graphite) / 0.2) 72px,
+        transparent 72px,
+        transparent 140px
       ),
-      /* Mining tunnel grid pattern - vertical */
+      /* Tertiary diagonal - subtle crossing veins */
       repeating-linear-gradient(
-        0deg,
+        -60deg,
         transparent 0px,
-        transparent 80px,
-        hsl(var(--sandstone) / 0.18) 80px,
-        hsl(var(--sandstone) / 0.18) 81px,
-        hsl(var(--coal-deep) / 0.3) 81px,
-        hsl(var(--coal-deep) / 0.3) 82px
+        transparent 120px,
+        hsl(var(--sandstone) / 0.08) 120px,
+        hsl(var(--sandstone) / 0.12) 122px,
+        transparent 122px,
+        transparent 200px
       ),
-      /* Subtle noise texture */
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      /* Horizontal sediment layers */
+      repeating-linear-gradient(
+        88deg,
+        transparent 0px,
+        transparent 150px,
+        hsl(var(--sandstone) / 0.08) 150px,
+        hsl(var(--sandstone) / 0.12) 153px,
+        hsl(var(--coal-deep) / 0.2) 153px,
+        transparent 156px,
+        transparent 300px
+      ),
+      /* Fine noise for stone texture */
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  /* Coal chunk accents - corner details */
+  /* Cracks, mineral veins, and coal fragments */
   .coal-texture::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 2;
-    opacity: 0.30;
+    opacity: 0.25;
     pointer-events: none;
     mix-blend-mode: overlay;
     background-image:
-      /* Top left corner accent */
-      radial-gradient(
-        ellipse 350px 250px at 0% 0%,
-        hsl(var(--terracotta) / 0.5) 0%,
-        transparent 70%
+      /* Main crack spreading from top-left corner */
+      linear-gradient(
+        -60deg,
+        hsl(var(--terracotta) / 0.35) 0%,
+        hsl(var(--terracotta) / 0.15) 15%,
+        transparent 30%
       ),
-      /* Bottom right corner accent */
-      radial-gradient(
-        ellipse 450px 350px at 100% 100%,
-        hsl(var(--terracotta) / 0.4) 0%,
-        transparent 60%
+      /* Secondary crack from bottom-right */
+      linear-gradient(
+        120deg,
+        transparent 60%,
+        hsl(var(--terracotta) / 0.1) 80%,
+        hsl(var(--terracotta) / 0.25) 100%
       ),
-      /* Scattered coal fragments */
-      radial-gradient(circle 3px at 15% 25%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%),
-      radial-gradient(circle 4px at 85% 15%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
-      radial-gradient(circle 3px at 70% 80%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%),
-      radial-gradient(circle 5px at 25% 85%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
-      radial-gradient(circle 3px at 90% 50%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
-      radial-gradient(circle 4px at 5% 60%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%);
+      /* Vignette effect - darkened edges */
+      radial-gradient(
+        ellipse 80% 70% at 50% 50%,
+        transparent 40%,
+        hsl(var(--coal-deep) / 0.3) 100%
+      ),
+      /* Crystal reflections - larger glints */
+      radial-gradient(ellipse 8px 12px at 12% 18%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
+      radial-gradient(ellipse 10px 8px at 88% 75%, hsl(var(--terracotta-light) / 0.4) 0%, transparent 100%),
+      radial-gradient(ellipse 6px 10px at 45% 8%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+      radial-gradient(ellipse 7px 9px at 92% 35%, hsl(var(--terracotta-light) / 0.3) 0%, transparent 100%),
+      /* Scattered coal fragments - various sizes */
+      radial-gradient(circle 2px at 20% 40%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+      radial-gradient(circle 3px at 75% 25%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+      radial-gradient(circle 2px at 55% 65%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+      radial-gradient(circle 4px at 30% 88%, hsl(var(--sandstone) / 0.3) 0%, transparent 100%),
+      radial-gradient(circle 3px at 82% 55%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+      radial-gradient(circle 2px at 8% 72%, hsl(var(--sandstone) / 0.45) 0%, transparent 100%),
+      radial-gradient(circle 3px at 65% 12%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+      radial-gradient(circle 2px at 40% 92%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+      radial-gradient(circle 4px at 15% 55%, hsl(var(--sandstone) / 0.3) 0%, transparent 100%),
+      radial-gradient(circle 3px at 95% 85%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+      radial-gradient(circle 2px at 50% 35%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+      radial-gradient(circle 3px at 5% 30%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%);
   }
 
   /* Text backdrop with radial gradient */
