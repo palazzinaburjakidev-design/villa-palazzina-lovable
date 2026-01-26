@@ -647,6 +647,12 @@ export const translations: Translations = {
     it: '36 km',
     de: '36 km',
   },
+  'location.airport.description': {
+    en: 'The main international airport serving Istria with seasonal flights from major European cities.',
+    hr: 'Glavna međunarodna zračna luka koja opslužuje Istru sa sezonskim letovima iz velikih europskih gradova.',
+    it: 'Il principale aeroporto internazionale che serve l\'Istria con voli stagionali dalle principali città europee.',
+    de: 'Der wichtigste internationale Flughafen für Istrien mit saisonalen Flügen aus europäischen Großstädten.',
+  },
   'location.triesteAirport.title': {
     en: 'Trieste Airport',
     hr: 'Zračna luka Trst',
@@ -658,6 +664,12 @@ export const translations: Translations = {
     hr: '165 km',
     it: '165 km',
     de: '165 km',
+  },
+  'location.triesteAirport.description': {
+    en: 'Alternative airport in nearby Italy with year-round connections to major destinations.',
+    hr: 'Alternativna zračna luka u obližnjoj Italiji s cjelogodišnjim vezama prema glavnim odredištima.',
+    it: 'Aeroporto alternativo nella vicina Italia con collegamenti tutto l\'anno verso le principali destinazioni.',
+    de: 'Alternativer Flughafen im nahen Italien mit ganzjährigen Verbindungen zu wichtigen Zielen.',
   },
   'location.zagrebAirport.title': {
     en: 'Zagreb Airport',
@@ -671,6 +683,12 @@ export const translations: Translations = {
     it: '241 km',
     de: '241 km',
   },
+  'location.zagrebAirport.description': {
+    en: 'Croatia\'s largest airport with extensive international connections. Scenic 2.5-hour drive to the villa.',
+    hr: 'Najveća hrvatska zračna luka s opsežnim međunarodnim vezama. Slikovita 2,5-satna vožnja do vile.',
+    it: 'Il più grande aeroporto della Croazia con ampie connessioni internazionali. Viaggio panoramico di 2,5 ore fino alla villa.',
+    de: 'Kroatiens größter Flughafen mit umfangreichen internationalen Verbindungen. Malerische 2,5-stündige Fahrt zur Villa.',
+  },
   'location.busStation.title': {
     en: 'Bus Station Labin',
     hr: 'Autobusni kolodvor Labin',
@@ -682,6 +700,12 @@ export const translations: Translations = {
     hr: '13 km',
     it: '13 km',
     de: '13 km',
+  },
+  'location.busStation.description': {
+    en: 'Regular bus connections to Rijeka, Pula, and other Istrian destinations. Convenient public transport option.',
+    hr: 'Redovne autobusne veze prema Rijeci, Puli i drugim istarskim destinacijama. Praktična opcija javnog prijevoza.',
+    it: 'Collegamenti regolari in autobus per Fiume, Pola e altre destinazioni istriane. Comoda opzione di trasporto pubblico.',
+    de: 'Regelmäßige Busverbindungen nach Rijeka, Pula und andere istrische Ziele. Praktische öffentliche Verkehrsoption.',
   },
   // Restaurants
   'location.category.restaurants': {
@@ -702,6 +726,12 @@ export const translations: Translations = {
     it: '2 km',
     de: '2 km',
   },
+  'location.martinPescador.description': {
+    en: 'Renowned seafood restaurant with fresh Adriatic catches. Terrace dining with stunning sea views.',
+    hr: 'Poznati restoran s plodovima mora i svježim jadranskim ulovom. Blagovanje na terasi s pogledom na more.',
+    it: 'Rinomato ristorante di pesce con pescato fresco dell\'Adriatico. Pranzo in terrazza con splendida vista mare.',
+    de: 'Renommiertes Fischrestaurant mit frischem adriatischem Fang. Terrassen-Dining mit atemberaubendem Meerblick.',
+  },
   'location.konobaNando.title': {
     en: 'Konoba Nando',
     hr: 'Konoba Nando',
@@ -713,6 +743,12 @@ export const translations: Translations = {
     hr: '2 km',
     it: '2 km',
     de: '2 km',
+  },
+  'location.konobaNando.description': {
+    en: 'Traditional Istrian tavern serving homemade pasta, truffles, and local wines in a rustic setting.',
+    hr: 'Tradicionalna istarska konoba s domaćom tjesteninom, tartufima i lokalnim vinima u rustikalnom ambijentu.',
+    it: 'Taverna istriana tradizionale con pasta fatta in casa, tartufi e vini locali in ambiente rustico.',
+    de: 'Traditionelle istrische Taverne mit hausgemachter Pasta, Trüffeln und lokalen Weinen in rustikalem Ambiente.',
   },
   'location.pizzeriaRumore.title': {
     en: 'Pizzeria Rumore',
@@ -726,6 +762,12 @@ export const translations: Translations = {
     it: '12 km',
     de: '12 km',
   },
+  'location.pizzeriaRumore.description': {
+    en: 'Popular pizzeria in Labin with wood-fired pizzas and a lively atmosphere. Perfect for families.',
+    hr: 'Popularna pizzeria u Labinu s pizzama iz krušne peći i živahnom atmosferom. Savršeno za obitelji.',
+    it: 'Pizzeria popolare ad Albona con pizze cotte a legna e atmosfera vivace. Perfetta per le famiglie.',
+    de: 'Beliebte Pizzeria in Labin mit holzofengebackenen Pizzen und lebhafter Atmosphäre. Ideal für Familien.',
+  },
   'location.stareStaze.title': {
     en: 'Stare Staze',
     hr: 'Stare Staze',
@@ -737,6 +779,12 @@ export const translations: Translations = {
     hr: '23 km',
     it: '23 km',
     de: '23 km',
+  },
+  'location.stareStaze.description': {
+    en: 'Award-winning restaurant featuring creative Istrian cuisine with local ingredients and excellent wine pairing.',
+    hr: 'Nagrađivani restoran s kreativnom istarskom kuhinjom, lokalnim namirnicama i izvrsnim uparivanjem vina.',
+    it: 'Ristorante premiato con cucina istriana creativa, ingredienti locali e ottimi abbinamenti di vini.',
+    de: 'Preisgekröntes Restaurant mit kreativer istrischer Küche, lokalen Zutaten und ausgezeichneter Weinbegleitung.',
   },
   // Supermarkets
   'location.category.supermarkets': {
@@ -757,6 +805,12 @@ export const translations: Translations = {
     it: '13 km',
     de: '13 km',
   },
+  'location.spar.description': {
+    en: 'Full-service supermarket in Labin with fresh produce, bakery, and wide product selection.',
+    hr: 'Supermarket s punom uslugom u Labinu sa svježim proizvodima, pekarnicom i širokim izborom.',
+    it: 'Supermercato completo ad Albona con prodotti freschi, panetteria e ampia selezione.',
+    de: 'Vollsortiment-Supermarkt in Labin mit frischen Produkten, Bäckerei und großer Auswahl.',
+  },
   'location.plodine.title': {
     en: 'Plodine',
     hr: 'Plodine',
@@ -768,6 +822,12 @@ export const translations: Translations = {
     hr: '12 km',
     it: '12 km',
     de: '12 km',
+  },
+  'location.plodine.description': {
+    en: 'Large Croatian supermarket chain with competitive prices and excellent meat and dairy sections.',
+    hr: 'Veliki hrvatski lanac supermarketa s konkurentnim cijenama i izvrsnim odjelom mesa i mliječnih proizvoda.',
+    it: 'Grande catena di supermercati croata con prezzi competitivi e ottimi reparti carne e latticini.',
+    de: 'Große kroatische Supermarktkette mit günstigen Preisen und ausgezeichneten Fleisch- und Milchabteilungen.',
   },
   'location.lidl.title': {
     en: 'Lidl',
@@ -781,6 +841,12 @@ export const translations: Translations = {
     it: '12 km',
     de: '12 km',
   },
+  'location.lidl.description': {
+    en: 'European discount supermarket with quality products at affordable prices. Weekly special offers.',
+    hr: 'Europski diskonti supermarket s kvalitetnim proizvodima po pristupačnim cijenama. Tjedne akcije.',
+    it: 'Supermercato discount europeo con prodotti di qualità a prezzi accessibili. Offerte settimanali.',
+    de: 'Europäischer Discounter mit Qualitätsprodukten zu erschwinglichen Preisen. Wöchentliche Sonderangebote.',
+  },
   'location.eurospin.title': {
     en: 'Eurospin',
     hr: 'Eurospin',
@@ -792,6 +858,12 @@ export const translations: Translations = {
     hr: '15 km',
     it: '15 km',
     de: '15 km',
+  },
+  'location.eurospin.description': {
+    en: 'Italian discount chain known for great value, Italian products, and fresh bakery items.',
+    hr: 'Talijanski diskontni lanac poznat po odličnoj vrijednosti, talijanskim proizvodima i svježim pekarskim proizvodima.',
+    it: 'Catena discount italiana nota per ottimo rapporto qualità-prezzo, prodotti italiani e panetteria fresca.',
+    de: 'Italienische Discount-Kette bekannt für gutes Preis-Leistung, italienische Produkte und frische Backwaren.',
   },
 
   // House Rules
