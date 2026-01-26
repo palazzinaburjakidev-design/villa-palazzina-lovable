@@ -16,7 +16,7 @@ interface Category {
   items: LocationItem[];
 }
 
-const categoriesRow1: Category[] = [
+const categoriesGroup1: Category[] = [
   {
     id: 'beaches',
     labelKey: 'location.category.beaches',
@@ -52,7 +52,7 @@ const categoriesRow1: Category[] = [
   },
 ];
 
-const categoriesRow2: Category[] = [
+const categoriesGroup2: Category[] = [
   {
     id: 'supermarkets',
     labelKey: 'location.category.supermarkets',
@@ -77,94 +77,86 @@ const categoriesRow2: Category[] = [
   },
 ];
 
-const allCategories = [...categoriesRow1, ...categoriesRow2];
+const ROTATION_INTERVAL = 10000;
 
-const ROTATION_INTERVAL = 10000; // 10 seconds
+interface BannerGroupProps {
+  categories: Category[];
+  initialDelay?: number;
+}
 
-const LocationBanner = memo(() => {
+const BannerGroup = memo(({ categories, initialDelay = 0 }: BannerGroupProps) => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState(0);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
-  const currentCategory = allCategories[activeCategory];
+  const currentCategory = categories[activeCategory];
   const currentItem = currentCategory.items[currentItemIndex];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentItemIndex((prev) => {
-        const nextIndex = prev + 1;
-        if (nextIndex >= currentCategory.items.length) {
-          setActiveCategory((prevCat) => (prevCat + 1) % allCategories.length);
-          return 0;
-        }
-        return nextIndex;
-      });
-    }, ROTATION_INTERVAL);
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentItemIndex((prev) => {
+          const nextIndex = prev + 1;
+          if (nextIndex >= currentCategory.items.length) {
+            setActiveCategory((prevCat) => (prevCat + 1) % categories.length);
+            return 0;
+          }
+          return nextIndex;
+        });
+      }, ROTATION_INTERVAL);
 
-    return () => clearInterval(interval);
-  }, [currentCategory.items.length]);
+      return () => clearInterval(interval);
+    }, initialDelay);
 
-  const handleCategoryChange = (globalIndex: number) => {
-    setActiveCategory(globalIndex);
+    return () => clearTimeout(timeout);
+  }, [currentCategory.items.length, categories.length, initialDelay]);
+
+  const handleCategoryChange = (index: number) => {
+    setActiveCategory(index);
     setCurrentItemIndex(0);
   };
 
-  const CategoryButton = ({ category, globalIndex }: { category: Category; globalIndex: number }) => (
-    <button
-      onClick={() => handleCategoryChange(globalIndex)}
-      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm transition-all duration-300 ${
-        globalIndex === activeCategory
-          ? 'bg-terracotta/30 text-terracotta-light'
-          : 'bg-coal-deep/50 text-sandstone/60 hover:text-sandstone/80 hover:bg-coal-deep/70'
-      }`}
-    >
-      {category.icon}
-      <span className="hidden sm:inline">{t(category.labelKey)}</span>
-    </button>
-  );
-
   return (
     <div className="w-full glass-card-coal rounded-xl overflow-hidden">
-      {/* Category Tabs - Two Rows */}
-      <div className="px-3 pt-4 pb-2 space-y-2">
-        {/* Row 1: Beaches, Towns, Restaurants */}
-        <div className="flex justify-center gap-1 sm:gap-2">
-          {categoriesRow1.map((category, index) => (
-            <CategoryButton key={category.id} category={category} globalIndex={index} />
-          ))}
-        </div>
-        {/* Row 2: Supermarkets, Transport */}
-        <div className="flex justify-center gap-1 sm:gap-2">
-          {categoriesRow2.map((category, index) => (
-            <CategoryButton key={category.id} category={category} globalIndex={categoriesRow1.length + index} />
-          ))}
-        </div>
+      {/* Category Tabs */}
+      <div className="flex justify-center gap-1 sm:gap-2 px-3 pt-3 pb-2">
+        {categories.map((category, index) => (
+          <button
+            key={category.id}
+            onClick={() => handleCategoryChange(index)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm transition-all duration-300 ${
+              index === activeCategory
+                ? 'bg-terracotta/30 text-terracotta-light'
+                : 'bg-coal-deep/50 text-sandstone/60 hover:text-sandstone/80 hover:bg-coal-deep/70'
+            }`}
+          >
+            {category.icon}
+            <span className="hidden sm:inline">{t(category.labelKey)}</span>
+          </button>
+        ))}
       </div>
 
       {/* Banner Content */}
-      <div className="relative h-28 sm:h-32 md:h-36 flex items-center justify-center px-6 sm:px-8 md:px-12">
+      <div className="relative h-24 sm:h-28 flex items-center justify-center px-4 sm:px-6 md:px-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeCategory}-${currentItemIndex}`}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center max-w-3xl"
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center max-w-2xl"
           >
-            {/* Location Name */}
-            <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
+            <div className="flex items-center justify-center gap-2 mb-1.5 flex-wrap">
               <span className="text-terracotta-light">{currentCategory.icon}</span>
-              <h3 className="font-display text-lg sm:text-xl md:text-2xl text-sandstone text-shadow">
+              <h3 className="font-display text-base sm:text-lg md:text-xl text-sandstone text-shadow">
                 {t(currentItem.nameKey)}
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light text-xs sm:text-sm font-semibold">
+              <span className="px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light text-xs font-semibold">
                 {t(currentItem.distanceKey)}
               </span>
             </div>
-            
-            {/* Description */}
-            <p className="text-sandstone/80 text-sm sm:text-base leading-relaxed text-shadow">
+            <p className="text-sandstone/80 text-xs sm:text-sm leading-relaxed text-shadow line-clamp-2">
               {t(currentItem.descriptionKey)}
             </p>
           </motion.div>
@@ -172,20 +164,34 @@ const LocationBanner = memo(() => {
       </div>
 
       {/* Progress Indicators */}
-      <div className="flex justify-center gap-1.5 pb-4">
+      <div className="flex justify-center gap-1.5 pb-3">
         {currentCategory.items.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentItemIndex(index)}
             className={`h-1 rounded-full transition-all duration-300 ${
               index === currentItemIndex 
-                ? 'w-6 bg-terracotta-light' 
+                ? 'w-5 bg-terracotta-light' 
                 : 'w-1.5 bg-sandstone/30 hover:bg-sandstone/50'
             }`}
             aria-label={`Go to item ${index + 1}`}
           />
         ))}
       </div>
+    </div>
+  );
+});
+
+BannerGroup.displayName = 'BannerGroup';
+
+const LocationBanner = memo(() => {
+  return (
+    <div className="w-full space-y-3">
+      {/* Group 1: Beaches, Towns, Restaurants */}
+      <BannerGroup categories={categoriesGroup1} initialDelay={0} />
+      
+      {/* Group 2: Supermarkets, Transport */}
+      <BannerGroup categories={categoriesGroup2} initialDelay={5000} />
     </div>
   );
 });
