@@ -501,6 +501,12 @@ export const translations: Translations = {
     it: '16 km',
     de: '16 km',
   },
+  'location.santaMarina.description': {
+    en: 'A hidden gem with stunning views and pristine waters. Perfect for a peaceful day of swimming and relaxation.',
+    hr: 'Skriveni dragulj sa zadivljujućim pogledom i čistim morem. Savršeno za miran dan kupanja i opuštanja.',
+    it: 'Un gioiello nascosto con viste mozzafiato e acque incontaminate. Perfetto per una giornata tranquilla di nuoto e relax.',
+    de: 'Ein verstecktes Juwel mit atemberaubender Aussicht und unberührtem Wasser. Perfekt für einen ruhigen Tag zum Schwimmen und Entspannen.',
+  },
   'location.tunarica.title': {
     en: 'Tunarica Beach',
     hr: 'Plaža Tunarica',
@@ -512,6 +518,12 @@ export const translations: Translations = {
     hr: '11 km',
     it: '11 km',
     de: '11 km',
+  },
+  'location.tunarica.description': {
+    en: 'A secluded cove surrounded by lush greenery. Ideal for nature lovers seeking tranquility away from crowds.',
+    hr: 'Osamljena uvala okružena bujnim zelenilom. Idealna za ljubitelje prirode koji traže mir daleko od gužvi.',
+    it: 'Una baia appartata circondata da vegetazione rigogliosa. Ideale per gli amanti della natura in cerca di tranquillità.',
+    de: 'Eine abgeschiedene Bucht umgeben von üppigem Grün. Ideal für Naturliebhaber auf der Suche nach Ruhe abseits der Massen.',
   },
   'location.ravni.title': {
     en: 'Trget Beach',
@@ -525,6 +537,12 @@ export const translations: Translations = {
     it: '2 km',
     de: '2 km',
   },
+  'location.ravni.description': {
+    en: 'A peaceful pebble beach just minutes away. Crystal-clear waters perfect for swimming and snorkeling.',
+    hr: 'Mirna šljunčana plaža na samo nekoliko minuta vožnje. Kristalno čisto more idealno za plivanje i ronjenje.',
+    it: 'Una tranquilla spiaggia di ciottoli a pochi minuti di distanza. Acque cristalline perfette per nuotare e fare snorkeling.',
+    de: 'Ein ruhiger Kiesstrand nur wenige Minuten entfernt. Kristallklares Wasser perfekt zum Schwimmen und Schnorcheln.',
+  },
   'location.rabacBeaches.title': {
     en: 'Rabac Beaches',
     hr: 'Plaže Rabac',
@@ -536,6 +554,12 @@ export const translations: Translations = {
     hr: '16 km',
     it: '16 km',
     de: '16 km',
+  },
+  'location.rabacBeaches.description': {
+    en: 'Award-winning beaches with turquoise waters. Known as the "Pearl of Kvarner" with excellent facilities.',
+    hr: 'Nagrađivane plaže s tirkiznim morem. Poznate kao "Biser Kvarnera" s odličnim sadržajima.',
+    it: 'Spiagge premiate con acque turchesi. Conosciute come la "Perla del Quarnero" con eccellenti strutture.',
+    de: 'Preisgekrönte Strände mit türkisfarbenem Wasser. Bekannt als die "Perle des Kvarner" mit ausgezeichneten Einrichtungen.',
   },
   // Towns & Cities
   'location.labin.title': {
@@ -550,6 +574,12 @@ export const translations: Translations = {
     it: '11 km',
     de: '11 km',
   },
+  'location.labin.description': {
+    en: 'A charming medieval hilltop town with rich mining heritage, art galleries, and stunning Adriatic views.',
+    hr: 'Šarmantni srednjovjekovni gradić na brdu s bogatom rudarskom baštinom, umjetničkim galerijama i pogledom na Jadran.',
+    it: 'Un affascinante borgo medievale con ricca eredità mineraria, gallerie d\'arte e splendide viste sull\'Adriatico.',
+    de: 'Eine charmante mittelalterliche Hügelstadt mit reichem Bergbauerbe, Kunstgalerien und atemberaubendem Adriablick.',
+  },
   'location.rabac.title': {
     en: 'Rabac',
     hr: 'Rabac',
@@ -561,6 +591,12 @@ export const translations: Translations = {
     hr: '16 km',
     it: '16 km',
     de: '16 km',
+  },
+  'location.rabac.description': {
+    en: 'A lively coastal resort with beautiful beaches, waterfront promenades, and excellent seafood restaurants.',
+    hr: 'Živahno obalno odmaralište s prekrasnim plažama, šetnicom uz more i izvrsnim ribljem restoranima.',
+    it: 'Un vivace resort costiero con belle spiagge, lungomare e ottimi ristoranti di pesce.',
+    de: 'Ein lebhafter Küstenort mit schönen Stränden, Uferpromenaden und ausgezeichneten Fischrestaurants.',
   },
   'location.rovinj.title': {
     en: 'Rovinj',
@@ -574,6 +610,12 @@ export const translations: Translations = {
     it: '53 km',
     de: '53 km',
   },
+  'location.rovinj.description': {
+    en: 'Istria\'s most romantic town with colorful houses, cobblestone streets, and the iconic Church of St. Euphemia.',
+    hr: 'Najromantičniji grad Istre sa šarenim kućama, kaldrmanim ulicama i ikoničnom crkvom Sv. Eufemije.',
+    it: 'La città più romantica dell\'Istria con case colorate, strade acciottolate e l\'iconica Chiesa di Santa Eufemia.',
+    de: 'Istriens romantischste Stadt mit bunten Häusern, Kopfsteinpflasterstraßen und der ikonischen Kirche der Hl. Euphemia.',
+  },
   'location.pula.title': {
     en: 'Pula',
     hr: 'Pula',
@@ -585,6 +627,12 @@ export const translations: Translations = {
     hr: '40 km',
     it: '40 km',
     de: '40 km',
+  },
+  'location.pula.description': {
+    en: 'Home to the magnificent Roman Arena and rich ancient history. A vibrant city with culture, nightlife, and cuisine.',
+    hr: 'Dom veličanstvene rimske Arene i bogate antičke povijesti. Živahan grad s kulturom, noćnim životom i gastronomijom.',
+    it: 'Sede della magnifica Arena Romana e ricca di storia antica. Una città vivace con cultura, vita notturna e cucina.',
+    de: 'Heimat der großartigen römischen Arena und reicher antiker Geschichte. Eine lebhafte Stadt mit Kultur, Nachtleben und Küche.',
   },
   // Transport
   'location.airport.title': {
