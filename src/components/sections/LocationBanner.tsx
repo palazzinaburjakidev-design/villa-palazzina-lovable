@@ -3,10 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Waves, Building2, UtensilsCrossed, ShoppingCart, Plane } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+// Beach images
+import santaMarinaImg from '@/assets/santa-marina.webp';
+import ravniBeachImg from '@/assets/ravni-beach.jpeg';
+import tunaricaImg from '@/assets/tunarica.webp';
+
 interface LocationItem {
   nameKey: string;
   descriptionKey: string;
   distanceKey: string;
+  image?: string;
 }
 
 interface Category {
@@ -22,9 +28,9 @@ const categoriesGroup1: Category[] = [
     labelKey: 'location.category.beaches',
     icon: <Waves className="w-4 h-4" />,
     items: [
-      { nameKey: 'location.ravni.title', descriptionKey: 'location.ravni.description', distanceKey: 'location.ravni.distance' },
-      { nameKey: 'location.tunarica.title', descriptionKey: 'location.tunarica.description', distanceKey: 'location.tunarica.distance' },
-      { nameKey: 'location.santaMarina.title', descriptionKey: 'location.santaMarina.description', distanceKey: 'location.santaMarina.distance' },
+      { nameKey: 'location.ravni.title', descriptionKey: 'location.ravni.description', distanceKey: 'location.ravni.distance', image: ravniBeachImg },
+      { nameKey: 'location.tunarica.title', descriptionKey: 'location.tunarica.description', distanceKey: 'location.tunarica.distance', image: tunaricaImg },
+      { nameKey: 'location.santaMarina.title', descriptionKey: 'location.santaMarina.description', distanceKey: 'location.santaMarina.distance', image: santaMarinaImg },
       { nameKey: 'location.rabacBeaches.title', descriptionKey: 'location.rabacBeaches.description', distanceKey: 'location.rabacBeaches.distance' },
     ],
   },
@@ -140,7 +146,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       </div>
 
       {/* Banner Content */}
-      <div className={`relative flex items-center justify-center px-4 sm:px-6 md:px-10 ${isPrimary ? 'h-28 sm:h-36' : 'h-24 sm:h-28'}`}>
+      <div className={`relative flex items-center justify-center ${isPrimary ? 'h-40 sm:h-48' : 'h-24 sm:h-28'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeCategory}-${currentItemIndex}`}
@@ -148,20 +154,34 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center max-w-2xl"
+            className="flex items-center justify-center gap-4 sm:gap-6 px-4 sm:px-6 md:px-10 w-full max-w-3xl"
           >
-            <div className="flex items-center justify-center gap-2 mb-1.5 flex-wrap">
-              <span className="text-terracotta-light">{currentCategory.icon}</span>
-              <h3 className={`font-display text-sandstone text-shadow ${isPrimary ? 'text-lg sm:text-xl md:text-2xl' : 'text-base sm:text-lg md:text-xl'}`}>
-                {t(currentItem.nameKey)}
-              </h3>
-              <span className={`px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light font-semibold ${isPrimary ? 'text-sm' : 'text-xs'}`}>
-                {t(currentItem.distanceKey)}
-              </span>
+            {/* Image thumbnail - only for primary group with images */}
+            {isPrimary && currentItem.image && (
+              <div className="hidden sm:block flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden ring-1 ring-terracotta/30">
+                <img 
+                  src={currentItem.image} 
+                  alt={t(currentItem.nameKey)}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            
+            {/* Text content */}
+            <div className="text-center flex-1">
+              <div className="flex items-center justify-center gap-2 mb-1.5 flex-wrap">
+                <span className="text-terracotta-light">{currentCategory.icon}</span>
+                <h3 className={`font-display text-sandstone text-shadow ${isPrimary ? 'text-lg sm:text-xl md:text-2xl' : 'text-base sm:text-lg md:text-xl'}`}>
+                  {t(currentItem.nameKey)}
+                </h3>
+                <span className={`px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light font-semibold ${isPrimary ? 'text-sm' : 'text-xs'}`}>
+                  {t(currentItem.distanceKey)}
+                </span>
+              </div>
+              <p className={`text-sandstone/80 leading-relaxed text-shadow line-clamp-2 ${isPrimary ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
+                {t(currentItem.descriptionKey)}
+              </p>
             </div>
-            <p className={`text-sandstone/80 leading-relaxed text-shadow line-clamp-2 ${isPrimary ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
-              {t(currentItem.descriptionKey)}
-            </p>
           </motion.div>
         </AnimatePresence>
       </div>
