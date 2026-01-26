@@ -1,98 +1,84 @@
 
-# Plan: Uklanjanje pozadinskih slika iz svih sekcija osim Hero
+# Plan: Popravak vidljivosti coal texture embossinga
 
-## Cilj
-Samo Hero sekcija treba imati pozadinsku sliku. Sve ostale sekcije (Gallery, Amenities, Location, About) trebaju koristiti solidnu tamnu "coal" pozadinu.
+## Identificirani problemi
 
-## Promjene po datotekama
+### Problem 1: Z-index konflikt
+Pseudo-elementi (`::before` i `::after`) nemaju definiran z-index, a sadržaj sekcije ima `z-10`, što znači da sadržaj potpuno prekriva teksturu.
 
-### 1. `src/components/sections/GallerySection.tsx`
-**Što ukloniti:**
-- Import slike `galleryLiving` (linija 5)
-- Cijeli `motion.div` s `section-zoom` klasom i pozadinskom slikom (linije 325-334)
-- Overlay div s `section-overlay-coal` (linija 337) - više nije potreban
+### Problem 2: Preniska opacity
+- `::before` ima `opacity: 0.04` (4%)
+- `::after` ima `opacity: 0.03` (3%)
+- Boje unutar gradijenata imaju dodatnu nisku opacity (0.2-0.3)
+- Efektivna vidljivost: ~1% - praktički nevidljivo
 
-**Što dodati:**
-- Solidna pozadina na `<section>`: `className="relative h-full w-full overflow-hidden bg-coal"`
+## Rješenje
 
-### 2. `src/components/sections/AmenitiesSection.tsx`
-**Što ukloniti:**
-- Import slike `poolImage` (linija 5)
-- Cijeli `motion.div` s `section-zoom` klasom (linije 79-90)
-- Overlay div s `section-overlay-coal` (linija 93)
+### Izmjena 1: `src/index.css` - Dodati z-index i povećati opacity
 
-**Što dodati:**
-- Solidna pozadina: `className="relative h-full w-full overflow-hidden bg-coal"`
+```css
+.coal-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;           /* NOVO: Iznad pozadine */
+  opacity: 0.15;        /* PROMJENA: S 0.04 na 0.15 */
+  pointer-events: none;
+  /* ... ostalo isto */
+}
 
-### 3. `src/components/sections/LocationSection.tsx`
-**Što ukloniti:**
-- Import slike `terraceImage` (linija 5)
-- Cijeli `motion.div` s `section-zoom` klasom (linije 74-83)
-- Overlay div s `section-overlay-coal` (linija 86)
+.coal-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;           /* NOVO: Iznad ::before */
+  opacity: 0.12;        /* PROMJENA: S 0.03 na 0.12 */
+  pointer-events: none;
+  /* ... ostalo isto */
+}
+```
 
-**Što dodati:**
-- Solidna pozadina: `className="relative h-full w-full overflow-hidden bg-coal"`
+### Izmjena 2: Povećati intenzitet boja u gradijentima
 
-### 4. `src/components/sections/AboutSection.tsx`
-**Što ukloniti:**
-- Import slike `bedroomImage` (linija 6)
-- Cijeli `motion.div` s `section-zoom` klasom (linije 67-81)
-- Overlay div s `section-overlay-coal` (linija 84)
+Trenutno:
+```css
+hsla(var(--sandstone), 0.3)  /* 30% opacity */
+```
 
-**Što dodati:**
-- Solidna pozadina: `className="relative h-full w-full overflow-hidden bg-coal"`
+Novo:
+```css
+hsla(var(--sandstone), 0.6)  /* 60% opacity za vidljivije linije */
+```
+
+### Izmjena 3: Osigurati da sadržaj ostane čitljiv
+
+Sadržaj već ima `z-10`, što je dovoljno visoko iznad teksture (`z-1` i `z-2`).
 
 ## Vizualni rezultat
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
-│  HERO SEKCIJA                                           │
+│  SLOJ STRUKTURA (z-index)                               │
 │  ┌─────────────────────────────────────────────────────┐│
-│  │  ✓ Pozadinska slika (hero-villa.avif)               ││
-│  │  ✓ Blagi tamni overlay za čitljivost               ││
-│  │  ✓ Fokus na fotografiju                            ││
-│  └─────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────┐
-│  OSTALE SEKCIJE (Gallery, Amenities, Location, About)  │
-│  ┌─────────────────────────────────────────────────────┐│
-│  │  ✓ Solidna tamna pozadina (bg-coal)                 ││
-│  │  ✗ Bez pozadinske slike                             ││
-│  │  ✓ Sandstone tekst, terracotta akcenti              ││
-│  │  ✓ Glass-card-coal kartice                          ││
+│  │  z-10: Sadržaj (tekst, kartice, gumbi)              ││
+│  │  z-2:  ::after (terracotta akcenti u kutovima)      ││
+│  │  z-1:  ::before (dijagonalne linije, grid, šum)     ││
+│  │  z-0:  bg-coal (solidna tamna pozadina)             ││
 │  └─────────────────────────────────────────────────────┘│
 └─────────────────────────────────────────────────────────┘
 ```
 
-## Tehnički detalji
+## Datoteke za izmjenu
 
-### Prije (svaka sekcija):
-```tsx
-<section className="relative h-full w-full overflow-hidden">
-  {/* Background Image with Zoom Effect */}
-  <motion.div
-    className="section-zoom"
-    style={{ backgroundImage: `url(${someImage})` }}
-    ...
-  />
-  {/* Overlay - Coal theme */}
-  <div className="absolute inset-0 section-overlay-coal" />
-  {/* Content */}
-  ...
-</section>
-```
+| Datoteka | Promjena |
+|----------|----------|
+| `src/index.css` | Dodati z-index na pseudo-elemente, povećati opacity i intenzitet boja |
 
-### Poslije (sekcije osim Hero):
-```tsx
-<section className="relative h-full w-full overflow-hidden bg-coal">
-  {/* Content - direktno bez slike i overlaya */}
-  ...
-</section>
-```
+## Preporučene opacity vrijednosti
 
-## Prednosti
-- Čišći kod bez nepotrebnih elemenata
-- Brže učitavanje (manje slika za preuzeti)
-- Jasan vizualni kontrast između Hero sekcije i ostalih
-- Konzistentan "Coal & Stone" dizajn na tamnim sekcijama
+Za suptilan ali vidljiv efekt:
+- `::before` (linije i grid): `opacity: 0.12-0.18`
+- `::after` (kutni akcenti): `opacity: 0.08-0.15`
+- Boje u gradijentima: `0.5-0.7` umjesto `0.2-0.3`
+
+Ove vrijednosti daju uočljivu teksturu koja ne ometa čitljivost sadržaja.
