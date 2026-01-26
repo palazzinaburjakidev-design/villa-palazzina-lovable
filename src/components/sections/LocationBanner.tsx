@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Waves, Building2, UtensilsCrossed, ShoppingCart, Plane } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -83,7 +83,7 @@ const categoriesGroup2: Category[] = [
   },
 ];
 
-const ROTATION_INTERVAL = 10000;
+const ROTATION_INTERVAL = 5000;
 
 interface BannerGroupProps {
   categories: Category[];
@@ -99,24 +99,38 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
   const currentCategory = categories[activeCategory];
   const currentItem = currentCategory.items[currentItemIndex];
 
+  // Use refs to track current state without causing effect re-runs
+  const activeCategoryRef = useRef(activeCategory);
+  const currentItemIndexRef = useRef(currentItemIndex);
+  
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const interval = setInterval(() => {
-        setCurrentItemIndex((prev) => {
-          const nextIndex = prev + 1;
-          if (nextIndex >= currentCategory.items.length) {
-            setActiveCategory((prevCat) => (prevCat + 1) % categories.length);
-            return 0;
-          }
-          return nextIndex;
-        });
-      }, ROTATION_INTERVAL);
+    activeCategoryRef.current = activeCategory;
+    currentItemIndexRef.current = currentItemIndex;
+  }, [activeCategory, currentItemIndex]);
 
-      return () => clearInterval(interval);
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+    let intervalId: NodeJS.Timeout | null = null;
+
+    timeoutId = setTimeout(() => {
+      intervalId = setInterval(() => {
+        const currentCat = categories[activeCategoryRef.current];
+        const nextIndex = currentItemIndexRef.current + 1;
+        
+        if (nextIndex >= currentCat.items.length) {
+          setActiveCategory((prevCat) => (prevCat + 1) % categories.length);
+          setCurrentItemIndex(0);
+        } else {
+          setCurrentItemIndex(nextIndex);
+        }
+      }, ROTATION_INTERVAL);
     }, initialDelay);
 
-    return () => clearTimeout(timeout);
-  }, [currentCategory.items.length, categories.length, initialDelay]);
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [categories.length, initialDelay]);
 
   const handleCategoryChange = (index: number) => {
     setActiveCategory(index);
