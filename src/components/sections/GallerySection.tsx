@@ -321,7 +321,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
   };
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-coal">
+    <section className="relative h-full w-full overflow-hidden bg-coal coal-texture">
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20">
         <motion.div
