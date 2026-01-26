@@ -82,9 +82,10 @@ const ROTATION_INTERVAL = 10000;
 interface BannerGroupProps {
   categories: Category[];
   initialDelay?: number;
+  isPrimary?: boolean;
 }
 
-const BannerGroup = memo(({ categories, initialDelay = 0 }: BannerGroupProps) => {
+const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: BannerGroupProps) => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState(0);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -117,14 +118,16 @@ const BannerGroup = memo(({ categories, initialDelay = 0 }: BannerGroupProps) =>
   };
 
   return (
-    <div className="w-full glass-card-coal rounded-xl overflow-hidden">
+    <div className={`w-full glass-card-coal rounded-xl overflow-hidden ${isPrimary ? 'ring-1 ring-terracotta/20' : ''}`}>
       {/* Category Tabs */}
-      <div className="flex justify-center gap-1 sm:gap-2 px-3 pt-3 pb-2">
+      <div className={`flex justify-center gap-1 sm:gap-2 px-3 ${isPrimary ? 'pt-4 pb-3' : 'pt-3 pb-2'}`}>
         {categories.map((category, index) => (
           <button
             key={category.id}
             onClick={() => handleCategoryChange(index)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm transition-all duration-300 ${
+            className={`flex items-center gap-1.5 rounded-full transition-all duration-300 ${
+              isPrimary ? 'px-4 py-2 text-sm sm:text-base' : 'px-3 py-1.5 text-xs sm:text-sm'
+            } ${
               index === activeCategory
                 ? 'bg-terracotta/30 text-terracotta-light'
                 : 'bg-coal-deep/50 text-sandstone/60 hover:text-sandstone/80 hover:bg-coal-deep/70'
@@ -137,7 +140,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0 }: BannerGroupProps) =>
       </div>
 
       {/* Banner Content */}
-      <div className="relative h-24 sm:h-28 flex items-center justify-center px-4 sm:px-6 md:px-10">
+      <div className={`relative flex items-center justify-center px-4 sm:px-6 md:px-10 ${isPrimary ? 'h-28 sm:h-36' : 'h-24 sm:h-28'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeCategory}-${currentItemIndex}`}
@@ -149,14 +152,14 @@ const BannerGroup = memo(({ categories, initialDelay = 0 }: BannerGroupProps) =>
           >
             <div className="flex items-center justify-center gap-2 mb-1.5 flex-wrap">
               <span className="text-terracotta-light">{currentCategory.icon}</span>
-              <h3 className="font-display text-base sm:text-lg md:text-xl text-sandstone text-shadow">
+              <h3 className={`font-display text-sandstone text-shadow ${isPrimary ? 'text-lg sm:text-xl md:text-2xl' : 'text-base sm:text-lg md:text-xl'}`}>
                 {t(currentItem.nameKey)}
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light text-xs font-semibold">
+              <span className={`px-2 py-0.5 rounded-full bg-terracotta/20 text-terracotta-light font-semibold ${isPrimary ? 'text-sm' : 'text-xs'}`}>
                 {t(currentItem.distanceKey)}
               </span>
             </div>
-            <p className="text-sandstone/80 text-xs sm:text-sm leading-relaxed text-shadow line-clamp-2">
+            <p className={`text-sandstone/80 leading-relaxed text-shadow line-clamp-2 ${isPrimary ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
               {t(currentItem.descriptionKey)}
             </p>
           </motion.div>
@@ -187,8 +190,8 @@ BannerGroup.displayName = 'BannerGroup';
 const LocationBanner = memo(() => {
   return (
     <div className="w-full space-y-3">
-      {/* Group 1: Beaches, Towns, Restaurants */}
-      <BannerGroup categories={categoriesGroup1} initialDelay={0} />
+      {/* Group 1: Beaches, Towns, Restaurants (Primary) */}
+      <BannerGroup categories={categoriesGroup1} initialDelay={0} isPrimary={true} />
       
       {/* Group 2: Supermarkets, Transport */}
       <BannerGroup categories={categoriesGroup2} initialDelay={5000} />
