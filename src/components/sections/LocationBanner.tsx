@@ -158,7 +158,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
           >
             {/* Image thumbnail - only for primary group with images */}
             {isPrimary && currentItem.image && (
-              <div className="hidden sm:block flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden ring-1 ring-terracotta/30">
+              <div className="hidden sm:block flex-shrink-0 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-xl overflow-hidden ring-2 ring-terracotta/40 shadow-lg">
                 <img 
                   src={currentItem.image} 
                   alt={t(currentItem.nameKey)}
