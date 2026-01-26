@@ -147,6 +147,7 @@
   /* Coal mine texture - subtle embossed details */
   .coal-texture {
     position: relative;
+    isolation: isolate;
   }
 
   .coal-texture::before {
@@ -154,33 +155,41 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    opacity: 0.15;
+    opacity: 0.40;
     pointer-events: none;
+    mix-blend-mode: soft-light;
     background-image: 
-      /* Diagonal coal seams */
+      /* Diagonal coal seams - embossed dual lines */
       repeating-linear-gradient(
         -45deg,
         transparent 0px,
-        transparent 80px,
-        hsla(var(--sandstone), 0.6) 80px,
-        hsla(var(--sandstone), 0.6) 81px,
-        transparent 81px,
-        transparent 160px
+        transparent 54px,
+        hsl(var(--sandstone) / 0.25) 54px,
+        hsl(var(--sandstone) / 0.25) 55px,
+        hsl(var(--coal-deep) / 0.4) 55px,
+        hsl(var(--coal-deep) / 0.4) 56px,
+        transparent 56px,
+        transparent 110px
       ),
-      /* Mining tunnel grid pattern */
+      /* Mining tunnel grid pattern - horizontal */
       repeating-linear-gradient(
         90deg,
         transparent 0px,
-        transparent 120px,
-        hsla(var(--sandstone), 0.5) 120px,
-        hsla(var(--sandstone), 0.5) 121px
+        transparent 100px,
+        hsl(var(--sandstone) / 0.2) 100px,
+        hsl(var(--sandstone) / 0.2) 101px,
+        hsl(var(--coal-deep) / 0.35) 101px,
+        hsl(var(--coal-deep) / 0.35) 102px
       ),
+      /* Mining tunnel grid pattern - vertical */
       repeating-linear-gradient(
         0deg,
         transparent 0px,
-        transparent 100px,
-        hsla(var(--sandstone), 0.4) 100px,
-        hsla(var(--sandstone), 0.4) 101px
+        transparent 80px,
+        hsl(var(--sandstone) / 0.18) 80px,
+        hsl(var(--sandstone) / 0.18) 81px,
+        hsl(var(--coal-deep) / 0.3) 81px,
+        hsl(var(--coal-deep) / 0.3) 82px
       ),
       /* Subtle noise texture */
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -192,28 +201,29 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    opacity: 0.12;
+    opacity: 0.30;
     pointer-events: none;
+    mix-blend-mode: overlay;
     background-image:
       /* Top left corner accent */
       radial-gradient(
-        ellipse 300px 200px at 0% 0%,
-        hsla(var(--terracotta), 0.6) 0%,
+        ellipse 350px 250px at 0% 0%,
+        hsl(var(--terracotta) / 0.5) 0%,
         transparent 70%
       ),
       /* Bottom right corner accent */
       radial-gradient(
-        ellipse 400px 300px at 100% 100%,
-        hsla(var(--terracotta), 0.5) 0%,
+        ellipse 450px 350px at 100% 100%,
+        hsl(var(--terracotta) / 0.4) 0%,
         transparent 60%
       ),
       /* Scattered coal fragments */
-      radial-gradient(circle 2px at 15% 25%, hsla(var(--sandstone), 0.7) 0%, transparent 100%),
-      radial-gradient(circle 3px at 85% 15%, hsla(var(--sandstone), 0.6) 0%, transparent 100%),
-      radial-gradient(circle 2px at 70% 80%, hsla(var(--sandstone), 0.7) 0%, transparent 100%),
-      radial-gradient(circle 4px at 25% 85%, hsla(var(--sandstone), 0.5) 0%, transparent 100%),
-      radial-gradient(circle 2px at 90% 50%, hsla(var(--sandstone), 0.6) 0%, transparent 100%),
-      radial-gradient(circle 3px at 5% 60%, hsla(var(--sandstone), 0.7) 0%, transparent 100%);
+      radial-gradient(circle 3px at 15% 25%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%),
+      radial-gradient(circle 4px at 85% 15%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
+      radial-gradient(circle 3px at 70% 80%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%),
+      radial-gradient(circle 5px at 25% 85%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+      radial-gradient(circle 3px at 90% 50%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
+      radial-gradient(circle 4px at 5% 60%, hsl(var(--sandstone) / 0.6) 0%, transparent 100%);
   }
 
   /* Text backdrop with radial gradient */
