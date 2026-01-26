@@ -90,8 +90,8 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      {/* Overlay - Coal theme */}
+      <div className="absolute inset-0 section-overlay-coal" />
 
       {/* Content */}
       <div 
@@ -106,21 +106,21 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow-sm"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card-coal text-terracotta text-xs uppercase tracking-widest mb-4 sm:mb-6 text-shadow-sm"
           >
             {t('amenities.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-3 sm:mb-4 text-shadow"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-sandstone mb-3 sm:mb-4 text-shadow"
           >
             {t('amenities.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/80 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 lg:mb-10 text-shadow"
+            className="text-sandstone/80 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 lg:mb-10 text-shadow"
           >
             {t('amenities.subtitle')}
           </motion.p>
@@ -137,11 +137,11 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
                   key={index}
                   className="amenity-card text-center py-4 sm:py-5"
                 >
-                  <Icon className="amenity-icon w-7 h-7 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3 text-linen/80 transition-colors duration-300" />
-                  <h3 className="font-display text-xs sm:text-sm lg:text-base text-linen mb-1">
+                  <Icon className="amenity-icon w-7 h-7 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3 text-sandstone/80 transition-colors duration-300" />
+                  <h3 className="font-display text-xs sm:text-sm lg:text-base text-sandstone mb-1">
                     {amenity.title}
                   </h3>
-                  <p className="text-linen/60 text-[10px] sm:text-xs leading-relaxed line-clamp-2">
+                  <p className="text-sandstone/60 text-[10px] sm:text-xs leading-relaxed line-clamp-2">
                     {amenity.description}
                   </p>
                 </div>

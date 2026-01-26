@@ -28,13 +28,13 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-charcoal/30 border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-coal/40 border-b border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection(0)}
-            className="font-display text-lg sm:text-xl lg:text-2xl text-linen tracking-wide hover:text-gold transition-colors"
+            className="font-display text-lg sm:text-xl lg:text-2xl text-sandstone tracking-wide hover:text-terracotta transition-colors"
           >
             Palazzina Burjaki
           </button>
@@ -47,8 +47,8 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                 onClick={() => scrollToSection(item.section)}
                 className={`text-sm font-medium transition-colors ${
                   currentSection === item.section
-                    ? 'text-gold'
-                    : 'text-linen/80 hover:text-linen'
+                    ? 'text-terracotta'
+                    : 'text-sandstone/80 hover:text-sandstone'
                 }`}
               >
                 {item.label}
@@ -66,8 +66,8 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                   onClick={() => setLanguage(lang.code)}
                   className={`px-1.5 sm:px-2 py-1 text-xs font-medium transition-colors rounded ${
                     language === lang.code
-                      ? 'bg-gold text-charcoal'
-                      : 'text-linen/60 hover:text-linen'
+                      ? 'bg-terracotta text-coal'
+                      : 'text-sandstone/60 hover:text-sandstone'
                   }`}
                 >
                   {lang.label}
@@ -87,7 +87,7 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                   {t('nav.bookNow')}
                 </a>
               </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+              <TooltipContent side="bottom" className="bg-coal/95 text-sandstone border-white/20 text-sm">
                 {t('hero.externalBookingNotice')}
               </TooltipContent>
             </Tooltip>
@@ -99,12 +99,12 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                   href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="md:hidden bg-gold text-charcoal font-semibold py-2 px-4 text-xs rounded-full"
+                  className="md:hidden bg-terracotta text-coal font-semibold py-2 px-4 text-xs rounded-full"
                 >
                   {t('nav.bookNow')}
                 </a>
               </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+              <TooltipContent side="bottom" className="bg-coal/95 text-sandstone border-white/20 text-sm">
                 {t('hero.externalBookingNotice')}
               </TooltipContent>
             </Tooltip>
@@ -112,7 +112,7 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-linen -mr-2"
+              className="md:hidden p-2 text-sandstone -mr-2"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -129,7 +129,7 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-charcoal/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-coal/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
             <nav className="container mx-auto px-4 py-4 sm:py-6 flex flex-col gap-1">
               {navItems.map((item) => (
@@ -141,8 +141,8 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                   }}
                   className={`text-left text-base sm:text-lg font-medium py-3 px-3 rounded-lg transition-colors active:bg-white/10 ${
                     currentSection === item.section
-                      ? 'text-gold bg-white/5'
-                      : 'text-linen/80'
+                      ? 'text-terracotta bg-white/5'
+                      : 'text-sandstone/80'
                   }`}
                 >
                   {item.label}
@@ -157,8 +157,8 @@ const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
                     onClick={() => setLanguage(lang.code)}
                     className={`flex-1 px-3 py-2.5 text-sm font-medium transition-colors rounded-lg active:scale-95 ${
                       language === lang.code
-                        ? 'bg-gold text-charcoal'
-                        : 'text-linen/60 border border-white/20 active:bg-white/10'
+                        ? 'bg-terracotta text-coal'
+                        : 'text-sandstone/60 border border-white/20 active:bg-white/10'
                     }`}
                   >
                     {lang.label}

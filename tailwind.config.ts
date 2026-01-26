@@ -21,6 +21,23 @@ export default {
         foreground: "hsl(var(--foreground))",
         charcoal: "hsl(var(--charcoal))",
         linen: "hsl(var(--linen))",
+        // Coal & Stone palette
+        coal: {
+          DEFAULT: "hsl(var(--coal))",
+          deep: "hsl(var(--coal-deep))",
+        },
+        graphite: "hsl(var(--graphite))",
+        slate: "hsl(var(--slate))",
+        sandstone: {
+          DEFAULT: "hsl(var(--sandstone))",
+          light: "hsl(var(--sandstone-light))",
+        },
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
+          light: "hsl(var(--terracotta-light))",
+          dark: "hsl(var(--terracotta-dark))",
+        },
+        // Legacy gold (for compatibility)
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
