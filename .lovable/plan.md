@@ -1,71 +1,139 @@
 
-Cilj: da se “coal mine” embossing tekstura stvarno vidi na svim tamnim sekcijama (About/Amenities/Gallery/Location), bez da utječe na Hero.
 
-Što sam provjerio i što je problem
-- `coal-texture` je ispravno dodan na `<section>` u svim tamnim sekcijama (npr. About/Amenities/Location/Gallery).
-- Pseudo-elementi `::before` i `::after` imaju `z-index: 1/2` i sadržaj ima `z-10`, pa layering (u teoriji) nije problem.
-- U screenshotu se ne vidi ništa, čak ni suptilno. To vrlo često znači da se `background-image` uopće ne renderira (nije samo “preslabo”), nego je CSS vrijednost nevažeća i browser je odbacuje.
+# Plan: Poboljšana Coal Mine Tekstura
 
-Najvjerojatniji uzrok (bitno)
-- U CSS-u se koristi forma `hsla(var(--sandstone), 0.6)` i `hsla(var(--terracotta), 0.6)`.
-- Naši CSS varijable su definirane u modernom formatu s razmacima, npr. `--sandstone: 35 25% 75%`.
-- Kombinacija “modernog” formata (space-separated) s “legacy” hsla sintaksom (zarez za alpha) može rezultirati nevažećom vrijednošću na nekim browserima i tada cijeli `background-image` propadne.
-- Ispravna, najkompatibilnija forma je: `hsl(var(--sandstone) / 0.6)` (alpha ide preko `/`, bez zareza).
+## Cilj
+Kreirati sofisticiraniju, realističniju teksturu koja evocira istarski rudnik ugljena - s efektom slojeva kamena, pukotina, i mineralnih naslaga.
 
-Plan promjena (implementacija)
+## Nova koncepcija teksture
 
-1) Popraviti sintaksu boja da gradienti sigurno rade
-Datoteka: `src/index.css`
-- U `.coal-texture::before` i `.coal-texture::after` zamijeniti sve:
-  - `hsla(var(--sandstone), X)` -> `hsl(var(--sandstone) / X)`
-  - `hsla(var(--terracotta), X)` -> `hsl(var(--terracotta) / X)`
-- Po potrebi isto napraviti i za druge slične klase koje koriste `hsla(var(--coal), X)` (npr. `.text-backdrop`, `.hero-overlay`, `.section-overlay-coal`) kako bi sve bilo konzistentno i cross-browser stabilno.
+### Sloj 1: Geološki slojevi (::before)
+Umjesto jednostavnih linija, kreirat ćemo efekt sedimentnih slojeva:
+- **Valovite linije** umjesto ravnih (simulacija prirodnih formacija)
+- **Više kutova** za složeniji uzorak (15°, -30°, 60°)
+- **Gradijentni prijelazi** umjesto oštrih linija
+- **Različite debljine** linija za organičniji izgled
 
-2) Privremeni “debug boost” da potvrdimo da se tekstura prikazuje
-Datoteka: `src/index.css`
-- Privremeno (za test) dići:
-  - `.coal-texture::before { opacity: 0.45; }`
-  - `.coal-texture::after { opacity: 0.35; }`
-- Ako se nakon toga tekstura jasno vidi, znači da je prethodni problem bio render/sintaksa ili preslab intenzitet.
-- Nakon potvrde, spustiti na “final” vrijednosti (npr. 0.22–0.30 i 0.16–0.24), ovisno o tvojoj želji.
+### Sloj 2: Pukotine i minerali (::after)
+- **Nepravilne pukotine** koje se "šire" od kutova
+- **Kristalni odsjaji** - suptilni terracotta i zlatni akcenti
+- **Čestice ugljena** - raspršeni fragmenti različitih veličina
 
-3) Povećati vidljivost “utisnutog” efekta (bez da postane šareno)
-Datoteka: `src/index.css`
-- Pojačati linije (emboss look) umjesto samo “svijetlih tragova”:
-  - U repeating linear gradientu dodati 2 linije: jednu svjetliju (highlight) i jednu tamniju (shadow) uz nju, npr. 2px ukupno.
-  - Primjer ideje (konceptualno):
-    - highlight: `hsl(var(--sandstone) / 0.18)`
-    - shadow: `hsl(var(--coal) / 0.35)`
-- Smanjiti razmak da se uzorak češće ponavlja na velikim ekranima (npr. 80px -> 56px), jer na velikim površinama rijetke 1px linije “nestanu”.
+### Sloj 3: Dubina i atmosfera (novi ::before gradijent)
+- **Vinjeta efekt** - blago zatamnjenje rubova
+- **Središnji fokus** - lagano osvjetljenje sredine
 
-4) Osigurati da tekstura “sjedi” iznad pozadine ali ispod sadržaja i da blend radi predvidljivo
-Datoteka: `src/index.css`
-- Dodati na `.coal-texture`:
-  - `isolation: isolate;` (sprječava da blend-mode utječe izvan sekcije i pomaže konzistentnosti rendera)
-- Opcionalno (ako želiš jači embossed osjećaj, a ne samo šare):
-  - dodati `mix-blend-mode: soft-light;` ili `overlay;` na `::before` i `::after`
-  - i malo “izbrusiti” s `filter: contrast(1.1);` (oprezno, da ne postane pregrubo)
+## Vizualni rezultat
 
-5) Provjera da nije “prekriveno” internim overlayem
-- Trenutno neke sekcije imaju velike elemente s backgroundom (npr. `.text-backdrop`).
-- Ako nakon gore navedenog i dalje izgleda “kao da ništa nema”, napravit ćemo jedan od ova 2 pristupa:
-  A) Smanjiti opacity `.text-backdrop` (malo) da propusti teksturu kroz “prazne” dijelove.
-  B) Umjesto da je tekstura na `<section>`, ubaciti poseban sloj unutar sekcije:
-     - `<div className="absolute inset-0 coal-texture-layer pointer-events-none" />`
-     - i onda content ostaje `relative z-10`.
-  Ovo je “sigurna” varijanta ako neki layout/overlay nehotice prekriva background.
+```text
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│    ╲                        ╱                           │
+│      ╲  ═══════════════  ╱      ← Valoviti slojevi     │
+│        ╲               ╱                                │
+│  ═══════════════════════════     ← Sedimentne linije   │
+│           ·  ·                                          │
+│     ·          ·    ·            ← Čestice ugljena     │
+│  ═══════════════════════════                            │
+│        ╱               ╲                                │
+│      ╱                   ╲       ← Pukotine             │
+│    ╱                       ╲                            │
+│                                                         │
+│   ◊ ← Kristalni odsjaj    ▪ ← Fragment ugljena         │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
 
-Kriterij uspjeha (što ćeš vidjeti)
-- Na tamnim sekcijama će se vidjeti:
-  - dijagonalne “šavove” (coal seams),
-  - mrežu (tunnel grid),
-  - suptilne terracotta akcente u kutevima,
-  - i lagani “noise”,
-  čak i kada su kartice prisutne (kroz njihove transparentne dijelove).
+## Tehnička implementacija
 
-Datoteke koje ćemo mijenjati
-- Obavezno: `src/index.css`
-- Moguće (samo ako je potrebno zbog overlay pokrivanja): `src/components/sections/*Section.tsx` da dodamo dedicated texture layer element unutar sekcije.
+### Datoteka: `src/index.css`
 
-Napomena
-- Ovo rješava i tvoju sumnju “možda je zakačeno na div ispod tamne pozadine”: tekstura će biti ili direktno na sekciji kao sloj iznad backgrounda, ili kao poseban apsolutni layer iznad pozadine, što eliminira tu klasu problema.
+**`.coal-texture::before` - Geološki slojevi:**
+```css
+background-image:
+  /* Primarni dijagonalni slojevi - deblji, mekši */
+  repeating-linear-gradient(
+    -35deg,
+    transparent 0px,
+    transparent 40px,
+    hsl(var(--sandstone) / 0.12) 40px,
+    hsl(var(--sandstone) / 0.18) 42px,
+    hsl(var(--coal-deep) / 0.25) 42px,
+    hsl(var(--coal-deep) / 0.3) 44px,
+    transparent 44px,
+    transparent 90px
+  ),
+  /* Sekundarni slojevi - suprotni kut */
+  repeating-linear-gradient(
+    25deg,
+    transparent 0px,
+    transparent 70px,
+    hsl(var(--graphite) / 0.15) 70px,
+    hsl(var(--graphite) / 0.2) 72px,
+    transparent 72px,
+    transparent 140px
+  ),
+  /* Horizontalni sedimenti */
+  repeating-linear-gradient(
+    88deg,
+    transparent 0px,
+    transparent 150px,
+    hsl(var(--sandstone) / 0.08) 150px,
+    hsl(var(--sandstone) / 0.12) 153px,
+    hsl(var(--coal-deep) / 0.2) 153px,
+    transparent 156px,
+    transparent 300px
+  ),
+  /* Fini šum za teksturu kamena */
+  url("data:image/svg+xml,...noise...");
+```
+
+**`.coal-texture::after` - Pukotine i akcenti:**
+```css
+background-image:
+  /* Glavna pukotina - gornji lijevi kut */
+  linear-gradient(
+    -60deg,
+    hsl(var(--terracotta) / 0.35) 0%,
+    hsl(var(--terracotta) / 0.15) 15%,
+    transparent 30%
+  ),
+  /* Sekundarna pukotina - donji desni */
+  linear-gradient(
+    120deg,
+    transparent 60%,
+    hsl(var(--terracotta) / 0.1) 80%,
+    hsl(var(--terracotta) / 0.25) 100%
+  ),
+  /* Kristalni odsjaji */
+  radial-gradient(ellipse 8px 12px at 12% 18%, hsl(var(--sandstone) / 0.5) 0%, transparent 100%),
+  radial-gradient(ellipse 6px 10px at 88% 75%, hsl(var(--terracotta-light) / 0.4) 0%, transparent 100%),
+  /* Raspršeni fragmenti ugljena */
+  radial-gradient(circle 2px at 20% 40%, hsl(var(--sandstone) / 0.4) 0%, transparent 100%),
+  radial-gradient(circle 3px at 75% 25%, hsl(var(--sandstone) / 0.35) 0%, transparent 100%),
+  ...više fragmenata na različitim pozicijama...
+```
+
+**Nove vrijednosti opacity i blend:**
+- `::before`: `opacity: 0.35`, `mix-blend-mode: soft-light`
+- `::after`: `opacity: 0.25`, `mix-blend-mode: overlay`
+
+## Prednosti nove teksture
+
+| Aspekt | Stara tekstura | Nova tekstura |
+|--------|---------------|---------------|
+| Linije | Ravne, pravilne | Valovite, organske |
+| Slojevi | 2 kuta | 4+ kutova |
+| Akcenti | Samo kutovi | Pukotine + kristali |
+| Čestice | 6 fiksnih | 12+ raspršenih |
+| Dubina | Plošno | Vinjeta efekt |
+
+## Datoteke za izmjenu
+
+| Datoteka | Promjena |
+|----------|----------|
+| `src/index.css` | Kompletno nova `.coal-texture::before` i `::after` definicija |
+
+## Napomena
+Nova tekstura će biti suptilnija ali kompleksnija - više "geološkog" karaktera, manje "tehničkog grida". Ako ti se više sviđa neki specifični stil (npr. više kristala, jače pukotine, drugačije boje), mogu prilagoditi.
+
