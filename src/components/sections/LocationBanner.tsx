@@ -95,6 +95,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState(0);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const currentCategory = categories[activeCategory];
   const currentItem = currentCategory.items[currentItemIndex];
@@ -102,6 +103,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
   // Use refs to track current state without causing effect re-runs
   const activeCategoryRef = useRef(activeCategory);
   const currentItemIndexRef = useRef(currentItemIndex);
+  const isPausedRef = useRef(isPaused);
   
   useEffect(() => {
     activeCategoryRef.current = activeCategory;
@@ -109,11 +111,18 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
   }, [activeCategory, currentItemIndex]);
 
   useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
+
+  useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
     let intervalId: NodeJS.Timeout | null = null;
 
     timeoutId = setTimeout(() => {
       intervalId = setInterval(() => {
+        // Skip rotation if paused
+        if (isPausedRef.current) return;
+        
         const currentCat = categories[activeCategoryRef.current];
         const nextIndex = currentItemIndexRef.current + 1;
         
@@ -138,7 +147,11 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
   };
 
   return (
-    <div className={`w-full glass-card-coal rounded-xl overflow-hidden ${isPrimary ? 'ring-1 ring-terracotta/20' : ''}`}>
+    <div 
+      className={`w-full glass-card-coal rounded-xl overflow-hidden transition-all duration-300 ${isPrimary ? 'ring-1 ring-terracotta/20' : ''} ${isPaused ? 'ring-2 ring-terracotta/40' : ''}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Category Tabs */}
       <div className={`flex justify-center gap-1 sm:gap-2 px-3 ${isPrimary ? 'pt-4 pb-3' : 'pt-3 pb-2'}`}>
         {categories.map((category, index) => (
