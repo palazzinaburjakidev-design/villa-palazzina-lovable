@@ -153,7 +153,8 @@
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.04;
+    z-index: 1;
+    opacity: 0.15;
     pointer-events: none;
     background-image: 
       /* Diagonal coal seams */
@@ -161,8 +162,8 @@
         -45deg,
         transparent 0px,
         transparent 80px,
-        hsla(var(--sandstone), 0.3) 80px,
-        hsla(var(--sandstone), 0.3) 81px,
+        hsla(var(--sandstone), 0.6) 80px,
+        hsla(var(--sandstone), 0.6) 81px,
         transparent 81px,
         transparent 160px
       ),
@@ -171,15 +172,15 @@
         90deg,
         transparent 0px,
         transparent 120px,
-        hsla(var(--sandstone), 0.2) 120px,
-        hsla(var(--sandstone), 0.2) 121px
+        hsla(var(--sandstone), 0.5) 120px,
+        hsla(var(--sandstone), 0.5) 121px
       ),
       repeating-linear-gradient(
         0deg,
         transparent 0px,
         transparent 100px,
-        hsla(var(--sandstone), 0.15) 100px,
-        hsla(var(--sandstone), 0.15) 101px
+        hsla(var(--sandstone), 0.4) 100px,
+        hsla(var(--sandstone), 0.4) 101px
       ),
       /* Subtle noise texture */
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -190,28 +191,29 @@
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.03;
+    z-index: 2;
+    opacity: 0.12;
     pointer-events: none;
     background-image:
       /* Top left corner accent */
       radial-gradient(
         ellipse 300px 200px at 0% 0%,
-        hsla(var(--terracotta), 0.4) 0%,
+        hsla(var(--terracotta), 0.6) 0%,
         transparent 70%
       ),
       /* Bottom right corner accent */
       radial-gradient(
         ellipse 400px 300px at 100% 100%,
-        hsla(var(--terracotta), 0.3) 0%,
+        hsla(var(--terracotta), 0.5) 0%,
         transparent 60%
       ),
       /* Scattered coal fragments */
-      radial-gradient(circle 2px at 15% 25%, hsla(var(--sandstone), 0.5) 0%, transparent 100%),
-      radial-gradient(circle 3px at 85% 15%, hsla(var(--sandstone), 0.4) 0%, transparent 100%),
-      radial-gradient(circle 2px at 70% 80%, hsla(var(--sandstone), 0.5) 0%, transparent 100%),
-      radial-gradient(circle 4px at 25% 85%, hsla(var(--sandstone), 0.3) 0%, transparent 100%),
-      radial-gradient(circle 2px at 90% 50%, hsla(var(--sandstone), 0.4) 0%, transparent 100%),
-      radial-gradient(circle 3px at 5% 60%, hsla(var(--sandstone), 0.5) 0%, transparent 100%);
+      radial-gradient(circle 2px at 15% 25%, hsla(var(--sandstone), 0.7) 0%, transparent 100%),
+      radial-gradient(circle 3px at 85% 15%, hsla(var(--sandstone), 0.6) 0%, transparent 100%),
+      radial-gradient(circle 2px at 70% 80%, hsla(var(--sandstone), 0.7) 0%, transparent 100%),
+      radial-gradient(circle 4px at 25% 85%, hsla(var(--sandstone), 0.5) 0%, transparent 100%),
+      radial-gradient(circle 2px at 90% 50%, hsla(var(--sandstone), 0.6) 0%, transparent 100%),
+      radial-gradient(circle 3px at 5% 60%, hsla(var(--sandstone), 0.7) 0%, transparent 100%);
   }
 
   /* Text backdrop with radial gradient */
