@@ -160,7 +160,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       </div>
 
       {/* Banner Content */}
-      <div className={`relative flex items-center justify-center ${isPrimary ? 'h-40 sm:h-48' : 'h-24 sm:h-28'}`}>
+      <div className={`relative flex items-center justify-center ${isPrimary ? 'h-44 sm:h-52 md:h-60' : 'h-24 sm:h-28'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeCategory}-${currentItemIndex}`}
@@ -172,7 +172,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
           >
             {/* Image thumbnail - only for primary group with images */}
             {isPrimary && currentItem.image && (
-              <div className="hidden sm:block flex-shrink-0 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-xl overflow-hidden ring-2 ring-terracotta/40 shadow-lg">
+              <div className="hidden sm:block flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-xl overflow-hidden ring-2 ring-terracotta/40 shadow-lg">
                 <img 
                   src={currentItem.image} 
                   alt={t(currentItem.nameKey)}
