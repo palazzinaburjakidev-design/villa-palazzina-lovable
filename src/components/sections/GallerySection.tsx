@@ -333,8 +333,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      {/* Overlay - Coal theme */}
+      <div className="absolute inset-0 section-overlay-coal" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-24 sm:pb-20">
@@ -347,14 +347,14 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           {/* Header */}
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-gold text-xs uppercase tracking-widest mb-4 sm:mb-6 self-center"
+            className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card-coal text-terracotta text-xs uppercase tracking-widest mb-4 sm:mb-6 self-center"
           >
             {t('gallery.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-linen mb-4 sm:mb-6 text-shadow"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-sandstone mb-4 sm:mb-6 text-shadow"
           >
             {t('gallery.title')}
           </motion.h2>
@@ -370,8 +370,8 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 onClick={() => setActiveCategory(cat.key)}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeCategory === cat.key
-                    ? 'bg-gold text-charcoal'
-                    : 'glass-card text-linen/80 hover:text-linen hover:bg-linen/10'
+                    ? 'bg-terracotta text-coal'
+                    : 'glass-card-coal text-sandstone/80 hover:text-sandstone hover:bg-white/10'
                 }`}
               >
                 {cat.label}
@@ -392,7 +392,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   variants={itemVariants}
                   className="relative rounded-xl overflow-hidden shadow-lg group col-span-2 row-span-2"
                 >
-                  <div className="relative h-full bg-charcoal aspect-video">
+                  <div className="relative h-full bg-coal aspect-video">
                     {showVideo ? (
                       <div className="relative w-full h-full">
                         <iframe
@@ -404,7 +404,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                         />
                         <button
                           onClick={() => setShowVideo(false)}
-                          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-charcoal/80 flex items-center justify-center text-linen hover:bg-charcoal transition-colors z-10"
+                          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-coal/80 flex items-center justify-center text-sandstone hover:bg-coal transition-colors z-10"
                         >
                           <X className="w-4 h-4" />
                         </button>
@@ -419,16 +419,16 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                           onClick={() => setShowVideo(true)}
                         />
                         <div 
-                          className="absolute inset-0 bg-charcoal/40 flex items-center justify-center group-hover:bg-charcoal/20 transition-colors cursor-pointer"
+                          className="absolute inset-0 bg-coal/40 flex items-center justify-center group-hover:bg-coal/20 transition-colors cursor-pointer"
                           onClick={() => setShowVideo(true)}
                         >
-                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <Play className="w-6 h-6 sm:w-8 sm:h-8 text-charcoal ml-1" fill="currentColor" />
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-terracotta/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Play className="w-6 h-6 sm:w-8 sm:h-8 text-coal ml-1" fill="currentColor" />
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent pointer-events-none">
-                          <h3 className="text-linen font-display text-sm sm:text-base">{t('gallery.video.title')}</h3>
-                          <p className="text-linen/60 text-xs">{t('gallery.video.subtitle')}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-coal via-coal/80 to-transparent pointer-events-none">
+                          <h3 className="text-sandstone font-display text-sm sm:text-base">{t('gallery.video.title')}</h3>
+                          <p className="text-sandstone/60 text-xs">{t('gallery.video.subtitle')}</p>
                         </div>
                       </>
                     )}
@@ -452,16 +452,16 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                     loading="lazy"
                     className="w-full h-28 sm:h-32 md:h-40 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 className="text-linen font-display text-sm sm:text-base">{album.title}</h3>
-                    <p className="text-linen/60 text-xs">{album.count} {album.count === 1 ? t('gallery.photo') : t('gallery.photos')}</p>
+                    <h3 className="text-sandstone font-display text-sm sm:text-base">{album.title}</h3>
+                    <p className="text-sandstone/60 text-xs">{album.count} {album.count === 1 ? t('gallery.photo') : t('gallery.photos')}</p>
                   </div>
                   {/* Stack effect for albums with multiple images */}
                   {album.count > 1 && (
                     <>
-                      <div className="absolute -bottom-1 -right-1 w-full h-full rounded-xl border-2 border-gold/20 -z-10" />
-                      <div className="absolute -bottom-2 -right-2 w-full h-full rounded-xl border-2 border-gold/10 -z-20" />
+                      <div className="absolute -bottom-1 -right-1 w-full h-full rounded-xl border-2 border-terracotta/20 -z-10" />
+                      <div className="absolute -bottom-2 -right-2 w-full h-full rounded-xl border-2 border-terracotta/10 -z-20" />
                     </>
                   )}
                 </motion.div>
@@ -472,12 +472,12 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                 <motion.div
                   key={album.id}
                   variants={itemVariants}
-                  className="relative rounded-xl overflow-hidden shadow-lg glass-card flex items-center justify-center h-40 sm:h-48 md:h-56 border border-gold/20"
+                  className="relative rounded-xl overflow-hidden shadow-lg glass-card-coal flex items-center justify-center h-40 sm:h-48 md:h-56 border border-terracotta/20"
                 >
                   <div className="text-center">
-                    <div className="text-gold/50 text-3xl mb-2">📷</div>
-                    <span className="text-linen/50 text-sm">{album.title}</span>
-                    <p className="text-linen/30 text-xs mt-1">Uskoro</p>
+                    <div className="text-terracotta/50 text-3xl mb-2">📷</div>
+                    <span className="text-sandstone/50 text-sm">{album.title}</span>
+                    <p className="text-sandstone/30 text-xs mt-1">Uskoro</p>
                   </div>
                 </motion.div>
               ))}
@@ -487,7 +487,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-linen/80 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0 text-shadow"
+            className="text-sandstone/80 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0 text-shadow"
           >
             {t('gallery.description')}
           </motion.p>
@@ -501,21 +501,21 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center"
+            className="fixed inset-0 z-50 bg-coal/95 flex items-center justify-center"
             onClick={closeAlbum}
           >
             {/* Close button */}
             <button
-              className="absolute top-4 right-4 text-linen/80 hover:text-linen p-2 z-10"
+              className="absolute top-4 right-4 text-sandstone/80 hover:text-sandstone p-2 z-10"
               onClick={closeAlbum}
             >
               <X className="w-8 h-8" />
             </button>
 
             {/* Album title */}
-            <div className="absolute top-4 left-4 text-linen z-10">
+            <div className="absolute top-4 left-4 text-sandstone z-10">
               <h3 className="font-display text-xl">{selectedAlbum.title}</h3>
-              <p className="text-linen/60 text-sm">
+              <p className="text-sandstone/60 text-sm">
                 {currentImageIndex + 1} / {selectedAlbum.images.length}
               </p>
             </div>
@@ -524,7 +524,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             {selectedAlbum.images.length > 1 && (
               <>
                 <button
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-linen/80 hover:text-linen p-2 z-10"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-sandstone/80 hover:text-sandstone p-2 z-10"
                   onClick={(e) => {
                     e.stopPropagation();
                     prevImage();
@@ -533,7 +533,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                   <ChevronLeft className="w-10 h-10" />
                 </button>
                 <button
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-linen/80 hover:text-linen p-2 z-10"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-sandstone/80 hover:text-sandstone p-2 z-10"
                   onClick={(e) => {
                     e.stopPropagation();
                     nextImage();
@@ -563,7 +563,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
 
             {/* Thumbnail strip */}
             {selectedAlbum.images.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 glass-card rounded-lg">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 glass-card-coal rounded-lg">
                 {selectedAlbum.images.map((img, index) => (
                   <button
                     key={index}
@@ -573,7 +573,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
                     }}
                     className={`w-12 h-12 sm:w-16 sm:h-16 rounded overflow-hidden border-2 transition-all ${
                       index === currentImageIndex
-                        ? 'border-gold scale-110'
+                        ? 'border-terracotta scale-110'
                         : 'border-transparent opacity-60 hover:opacity-100'
                     }`}
                   >

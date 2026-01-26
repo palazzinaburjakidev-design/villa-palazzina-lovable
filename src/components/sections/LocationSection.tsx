@@ -82,8 +82,8 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      {/* Overlay - Coal theme */}
+      <div className="absolute inset-0 section-overlay-coal" />
 
       {/* Content */}
       <div 
@@ -98,21 +98,21 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
         >
           <motion.span
             variants={itemVariants}
-            className="inline-block px-3 py-1 rounded-full glass-card text-gold-light text-xs uppercase tracking-widest mb-3 sm:mb-4 text-shadow"
+            className="inline-block px-3 py-1 rounded-full glass-card-coal text-terracotta-light text-xs uppercase tracking-widest mb-3 sm:mb-4 text-shadow"
           >
             {t('location.label')}
           </motion.span>
 
           <motion.h2
             variants={itemVariants}
-            className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl text-linen mb-2 sm:mb-3 text-shadow"
+            className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl text-sandstone mb-2 sm:mb-3 text-shadow"
           >
             {t('location.title')}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-linen/80 text-sm sm:text-base mb-5 sm:mb-6 text-shadow"
+            className="text-sandstone/80 text-sm sm:text-base mb-5 sm:mb-6 text-shadow"
           >
             {t('location.subtitle')}
           </motion.p>
@@ -123,60 +123,60 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mb-3 lg:mb-4"
           >
             {/* Beaches Category */}
-            <div className="glass-card rounded-xl p-4 sm:p-5">
+            <div className="glass-card-coal rounded-xl p-4 sm:p-5">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card flex items-center justify-center">
-                  <Waves className="w-4 h-4 sm:w-5 sm:h-5 text-gold-light" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card-coal flex items-center justify-center">
+                  <Waves className="w-4 h-4 sm:w-5 sm:h-5 text-terracotta-light" />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-linen text-shadow">
+                <h3 className="font-display text-base sm:text-lg text-sandstone text-shadow">
                   {t('location.category.beaches')}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {beaches.map((beach, index) => (
                   <li key={index} className="flex justify-between items-center text-xs sm:text-sm">
-                    <span className="text-linen/90">{beach.title}</span>
-                    <span className="text-gold-light font-semibold text-xs">{beach.distance}</span>
+                    <span className="text-sandstone/90">{beach.title}</span>
+                    <span className="text-terracotta-light font-semibold text-xs">{beach.distance}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Towns & Cities Category */}
-            <div className="glass-card rounded-xl p-4 sm:p-5">
+            <div className="glass-card-coal rounded-xl p-4 sm:p-5">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card flex items-center justify-center">
-                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-gold-light" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card-coal flex items-center justify-center">
+                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-terracotta-light" />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-linen text-shadow">
+                <h3 className="font-display text-base sm:text-lg text-sandstone text-shadow">
                   {t('location.category.towns')}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {towns.map((town, index) => (
                   <li key={index} className="flex justify-between items-center text-xs sm:text-sm">
-                    <span className="text-linen/90">{town.title}</span>
-                    <span className="text-gold-light font-semibold text-xs">{town.distance}</span>
+                    <span className="text-sandstone/90">{town.title}</span>
+                    <span className="text-terracotta-light font-semibold text-xs">{town.distance}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Restaurants Category */}
-            <div className="glass-card rounded-xl p-4 sm:p-5">
+            <div className="glass-card-coal rounded-xl p-4 sm:p-5">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card flex items-center justify-center">
-                  <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5 text-gold-light" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card-coal flex items-center justify-center">
+                  <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5 text-terracotta-light" />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-linen text-shadow">
+                <h3 className="font-display text-base sm:text-lg text-sandstone text-shadow">
                   {t('location.category.restaurants')}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {restaurants.map((restaurant, index) => (
                   <li key={index} className="flex justify-between items-center text-xs sm:text-sm">
-                    <span className="text-linen/90">{restaurant.title}</span>
-                    <span className="text-gold-light font-semibold text-xs">{restaurant.distance}</span>
+                    <span className="text-sandstone/90">{restaurant.title}</span>
+                    <span className="text-terracotta-light font-semibold text-xs">{restaurant.distance}</span>
                   </li>
                 ))}
               </ul>
@@ -189,40 +189,40 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
             className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-4xl mx-auto mb-16 sm:mb-0"
           >
             {/* Transport Category */}
-            <div className="glass-card rounded-xl p-4 sm:p-5">
+            <div className="glass-card-coal rounded-xl p-4 sm:p-5">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card flex items-center justify-center">
-                  <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-gold-light" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card-coal flex items-center justify-center">
+                  <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-terracotta-light" />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-linen text-shadow">
+                <h3 className="font-display text-base sm:text-lg text-sandstone text-shadow">
                   {t('location.category.transport')}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {transport.map((item, index) => (
                   <li key={index} className="flex justify-between items-center text-xs sm:text-sm">
-                    <span className="text-linen/90">{item.title}</span>
-                    <span className="text-gold-light font-semibold text-xs">{item.distance}</span>
+                    <span className="text-sandstone/90">{item.title}</span>
+                    <span className="text-terracotta-light font-semibold text-xs">{item.distance}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Supermarkets Category */}
-            <div className="glass-card rounded-xl p-4 sm:p-5">
+            <div className="glass-card-coal rounded-xl p-4 sm:p-5">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card flex items-center justify-center">
-                  <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-gold-light" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full glass-card-coal flex items-center justify-center">
+                  <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-terracotta-light" />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-linen text-shadow">
+                <h3 className="font-display text-base sm:text-lg text-sandstone text-shadow">
                   {t('location.category.supermarkets')}
                 </h3>
               </div>
               <ul className="space-y-2">
                 {supermarkets.map((market, index) => (
                   <li key={index} className="flex justify-between items-center text-xs sm:text-sm">
-                    <span className="text-linen/90">{market.title}</span>
-                    <span className="text-gold-light font-semibold text-xs">{market.distance}</span>
+                    <span className="text-sandstone/90">{market.title}</span>
+                    <span className="text-terracotta-light font-semibold text-xs">{market.distance}</span>
                   </li>
                 ))}
               </ul>

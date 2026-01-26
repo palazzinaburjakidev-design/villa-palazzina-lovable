@@ -7,30 +7,30 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black/80 border-t border-white/10">
+    <footer className="bg-coal-deep border-t border-white/10">
       <div className="container mx-auto px-4 py-8 sm:py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
           {/* Impressum / Legal Info */}
           <div>
-            <h3 className="text-gold font-display text-lg mb-4">{t('footer.impressum')}</h3>
-            <div className="space-y-2 text-linen/70 text-sm">
-              <p className="text-linen font-medium">Villa Palazzina Burjaki</p>
+            <h3 className="text-terracotta font-display text-lg mb-4">{t('footer.impressum')}</h3>
+            <div className="space-y-2 text-sandstone/70 text-sm">
+              <p className="text-sandstone font-medium">Villa Palazzina Burjaki</p>
               <p>{t('footer.renterType')}</p>
               <p>Vedran Grubišić</p>
               <div className="flex items-start gap-2 mt-3">
-                <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-terracotta flex-shrink-0 mt-0.5" />
                 <span>Burjaki 36, Trgetari 52224, Hrvatska</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                <a href="mailto:palazzinaburjaki@gmail.com" className="hover:text-linen transition-colors">
+                <Mail className="w-4 h-4 text-terracotta flex-shrink-0" />
+                <a href="mailto:palazzinaburjaki@gmail.com" className="hover:text-sandstone transition-colors">
                   palazzinaburjaki@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                <a href="tel:+385911513014" className="hover:text-linen transition-colors">
+                <Phone className="w-4 h-4 text-terracotta flex-shrink-0" />
+                <a href="tel:+385911513014" className="hover:text-sandstone transition-colors">
                   +385 91 151 3014
                 </a>
               </div>
@@ -39,8 +39,8 @@ const Footer = () => {
 
           {/* Reservation Notice */}
           <div>
-            <h3 className="text-gold font-display text-lg mb-4">{t('footer.reservations')}</h3>
-            <div className="space-y-3 text-linen/70 text-sm">
+            <h3 className="text-terracotta font-display text-lg mb-4">{t('footer.reservations')}</h3>
+            <div className="space-y-3 text-sandstone/70 text-sm">
               <p>{t('footer.reservationsNotice')}</p>
               <a
                 href="https://www.airbnb.com/rooms/948498096498498227"
@@ -54,21 +54,21 @@ const Footer = () => {
                 {t('footer.bookOnAirbnb')}
                 <ExternalLink className="w-3 h-3" />
               </a>
-              <p className="text-xs text-linen/50">{t('footer.noPaymentData')}</p>
+              <p className="text-xs text-sandstone/50">{t('footer.noPaymentData')}</p>
             </div>
           </div>
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-gold font-display text-lg mb-4">{t('footer.legal')}</h3>
-            <ul className="space-y-2 text-linen/70 text-sm">
+            <h3 className="text-terracotta font-display text-lg mb-4">{t('footer.legal')}</h3>
+            <ul className="space-y-2 text-sandstone/70 text-sm">
               <li>
-                <Link to="/privacy-policy" className="hover:text-linen transition-colors">
+                <Link to="/privacy-policy" className="hover:text-sandstone transition-colors">
                   {t('footer.privacyPolicy')}
                 </Link>
               </li>
               <li>
-                <Link to="/cookie-policy" className="hover:text-linen transition-colors">
+                <Link to="/cookie-policy" className="hover:text-sandstone transition-colors">
                   {t('footer.cookiePolicy')}
                 </Link>
               </li>
@@ -77,8 +77,8 @@ const Footer = () => {
 
           {/* Website Notice */}
           <div>
-            <h3 className="text-gold font-display text-lg mb-4">{t('footer.websiteNotice')}</h3>
-            <p className="text-linen/70 text-sm">
+            <h3 className="text-terracotta font-display text-lg mb-4">{t('footer.websiteNotice')}</h3>
+            <p className="text-sandstone/70 text-sm">
               {t('footer.websiteNoticeText')}
             </p>
           </div>
@@ -86,21 +86,21 @@ const Footer = () => {
 
         {/* Legal Disclaimer */}
         <div className="border-t border-white/10 pt-6 mb-6">
-          <p className="text-linen/60 text-xs sm:text-sm text-center italic">
+          <p className="text-sandstone/60 text-xs sm:text-sm text-center italic">
             {t('footer.legalDisclaimer')}
           </p>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-linen/50 text-xs sm:text-sm text-center sm:text-left">
+          <p className="text-sandstone/50 text-xs sm:text-sm text-center sm:text-left">
             © {currentYear} Villa Palazzina Burjaki. {t('footer.allRightsReserved')}
           </p>
           <div className="flex items-center gap-4 text-xs sm:text-sm">
-            <Link to="/privacy-policy" className="text-linen/50 hover:text-linen transition-colors">
+            <Link to="/privacy-policy" className="text-sandstone/50 hover:text-sandstone transition-colors">
               {t('footer.privacyPolicy')}
             </Link>
-            <Link to="/cookie-policy" className="text-linen/50 hover:text-linen transition-colors">
+            <Link to="/cookie-policy" className="text-sandstone/50 hover:text-sandstone transition-colors">
               {t('footer.cookiePolicy')}
             </Link>
           </div>

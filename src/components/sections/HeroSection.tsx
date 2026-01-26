@@ -60,7 +60,7 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
         >
           <motion.h1
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gold-light mb-3 sm:mb-4"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-terracotta-light mb-3 sm:mb-4"
             style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.9), 0 4px 24px rgba(0, 0, 0, 0.6)' }}
           >
             {t('hero.brand')}
@@ -88,13 +88,13 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
                   href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-3 sm:px-10 sm:py-4 bg-gold hover:bg-gold-light text-charcoal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
+                  className="inline-block px-8 py-3 sm:px-10 sm:py-4 bg-terracotta hover:bg-terracotta-light text-coal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)' }}
                 >
                   {t('hero.reserveNow')}
                 </a>
               </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-charcoal/95 text-linen border-white/20 text-sm">
+              <TooltipContent side="bottom" className="bg-coal/95 text-sandstone border-white/20 text-sm">
                 {t('hero.externalBookingNotice')}
               </TooltipContent>
             </Tooltip>
