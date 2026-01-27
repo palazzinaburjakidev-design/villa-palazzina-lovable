@@ -1,76 +1,47 @@
 
-# Plan: Repositioniranje ilustracije tunela u Gallery sekciji
+# Plan: Pomakni vagone ispod teksta, tunel desno
 
-## Cilj
-Povećati ilustraciju na prethodnu veličinu, ali pozicionirati ulaz "SRETNO" desno (gdje nema teksta), dok vagoni i tračnice mogu biti ispod teksta.
+## Problem
+Ilustracija se preklapa s tekstom jer:
+1. Lijevi SVG (vagoni) zauzima 60% širine (`w-3/5`) i prekriva centralni tekst
+2. Desni SVG (tunel SRETNO) je ispravno pozicioniran desno
 
-## Pristup
-
-Umjesto jednog centriranog SVG-a, razdvojit ću ilustraciju na dvije komponente:
-1. **Tračnice i vagoni** - puna širina, ispod teksta (lijevo-sredina)
-2. **Tunel "SRETNO"** - pozicioniran desno
+## Rješenje
+Reorganizirati layout tako da:
+1. **Vagoni budu samo na lijevom rubu** - smanjiti širinu i pomaknuti ih skroz lijevo
+2. **Tunel SRETNO ostane desno** - već je ispravno
+3. **Srednji dio ostane prazan** - za tekst iznad
 
 ## Tehnički detalji
 
-### Korak 1: Modificirati `TunnelEntrance` komponentu u `MiningIllustration.tsx`
+### Izmjena u `MiningIllustration.tsx` - TunnelEntrance komponenta
 
-Struktura će biti:
-```
-<div className="relative w-full">
-  <!-- Tračnice - puna širina -->
-  <svg>rails...</svg>
-  
-  <!-- Vagoni i rudari - lijeva strana -->
-  <svg className="absolute left-0 bottom-0 w-2/3">
-    wagons + miners...
-  </svg>
-  
-  <!-- Tunel SRETNO - desna strana -->
-  <svg className="absolute right-0 bottom-0 w-1/3">
-    tunnel entrance...
-  </svg>
-</div>
-```
+Trenutno:
+- Lijevi SVG: `w-3/5 sm:w-1/2` (60% / 50% širine)
+- Desni SVG: `w-2/5 sm:w-1/3` (40% / 33% širine)
 
-### Korak 2: Ažurirati className u `GallerySection.tsx`
-
-Vratiti punu širinu:
-```jsx
-className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
-```
-
-### Korak 3: Detalji SVG rasporeda
-
-**Lijevi dio (vagoni i rudari):**
-- Wagon 1 - lijevo
-- Miner 1 - gura wagon
-- Wagon 2 
-- Miner 2 - hoda
-- Wagon 3
-
-**Desni dio (tunel):**
-- Kameni luk tunela
-- "SRETNO" natpis
-- Miner koji izlazi iz tunela
-
-## Vizualni prikaz
+Novo:
+- Lijevi SVG: `w-1/3 sm:w-1/4` (33% / 25% širine) - samo lijevi rub
+- Desni SVG: `w-1/3 sm:w-1/4` (33% / 25% širine) - samo desni rub
+- Sredina ostaje prazna za tekst
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                       TEKST                              │
-│              "Svaka soba je pažljivo..."                │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  🚃──🧑‍🏭──🚃──🧑‍🏭──🚃 ─────────────────── ⛏️ SRETNO ⛏️ │
-│  ═══════════════════════════════════════════════════════│
-│  (vagoni ispod teksta)              (tunel desno)       │
-└─────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│                       TEKST                                 │
+│        "Svaka soba je pažljivo dizajnirana..."             │
+├──────────────┼──────────────────────────┼──────────────────┤
+│  🚃 🧑‍🏭 🚃    │       (prazan prostor)    │   ⛏️ SRETNO ⛏️   │
+│   (25%)      │          (50%)            │      (25%)       │
+└──────────────┴──────────────────────────┴──────────────────┘
 ```
 
-## Datoteke za izmjenu
+### Datoteka za izmjenu
 
-1. **`src/components/MiningIllustration.tsx`**
-   - Reorganizirati `TunnelEntrance` komponentu s odvojenim pozicioniranjem tunela i vagona
+**`src/components/MiningIllustration.tsx`** - linija 81-83 i 156-158:
 
-2. **`src/components/sections/GallerySection.tsx`**
-   - Vratiti punu širinu: `w-full max-w-3xl`
+1. Lijevi SVG (vagoni):
+   - Promijeniti `w-3/5 sm:w-1/2` u `w-1/3 sm:w-1/4`
+   - Smanjiti viewBox ili ukloniti neke vagone da stanu u manji prostor
+
+2. Desni SVG (tunel):
+   - Promijeniti `w-2/5 sm:w-1/3` u `w-1/3 sm:w-1/4`
