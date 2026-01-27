@@ -51,10 +51,10 @@ const pureBlackFill = "hsl(0 0% 4%)";
 const darkFill = "hsl(0 0% 6%)";
 const subtleStroke = "hsl(0 0% 12%)";
 
-// Tunnel entrance with "SRETNO" sign - Pure black silhouettes with full-width rails, wagons and miners
+// Tunnel entrance with "SRETNO" sign - Split layout: wagons left, tunnel right
 const TunnelEntrance = memo(() => (
-  <div className="relative w-full">
-    {/* Full-width rails */}
+  <div className="relative w-full h-28 sm:h-36">
+    {/* Full-width rails at bottom */}
     <svg
       viewBox="0 0 1920 20"
       className="absolute bottom-0 left-0 w-[200vw] -translate-x-1/2 h-auto"
@@ -64,7 +64,6 @@ const TunnelEntrance = memo(() => (
     >
       <path d="M0 8 L1920 8" stroke={subtleStroke} strokeWidth="3" fill="none" />
       <path d="M0 16 L1920 16" stroke={subtleStroke} strokeWidth="3" fill="none" />
-      {/* Rail ties */}
       {[...Array(80)].map((_, i) => (
         <rect
           key={i}
@@ -78,16 +77,16 @@ const TunnelEntrance = memo(() => (
       ))}
     </svg>
     
-    {/* Full scene with tunnel, wagons and miners */}
+    {/* Left side - Wagons and miners (under text area) */}
     <svg
-      viewBox="0 0 480 100"
-      className="relative w-full h-auto max-w-3xl mx-auto"
+      viewBox="0 0 320 90"
+      className="absolute bottom-2 left-0 w-3/5 sm:w-1/2 h-20 sm:h-28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMax meet"
+      preserveAspectRatio="xMinYMax meet"
     >
       {/* Wagon 1 - far left */}
-      <g transform="translate(10, 48)">
+      <g transform="translate(10, 38)">
         <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
         <path d="M10 16 L14 8 Q25 4, 36 8 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
         <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
@@ -95,7 +94,7 @@ const TunnelEntrance = memo(() => (
       </g>
       
       {/* Miner 1 - pushing wagon */}
-      <g transform="translate(55, 42)">
+      <g transform="translate(55, 32)">
         <path 
           d="M8 8 Q12 4, 15 6 Q17 8, 16 12 L18 16 Q20 18, 18 20 L20 26 L22 38 Q23 44, 20 50 L16 50 L18 40 L14 50 L10 50 L13 38 L10 26 L4 30 L2 26 L8 20 Q6 18, 8 16 L8 8 Z" 
           fill={pureBlackFill}
@@ -106,55 +105,109 @@ const TunnelEntrance = memo(() => (
       </g>
       
       {/* Wagon 2 */}
-      <g transform="translate(85, 48)">
+      <g transform="translate(85, 38)">
         <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
         <path d="M10 16 L13 9 Q25 5, 37 9 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
         <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
         <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
       </g>
       
-      {/* Tunnel entrance - center */}
-      <g transform="translate(150, 0)">
-        {/* Outer stone arch */}
+      {/* Miner 2 - walking with pickaxe */}
+      <g transform="translate(140, 30)">
         <path 
-          d="M35 94 L35 50 Q35 18, 90 14 Q145 18, 145 50 L145 94 L132 94 L132 48 Q132 26, 90 22 Q48 26, 48 48 L48 94 Z" 
+          d="M12 8 Q15 5, 18 7 Q20 9, 19 13 L19 16 Q21 18, 19 20 L21 26 L23 38 Q24 48, 22 55 L18 55 L20 42 L16 55 L12 55 L15 40 L13 26 L9 32 L7 28 L11 22 Q9 20, 11 18 L12 8 Z" 
+          fill={pureBlackFill}
+          fillOpacity="1"
+        />
+        <ellipse cx="15" cy="7" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+        <path d="M8 14 L28 10" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+        <path d="M26 7 L32 12 L28 16 Z" fill={darkFill} fillOpacity="1" />
+      </g>
+      
+      {/* Wagon 3 */}
+      <g transform="translate(185, 38)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M10 16 L15 7 Q25 3, 35 7 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 3 - with lantern */}
+      <g transform="translate(240, 28)">
+        <path 
+          d="M12 10 Q15 7, 18 9 Q20 11, 19 15 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 50, 21 56 L17 56 L19 43 L15 56 L11 56 L14 41 L12 28 L8 40 L6 38 L10 26 Q8 22, 10 20 L12 10 Z" 
           fill={pureBlackFill}
           fillOpacity="0.98"
         />
-        
-        {/* Inner tunnel */}
-        <path 
-          d="M54 94 L54 50 Q54 30, 90 26 Q126 30, 126 50 L126 94 Z" 
-          fill="hsl(0 0% 2%)"
-          fillOpacity="0.95"
-        />
-        
-        {/* Wooden beams */}
-        <rect x="50" y="42" width="6" height="52" fill={darkFill} fillOpacity="1" />
-        <rect x="124" y="42" width="6" height="52" fill={darkFill} fillOpacity="1" />
-        
-        {/* Cross beam */}
-        <path d="M46 40 Q90 30, 134 40 L134 45 Q90 35, 46 45 Z" fill={pureBlackFill} fillOpacity="1" />
-        
-        {/* SRETNO banner */}
-        <rect x="55" y="2" width="70" height="22" fill={pureBlackFill} fillOpacity="1" />
-        <text
-          x="90"
-          y="17"
-          textAnchor="middle"
-          className="font-display"
-          fill="hsl(35 25% 80%)"
-          fillOpacity="0.9"
-          fontSize="11"
-          fontWeight="700"
-          letterSpacing="3"
-        >
-          SRETNO
-        </text>
+        <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+        <rect x="4" y="42" width="6" height="10" fill={darkFill} fillOpacity="1" />
       </g>
       
-      {/* Miner 2 - exiting tunnel with pickaxe */}
-      <g transform="translate(310, 38)">
+      {/* Wagon 4 */}
+      <g transform="translate(275, 38)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.97" />
+        <path d="M10 16 L14 9 Q25 5, 36 9 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+    </svg>
+    
+    {/* Right side - Tunnel entrance with SRETNO */}
+    <svg
+      viewBox="0 0 180 110"
+      className="absolute bottom-1 right-0 w-2/5 sm:w-1/3 h-24 sm:h-32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMaxYMax meet"
+      aria-label="Ulaz u rudnik sa natpisom SRETNO"
+    >
+      {/* Outer stone arch */}
+      <path 
+        d="M35 104 L35 55 Q35 22, 90 18 Q145 22, 145 55 L145 104 L132 104 L132 53 Q132 30, 90 26 Q48 30, 48 53 L48 104 Z" 
+        fill={pureBlackFill}
+        fillOpacity="0.98"
+      />
+      
+      {/* Inner tunnel darkness */}
+      <path 
+        d="M54 104 L54 55 Q54 35, 90 30 Q126 35, 126 55 L126 104 Z" 
+        fill="hsl(0 0% 2%)"
+        fillOpacity="0.95"
+      />
+      
+      {/* Wooden beams */}
+      <rect x="50" y="48" width="6" height="56" fill={darkFill} fillOpacity="1" />
+      <rect x="124" y="48" width="6" height="56" fill={darkFill} fillOpacity="1" />
+      
+      {/* Cross beam */}
+      <path d="M46 46 Q90 36, 134 46 L134 51 Q90 41, 46 51 Z" fill={pureBlackFill} fillOpacity="1" />
+      
+      {/* SRETNO banner */}
+      <rect x="55" y="4" width="70" height="24" fill={pureBlackFill} fillOpacity="1" />
+      <text
+        x="90"
+        y="20"
+        textAnchor="middle"
+        className="font-display"
+        fill="hsl(35 25% 80%)"
+        fillOpacity="0.9"
+        fontSize="12"
+        fontWeight="700"
+        letterSpacing="3"
+      >
+        SRETNO
+      </text>
+      
+      {/* Crossed pickaxes above banner */}
+      <g transform="translate(90, -2)">
+        <path d="M-12 10 L8 -4" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+        <path d="M6 -6 L12 -2 L8 2 Z" fill={darkFill} fillOpacity="1" />
+        <path d="M12 10 L-8 -4" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+        <path d="M-6 -6 L-12 -2 L-8 2 Z" fill={darkFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner exiting tunnel */}
+      <g transform="translate(75, 48)">
         <path 
           d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L21 28 L23 42 Q24 50, 21 56 L17 56 L19 44 L15 56 L11 56 L14 42 L11 28 L6 32 L4 28 L10 22 Q8 20, 10 18 L12 10 Z" 
           fill={pureBlackFill}
@@ -163,33 +216,6 @@ const TunnelEntrance = memo(() => (
         <ellipse cx="15" cy="9" rx="4" ry="3" fill={darkFill} fillOpacity="1" />
         <path d="M8 16 L24 12" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
         <path d="M22 10 L27 14 L24 17 Z" fill={darkFill} fillOpacity="1" />
-      </g>
-      
-      {/* Wagon 3 - right side */}
-      <g transform="translate(355, 48)">
-        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
-        <path d="M10 16 L15 7 Q25 3, 35 7 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
-        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
-        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
-      </g>
-      
-      {/* Miner 3 - pulling wagon on right */}
-      <g transform="translate(410, 40)">
-        <path 
-          d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 48, 20 54 L16 54 L18 42 L14 54 L10 54 L13 40 L10 28 L4 34 L2 30 L8 24 Q6 20, 8 18 L12 10 Z" 
-          fill={pureBlackFill}
-          fillOpacity="0.96"
-        />
-        <ellipse cx="15" cy="9" rx="4" ry="3" fill={darkFill} fillOpacity="0.98" />
-        <path d="M4 34 L-10 42" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
-      </g>
-      
-      {/* Wagon 4 - far right */}
-      <g transform="translate(430, 48)">
-        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.97" />
-        <path d="M10 16 L14 9 Q25 5, 36 9 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
-        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
-        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
       </g>
     </svg>
   </div>
