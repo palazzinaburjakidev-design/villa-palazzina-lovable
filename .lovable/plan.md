@@ -1,113 +1,52 @@
 
+# Analiza problema s veličinom ilustracija
 
-# Plan: Totalno crne ilustracije (Pure Black Silhouettes)
+## Pronađeni uzrok
 
-## Pregled
+Ilustracije u sekcijama **Gallery** i **Location** ostaju malene zbog razlike u CSS klasama na `MiningIllustration` komponenti.
 
-Transformacija rudarskih ilustracija u **čiste crne siluete** - bez unutarnjih linija, bez bijelih kontura, samo solidni crni oblici. Minimalistički, dramatičan pristup.
+### Usporedba className propova:
 
----
+| Sekcija | className | Rezultat |
+|---------|-----------|----------|
+| **Amenities** (ispravno) | `w-full max-w-3xl px-4 left-0 right-0 mx-auto` | Puna širina do 768px |
+| **Gallery** (problem) | `right-4 sm:right-8` | Nema definirane širine |
+| **Location** (problem) | `left-1/2 -translate-x-1/2` | Nema definirane širine |
 
-## Karakteristike stila
+### Zašto se to događa:
 
-### Vizualni pristup
-- **100% crne ispune** - `fill="hsl(0 0% 5-10%)"`
-- **Bez stroke linija** - ili minimalne samo za vanjski rub
-- **Čiste siluete** - prepoznatljive samo po obliku
-- **Bez unutarnjih detalja** - samo kontura forme
-- **Suptilna transparentnost** - 70-90% opacity za eleganciju na tamnoj pozadini
+1. Amenities sekcija ima `w-full max-w-3xl` na vanjskom kontejneru
+2. Gallery i Location nemaju `w-full` - SVG unutar komponente nema referencu za izračun širine
+3. Iako je `max-w-3xl` postavljen na SVG elemente unutar MiningIllustration.tsx, bez `w-full` na roditeljskom elementu, SVG se skalira prema svom sadržaju umjesto prema dostupnom prostoru
 
-### Paleta
-```
-fill: hsl(0 0% 6-10%)    <- skoro crna
-stroke: hsl(0 0% 15-20%) <- jedva vidljiv rub (opcionalno)
-opacity: 0.7 - 0.9       <- za suptilnost
-```
+## Plan popravka
 
----
-
-## Promjene po ilustraciji
-
-### 1. TunnelEntrance
-- Kameni luk: crna silueta luka
-- Tunel: potpuno crn
-- "SRETNO" banner: crna pozadina, suptilni svijetli tekst (jedini kontrast)
-- Drvene grede: crne vertikale
-- Tračnice: crne linije
-
-### 2. MinersWalking
-- Rudari: čiste crne siluete figura
-- Alati: crne forme (krampovi, lopate)
-- Planine: crna masa u pozadini
-- Bez unutarnjih detalja - samo prepoznatljivi oblici
-
-### 3. MineCart
-- Kolica: crna trapezoidna forma
-- Kotači: crni krugovi
-- Ugljen: crna nepravilna masa
-- Rudar: crna silueta
-
-### 4. MiningTools
-- Svi alati: crne ispunjene forme
-- Dekorativne linije: tanke crne linije
-- Bez ornamenata - čisto i minimalistički
-
----
-
-## Tehnička implementacija
-
+### Korak 1: Ažurirati GallerySection.tsx (redak 487)
+Promijeniti:
 ```jsx
-// Stil za sve elemente
-const pureBlackStyle = {
-  fill: "hsl(0 0% 8%)",
-  stroke: "none", // ili minimalni stroke za definiciju
-  opacity: 0.8
-};
-
-// Primjer siluete rudara
-<path 
-  d="M10 5 Q15 2, 18 5 L18 50 L10 50 Z" 
-  fill="hsl(0 0% 8%)"
-  fillOpacity="0.85"
-/>
+className="absolute bottom-4 sm:bottom-6 right-4 sm:right-8 z-20"
+```
+U:
+```jsx
+className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
 ```
 
----
-
-## Vizualni primjer
-
+### Korak 2: Ažurirati LocationSection.tsx (redak 82)
+Promijeniti:
+```jsx
+className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
 ```
-TRENUTNO (woodcut s konturama):
-    ╔═══╗
-   ░║   ║░    <- linije i teksture
-    ╚═══╝
-
-NOVO (pure black):
-    ████
-   █████      <- samo crna forma
-    ████
+U:
+```jsx
+className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
 ```
 
----
+## Tehnički detalji
 
-## Očekivani rezultat
+Ključne klase koje omogućuju ispravno skaliranje:
+- `w-full` - omogućuje elementu da zauzme punu širinu roditelja
+- `max-w-3xl` - ograničava maksimalnu širinu na 768px
+- `left-0 right-0 mx-auto` - centrira element horizontalno
+- `px-4` - dodaje padding s lijeve i desne strane
 
-- **Ultra minimalistički** izgled
-- **Dramatične siluete** na tamnoj pozadini
-- **Elegantna jednostavnost**
-- **"SRETNO"** ostaje čitljiv kao jedini svijetli element
-- Ilustracije djeluju kao **suptilni grafički elementi**
-
----
-
-## Datoteka za izmjenu
-
-**`src/components/MiningIllustration.tsx`**
-
-Promjene:
-1. Ukloniti sve `stroke` atribute ili postaviti na "none"
-2. Postaviti sve `fill` na crnu (`hsl(0 0% 6-10%)`)
-3. Dodati `fillOpacity` 0.7-0.9 za suptilnost
-4. Pojednostaviti pathove - ukloniti unutarnje detalje
-5. Zadržati samo prepoznatljive siluete
-
+Ova promjena osigurava da sve ilustracije imaju identičan layout kao Amenities sekcija koja trenutno ispravno prikazuje ilustraciju.
