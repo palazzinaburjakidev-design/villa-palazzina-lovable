@@ -471,13 +471,6 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             </div>
           </motion.div>
 
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="text-sandstone/80 text-sm sm:text-base max-w-2xl mx-auto mt-4 shrink-0 text-shadow"
-          >
-            {t('gallery.description')}
-          </motion.p>
         </motion.div>
 
         {/* Mining Illustration */}
