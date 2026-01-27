@@ -1,57 +1,185 @@
 
+# Plan: Dodavanje vintage rudarskih ilustracija na sekcije
 
-# Plan: Prikazivanje slika plaža na mobilnim uređajima
+## Pregled
 
-## Problem
-
-Slike plaža su trenutno skrivene na mobilnim uređajima pomoću CSS klase `hidden sm:block`. Ovo znači da se slike prikazuju samo na ekranima širim od 640px.
-
-## Rješenje
-
-Prikazati slike i na mobilnim uređajima, ali s prilagođenim rasporedom koji koristi vertikalni (kolumnski) layout umjesto horizontalnog kako bi se osigurala dobra čitljivost i estetika.
+Implementacija tematskih rudarskih SVG ilustracija u vintage/retro stilu koje ce se prikazivati na donjim rubovima svih sekcija osim Hero sekcije. Ovo ce pojacati "Coal and Stone" vizualni identitet stranice i povezati ga s rudarskom povijescu Labina i Istarske regije.
 
 ---
 
-## Tehnički detalji
+## Vizualni koncept
 
-**Datoteka:** `src/components/sections/LocationBanner.tsx`
+Svaka sekcija ce imati jedinstvenu ilustraciju koja prica pricu:
 
-### Promjene:
-
-1. **Linija 188** - Ukloniti `hidden sm:block` i omogućiti prikaz slike na svim veličinama:
-   - Trenutno: `hidden sm:block flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52`
-   - Novo: `flex-shrink-0 w-24 h-24 sm:w-44 sm:h-44 md:w-52 md:h-52`
-   - Dodana manja veličina (`w-24 h-24` = 96px) za mobilne uređaje
-
-2. **Linija 184** - Promijeniti layout u kolumnski na mobilnim uređajima:
-   - Trenutno: `flex items-center justify-center gap-4 sm:gap-6`
-   - Novo: `flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6`
-   - Na mobilnim ekranima slika će biti iznad teksta
-
-3. **Linija 176** - Povećati visinu kontejnera za mobilne uređaje zbog vertikalnog layouta:
-   - Trenutno: `h-44 sm:h-52 md:h-60`
-   - Novo: `h-56 sm:h-52 md:h-60`
-   - Veća visina na mobilnim ekranima (224px) da stane slika + tekst ispod nje
-
-4. **Linija 198** - Centrirati tekst na mobilnim uređajima:
-   - Tekst ostaje centriran na svim veličinama (već je `text-center`)
-
-### Vizualni prikaz promjene layouta:
-
-**Desktop (sm+):** Horizontalni layout
 ```text
-┌─────────────────────────────────────┐
-│  [SLIKA]  │  Naslov plaže          │
-│           │  Opis i udaljenost     │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                        GALLERY SEKCIJA                          │
+│                         (sadrzaj)                               │
+│                                                                 │
+│    ╭────────────────────────────────────────────────────╮      │
+│    │                    SRETNO                          │      │
+│    ╰────────────────────────────────────────────────────╯      │
+│          ╱▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔╲                │
+│         ╱   (polukruzni ulaz u tunel rudnika)   ╲               │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                       AMENITIES SEKCIJA                         │
+│                         (sadrzaj)                               │
+│                                                                 │
+│      ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲              │
+│     /  🧑‍🏭    🧑‍🏭       🧑‍🏭    🧑‍🏭    🧑‍🏭    🧑‍🏭      🏔️  \             │
+│    (siluete rudara s krampovima kako idu prema rudniku)         │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                       LOCATION SEKCIJA                          │
+│                         (sadrzaj)                               │
+│                                                                 │
+│    ═══════════════════╗                                         │
+│                       ║ ┌──────┐                                │
+│    ═══════════════════╬═│ COAL │══════════════════════          │
+│         (tracnice)      └──────┘ (kolica s ugljem)              │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        ABOUT SEKCIJA                            │
+│                         (sadrzaj)                               │
+│                                                                 │
+│         ⚒️        🪔        ⛏️        🔦        ⚒️               │
+│    (dekorativni border s rudarskim alatima i lampama)           │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-**Mobilni:** Vertikalni layout
+---
+
+## Detalji implementacije
+
+### 1. Nova komponenta: MiningIllustration
+
+**Datoteka:** `src/components/MiningIllustration.tsx`
+
+Centralna komponenta koja sadrzi sve SVG ilustracije:
+
+- `type="tunnel-entrance"` - Polukruzni ulaz u tunel s natpisom "SRETNO"
+- `type="miners-walking"` - Siluete rudara s krampovima
+- `type="mine-cart"` - Rudarska kolica na tracnicama
+- `type="mining-tools"` - Dekorativni border s alatima
+
+Karakteristike:
+- SVG ilustracije u vintage/retro stilu
+- Boje iz postojece palete: `sandstone/20`, `terracotta/15`
+- Responzivne velicine (manje na mobilnim uredajima)
+- Suptilna animacija fade-in kada sekcija postane aktivna
+
+### 2. Azuriranje sekcija
+
+#### GallerySection.tsx
+- Dodati `MiningIllustration type="tunnel-entrance"` na dnu sekcije
+- Pozicioniranje: `absolute bottom-4 left-1/2 -translate-x-1/2`
+- Velicina: sirina 200-300px, visina 60-80px
+
+#### AmenitiesSection.tsx
+- Dodati `MiningIllustration type="miners-walking"` na dnu
+- Pozicioniranje: `absolute bottom-4 left-0 right-0`
+- Velicina: puna sirina sekcije, visina 50-70px
+
+#### LocationSection.tsx
+- Dodati `MiningIllustration type="mine-cart"` na dnu
+- Pozicioniranje: `absolute bottom-4 left-1/2 -translate-x-1/2`
+- Velicina: sirina 250-350px, visina 40-60px
+
+#### AboutSection.tsx
+- Dodati `MiningIllustration type="mining-tools"` iznad footera
+- Pozicioniranje: unutar content area, prije footer elementa
+- Velicina: puna sirina, visina 30-50px
+
+---
+
+## SVG dizajn detalji
+
+### Tunnel Entrance (Gallery)
 ```text
-┌─────────────────────┐
-│       [SLIKA]       │
-│    Naslov plaže     │
-│  Opis i udaljenost  │
-└─────────────────────┘
+Elementi:
+- Polukruzni luk (kao ulaz u tunel)
+- Natpis "SRETNO" na vrhu luka (tradicijski rudarski pozdrav)
+- Drvene grede koje podupiru tunel
+- Suptilna tekstura kamena
 ```
 
+### Miners Walking (Amenities)
+```text
+Elementi:
+- 4-6 silueta rudara u razlicitim pozama
+- Krampovi i lopate u rukama
+- Rudarske kacige/lampe na glavama
+- Hodaju prema desno (prema rudniku)
+- Planinski/brdaski obris u pozadini
+```
+
+### Mine Cart (Location)
+```text
+Elementi:
+- Rudarska kolica (vagonet) napunjena ugljem
+- Tracnice ispod kolica
+- Rudar koji gura kolica (silueta)
+- Komadici ugljena koji ispadaju
+```
+
+### Mining Tools (About)
+```text
+Elementi:
+- Horizontalni dekorativni border
+- Ponavljajuci uzorak: kramp, lampa, lopata, sjekira
+- Vintage ornamenti izmedu alata
+- Suptilna linija iznad i ispod
+```
+
+---
+
+## Stilske smjernice
+
+### Boje
+- Primarna: `sandstone` s 15-25% opacity za mekoci efekt
+- Akcent: `terracotta` s 10-20% opacity za toplinu
+- Stroke: `sandstone/30` za linije i obrube
+
+### Vintage efekti
+- Grubi/nepravilni rubovi (ne savrseno glatki)
+- Minimalne sjene za dubinu
+- Stil koji podsjeca na stare gravure ili drvoreze
+
+### Responzivnost
+- Desktop: Pune ilustracije s detaljima
+- Tablet: Blago smanjene, manje detalja
+- Mobile: Pojednostavljene verzije ili skrivene ako zauzimaju previse prostora
+
+### Animacije
+- `fade-in` animacija kada sekcija postane aktivna (0.5s delay)
+- Suptilan `translateY` za "dizanje" efekt
+- Opciono: blagi parallax efekt pri scrollanju
+
+---
+
+## Datoteke za kreiranje/izmjenu
+
+1. **Kreirati:** `src/components/MiningIllustration.tsx`
+   - Nova komponenta s SVG ilustracijama
+
+2. **Azurirati:** `src/components/sections/GallerySection.tsx`
+   - Dodati tunnel-entrance ilustraciju
+
+3. **Azurirati:** `src/components/sections/AmenitiesSection.tsx`
+   - Dodati miners-walking ilustraciju
+
+4. **Azurirati:** `src/components/sections/LocationSection.tsx`
+   - Dodati mine-cart ilustraciju
+
+5. **Azurirati:** `src/components/sections/AboutSection.tsx`
+   - Dodati mining-tools ilustraciju
+
+---
+
+## Napomena o "SRETNO"
+
+"Sretno" (ili "Sretan put") je tradicionalni rudarski pozdrav koji su rudari koristili pri ulasku u rudnik. To je bio nacin zelenja srece i sigurnog povratka. Ovaj natpis na ulazu u tunel ce dodati autenticnost i povezati villu s lokalnom rudarskom bastinom Labina - grada koji je bio poznat po ugljenokopu.
