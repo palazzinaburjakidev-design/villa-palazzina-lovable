@@ -235,11 +235,13 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       </div>
 
       {/* Photo Attribution */}
-      {isPrimary && (currentCategory.id === 'beaches' || currentCategory.id === 'towns') && (
+      {isPrimary && (currentCategory.id === 'beaches' || currentCategory.id === 'towns') && currentItem.image && (
         <p className="text-center text-[10px] text-sandstone/40 pb-2 italic">
           {currentCategory.id === 'beaches' 
-            ? 'Izvor fotografija: Turistička zajednica Općine Raša, Turistička zajednica Rabac-Labin'
-            : 'Izvor fotografija: Turistička zajednica Rabac-Labin'
+            ? (currentItem.nameKey === 'location.rabacBeaches.title' 
+                ? 'Izvor fotografije: Turistička zajednica Rabac-Labin'
+                : 'Izvor fotografije: Turistička zajednica Općine Raša')
+            : 'Izvor fotografije: Turistička zajednica Rabac-Labin'
           }
         </p>
       )}
