@@ -7,6 +7,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import santaMarinaImg from '@/assets/santa-marina.webp';
 import ravniBeachImg from '@/assets/ravni-beach.jpeg';
 import tunaricaImg from '@/assets/tunarica.webp';
+import rabacBeachImg from '@/assets/rabac-beach.jpg';
+
+// Town images
+import rabacTownImg from '@/assets/rabac-town.jpg';
+import labinOldTownImg from '@/assets/labin-old-town.jpg';
 
 interface LocationItem {
   nameKey: string;
@@ -31,7 +36,7 @@ const categoriesGroup1: Category[] = [
       { nameKey: 'location.ravni.title', descriptionKey: 'location.ravni.description', distanceKey: 'location.ravni.distance', image: ravniBeachImg },
       { nameKey: 'location.tunarica.title', descriptionKey: 'location.tunarica.description', distanceKey: 'location.tunarica.distance', image: tunaricaImg },
       { nameKey: 'location.santaMarina.title', descriptionKey: 'location.santaMarina.description', distanceKey: 'location.santaMarina.distance', image: santaMarinaImg },
-      { nameKey: 'location.rabacBeaches.title', descriptionKey: 'location.rabacBeaches.description', distanceKey: 'location.rabacBeaches.distance' },
+      { nameKey: 'location.rabacBeaches.title', descriptionKey: 'location.rabacBeaches.description', distanceKey: 'location.rabacBeaches.distance', image: rabacBeachImg },
     ],
   },
   {
@@ -39,8 +44,8 @@ const categoriesGroup1: Category[] = [
     labelKey: 'location.category.towns',
     icon: <Building2 className="w-4 h-4" />,
     items: [
-      { nameKey: 'location.labin.title', descriptionKey: 'location.labin.description', distanceKey: 'location.labin.distance' },
-      { nameKey: 'location.rabac.title', descriptionKey: 'location.rabac.description', distanceKey: 'location.rabac.distance' },
+      { nameKey: 'location.labin.title', descriptionKey: 'location.labin.description', distanceKey: 'location.labin.distance', image: labinOldTownImg },
+      { nameKey: 'location.rabac.title', descriptionKey: 'location.rabac.description', distanceKey: 'location.rabac.distance', image: rabacTownImg },
       { nameKey: 'location.rovinj.title', descriptionKey: 'location.rovinj.description', distanceKey: 'location.rovinj.distance' },
       { nameKey: 'location.pula.title', descriptionKey: 'location.pula.description', distanceKey: 'location.pula.distance' },
     ],
@@ -229,10 +234,13 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
         ))}
       </div>
 
-      {/* Photo Attribution - only when beaches category is active */}
-      {isPrimary && currentCategory.id === 'beaches' && (
+      {/* Photo Attribution - for beaches and towns categories */}
+      {isPrimary && (currentCategory.id === 'beaches' || currentCategory.id === 'towns') && (
         <p className="text-center text-[10px] text-sandstone/40 pb-2 italic">
-          Izvor fotografija: Turistička zajednica Općine Raša
+          {currentCategory.id === 'beaches' 
+            ? 'Izvor fotografija: Turistička zajednica Općine Raša, Turistička zajednica Rabac-Labin'
+            : 'Izvor fotografija: Turistička zajednica Rabac-Labin'
+          }
         </p>
       )}
     </div>
