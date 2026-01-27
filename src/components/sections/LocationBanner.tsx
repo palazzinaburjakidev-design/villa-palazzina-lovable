@@ -229,8 +229,8 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
         ))}
       </div>
 
-      {/* Photo Attribution - only for primary group with beach photos */}
-      {isPrimary && (
+      {/* Photo Attribution - only when beaches category is active */}
+      {isPrimary && currentCategory.id === 'beaches' && (
         <p className="text-center text-[10px] text-sandstone/40 pb-2 italic">
           Izvor fotografija: Turistička zajednica Općine Raša
         </p>
