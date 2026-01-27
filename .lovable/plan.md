@@ -1,14 +1,14 @@
 
-# Plan: Popravak izgleda primarnog Location bannera
+
+# Plan: Prikazivanje slika plaža na mobilnim uređajima
 
 ## Problem
-Trenutno slika plaže prelazi granice kontejnera jer:
-- Kontejner ima fiksnu visinu `h-40 sm:h-48` (~160-192px)
-- Slika ima dimenzije `w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56` (~160-224px)
-- Na `md` breakpointu slika je 224px visoka ali kontejner samo 192px
+
+Slike plaža su trenutno skrivene na mobilnim uređajima pomoću CSS klase `hidden sm:block`. Ovo znači da se slike prikazuju samo na ekranima širim od 640px.
 
 ## Rješenje
-Povećati visinu kontejnera za primarnu grupu da odgovara veličini slike, te dodati padding za čist izgled.
+
+Prikazati slike i na mobilnim uređajima, ali s prilagođenim rasporedom koji koristi vertikalni (kolumnski) layout umjesto horizontalnog kako bi se osigurala dobra čitljivost i estetika.
 
 ---
 
@@ -16,18 +16,42 @@ Povećati visinu kontejnera za primarnu grupu da odgovara veličini slike, te do
 
 **Datoteka:** `src/components/sections/LocationBanner.tsx`
 
-**Promjene:**
+### Promjene:
 
-1. **Linija 163** - Povećati visinu banner content kontejnera za primarnu grupu:
-   - Trenutno: `h-40 sm:h-48`
-   - Novo: `h-44 sm:h-52 md:h-60` (176px / 208px / 240px)
-   - Ovo daje dovoljno prostora za sliku (224px na md) plus malo paddinga
+1. **Linija 188** - Ukloniti `hidden sm:block` i omogućiti prikaz slike na svim veličinama:
+   - Trenutno: `hidden sm:block flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52`
+   - Novo: `flex-shrink-0 w-24 h-24 sm:w-44 sm:h-44 md:w-52 md:h-52`
+   - Dodana manja veličina (`w-24 h-24` = 96px) za mobilne uređaje
 
-2. **Linija 175** - Smanjiti veličinu slike da stane u kontejner:
-   - Trenutno: `w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56`
-   - Novo: `w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52` (144px / 176px / 208px)
-   - Ovo osigurava da slika uvijek stane unutar kontejnera s marginom
+2. **Linija 184** - Promijeniti layout u kolumnski na mobilnim uređajima:
+   - Trenutno: `flex items-center justify-center gap-4 sm:gap-6`
+   - Novo: `flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6`
+   - Na mobilnim ekranima slika će biti iznad teksta
 
-Alternativno, ako želite zadržati trenutnu veličinu slike:
-- Linija 163: Promjena na `h-48 sm:h-56 md:h-64` (192px / 224px / 256px)
+3. **Linija 176** - Povećati visinu kontejnera za mobilne uređaje zbog vertikalnog layouta:
+   - Trenutno: `h-44 sm:h-52 md:h-60`
+   - Novo: `h-56 sm:h-52 md:h-60`
+   - Veća visina na mobilnim ekranima (224px) da stane slika + tekst ispod nje
+
+4. **Linija 198** - Centrirati tekst na mobilnim uređajima:
+   - Tekst ostaje centriran na svim veličinama (već je `text-center`)
+
+### Vizualni prikaz promjene layouta:
+
+**Desktop (sm+):** Horizontalni layout
+```text
+┌─────────────────────────────────────┐
+│  [SLIKA]  │  Naslov plaže          │
+│           │  Opis i udaljenost     │
+└─────────────────────────────────────┘
+```
+
+**Mobilni:** Vertikalni layout
+```text
+┌─────────────────────┐
+│       [SLIKA]       │
+│    Naslov plaže     │
+│  Opis i udaljenost  │
+└─────────────────────┘
+```
 
