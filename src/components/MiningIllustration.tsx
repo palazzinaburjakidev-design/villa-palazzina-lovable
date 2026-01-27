@@ -133,112 +133,164 @@ const TunnelEntrance = memo(() => (
   </div>
 ));
 
-// Miners walking - Pure black silhouettes with full-width ground
+// Miners walking - Pure black silhouettes with full-width rails and wagon
 const MinersWalking = memo(() => (
   <div className="relative w-full">
-    {/* Full-width ground line */}
+    {/* Full-width rails */}
     <svg
-      viewBox="0 0 1920 10"
+      viewBox="0 0 1920 20"
       className="absolute bottom-0 left-0 w-[200vw] -translate-x-1/2 h-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
     >
-      <path d="M0 5 L1920 5" stroke={subtleStroke} strokeWidth="2" fill="none" />
+      <path d="M0 8 L1920 8" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      <path d="M0 16 L1920 16" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      {/* Rail ties */}
+      {[...Array(80)].map((_, i) => (
+        <rect
+          key={i}
+          x={10 + i * 24}
+          y="6"
+          width="6"
+          height="12"
+          fill={darkFill}
+          fillOpacity="0.7"
+        />
+      ))}
     </svg>
     
-    {/* Miners and content */}
+    {/* Miners, wagon and content */}
     <svg
-      viewBox="0 0 400 70"
-      className="relative w-full h-auto max-w-2xl mx-auto"
+      viewBox="0 0 520 70"
+      className="relative w-full h-auto max-w-3xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMax meet"
     >
       {/* Mountain silhouette - pure black mass */}
       <path 
-        d="M0 68 L30 52 L60 58 L95 42 L130 50 L170 35 L210 45 L255 30 L295 38 L340 32 L380 42 L400 48 L400 70 L0 70 Z" 
+        d="M0 68 L30 52 L60 58 L95 42 L130 50 L170 35 L210 45 L255 30 L295 38 L340 32 L380 42 L420 38 L460 45 L500 40 L520 48 L520 70 L0 70 Z" 
         fill={pureBlackFill}
         fillOpacity="0.95"
       />
       
-      {/* Miner 1 - walking with pickaxe on shoulder */}
-      <g transform="translate(20, 8)">
+      {/* Wagon 1 - on the left */}
+      <g transform="translate(5, 18)">
+        {/* Cart body */}
+        <path 
+          d="M2 42 L8 18 L48 18 L54 42 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        {/* Coal pile */}
+        <path 
+          d="M10 18 L15 8 Q28 4, 40 8 L46 18 Z" 
+          fill="hsl(0 0% 2%)"
+          fillOpacity="1"
+        />
+        {/* Wheels */}
+        <circle cx="14" cy="46" r="6" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="42" cy="46" r="6" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 1 - pushing first wagon */}
+      <g transform="translate(55, 8)">
+        <path 
+          d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L20 18 Q22 20, 22 24 L26 32 Q28 42, 24 52 L20 52 L21 40 L18 52 L14 52 L17 38 L14 28 L8 32 L6 28 L12 22 Q10 18, 12 16 L8 10 Z" 
+          fill={pureBlackFill}
+          fillOpacity="1"
+        />
+        <ellipse cx="12" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+        {/* Arms pushing */}
+        <path d="M6 28 L-8 36" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+      </g>
+      
+      {/* Wagon 2 - in the middle */}
+      <g transform="translate(95, 18)">
+        {/* Cart body */}
+        <path 
+          d="M2 42 L8 18 L48 18 L54 42 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        {/* Coal pile */}
+        <path 
+          d="M10 18 L14 10 Q28 5, 42 10 L46 18 Z" 
+          fill="hsl(0 0% 2%)"
+          fillOpacity="1"
+        />
+        {/* Wheels */}
+        <circle cx="14" cy="46" r="6" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="42" cy="46" r="6" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 2 - walking with pickaxe on shoulder */}
+      <g transform="translate(160, 8)">
         <path 
           d="M12 8 Q15 5, 18 7 Q20 9, 19 13 L19 16 Q21 18, 19 20 L21 26 L23 38 Q24 48, 22 55 L18 55 L20 42 L16 55 L12 55 L15 40 L13 26 L9 32 L7 28 L11 22 Q9 20, 11 18 L12 8 Z" 
           fill={pureBlackFill}
           fillOpacity="1"
         />
-        {/* Head */}
         <ellipse cx="15" cy="7" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
-        {/* Pickaxe on shoulder - horizontal */}
         <path d="M8 14 L28 10" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
         <path d="M26 7 L32 12 L28 16 Z" fill={darkFill} fillOpacity="1" />
       </g>
       
-      {/* Miner 2 - hands at sides, walking */}
-      <g transform="translate(85, 6)">
+      {/* Miner 3 - hands at sides */}
+      <g transform="translate(220, 6)">
         <path 
           d="M12 10 Q15 7, 18 9 Q20 11, 19 15 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 50, 21 57 L17 57 L19 44 L15 57 L11 57 L14 42 L12 28 L8 38 L6 36 L10 26 Q8 22, 10 20 L12 10 Z" 
           fill={pureBlackFill}
           fillOpacity="0.98"
         />
-        {/* Head with cap */}
         <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
         <path d="M10 7 L20 7 L18 4 L12 4 Z" fill={pureBlackFill} fillOpacity="1" />
       </g>
       
-      {/* Miner 3 - carrying shovel low */}
-      <g transform="translate(155, 10)">
+      {/* Miner 4 - carrying shovel low */}
+      <g transform="translate(280, 10)">
         <path 
           d="M12 8 Q15 5, 18 7 Q20 9, 19 13 L19 16 Q21 18, 19 20 L20 26 L22 36 Q23 46, 21 53 L17 53 L19 40 L15 53 L11 53 L14 38 L12 26 L6 30 L4 28 L10 22 Q8 20, 10 18 L12 8 Z" 
           fill={pureBlackFill}
           fillOpacity="0.96"
         />
-        {/* Head */}
         <ellipse cx="15" cy="7" rx="5" ry="4" fill={darkFill} fillOpacity="0.98" />
-        {/* Shovel carried low */}
         <path d="M6 30 L-4 48" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
         <ellipse cx="-6" cy="50" rx="5" ry="3" fill={darkFill} fillOpacity="0.96" transform="rotate(70, -6, 50)" />
       </g>
       
-      {/* Miner 4 - lantern in lowered hand */}
-      <g transform="translate(225, 7)">
+      {/* Miner 5 - lantern in lowered hand */}
+      <g transform="translate(340, 7)">
         <path 
           d="M12 10 Q15 7, 18 9 Q20 11, 19 15 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 50, 21 56 L17 56 L19 43 L15 56 L11 56 L14 41 L12 28 L8 40 L6 38 L10 26 Q8 22, 10 20 L12 10 Z" 
           fill={pureBlackFill}
           fillOpacity="0.98"
         />
-        {/* Head */}
         <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
-        {/* Lantern hanging from lowered arm */}
         <rect x="4" y="42" width="6" height="10" fill={darkFill} fillOpacity="1" />
       </g>
       
-      {/* Miner 5 - bent forward, tired pose */}
-      <g transform="translate(295, 12)">
+      {/* Miner 6 - bent forward, tired pose */}
+      <g transform="translate(400, 12)">
         <path 
           d="M14 6 Q17 4, 20 6 Q22 8, 21 12 L22 15 Q24 17, 22 19 L24 24 L28 34 Q30 44, 26 51 L22 51 L25 40 L20 51 L16 51 L20 38 L18 24 L12 28 L10 26 L16 20 Q14 18, 16 16 L14 6 Z" 
           fill={pureBlackFill}
           fillOpacity="0.95"
         />
-        {/* Head tilted forward */}
         <ellipse cx="17" cy="5" rx="5" ry="4" fill={darkFill} fillOpacity="0.97" transform="rotate(15, 17, 5)" />
-        {/* Pickaxe dragging */}
         <path d="M12 28 L2 38" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
         <path d="M0 36 L-4 42 L2 44 Z" fill={darkFill} fillOpacity="0.95" />
       </g>
       
       {/* Mine entrance - pure black arch */}
-      <g transform="translate(360, 0)">
+      <g transform="translate(460, 0)">
         <path 
           d="M0 65 L0 45 Q0 32, 18 30 Q36 32, 36 45 L36 65 L32 65 L32 46 Q32 36, 18 34 Q4 36, 4 46 L4 65 Z" 
           fill={pureBlackFill}
           fillOpacity="0.95"
         />
-        {/* Inner darkness */}
         <path d="M6 65 L6 48 Q6 38, 18 36 Q30 38, 30 48 L30 65 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
-        {/* Beams */}
         <rect x="4" y="44" width="4" height="21" fill={darkFill} fillOpacity="0.98" />
         <rect x="28" y="44" width="4" height="21" fill={darkFill} fillOpacity="0.98" />
       </g>
