@@ -81,7 +81,7 @@ const TunnelEntrance = memo(() => (
     {/* Full scene with tunnel, wagons and miners */}
     <svg
       viewBox="0 0 480 100"
-      className="relative w-full h-auto max-w-2xl mx-auto"
+      className="relative w-full h-auto max-w-3xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMax meet"
@@ -390,7 +390,7 @@ const MineCart = memo(() => (
     {/* Full scene with carts and miners */}
     <svg
       viewBox="0 0 450 80"
-      className="relative w-full h-auto max-w-xl mx-auto"
+      className="relative w-full h-auto max-w-3xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMax meet"
@@ -498,7 +498,7 @@ const MiningTools = memo(() => (
     {/* Tools and wagons content */}
     <svg
       viewBox="0 0 520 60"
-      className="relative w-full h-auto max-w-2xl mx-auto"
+      className="relative w-full h-auto max-w-3xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMax meet"
