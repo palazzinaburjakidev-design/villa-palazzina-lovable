@@ -214,7 +214,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       </div>
 
       {/* Progress Indicators */}
-      <div className="flex justify-center gap-1.5 pb-3">
+      <div className="flex justify-center gap-1.5 pb-2">
         {currentCategory.items.map((_, index) => (
           <button
             key={index}
@@ -228,6 +228,13 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
           />
         ))}
       </div>
+
+      {/* Photo Attribution - only for primary group with beach photos */}
+      {isPrimary && (
+        <p className="text-center text-[10px] text-sandstone/40 pb-2 italic">
+          Izvor fotografija: Turistička zajednica Općine Raša
+        </p>
+      )}
     </div>
   );
 });
