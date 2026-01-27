@@ -1007,6 +1007,49 @@ export const translations: Translations = {
     it: 'Il Tuo Host',
     de: 'Ihr Gastgeber',
   },
+  // FAQ Section
+  'faq.title': {
+    en: 'Frequently Asked Questions',
+    hr: 'Najčešća pitanja gostiju',
+    it: 'Domande frequenti degli ospiti',
+    de: 'Häufig gestellte Fragen',
+  },
+  'faq.pool.question': {
+    en: 'Is the pool private?',
+    hr: 'Je li bazen privatan?',
+    it: 'La piscina è privata?',
+    de: 'Ist der Pool privat?',
+  },
+  'faq.pool.answer': {
+    en: 'Yes, the pool is completely private and exclusively for villa guests.',
+    hr: 'Da, bazen je u potpunosti privatan i namijenjen isključivo gostima vile.',
+    it: 'Sì, la piscina è completamente privata e riservata esclusivamente agli ospiti della villa.',
+    de: 'Ja, der Pool ist vollständig privat und ausschließlich für Villengäste bestimmt.',
+  },
+  'faq.kitchen.question': {
+    en: 'Is the kitchen fully equipped?',
+    hr: 'Je li kuhinja potpuno opremljena?',
+    it: 'La cucina è completamente attrezzata?',
+    de: 'Ist die Küche voll ausgestattet?',
+  },
+  'faq.kitchen.answer': {
+    en: 'Yes, the kitchen is fully equipped for everyday meal preparation.',
+    hr: 'Da, kuhinja je u potpunosti opremljena za svakodnevnu pripremu obroka.',
+    it: 'Sì, la cucina è completamente attrezzata per la preparazione quotidiana dei pasti.',
+    de: 'Ja, die Küche ist vollständig für die tägliche Zubereitung von Mahlzeiten ausgestattet.',
+  },
+  'faq.towels.question': {
+    en: 'Are towels and bed linen included?',
+    hr: 'Jesu li ručnici i posteljina uključeni?',
+    it: 'Asciugamani e biancheria da letto sono inclusi?',
+    de: 'Sind Handtücher und Bettwäsche inklusive?',
+  },
+  'faq.towels.answer': {
+    en: 'Yes, guests are provided with towels and bed linen for the entire stay.',
+    hr: 'Da, gostima su osigurani ručnici i posteljina za cijeli boravak.',
+    it: 'Sì, gli ospiti ricevono asciugamani e biancheria da letto per tutto il soggiorno.',
+    de: 'Ja, den Gästen werden Handtücher und Bettwäsche für den gesamten Aufenthalt zur Verfügung gestellt.',
+  },
   'contact.title': {
     en: 'Get in Touch',
     hr: 'Kontaktirajte Nas',
