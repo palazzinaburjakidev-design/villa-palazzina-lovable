@@ -49,6 +49,9 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
 
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
+      
+      {/* Bottom fade to black */}
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-coal via-coal/60 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 pt-16 sm:pt-20 pb-24 sm:pb-32">
