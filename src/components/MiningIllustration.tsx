@@ -46,13 +46,13 @@ const MiningIllustration = memo(({ type, isActive = true, className = '' }: Mini
   );
 });
 
-// Sketch style stroke properties
-const sketchStroke = {
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
+// Woodcut style stroke properties - sharp edges like carved wood
+const woodcutStroke = {
+  strokeLinecap: "square" as const,
+  strokeLinejoin: "miter" as const,
 };
 
-// Tunnel entrance with "SRETNO" sign - Gallery section - Sketch style
+// Tunnel entrance with "SRETNO" sign - Gallery section - Woodcut/Linocut style
 const TunnelEntrance = memo(() => (
   <svg
     viewBox="0 0 300 100"
@@ -61,78 +61,101 @@ const TunnelEntrance = memo(() => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      <filter id="textShadowSketch" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="1" stdDeviation="0.5" floodColor="hsl(0 0% 0%)" floodOpacity="0.6"/>
+      {/* Hatching pattern for woodcut texture */}
+      <pattern id="woodcutHatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="4" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" />
+      </pattern>
+      <filter id="textShadowWoodcut" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="1" stdDeviation="0.3" floodColor="hsl(0 0% 0%)" floodOpacity="0.8"/>
       </filter>
     </defs>
     
-    {/* Ground - sketchy wavy lines */}
-    <path d="M5 94 Q40 92, 80 95 Q120 93, 160 96 Q200 92, 240 95 Q280 93, 295 94" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-    <path d="M0 96 Q50 98, 100 95 Q150 97, 200 94 Q250 97, 300 95" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Ground - solid carved lines */}
+    <path d="M0 94 L300 94" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="3" fill="none" {...woodcutStroke} />
+    <path d="M10 96 L290 96" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...woodcutStroke} />
     
-    {/* Tunnel arch - multiple sketchy lines for hand-drawn effect */}
-    {/* Main arch outline - primary stroke */}
-    <path d="M62 94 Q61 70, 63 52 Q70 20, 150 18 Q230 20, 238 52 Q240 70, 239 94" stroke="hsl(35 25% 75% / 0.45)" strokeWidth="2.5" fill="none" {...sketchStroke} />
-    {/* Secondary sketch line - offset */}
-    <path d="M65 93 Q63 68, 66 50 Q75 22, 150 20 Q225 22, 235 50 Q238 68, 236 93" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-    {/* Inner arch darkness */}
-    <path d="M78 94 Q77 65, 80 48 Q90 28, 150 26 Q210 28, 220 48 Q223 65, 222 94" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="hsl(0 0% 5% / 0.85)" {...sketchStroke} />
+    {/* Outer stone arch - solid silhouette */}
+    <path 
+      d="M55 94 L55 55 Q55 20, 150 15 Q245 20, 245 55 L245 94 L230 94 L230 52 Q230 28, 150 25 Q70 28, 70 52 L70 94 Z" 
+      fill="hsl(35 25% 75% / 0.7)" 
+      stroke="hsl(35 25% 75% / 0.9)" 
+      strokeWidth="3" 
+      {...woodcutStroke} 
+    />
     
-    {/* Stone texture - quick sketch marks */}
-    <path d="M68 78 Q72 76, 76 78" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M70 62 Q75 60, 80 63" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M224 78 Q228 75, 232 77" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M220 62 Q226 59, 230 62" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M100 24 Q110 22, 120 25" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M180 24 Q192 21, 200 24" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Inner tunnel darkness - deep black */}
+    <path 
+      d="M78 94 L78 55 Q78 32, 150 28 Q222 32, 222 55 L222 94 Z" 
+      fill="hsl(0 0% 3%)" 
+      stroke="hsl(35 25% 75% / 0.5)" 
+      strokeWidth="2" 
+      {...woodcutStroke} 
+    />
     
-    {/* Wooden beams - sketchy lines with cross-hatching */}
-    {/* Left beam */}
-    <path d="M71 94 Q69 70, 72 48" stroke="hsl(25 35% 50% / 0.5)" strokeWidth="4" fill="none" {...sketchStroke} />
-    <path d="M68 90 Q67 72, 69 55" stroke="hsl(25 35% 40% / 0.25)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M74 85 Q73 70, 75 58" stroke="hsl(25 35% 40% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Stone texture - parallel carved lines */}
+    <path d="M58 85 L68 85" stroke="hsl(35 25% 60% / 0.5)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M58 75 L68 75" stroke="hsl(35 25% 60% / 0.4)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M58 65 L68 65" stroke="hsl(35 25% 60% / 0.4)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M232 85 L242 85" stroke="hsl(35 25% 60% / 0.5)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M232 75 L242 75" stroke="hsl(35 25% 60% / 0.4)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M232 65 L242 65" stroke="hsl(35 25% 60% / 0.4)" strokeWidth="2" {...woodcutStroke} />
     
-    {/* Right beam */}
-    <path d="M229 94 Q231 70, 228 48" stroke="hsl(25 35% 50% / 0.5)" strokeWidth="4" fill="none" {...sketchStroke} />
-    <path d="M226 90 Q228 72, 225 55" stroke="hsl(25 35% 40% / 0.25)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M232 85 Q234 70, 231 58" stroke="hsl(25 35% 40% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Keystone texture */}
+    <path d="M140 18 L160 18" stroke="hsl(35 25% 60% / 0.4)" strokeWidth="2" {...woodcutStroke} />
+    <path d="M135 22 L165 22" stroke="hsl(35 25% 60% / 0.3)" strokeWidth="1.5" {...woodcutStroke} />
     
-    {/* Cross beam - sketchy curve */}
-    <path d="M68 48 Q110 38, 150 36 Q190 38, 232 48" stroke="hsl(25 35% 50% / 0.5)" strokeWidth="4" fill="none" {...sketchStroke} />
-    <path d="M72 46 Q115 37, 150 35 Q185 37, 228 46" stroke="hsl(25 35% 40% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Wooden beam left - solid filled rectangle */}
+    <rect x="72" y="45" width="8" height="49" fill="hsl(25 35% 40% / 0.8)" stroke="hsl(25 35% 50% / 0.9)" strokeWidth="2" {...woodcutStroke} />
+    {/* Wood grain lines */}
+    <path d="M74 50 L74 90" stroke="hsl(25 35% 30% / 0.5)" strokeWidth="1.5" {...woodcutStroke} />
+    <path d="M78 48 L78 92" stroke="hsl(25 35% 30% / 0.4)" strokeWidth="1" {...woodcutStroke} />
     
-    {/* SRETNO banner - hand-drawn rectangle */}
-    <path d="M96 4 Q148 2, 204 4 Q206 15, 204 26 Q150 28, 96 26 Q94 15, 96 4" stroke="hsl(35 25% 70% / 0.5)" strokeWidth="1.5" fill="hsl(25 35% 35% / 0.85)" {...sketchStroke} />
-    {/* Inner border sketch */}
-    <path d="M100 7 Q150 6, 200 7 Q201 15, 200 23 Q150 24, 100 23 Q99 15, 100 7" stroke="hsl(35 25% 70% / 0.25)" strokeWidth="0.5" fill="none" {...sketchStroke} />
+    {/* Wooden beam right - solid filled rectangle */}
+    <rect x="220" y="45" width="8" height="49" fill="hsl(25 35% 40% / 0.8)" stroke="hsl(25 35% 50% / 0.9)" strokeWidth="2" {...woodcutStroke} />
+    {/* Wood grain lines */}
+    <path d="M222 50 L222 90" stroke="hsl(25 35% 30% / 0.5)" strokeWidth="1.5" {...woodcutStroke} />
+    <path d="M226 48 L226 92" stroke="hsl(25 35% 30% / 0.4)" strokeWidth="1" {...woodcutStroke} />
     
-    {/* SRETNO text - slightly tilted for hand-written feel */}
+    {/* Cross beam - solid filled */}
+    <path 
+      d="M68 42 Q150 32, 232 42 L232 48 Q150 38, 68 48 Z" 
+      fill="hsl(25 35% 40% / 0.85)" 
+      stroke="hsl(25 35% 50% / 0.9)" 
+      strokeWidth="2" 
+      {...woodcutStroke} 
+    />
+    
+    {/* SRETNO banner - solid filled with thick border */}
+    <rect x="95" y="2" width="110" height="26" fill="hsl(25 35% 30% / 0.95)" stroke="hsl(35 25% 70% / 0.8)" strokeWidth="3" {...woodcutStroke} />
+    {/* Inner border */}
+    <rect x="100" y="6" width="100" height="18" fill="none" stroke="hsl(35 25% 70% / 0.4)" strokeWidth="1.5" {...woodcutStroke} />
+    
+    {/* SRETNO text - bold carved letters */}
     <text
       x="150"
-      y="19"
+      y="20"
       textAnchor="middle"
       className="font-display"
-      fill="hsl(35 30% 88%)"
-      fontSize="13"
-      fontWeight="600"
-      letterSpacing="3"
-      filter="url(#textShadowSketch)"
-      transform="rotate(-1, 150, 19)"
+      fill="hsl(35 30% 90%)"
+      fontSize="14"
+      fontWeight="700"
+      letterSpacing="4"
+      filter="url(#textShadowWoodcut)"
     >
       SRETNO
     </text>
     
-    {/* Rails - sketchy wavy lines */}
-    <path d="M112 94 Q118 85, 125 76 Q130 72, 134 70" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2" fill="none" {...sketchStroke} />
-    <path d="M188 94 Q182 85, 175 76 Q170 72, 166 70" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2" fill="none" {...sketchStroke} />
+    {/* Rails - thick solid lines */}
+    <path d="M112 94 L132 72" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="4" fill="none" {...woodcutStroke} />
+    <path d="M188 94 L168 72" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="4" fill="none" {...woodcutStroke} />
     
-    {/* Rail ties - quick sketch marks */}
-    <path d="M118 86 Q150 85, 182 86" stroke="hsl(25 35% 50% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-    <path d="M124 80 Q150 79, 176 80" stroke="hsl(25 35% 50% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Rail ties - solid blocks */}
+    <rect x="116" y="84" width="68" height="4" fill="hsl(25 35% 40% / 0.6)" {...woodcutStroke} />
+    <rect x="126" y="78" width="48" height="3" fill="hsl(25 35% 40% / 0.5)" {...woodcutStroke} />
   </svg>
 ));
 
-// Miners walking - Sketch style gestural figures
+// Miners walking - Woodcut style solid silhouettes
 const MinersWalking = memo(() => (
   <svg
     viewBox="0 0 400 70"
@@ -141,101 +164,127 @@ const MinersWalking = memo(() => (
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMax meet"
   >
-    {/* Mountain silhouette - quick sketchy strokes */}
-    <path d="M2 68 Q15 55, 35 58 Q55 48, 80 52 Q110 42, 145 48 Q180 38, 210 44 Q250 32, 290 40 Q330 35, 365 42 Q385 38, 398 48" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-    <path d="M0 70 Q20 58, 45 60 Q75 50, 120 54 Q160 40, 200 46 Q245 35, 285 42 Q325 36, 360 44 Q390 40, 400 50" stroke="hsl(35 25% 75% / 0.1)" strokeWidth="1" fill="none" {...sketchStroke} />
+    <defs>
+      {/* Hatching pattern for mountains */}
+      <pattern id="mountainHatch" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(60)">
+        <line x1="0" y1="0" x2="0" y2="5" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" />
+      </pattern>
+    </defs>
     
-    {/* Ground line - organic sketch */}
-    <path d="M0 66 Q80 64, 160 66 Q240 68, 320 65 Q360 67, 400 65" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Mountain silhouette - solid filled with hatching */}
+    <path 
+      d="M0 68 L30 52 L60 58 L95 42 L130 50 L170 35 L210 45 L255 30 L295 38 L340 32 L380 42 L400 48 L400 70 L0 70 Z" 
+      fill="url(#mountainHatch)" 
+      stroke="hsl(35 25% 75% / 0.3)" 
+      strokeWidth="2" 
+      {...woodcutStroke} 
+    />
     
-    {/* Miner 1 - gestural sketch walking right */}
-    <g transform="translate(25, 12)">
-      {/* Helmet - quick circle */}
-      <path d="M5 6 Q8 2, 14 3 Q16 5, 15 8 Q12 10, 6 9 Q4 7, 5 6" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Lamp */}
-      <circle cx="16" cy="5" r="2" stroke="hsl(25 35% 55% / 0.45)" strokeWidth="1" fill="none" />
-      {/* Head sketch */}
-      <path d="M7 10 Q10 8, 13 10 Q14 14, 10 15 Q6 14, 7 10" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Body - quick gestural line */}
-      <path d="M10 15 Q12 22, 14 32" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...sketchStroke} />
-      {/* Arms with pickaxe over shoulder */}
-      <path d="M11 18 Q6 22, 4 26" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M11 18 Q18 16, 28 10" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Pickaxe head - quick strokes */}
-      <path d="M26 7 Q30 9, 28 13" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Legs - walking stride */}
-      <path d="M14 32 Q10 42, 6 52" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M14 32 Q18 42, 22 50" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Ground line - thick solid */}
+    <path d="M0 65 L400 65" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="3" fill="none" {...woodcutStroke} />
+    
+    {/* Miner 1 - solid silhouette walking right */}
+    <g transform="translate(20, 8)">
+      {/* Body silhouette - filled shape */}
+      <path 
+        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 34 Q24 44, 20 55 L16 55 L17 40 L14 55 L10 55 L13 38 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        fill="hsl(35 25% 75% / 0.7)" 
+        stroke="hsl(35 25% 75% / 0.9)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      {/* Helmet with lamp */}
+      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill="hsl(35 25% 65% / 0.8)" stroke="hsl(35 25% 75% / 0.9)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="18" cy="5" r="3" fill="hsl(25 35% 55% / 0.8)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="1.5" />
+      {/* Pickaxe over shoulder */}
+      <path d="M12 16 L28 4" stroke="hsl(25 35% 50% / 0.8)" strokeWidth="3" {...woodcutStroke} />
+      <path d="M26 2 L32 6 L28 10" fill="hsl(35 25% 70% / 0.7)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="2" {...woodcutStroke} />
     </g>
     
-    {/* Miner 2 - walking right with shovel */}
-    <g transform="translate(90, 10)">
-      <path d="M6 6 Q10 3, 14 5 Q15 8, 13 10 Q8 11, 6 8 Q5 6, 6 6" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="15" cy="6" r="1.8" stroke="hsl(25 35% 55% / 0.4)" strokeWidth="1" fill="none" />
-      <path d="M8 11 Q11 10, 12 12 Q12 16, 9 17 Q6 16, 8 11" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M10 17 Q13 26, 15 35" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M11 20 Q5 25, 3 30" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M11 20 Q20 22, 28 18" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Shovel head */}
-      <ellipse cx="30" cy="16" rx="4" ry="2.5" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" transform="rotate(-15, 30, 16)" />
-      <path d="M15 35 Q10 45, 7 54" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M15 35 Q20 45, 24 53" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Miner 2 - solid silhouette with shovel */}
+    <g transform="translate(85, 6)">
+      <path 
+        d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L18 16 Q20 18, 18 20 L20 24 L22 36 Q24 46, 20 57 L16 57 L17 42 L14 57 L10 57 L13 40 L10 24 L6 30 L4 26 L8 20 Q6 18, 8 16 L8 10 Z" 
+        fill="hsl(35 25% 75% / 0.65)" 
+        stroke="hsl(35 25% 75% / 0.85)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      <path d="M7 10 Q10 4, 17 7 L18 10 Q12 12, 8 11 Z" fill="hsl(35 25% 65% / 0.75)" stroke="hsl(35 25% 75% / 0.85)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="18" cy="7" r="2.5" fill="hsl(25 35% 55% / 0.7)" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="1.5" />
+      {/* Shovel */}
+      <path d="M14 18 L32 12" stroke="hsl(25 35% 50% / 0.75)" strokeWidth="3" {...woodcutStroke} />
+      <ellipse cx="34" cy="10" rx="5" ry="3" fill="hsl(35 25% 70% / 0.6)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="1.5" transform="rotate(-15, 34, 10)" />
     </g>
     
-    {/* Miner 3 - walking right, pickaxe resting */}
-    <g transform="translate(160, 14)">
-      <path d="M5 5 Q9 2, 13 4 Q14 7, 12 9 Q7 10, 5 7 Q4 5, 5 5" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="14" cy="5" r="1.8" stroke="hsl(25 35% 55% / 0.35)" strokeWidth="1" fill="none" />
-      <path d="M7 10 Q10 9, 11 11 Q11 14, 8 15 Q5 14, 7 10" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M9 15 Q11 23, 12 30" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M10 18 Q4 22, 2 27" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M10 18 Q15 15, 18 12" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M16 10 Q22 4, 28 0" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M26 -2 Q30 0, 28 4" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M12 30 Q8 40, 5 50" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M12 30 Q16 40, 20 48" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Miner 3 - solid silhouette with pickaxe down */}
+    <g transform="translate(155, 10)">
+      <path 
+        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 32 Q24 42, 20 53 L16 53 L17 38 L14 53 L10 53 L13 36 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        fill="hsl(35 25% 75% / 0.6)" 
+        stroke="hsl(35 25% 75% / 0.8)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill="hsl(35 25% 65% / 0.7)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="18" cy="5" r="2.5" fill="hsl(25 35% 55% / 0.65)" stroke="hsl(35 25% 75% / 0.55)" strokeWidth="1.5" />
+      {/* Pickaxe resting */}
+      <path d="M10 18 L24 8" stroke="hsl(25 35% 50% / 0.7)" strokeWidth="3" {...woodcutStroke} />
+      <path d="M22 6 L28 8 L26 14" fill="hsl(35 25% 70% / 0.6)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="1.5" {...woodcutStroke} />
     </g>
     
-    {/* Miner 4 - walking right with lantern */}
-    <g transform="translate(230, 12)">
-      <path d="M6 5 Q10 2, 14 4 Q15 7, 13 9 Q8 10, 6 7 Q5 5, 6 5" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="15" cy="5" r="1.8" stroke="hsl(25 35% 55% / 0.45)" strokeWidth="1" fill="none" />
-      <path d="M8 10 Q11 9, 12 11 Q12 14, 9 15 Q6 14, 8 10" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M10 15 Q13 24, 14 33" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M11 18 Q5 22, 3 28" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M11 18 Q18 22, 22 26" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Lantern - sketchy rectangle */}
-      <path d="M21 24 Q25 23, 26 26 Q26 32, 24 34 Q20 34, 19 30 Q19 26, 21 24" stroke="hsl(25 35% 55% / 0.35)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <circle cx="22.5" cy="29" r="1.5" stroke="hsl(25 35% 55% / 0.25)" strokeWidth="0.8" fill="none" />
-      <path d="M14 33 Q9 43, 6 52" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M14 33 Q19 43, 23 51" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Miner 4 - solid silhouette with lantern */}
+    <g transform="translate(225, 7)">
+      <path 
+        d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L18 16 Q20 18, 18 20 L20 24 L22 36 Q24 46, 20 56 L16 56 L17 41 L14 56 L10 56 L13 39 L10 24 L6 30 L4 26 L8 20 Q6 18, 8 16 L8 10 Z" 
+        fill="hsl(35 25% 75% / 0.68)" 
+        stroke="hsl(35 25% 75% / 0.88)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      <path d="M7 10 Q10 4, 17 7 L18 10 Q12 12, 8 11 Z" fill="hsl(35 25% 65% / 0.78)" stroke="hsl(35 25% 75% / 0.88)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="18" cy="7" r="2.5" fill="hsl(25 35% 55% / 0.75)" stroke="hsl(35 25% 75% / 0.65)" strokeWidth="1.5" />
+      {/* Lantern */}
+      <path d="M22 22 L26 20" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="2" {...woodcutStroke} />
+      <rect x="24" y="18" width="8" height="14" fill="hsl(25 35% 45% / 0.7)" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="28" cy="25" r="2.5" fill="hsl(25 40% 60% / 0.5)" stroke="hsl(25 35% 55% / 0.6)" strokeWidth="1" />
     </g>
     
-    {/* Miner 5 - walking right with pickaxe ready */}
-    <g transform="translate(300, 11)">
-      <path d="M5 5 Q9 2, 13 4 Q14 7, 12 9 Q7 10, 5 7 Q4 5, 5 5" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="14" cy="5" r="1.8" stroke="hsl(25 35% 55% / 0.32)" strokeWidth="1" fill="none" />
-      <path d="M7 10 Q10 9, 11 11 Q11 14, 8 15 Q5 14, 7 10" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M9 15 Q12 24, 14 34" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M10 18 Q4 23, 2 28" stroke="hsl(35 25% 75% / 0.26)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M10 18 Q20 14, 32 8" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M30 5 Q35 7, 33 11" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M14 34 Q9 44, 6 53" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M14 34 Q19 44, 24 52" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Miner 5 - solid silhouette with pickaxe ready */}
+    <g transform="translate(295, 9)">
+      <path 
+        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 34 Q24 44, 20 54 L16 54 L17 39 L14 54 L10 54 L13 37 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        fill="hsl(35 25% 75% / 0.58)" 
+        stroke="hsl(35 25% 75% / 0.78)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill="hsl(35 25% 65% / 0.68)" stroke="hsl(35 25% 75% / 0.78)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="18" cy="5" r="2.5" fill="hsl(25 35% 55% / 0.6)" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="1.5" />
+      {/* Pickaxe held forward */}
+      <path d="M12 16 L36 6" stroke="hsl(25 35% 50% / 0.7)" strokeWidth="3" {...woodcutStroke} />
+      <path d="M34 4 L40 8 L36 12" fill="hsl(35 25% 70% / 0.55)" stroke="hsl(35 25% 75% / 0.65)" strokeWidth="1.5" {...woodcutStroke} />
     </g>
     
-    {/* Mine entrance on right - sketchy arch */}
-    <g transform="translate(362, 0)">
-      <path d="M2 65 Q1 50, 3 42 Q8 35, 18 34 Q28 35, 33 42 Q35 50, 34 65" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="2" fill="hsl(0 0% 5% / 0.7)" {...sketchStroke} />
-      <path d="M5 65 Q4 52, 6 45 Q10 38, 18 37 Q26 38, 30 45 Q32 52, 31 65" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" {...sketchStroke} />
-      {/* Beam sketches */}
-      <path d="M6 65 Q5 55, 7 44" stroke="hsl(25 35% 50% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M30 65 Q31 55, 29 44" stroke="hsl(25 35% 50% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Mine entrance on right - solid arch */}
+    <g transform="translate(360, 0)">
+      <path 
+        d="M0 65 L0 45 Q0 32, 18 30 Q36 32, 36 45 L36 65 L32 65 L32 46 Q32 36, 18 34 Q4 36, 4 46 L4 65 Z" 
+        fill="hsl(35 25% 75% / 0.5)" 
+        stroke="hsl(35 25% 75% / 0.7)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      {/* Inner darkness */}
+      <path d="M6 65 L6 48 Q6 38, 18 36 Q30 38, 30 48 L30 65 Z" fill="hsl(0 0% 3%)" {...woodcutStroke} />
+      {/* Wooden beams */}
+      <rect x="4" y="44" width="4" height="21" fill="hsl(25 35% 40% / 0.7)" stroke="hsl(25 35% 50% / 0.6)" strokeWidth="1" {...woodcutStroke} />
+      <rect x="28" y="44" width="4" height="21" fill="hsl(25 35% 40% / 0.7)" stroke="hsl(25 35% 50% / 0.6)" strokeWidth="1" {...woodcutStroke} />
     </g>
   </svg>
 ));
 
-// Mine cart on rails - Sketch style
+// Mine cart on rails - Woodcut style
 const MineCart = memo(() => (
   <svg
     viewBox="0 0 350 80"
@@ -243,74 +292,87 @@ const MineCart = memo(() => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    {/* Rails - sketchy wavy lines */}
-    <path d="M2 70 Q90 68, 175 71 Q260 69, 348 70" stroke="hsl(35 25% 75% / 0.22)" strokeWidth="2" fill="none" {...sketchStroke} />
-    <path d="M2 75 Q90 77, 175 74 Q260 76, 348 75" stroke="hsl(35 25% 75% / 0.22)" strokeWidth="2" fill="none" {...sketchStroke} />
+    {/* Rails - thick solid lines */}
+    <path d="M0 68 L350 68" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="4" fill="none" {...woodcutStroke} />
+    <path d="M0 76 L350 76" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="4" fill="none" {...woodcutStroke} />
     
-    {/* Rail ties - quick sketch marks */}
-    {[...Array(16)].map((_, i) => (
-      <path
+    {/* Rail ties - solid blocks */}
+    {[...Array(14)].map((_, i) => (
+      <rect
         key={i}
-        d={`M${15 + i * 21} 68 Q${16 + i * 21} 72, ${15 + i * 21} 77`}
-        stroke="hsl(25 35% 50% / 0.2)"
-        strokeWidth="2.5"
-        fill="none"
-        {...sketchStroke}
+        x={15 + i * 24}
+        y="66"
+        width="6"
+        height="12"
+        fill="hsl(25 35% 40% / 0.6)"
+        stroke="hsl(25 35% 50% / 0.4)"
+        strokeWidth="1"
+        {...woodcutStroke}
       />
     ))}
     
-    {/* Miner pushing cart - gestural sketch */}
-    <g transform="translate(75, 5)">
+    {/* Miner pushing cart - solid silhouette */}
+    <g transform="translate(70, 2)">
+      {/* Body silhouette */}
+      <path 
+        d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L20 18 Q22 20, 22 24 L26 32 Q28 42, 24 62 L20 62 L21 45 L18 62 L14 62 L17 42 L14 28 L8 34 L6 30 L12 22 Q10 18, 12 16 L8 10 Z" 
+        fill="hsl(35 25% 75% / 0.6)" 
+        stroke="hsl(35 25% 75% / 0.8)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
       {/* Helmet */}
-      <path d="M4 4 Q8 1, 13 3 Q14 6, 12 8 Q7 9, 5 6 Q3 4, 4 4" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="4" cy="5" r="2" stroke="hsl(25 35% 50% / 0.28)" strokeWidth="1" fill="none" />
-      {/* Head */}
-      <path d="M6 9 Q10 8, 11 10 Q11 14, 8 15 Q5 14, 6 9" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Body leaning forward */}
-      <path d="M9 15 Q14 25, 18 38" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="2" fill="none" {...sketchStroke} />
-      {/* Arms pushing */}
-      <path d="M10 18 Q5 23, 8 28" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M10 18 Q20 24, 28 28" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      {/* Legs */}
-      <path d="M18 38 Q12 48, 8 58" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M18 38 Q22 48, 26 56" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+      <path d="M6 10 Q9 3, 17 6 L18 10 Q12 12, 7 11 Z" fill="hsl(35 25% 65% / 0.7)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="6" cy="7" r="3" fill="hsl(25 35% 55% / 0.7)" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="1.5" />
+      {/* Arms pushing forward */}
+      <path d="M16 20 L32 28" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="3" {...woodcutStroke} />
     </g>
     
-    {/* Mine cart body - sketchy trapezoid */}
-    <g transform="translate(130, 20)">
-      {/* Cart body - hand-drawn trapezoid */}
-      <path d="M12 45 Q8 35, 3 22 Q2 20, 5 18 Q50 17, 95 18 Q98 20, 97 22 Q92 35, 88 45 Q50 46, 12 45" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="hsl(35 25% 75% / 0.08)" {...sketchStroke} />
-      {/* Secondary sketch line */}
-      <path d="M15 43 Q10 33, 6 22 Q50 20, 94 22 Q90 33, 85 43" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Mine cart body - solid trapezoid */}
+    <g transform="translate(125, 12)">
+      {/* Cart body - filled shape */}
+      <path 
+        d="M5 52 L15 20 L95 20 L105 52 Z" 
+        fill="hsl(35 25% 75% / 0.25)" 
+        stroke="hsl(35 25% 75% / 0.7)" 
+        strokeWidth="3" 
+        {...woodcutStroke} 
+      />
       
-      {/* Coal pile - organic sketchy mounds */}
-      <path d="M12 20 Q22 8, 38 10 Q55 5, 70 10 Q85 6, 88 20" stroke="hsl(0 0% 20% / 0.5)" strokeWidth="1.5" fill="hsl(0 0% 8% / 0.75)" {...sketchStroke} />
-      {/* Coal detail strokes */}
-      <path d="M25 14 Q32 10, 40 13" stroke="hsl(0 0% 15% / 0.4)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M50 11 Q60 8, 72 12" stroke="hsl(0 0% 15% / 0.4)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M35 8 Q45 5, 55 8" stroke="hsl(0 0% 12% / 0.3)" strokeWidth="1" fill="none" {...sketchStroke} />
+      {/* Cart reinforcement lines */}
+      <path d="M12 40 L98 40" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" {...woodcutStroke} />
+      <path d="M28 22 L22 50" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2" {...woodcutStroke} />
+      <path d="M82 22 L88 50" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2" {...woodcutStroke} />
       
-      {/* Cart reinforcement - quick lines */}
-      <path d="M8 32 Q50 30, 92 32" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M25 20 Q23 32, 22 44" stroke="hsl(35 25% 75% / 0.12)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M75 20 Q77 32, 78 44" stroke="hsl(35 25% 75% / 0.12)" strokeWidth="1" fill="none" {...sketchStroke} />
+      {/* Coal pile - solid dark mass */}
+      <path 
+        d="M18 20 L25 6 Q40 0, 55 4 Q70 -2, 85 6 L92 20 Z" 
+        fill="hsl(0 0% 6%)" 
+        stroke="hsl(0 0% 20% / 0.8)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      {/* Coal texture - carved lines */}
+      <path d="M30 14 L40 10 L50 14" stroke="hsl(0 0% 15% / 0.6)" strokeWidth="1.5" {...woodcutStroke} />
+      <path d="M55 8 L65 4 L75 10" stroke="hsl(0 0% 15% / 0.5)" strokeWidth="1.5" {...woodcutStroke} />
+      <path d="M40 6 L50 2 L60 6" stroke="hsl(0 0% 12% / 0.4)" strokeWidth="1" {...woodcutStroke} />
       
-      {/* Wheels - imperfect circles */}
-      <path d="M18 50 Q12 48, 12 54 Q12 60, 18 60 Q24 60, 24 54 Q24 48, 18 50" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="hsl(0 0% 12%)" {...sketchStroke} />
-      <circle cx="18" cy="54" r="2.5" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" />
+      {/* Wheels - solid filled circles */}
+      <circle cx="22" cy="56" r="10" fill="hsl(0 0% 8%)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="3" />
+      <circle cx="22" cy="56" r="4" fill="none" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" />
       
-      <path d="M82 50 Q76 48, 76 54 Q76 60, 82 60 Q88 60, 88 54 Q88 48, 82 50" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="hsl(0 0% 12%)" {...sketchStroke} />
-      <circle cx="82" cy="54" r="2.5" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" />
+      <circle cx="88" cy="56" r="10" fill="hsl(0 0% 8%)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="3" />
+      <circle cx="88" cy="56" r="4" fill="none" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" />
     </g>
     
-    {/* Falling coal pieces - quick dots */}
-    <ellipse cx="252" cy="68" rx="2.5" ry="1.5" stroke="hsl(0 0% 15% / 0.4)" strokeWidth="1" fill="hsl(0 0% 10% / 0.5)" />
-    <ellipse cx="262" cy="72" rx="2" ry="1.2" stroke="hsl(0 0% 15% / 0.35)" strokeWidth="1" fill="hsl(0 0% 12% / 0.4)" />
-    <ellipse cx="246" cy="74" rx="2.2" ry="1.3" stroke="hsl(0 0% 15% / 0.35)" strokeWidth="1" fill="hsl(0 0% 11% / 0.4)" />
+    {/* Fallen coal pieces - solid blocks */}
+    <rect x="248" y="70" width="6" height="4" fill="hsl(0 0% 8%)" stroke="hsl(0 0% 20% / 0.6)" strokeWidth="1" transform="rotate(15, 251, 72)" {...woodcutStroke} />
+    <rect x="258" y="72" width="4" height="3" fill="hsl(0 0% 10%)" stroke="hsl(0 0% 20% / 0.5)" strokeWidth="1" transform="rotate(-10, 260, 73)" {...woodcutStroke} />
+    <rect x="242" y="73" width="5" height="3" fill="hsl(0 0% 9%)" stroke="hsl(0 0% 20% / 0.5)" strokeWidth="1" transform="rotate(25, 244, 74)" {...woodcutStroke} />
   </svg>
 ));
 
-// Mining tools decorative border - Sketch style
+// Mining tools decorative border - Woodcut style
 const MiningTools = memo(() => (
   <svg
     viewBox="0 0 400 50"
@@ -319,72 +381,87 @@ const MiningTools = memo(() => (
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMid meet"
   >
-    {/* Top decorative line - wavy sketch */}
-    <path d="M25 9 Q100 6, 200 9 Q300 12, 375 8" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M30 7 Q120 5, 200 7 Q280 10, 370 7" stroke="hsl(35 25% 75% / 0.1)" strokeWidth="0.8" fill="none" {...sketchStroke} />
+    {/* Top decorative line - thick solid */}
+    <path d="M20 8 L380 8" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...woodcutStroke} />
+    <path d="M30 6 L370 6" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" {...woodcutStroke} />
     
     {/* Bottom decorative line */}
-    <path d="M25 42 Q100 45, 200 42 Q300 39, 375 43" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-    <path d="M30 44 Q120 46, 200 43 Q280 41, 370 44" stroke="hsl(35 25% 75% / 0.1)" strokeWidth="0.8" fill="none" {...sketchStroke} />
+    <path d="M20 42 L380 42" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...woodcutStroke} />
+    <path d="M30 44 L370 44" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" {...woodcutStroke} />
     
-    {/* Pickaxe 1 - quick sketch strokes */}
-    <g transform="translate(40, 14)">
-      <path d="M2 22 Q10 12, 20 2" stroke="hsl(25 35% 50% / 0.35)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M0 24 Q8 14, 18 4" stroke="hsl(25 35% 50% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M18 0 Q24 2, 22 8" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M0 24 Q-2 20, 2 18" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Pickaxe 1 - solid filled */}
+    <g transform="translate(35, 12)">
+      {/* Handle - thick solid */}
+      <rect x="0" y="18" width="24" height="5" fill="hsl(25 35% 45% / 0.8)" stroke="hsl(25 35% 55% / 0.9)" strokeWidth="1.5" transform="rotate(-45, 12, 20)" {...woodcutStroke} />
+      {/* Head - solid filled shape */}
+      <path 
+        d="M18 2 L28 8 L24 14 L14 8 Z" 
+        fill="hsl(35 25% 70% / 0.7)" 
+        stroke="hsl(35 25% 75% / 0.9)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
     </g>
     
-    {/* Dot ornament */}
-    <circle cx="90" cy="25" r="2.5" stroke="hsl(25 35% 50% / 0.22)" strokeWidth="1" fill="none" />
-    <circle cx="90" cy="25" r="1" stroke="hsl(25 35% 50% / 0.15)" strokeWidth="0.5" fill="none" />
+    {/* Diamond ornament */}
+    <path d="M90 20 L95 25 L90 30 L85 25 Z" fill="hsl(25 35% 50% / 0.5)" stroke="hsl(25 35% 55% / 0.7)" strokeWidth="1.5" {...woodcutStroke} />
     
-    {/* Lamp 1 - sketchy rectangle */}
-    <g transform="translate(110, 12)">
-      <path d="M1 10 Q0 12, 1 24 Q6 25, 11 24 Q12 12, 11 10 Q6 9, 1 10" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M2 10 Q2 6, 4 4 Q8 4, 10 6 Q10 10, 10 10" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <circle cx="6" cy="1" r="2" stroke="hsl(25 35% 55% / 0.25)" strokeWidth="1" fill="none" />
-      <ellipse cx="6" cy="17" rx="2.5" ry="1.5" stroke="hsl(25 35% 55% / 0.18)" strokeWidth="0.8" fill="none" />
+    {/* Lamp 1 - solid filled */}
+    <g transform="translate(108, 10)">
+      <rect x="0" y="8" width="14" height="20" fill="hsl(35 25% 65% / 0.6)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="2" {...woodcutStroke} />
+      <path d="M2 8 L4 2 L10 2 L12 8" fill="hsl(35 25% 55% / 0.5)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="7" cy="0" r="3" fill="hsl(25 35% 55% / 0.7)" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="1.5" />
+      <circle cx="7" cy="18" r="3" fill="hsl(25 40% 50% / 0.4)" stroke="hsl(25 35% 55% / 0.5)" strokeWidth="1" />
     </g>
     
-    {/* Wavy ornament */}
-    <path d="M150 22 Q156 17, 162 22 Q168 27, 174 22" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Zigzag ornament */}
+    <path d="M150 22 L158 16 L166 22 L174 16" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...woodcutStroke} />
     
-    {/* Shovel - quick sketch */}
-    <g transform="translate(185, 12)">
-      <path d="M10 24 Q9 14, 10 4" stroke="hsl(25 35% 50% / 0.35)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M8 22 Q8 14, 8 6" stroke="hsl(25 35% 50% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <ellipse cx="10" cy="2" rx="7" ry="3.5" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" transform="rotate(-5, 10, 2)" />
+    {/* Shovel - solid filled */}
+    <g transform="translate(185, 10)">
+      {/* Handle */}
+      <rect x="8" y="4" width="5" height="22" fill="hsl(25 35% 45% / 0.8)" stroke="hsl(25 35% 55% / 0.9)" strokeWidth="1.5" {...woodcutStroke} />
+      {/* Blade */}
+      <ellipse cx="10" cy="4" rx="9" ry="5" fill="hsl(35 25% 70% / 0.6)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="2" />
     </g>
     
-    {/* Dot ornament */}
-    <circle cx="220" cy="25" r="2.5" stroke="hsl(25 35% 50% / 0.22)" strokeWidth="1" fill="none" />
-    <circle cx="220" cy="25" r="1" stroke="hsl(25 35% 50% / 0.15)" strokeWidth="0.5" fill="none" />
+    {/* Diamond ornament */}
+    <path d="M220 20 L225 25 L220 30 L215 25 Z" fill="hsl(25 35% 50% / 0.5)" stroke="hsl(25 35% 55% / 0.7)" strokeWidth="1.5" {...woodcutStroke} />
     
-    {/* Helmet - sketchy dome */}
-    <g transform="translate(240, 14)">
-      <path d="M0 20 Q2 12, 10 8 Q18 12, 20 20" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M-1 20 Q20 21, 21 20" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <circle cx="4" cy="14" r="2.5" stroke="hsl(25 35% 55% / 0.22)" strokeWidth="1" fill="none" />
+    {/* Helmet - solid dome */}
+    <g transform="translate(238, 12)">
+      <path 
+        d="M0 22 Q2 10, 12 6 Q22 10, 24 22 L0 22 Z" 
+        fill="hsl(35 25% 65% / 0.6)" 
+        stroke="hsl(35 25% 75% / 0.8)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
+      <path d="M-2 22 L26 22" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="2" {...woodcutStroke} />
+      <circle cx="4" cy="14" r="4" fill="hsl(25 35% 55% / 0.6)" stroke="hsl(35 25% 75% / 0.5)" strokeWidth="1.5" />
     </g>
     
-    {/* Wavy ornament */}
-    <path d="M280 22 Q286 17, 292 22 Q298 27, 304 22" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
+    {/* Zigzag ornament */}
+    <path d="M280 22 L288 16 L296 22 L304 16" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2" fill="none" {...woodcutStroke} />
     
-    {/* Lamp 2 */}
-    <g transform="translate(315, 12)">
-      <path d="M1 10 Q0 12, 1 24 Q6 25, 11 24 Q12 12, 11 10 Q6 9, 1 10" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M2 10 Q2 6, 4 4 Q8 4, 10 6 Q10 10, 10 10" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <circle cx="6" cy="1" r="2" stroke="hsl(25 35% 55% / 0.25)" strokeWidth="1" fill="none" />
-      <ellipse cx="6" cy="17" rx="2.5" ry="1.5" stroke="hsl(25 35% 55% / 0.18)" strokeWidth="0.8" fill="none" />
+    {/* Lamp 2 - solid filled */}
+    <g transform="translate(318, 10)">
+      <rect x="0" y="8" width="14" height="20" fill="hsl(35 25% 65% / 0.6)" stroke="hsl(35 25% 75% / 0.8)" strokeWidth="2" {...woodcutStroke} />
+      <path d="M2 8 L4 2 L10 2 L12 8" fill="hsl(35 25% 55% / 0.5)" stroke="hsl(35 25% 75% / 0.7)" strokeWidth="1.5" {...woodcutStroke} />
+      <circle cx="7" cy="0" r="3" fill="hsl(25 35% 55% / 0.7)" stroke="hsl(35 25% 75% / 0.6)" strokeWidth="1.5" />
+      <circle cx="7" cy="18" r="3" fill="hsl(25 40% 50% / 0.4)" stroke="hsl(25 35% 55% / 0.5)" strokeWidth="1" />
     </g>
     
-    {/* Pickaxe 2 - mirrored quick sketch */}
-    <g transform="translate(345, 14)">
-      <path d="M18 22 Q10 12, 0 2" stroke="hsl(25 35% 50% / 0.35)" strokeWidth="2" fill="none" {...sketchStroke} />
-      <path d="M20 24 Q12 14, 2 4" stroke="hsl(25 35% 50% / 0.18)" strokeWidth="1" fill="none" {...sketchStroke} />
-      <path d="M2 0 Q-4 2, -2 8" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
-      <path d="M20 24 Q22 20, 18 18" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" {...sketchStroke} />
+    {/* Pickaxe 2 - mirrored solid filled */}
+    <g transform="translate(345, 12)">
+      <rect x="-4" y="18" width="24" height="5" fill="hsl(25 35% 45% / 0.8)" stroke="hsl(25 35% 55% / 0.9)" strokeWidth="1.5" transform="rotate(45, 8, 20)" {...woodcutStroke} />
+      <path 
+        d="M2 2 L-8 8 L-4 14 L6 8 Z" 
+        fill="hsl(35 25% 70% / 0.7)" 
+        stroke="hsl(35 25% 75% / 0.9)" 
+        strokeWidth="2" 
+        {...woodcutStroke} 
+      />
     </g>
   </svg>
 ));
