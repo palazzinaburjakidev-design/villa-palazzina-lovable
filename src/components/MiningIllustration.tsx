@@ -51,7 +51,7 @@ const pureBlackFill = "hsl(0 0% 4%)";
 const darkFill = "hsl(0 0% 6%)";
 const subtleStroke = "hsl(0 0% 12%)";
 
-// Tunnel entrance with "SRETNO" sign - Pure black silhouettes with full-width rails
+// Tunnel entrance with "SRETNO" sign - Pure black silhouettes with full-width rails, wagons and miners
 const TunnelEntrance = memo(() => (
   <div className="relative w-full">
     {/* Full-width rails */}
@@ -62,14 +62,14 @@ const TunnelEntrance = memo(() => (
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
     >
-      <path d="M0 10 L1920 10" stroke={subtleStroke} strokeWidth="3" fill="none" />
-      <path d="M0 18 L1920 18" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      <path d="M0 8 L1920 8" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      <path d="M0 16 L1920 16" stroke={subtleStroke} strokeWidth="3" fill="none" />
       {/* Rail ties */}
       {[...Array(80)].map((_, i) => (
         <rect
           key={i}
           x={10 + i * 24}
-          y="8"
+          y="6"
           width="6"
           height="12"
           fill={darkFill}
@@ -78,57 +78,119 @@ const TunnelEntrance = memo(() => (
       ))}
     </svg>
     
-    {/* Tunnel content */}
+    {/* Full scene with tunnel, wagons and miners */}
     <svg
-      viewBox="0 0 300 100"
-      className="relative w-48 sm:w-64 md:w-80 h-auto mx-auto"
+      viewBox="0 0 480 100"
+      className="relative w-full h-auto max-w-2xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMax meet"
     >
-      {/* Outer stone arch - pure black silhouette */}
-      <path 
-        d="M55 94 L55 55 Q55 20, 150 15 Q245 20, 245 55 L245 94 L230 94 L230 52 Q230 28, 150 25 Q70 28, 70 52 L70 94 Z" 
-        fill={pureBlackFill}
-        fillOpacity="0.98"
-      />
+      {/* Wagon 1 - far left */}
+      <g transform="translate(10, 48)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M10 16 L14 8 Q25 4, 36 8 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
       
-      {/* Inner tunnel - absolute black */}
-      <path 
-        d="M78 94 L78 55 Q78 32, 150 28 Q222 32, 222 55 L222 94 Z" 
-        fill="hsl(0 0% 2%)"
-        fillOpacity="0.95"
-      />
+      {/* Miner 1 - pushing wagon */}
+      <g transform="translate(55, 42)">
+        <path 
+          d="M8 8 Q12 4, 15 6 Q17 8, 16 12 L18 16 Q20 18, 18 20 L20 26 L22 38 Q23 44, 20 50 L16 50 L18 40 L14 50 L10 50 L13 38 L10 26 L4 30 L2 26 L8 20 Q6 18, 8 16 L8 8 Z" 
+          fill={pureBlackFill}
+          fillOpacity="1"
+        />
+        <ellipse cx="11" cy="7" rx="4" ry="3" fill={darkFill} fillOpacity="1" />
+        <path d="M4 26 L-6 34" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
+      </g>
       
-      {/* Wooden beam left - black rectangle */}
-      <rect x="72" y="45" width="8" height="49" fill={darkFill} fillOpacity="1" />
+      {/* Wagon 2 */}
+      <g transform="translate(85, 48)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M10 16 L13 9 Q25 5, 37 9 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
       
-      {/* Wooden beam right - black rectangle */}
-      <rect x="220" y="45" width="8" height="49" fill={darkFill} fillOpacity="1" />
+      {/* Tunnel entrance - center */}
+      <g transform="translate(150, 0)">
+        {/* Outer stone arch */}
+        <path 
+          d="M35 94 L35 50 Q35 18, 90 14 Q145 18, 145 50 L145 94 L132 94 L132 48 Q132 26, 90 22 Q48 26, 48 48 L48 94 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        
+        {/* Inner tunnel */}
+        <path 
+          d="M54 94 L54 50 Q54 30, 90 26 Q126 30, 126 50 L126 94 Z" 
+          fill="hsl(0 0% 2%)"
+          fillOpacity="0.95"
+        />
+        
+        {/* Wooden beams */}
+        <rect x="50" y="42" width="6" height="52" fill={darkFill} fillOpacity="1" />
+        <rect x="124" y="42" width="6" height="52" fill={darkFill} fillOpacity="1" />
+        
+        {/* Cross beam */}
+        <path d="M46 40 Q90 30, 134 40 L134 45 Q90 35, 46 45 Z" fill={pureBlackFill} fillOpacity="1" />
+        
+        {/* SRETNO banner */}
+        <rect x="55" y="2" width="70" height="22" fill={pureBlackFill} fillOpacity="1" />
+        <text
+          x="90"
+          y="17"
+          textAnchor="middle"
+          className="font-display"
+          fill="hsl(35 25% 80%)"
+          fillOpacity="0.9"
+          fontSize="11"
+          fontWeight="700"
+          letterSpacing="3"
+        >
+          SRETNO
+        </text>
+      </g>
       
-      {/* Cross beam - black silhouette */}
-      <path 
-        d="M68 42 Q150 32, 232 42 L232 48 Q150 38, 68 48 Z" 
-        fill={pureBlackFill}
-        fillOpacity="1"
-      />
+      {/* Miner 2 - exiting tunnel with pickaxe */}
+      <g transform="translate(310, 38)">
+        <path 
+          d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L21 28 L23 42 Q24 50, 21 56 L17 56 L19 44 L15 56 L11 56 L14 42 L11 28 L6 32 L4 28 L10 22 Q8 20, 10 18 L12 10 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        <ellipse cx="15" cy="9" rx="4" ry="3" fill={darkFill} fillOpacity="1" />
+        <path d="M8 16 L24 12" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
+        <path d="M22 10 L27 14 L24 17 Z" fill={darkFill} fillOpacity="1" />
+      </g>
       
-      {/* SRETNO banner - black background */}
-      <rect x="95" y="2" width="110" height="26" fill={pureBlackFill} fillOpacity="1" />
+      {/* Wagon 3 - right side */}
+      <g transform="translate(355, 48)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M10 16 L15 7 Q25 3, 35 7 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
       
-      {/* SRETNO text - the only light element */}
-      <text
-        x="150"
-        y="20"
-        textAnchor="middle"
-        className="font-display"
-        fill="hsl(35 25% 80%)"
-        fillOpacity="0.9"
-        fontSize="14"
-        fontWeight="700"
-        letterSpacing="4"
-      >
-        SRETNO
-      </text>
+      {/* Miner 3 - pulling wagon on right */}
+      <g transform="translate(410, 40)">
+        <path 
+          d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 48, 20 54 L16 54 L18 42 L14 54 L10 54 L13 40 L10 28 L4 34 L2 30 L8 24 Q6 20, 8 18 L12 10 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.96"
+        />
+        <ellipse cx="15" cy="9" rx="4" ry="3" fill={darkFill} fillOpacity="0.98" />
+        <path d="M4 34 L-10 42" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
+      </g>
+      
+      {/* Wagon 4 - far right */}
+      <g transform="translate(430, 48)">
+        <path d="M2 38 L8 16 L42 16 L48 38 Z" fill={pureBlackFill} fillOpacity="0.97" />
+        <path d="M10 16 L14 9 Q25 5, 36 9 L40 16 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="12" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="38" cy="42" r="5" fill={pureBlackFill} fillOpacity="1" />
+      </g>
     </svg>
   </div>
 ));
@@ -298,7 +360,7 @@ const MinersWalking = memo(() => (
   </div>
 ));
 
-// Mine cart - Pure black silhouettes with full-width rails
+// Mine cart - Pure black silhouettes with full-width rails, multiple wagons and miners
 const MineCart = memo(() => (
   <div className="relative w-full">
     {/* Full-width rails */}
@@ -325,126 +387,206 @@ const MineCart = memo(() => (
       ))}
     </svg>
     
-    {/* Cart and miner */}
+    {/* Full scene with carts and miners */}
     <svg
-      viewBox="0 0 350 80"
-      className="relative w-56 sm:w-72 md:w-96 h-auto mx-auto"
+      viewBox="0 0 450 80"
+      className="relative w-full h-auto max-w-xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMax meet"
     >
-      {/* Miner pushing cart - pure black silhouette */}
-      <g transform="translate(70, 2)">
+      {/* Wagon 1 - far left (empty) */}
+      <g transform="translate(5, 28)">
+        <path d="M2 38 L10 14 L50 14 L58 38 Z" fill={pureBlackFill} fillOpacity="0.96" />
+        <circle cx="14" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="46" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 1 - pushing first wagon */}
+      <g transform="translate(60, 18)">
         <path 
-          d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L20 18 Q22 20, 22 24 L26 32 Q28 42, 24 62 L20 62 L21 45 L18 62 L14 62 L17 42 L14 28 L8 34 L6 30 L12 22 Q10 18, 12 16 L8 10 Z" 
+          d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L20 18 Q22 20, 22 24 L26 32 Q28 42, 24 52 L20 52 L21 40 L18 52 L14 52 L17 38 L14 28 L8 32 L6 28 L12 22 Q10 18, 12 16 L8 10 Z" 
           fill={pureBlackFill}
           fillOpacity="1"
         />
-        {/* Helmet */}
-        <path d="M6 10 Q9 3, 17 6 L18 10 Q12 12, 7 11 Z" fill={darkFill} fillOpacity="1" />
-        <circle cx="6" cy="7" r="3" fill={darkFill} fillOpacity="1" />
-        {/* Arms */}
-        <path d="M16 20 L32 28" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+        <ellipse cx="12" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+        <path d="M6 28 L-8 36" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
       </g>
       
-      {/* Mine cart body - pure black trapezoid */}
-      <g transform="translate(125, 12)">
+      {/* Wagon 2 - full of coal */}
+      <g transform="translate(100, 28)">
+        <path d="M2 38 L10 14 L55 14 L63 38 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M12 14 L18 4 Q32 -2, 48 4 L54 14 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="14" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="51" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 2 - walking alongside */}
+      <g transform="translate(170, 16)">
         <path 
-          d="M5 52 L15 20 L95 20 L105 52 Z" 
+          d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L20 28 L22 42 Q23 50, 20 54 L16 54 L18 44 L14 54 L10 54 L13 42 L10 28 L5 34 L3 30 L9 24 Q7 20, 9 18 L12 10 Z" 
           fill={pureBlackFill}
           fillOpacity="0.98"
         />
-        
-        {/* Coal pile - solid black mass */}
-        <path 
-          d="M18 20 L25 6 Q40 0, 55 4 Q70 -2, 85 6 L92 20 Z" 
-          fill="hsl(0 0% 2%)"
-          fillOpacity="1"
-        />
-        
-        {/* Wheels - solid black circles */}
-        <circle cx="22" cy="56" r="10" fill={pureBlackFill} fillOpacity="1" />
-        <circle cx="88" cy="56" r="10" fill={pureBlackFill} fillOpacity="1" />
+        <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+        <path d="M10 6 L20 6 L18 3 L12 3 Z" fill={pureBlackFill} fillOpacity="1" />
       </g>
       
-      {/* Fallen coal - black blocks */}
-      <rect x="248" y="70" width="6" height="4" fill={darkFill} fillOpacity="0.98" transform="rotate(15, 251, 72)" />
-      <rect x="258" y="72" width="4" height="3" fill={darkFill} fillOpacity="0.96" transform="rotate(-10, 260, 73)" />
-      <rect x="242" y="73" width="5" height="3" fill={darkFill} fillOpacity="0.97" transform="rotate(25, 244, 74)" />
+      {/* Main cart - center (large, full of coal) */}
+      <g transform="translate(210, 20)">
+        <path d="M5 52 L15 18 L85 18 L95 52 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M18 18 L24 6 Q40 0, 55 4 Q70 -2, 80 6 L86 18 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="22" cy="56" r="8" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="78" cy="56" r="8" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner 3 - pushing main cart */}
+      <g transform="translate(315, 14)">
+        <path 
+          d="M8 12 Q12 8, 16 10 Q18 12, 17 16 L20 20 Q22 22, 22 26 L26 36 Q28 48, 24 58 L20 58 L21 46 L18 58 L14 58 L17 44 L14 32 L8 38 L6 34 L12 26 Q10 22, 12 20 L8 12 Z" 
+          fill={pureBlackFill}
+          fillOpacity="1"
+        />
+        <path d="M6 12 Q9 4, 17 8 L18 12 Q12 14, 7 13 Z" fill={darkFill} fillOpacity="1" />
+        <circle cx="6" cy="9" r="3" fill={darkFill} fillOpacity="1" />
+        <path d="M16 24 L30 32" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+      </g>
+      
+      {/* Wagon 4 - right side */}
+      <g transform="translate(360, 28)">
+        <path d="M2 38 L10 14 L50 14 L58 38 Z" fill={pureBlackFill} fillOpacity="0.97" />
+        <path d="M12 14 L16 6 Q30 2, 44 6 L48 14 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="14" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="46" cy="42" r="6" fill={pureBlackFill} fillOpacity="1" />
+      </g>
+      
+      {/* Fallen coal pieces */}
+      <rect x="420" y="68" width="5" height="4" fill={darkFill} fillOpacity="0.98" transform="rotate(15, 422, 70)" />
+      <rect x="428" y="70" width="4" height="3" fill={darkFill} fillOpacity="0.96" transform="rotate(-10, 430, 71)" />
+      <rect x="435" y="71" width="4" height="3" fill={darkFill} fillOpacity="0.97" transform="rotate(25, 437, 72)" />
     </svg>
   </div>
 ));
 
-// Mining tools - Pure black silhouettes with full-width decorative lines
+// Mining tools - Pure black silhouettes with full-width rails, wagons on sides
 const MiningTools = memo(() => (
   <div className="relative w-full">
-    {/* Full-width decorative lines */}
+    {/* Full-width rails */}
     <svg
-      viewBox="0 0 1920 50"
-      className="absolute inset-0 w-[200vw] -translate-x-1/2 h-full"
+      viewBox="0 0 1920 20"
+      className="absolute bottom-0 left-0 w-[200vw] -translate-x-1/2 h-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
     >
-      <path d="M0 8 L1920 8" stroke={subtleStroke} strokeWidth="1.5" fill="none" />
-      <path d="M0 42 L1920 42" stroke={subtleStroke} strokeWidth="1.5" fill="none" />
+      <path d="M0 8 L1920 8" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      <path d="M0 16 L1920 16" stroke={subtleStroke} strokeWidth="3" fill="none" />
+      {/* Rail ties */}
+      {[...Array(80)].map((_, i) => (
+        <rect
+          key={i}
+          x={10 + i * 24}
+          y="6"
+          width="6"
+          height="12"
+          fill={darkFill}
+          fillOpacity="0.7"
+        />
+      ))}
     </svg>
     
-    {/* Tools content */}
+    {/* Tools and wagons content */}
     <svg
-      viewBox="0 0 400 50"
-      className="relative w-full h-auto max-w-xl mx-auto"
+      viewBox="0 0 520 60"
+      className="relative w-full h-auto max-w-2xl mx-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="xMidYMax meet"
     >
-      {/* Pickaxe 1 - pure black silhouette */}
-      <g transform="translate(35, 12)">
-        <rect x="0" y="18" width="24" height="5" fill={pureBlackFill} fillOpacity="1" transform="rotate(-45, 12, 20)" />
-        <path d="M18 2 L28 8 L24 14 L14 8 Z" fill={darkFill} fillOpacity="1" />
+      {/* Wagon left */}
+      <g transform="translate(5, 18)">
+        <path d="M2 32 L8 12 L38 12 L44 32 Z" fill={pureBlackFill} fillOpacity="0.97" />
+        <path d="M10 12 L14 5 Q23 2, 32 5 L36 12 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="10" cy="36" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="36" cy="36" r="5" fill={pureBlackFill} fillOpacity="1" />
       </g>
       
-      {/* Diamond ornament */}
-      <path d="M90 20 L95 25 L90 30 L85 25 Z" fill={darkFill} fillOpacity="0.95" />
-      
-      {/* Lamp 1 - pure black silhouette */}
-      <g transform="translate(108, 10)">
-        <rect x="0" y="8" width="14" height="20" fill={pureBlackFill} fillOpacity="0.98" />
-        <path d="M2 8 L4 2 L10 2 L12 8 Z" fill={darkFill} fillOpacity="1" />
-        <circle cx="7" cy="0" r="3" fill={darkFill} fillOpacity="0.98" />
+      {/* Miner with lamp - left side */}
+      <g transform="translate(55, 8)">
+        <path 
+          d="M10 8 Q13 5, 16 7 Q18 9, 17 12 L17 15 Q19 17, 17 19 L18 24 L20 36 Q21 44, 18 50 L14 50 L16 38 L12 50 L8 50 L11 36 L8 24 L4 28 L2 25 L7 20 Q5 18, 7 16 L10 8 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        <ellipse cx="13" cy="7" rx="4" ry="3" fill={darkFill} fillOpacity="1" />
+        <rect x="2" y="30" width="5" height="8" fill={darkFill} fillOpacity="1" />
       </g>
       
-      {/* Zigzag ornament */}
-      <path d="M150 22 L158 16 L166 22 L174 16" stroke={subtleStroke} strokeWidth="2" fill="none" />
-      
-      {/* Shovel - pure black silhouette */}
-      <g transform="translate(185, 10)">
-        <rect x="8" y="4" width="5" height="22" fill={pureBlackFill} fillOpacity="1" />
-        <ellipse cx="10" cy="4" rx="9" ry="5" fill={darkFill} fillOpacity="0.98" />
+      {/* Pickaxe 1 */}
+      <g transform="translate(100, 18)">
+        <rect x="0" y="16" width="20" height="4" fill={pureBlackFill} fillOpacity="1" transform="rotate(-45, 10, 18)" />
+        <path d="M15 2 L24 7 L21 12 L12 7 Z" fill={darkFill} fillOpacity="1" />
       </g>
       
-      {/* Diamond ornament */}
-      <path d="M220 20 L225 25 L220 30 L215 25 Z" fill={darkFill} fillOpacity="0.95" />
+      {/* Diamond */}
+      <path d="M145 28 L150 33 L145 38 L140 33 Z" fill={darkFill} fillOpacity="0.95" />
       
-      {/* Helmet - pure black dome */}
-      <g transform="translate(238, 12)">
-        <path d="M0 22 Q2 10, 12 6 Q22 10, 24 22 L0 22 Z" fill={pureBlackFill} fillOpacity="0.98" />
-        <circle cx="4" cy="14" r="4" fill={darkFill} fillOpacity="1" />
+      {/* Lamp 1 */}
+      <g transform="translate(165, 16)">
+        <rect x="0" y="6" width="12" height="18" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M2 6 L3 1 L9 1 L10 6 Z" fill={darkFill} fillOpacity="1" />
+        <circle cx="6" cy="0" r="3" fill={darkFill} fillOpacity="0.98" />
       </g>
       
-      {/* Zigzag ornament */}
-      <path d="M280 22 L288 16 L296 22 L304 16" stroke={subtleStroke} strokeWidth="2" fill="none" />
+      {/* Zigzag */}
+      <path d="M200 30 L208 24 L216 30 L224 24" stroke={subtleStroke} strokeWidth="2" fill="none" />
       
-      {/* Lamp 2 - pure black silhouette */}
-      <g transform="translate(318, 10)">
-        <rect x="0" y="8" width="14" height="20" fill={pureBlackFill} fillOpacity="0.98" />
-        <path d="M2 8 L4 2 L10 2 L12 8 Z" fill={darkFill} fillOpacity="1" />
-        <circle cx="7" cy="0" r="3" fill={darkFill} fillOpacity="0.98" />
+      {/* Shovel */}
+      <g transform="translate(240, 16)">
+        <rect x="7" y="4" width="4" height="20" fill={pureBlackFill} fillOpacity="1" />
+        <ellipse cx="9" cy="4" rx="8" ry="4" fill={darkFill} fillOpacity="0.98" />
       </g>
       
-      {/* Pickaxe 2 - mirrored pure black silhouette */}
-      <g transform="translate(345, 12)">
-        <rect x="-4" y="18" width="24" height="5" fill={pureBlackFill} fillOpacity="1" transform="rotate(45, 8, 20)" />
-        <path d="M2 2 L-8 8 L-4 14 L6 8 Z" fill={darkFill} fillOpacity="1" />
+      {/* Helmet */}
+      <g transform="translate(275, 18)">
+        <path d="M0 20 Q2 10, 10 6 Q18 10, 20 20 L0 20 Z" fill={pureBlackFill} fillOpacity="0.98" />
+        <circle cx="4" cy="13" r="3" fill={darkFill} fillOpacity="1" />
+      </g>
+      
+      {/* Zigzag */}
+      <path d="M315 30 L323 24 L331 30 L339 24" stroke={subtleStroke} strokeWidth="2" fill="none" />
+      
+      {/* Lamp 2 */}
+      <g transform="translate(355, 16)">
+        <rect x="0" y="6" width="12" height="18" fill={pureBlackFill} fillOpacity="0.98" />
+        <path d="M2 6 L3 1 L9 1 L10 6 Z" fill={darkFill} fillOpacity="1" />
+        <circle cx="6" cy="0" r="3" fill={darkFill} fillOpacity="0.98" />
+      </g>
+      
+      {/* Pickaxe 2 */}
+      <g transform="translate(385, 18)">
+        <rect x="-2" y="16" width="20" height="4" fill={pureBlackFill} fillOpacity="1" transform="rotate(45, 8, 18)" />
+        <path d="M3 2 L-6 7 L-3 12 L6 7 Z" fill={darkFill} fillOpacity="1" />
+      </g>
+      
+      {/* Miner with pickaxe - right side */}
+      <g transform="translate(420, 6)">
+        <path 
+          d="M12 10 Q15 6, 18 8 Q20 10, 19 14 L19 18 Q21 20, 19 22 L20 28 L22 42 Q23 50, 20 52 L16 52 L18 42 L14 52 L10 52 L13 40 L10 28 L5 32 L3 28 L9 22 Q7 20, 9 18 L12 10 Z" 
+          fill={pureBlackFill}
+          fillOpacity="0.98"
+        />
+        <ellipse cx="15" cy="9" rx="4" ry="3" fill={darkFill} fillOpacity="1" />
+        <path d="M8 16 L26 12" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
+        <path d="M24 10 L29 14 L26 17 Z" fill={darkFill} fillOpacity="1" />
+      </g>
+      
+      {/* Wagon right */}
+      <g transform="translate(470, 18)">
+        <path d="M2 32 L8 12 L38 12 L44 32 Z" fill={pureBlackFill} fillOpacity="0.97" />
+        <path d="M10 12 L13 6 Q23 3, 33 6 L36 12 Z" fill="hsl(0 0% 2%)" fillOpacity="1" />
+        <circle cx="10" cy="36" r="5" fill={pureBlackFill} fillOpacity="1" />
+        <circle cx="36" cy="36" r="5" fill={pureBlackFill} fillOpacity="1" />
       </g>
     </svg>
   </div>
