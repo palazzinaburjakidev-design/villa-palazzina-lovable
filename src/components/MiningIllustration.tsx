@@ -80,7 +80,7 @@ const TunnelEntrance = memo(() => (
     {/* Left side - Wagons and miners (under text area) */}
     <svg
       viewBox="0 0 320 90"
-      className="absolute bottom-2 left-0 w-3/5 sm:w-1/2 h-20 sm:h-28"
+      className="absolute bottom-2 left-0 w-1/3 sm:w-1/4 h-20 sm:h-28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMax meet"
@@ -155,7 +155,7 @@ const TunnelEntrance = memo(() => (
     {/* Right side - Tunnel entrance with SRETNO */}
     <svg
       viewBox="0 0 180 110"
-      className="absolute bottom-1 right-0 w-2/5 sm:w-1/3 h-24 sm:h-32"
+      className="absolute bottom-1 right-0 w-1/3 sm:w-1/4 h-24 sm:h-32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMaxYMax meet"
