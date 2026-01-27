@@ -13,6 +13,7 @@ import rabacBeachImg from '@/assets/rabac-beach.jpg';
 import rabacTownImg from '@/assets/rabac-town.jpg';
 import labinOldTownImg from '@/assets/labin-old-town.jpg';
 import rovinjTownImg from '@/assets/rovinj-town.jpg';
+import pulaTownImg from '@/assets/pula-town.jpg';
 
 interface LocationItem {
   nameKey: string;
@@ -48,7 +49,7 @@ const categoriesGroup1: Category[] = [
       { nameKey: 'location.labin.title', descriptionKey: 'location.labin.description', distanceKey: 'location.labin.distance', image: labinOldTownImg },
       { nameKey: 'location.rabac.title', descriptionKey: 'location.rabac.description', distanceKey: 'location.rabac.distance', image: rabacTownImg },
       { nameKey: 'location.rovinj.title', descriptionKey: 'location.rovinj.description', distanceKey: 'location.rovinj.distance', image: rovinjTownImg },
-      { nameKey: 'location.pula.title', descriptionKey: 'location.pula.description', distanceKey: 'location.pula.distance' },
+      { nameKey: 'location.pula.title', descriptionKey: 'location.pula.description', distanceKey: 'location.pula.distance', image: pulaTownImg },
     ],
   },
   {
@@ -244,7 +245,9 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
                 : 'Izvor fotografije: Turistička zajednica Općine Raša')
             : (currentItem.nameKey === 'location.rovinj.title'
                 ? 'Izvor fotografije: rovinj-tourism'
-                : 'Izvor fotografije: Turistička zajednica Rabac-Labin')
+                : currentItem.nameKey === 'location.pula.title'
+                  ? 'Izvor fotografije: pulainfo.hr'
+                  : 'Izvor fotografije: Turistička zajednica Rabac-Labin')
           }
         </p>
       )}
