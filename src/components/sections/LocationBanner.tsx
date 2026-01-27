@@ -173,7 +173,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       </div>
 
       {/* Banner Content */}
-      <div className={`relative flex items-center justify-center ${isPrimary ? 'h-44 sm:h-52 md:h-60' : 'h-24 sm:h-28'}`}>
+      <div className={`relative flex items-center justify-center ${isPrimary ? 'h-56 sm:h-52 md:h-60' : 'h-24 sm:h-28'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeCategory}-${currentItemIndex}`}
@@ -181,11 +181,11 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-4 sm:gap-6 px-4 sm:px-6 md:px-10 w-full max-w-3xl"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 px-4 sm:px-6 md:px-10 w-full max-w-3xl"
           >
             {/* Image thumbnail - only for primary group with images */}
             {isPrimary && currentItem.image && (
-              <div className="hidden sm:block flex-shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-xl overflow-hidden ring-2 ring-terracotta/40 shadow-lg">
+              <div className="flex-shrink-0 w-24 h-24 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-xl overflow-hidden ring-2 ring-terracotta/40 shadow-lg">
                 <img 
                   src={currentItem.image} 
                   alt={t(currentItem.nameKey)}
