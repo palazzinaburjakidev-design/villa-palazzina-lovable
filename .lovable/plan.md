@@ -1,143 +1,153 @@
 
-# Plan: Poboljšanje rudarskih ilustracija
+# Plan: Promjena stila ilustracija u skica/crtež stil
 
-## Pregled problema
+## Pregled
 
-Korisnik je identificirao nekoliko ključnih problema s trenutnim implementacijama:
-
-1. Ilustracije izgledaju amaterski - previše jednostavne geometrijske forme
-2. Tekst "SRETNO" u Gallery sekciji nije vidljiv
-3. Rudari ne idu konzistentno s lijeva na desno
-4. Gallery ilustracija treba biti poravnata desno
-5. Amenities sadržaj treba bolje centriranje
+Transformacija postojećih rudarskih ilustracija iz vintage gravura stila u stil skice/crteža koji izgleda kao da je ručno nacrtan olovkom. Ovaj stil će dati umjetnički i organski izgled ilustracijama.
 
 ---
 
-## Rješenje
+## Karakteristike skica/crtež stila
 
-### 1. Profesionalniji vintage stil ilustracija
+### Vizualni elementi
+- **Nepravilne, "drhtave" linije** - kao da je ruka crtala, ne savršeno ravne
+- **Višestruke skicirane linije** - umjesto jedne čiste linije, više laganih poteza
+- **Nezatvoreni oblici** - linije ne moraju biti perfektno spojene
+- **Varijabilna debljina** - linije variraju kao kod pritiska olovke
+- **Suptilno sjenčanje** - lagane hatching linije za volumen, ne solidne ispune
+- **Organsko, "živo" crtanje** - nedovršeni rubovi, skicirani detalji
 
-Trenutni problem: Ilustracije koriste jednostavne `ellipse`, `circle` i `line` elemente koji izgledaju dječje.
-
-Promjena: Zamjena s detaljnijim SVG path elementima koji simuliraju vintage gravure:
-- Korištenje hatching linija za sjene umjesto solid fillova
-- Varijabilne debljine linija za simulaciju pritiska alata za graviranje
-- Više anatomskih detalja na siluetama rudara
-- Dodavanje teksturnih linija na alate i odjeću
-
-### 2. Vidljivost "SRETNO" natpisa
-
-Trenutni problem: Tekst ima `fill="hsl(35 25% 75% / 0.7)"` i pozadina bannera ima nizak kontrast.
-
-Promjena u `TunnelEntrance` komponenti:
-- Povećati opacity teksta na 1.0 (puna vidljivost)
-- Dodati tamnu pozadinu banneru za bolji kontrast
-- Povećati veličinu fonta s 12 na 14-16
-- Dodati suptilnu sjenu teksta
-
-### 3. Konzistentan smjer kretanja rudara (lijevo na desno)
-
-Trenutni problem: Neki rudari gledaju/hodaju u različitim smjerovima.
-
-Promjena u `MinersWalking` komponenti:
-- Svi rudari hodaju prema desno (prema ulazu rudnika na desnoj strani)
-- Krampovi i alati u desnoj ruci, usmjereni prema naprijed
-- Ulaz u rudnik ostaje na desnoj strani kao odredište
-
-### 4. Pozicioniranje Gallery ilustracije
-
-Trenutni problem: Ilustracija je centrirana, ali ima više prostora desno.
-
-Promjena u `GallerySection.tsx`:
-- Umjesto `left-1/2 -translate-x-1/2` koristiti `right-4 sm:right-8`
-- Ilustracija će biti poravnata uz desni rub gdje ima više slobodnog prostora
-
-### 5. Centriranje Amenities sadržaja
-
-Trenutni problem: Sadržaj izgleda pomaknut udesno.
-
-Promjena u `AmenitiesSection.tsx`:
-- Provjeriti i ukloniti bilo kakav padding/margin koji pomiče sadržaj
-- Osigurati da je grid centriran unutar kontejnera
+### Paleta boja
+- Primarna: `sandstone` s 30-50% opacity (kao olovka na papiru)
+- Akcent: `terracotta` s 20-35% opacity za toplije detalje
+- Bez solidnih ispuna - samo linije i hatching
 
 ---
 
-## Tehnički detalji
+## Promjene po ilustraciji
 
-### Datoteka: `src/components/MiningIllustration.tsx`
-
-**TunnelEntrance promjene:**
+### 1. TunnelEntrance (Gallery sekcija)
 ```text
-Linija 96-108: SRETNO banner
-- Promijeniti: fill="hsl(25 35% 50% / 0.25)" -> fill="hsl(25 35% 40% / 0.8)"
-- Promijeniti: fill="hsl(35 25% 75% / 0.7)" -> fill="hsl(35 25% 85% / 1)"
-- Dodati: fontSize="14" umjesto 12
-- Dodati: text-shadow efekt kroz filter ili stroke
+Trenutno: Solidni oblici s hatching teksturom
+Novo: Skicirani luk tunela s višestrukim linijama
+
+Elementi:
+- Kameni luk nacrtan s 2-3 nepravilne linije umjesto jedne
+- "SRETNO" natpis ostaje čitljiv ali s rukom pisanim fontom ili blago zakrivljenim slovima
+- Drvene grede skicirane s cross-hatch linijama za teksturu
+- Tračnice s laganim, nepravilnim linijama
+- Tlo s brzim, skiciranim potezima
 ```
 
-**MinersWalking promjene:**
+### 2. MinersWalking (Amenities sekcija)
 ```text
-Linije 146-196: Svih 5 rudara
-- Okrenuti sve figure da gledaju/hodaju udesno
-- Uniformni smjer krampova i alata (u desnoj ruci, usmjereni naprijed-desno)
-- Dodati više detalja na siluete (hatching linije na odjeći)
-- Poboljšati proporcije tijela za profesionalniji izgled
+Trenutno: Detaljne siluete s hatching efektom
+Novo: Brze skice rudara u pokretu
+
+Elementi:
+- Figure nacrtane s gestualnim linijama (kao life drawing)
+- Krampovi i alati s jednostavnim, brzim potezima
+- Kacige s blagim kružnim skicama
+- Planine u pozadini s laganim, brzim linijama
+- Svaki rudar ima malo drugačiji stil - kao da su crtani brzo
 ```
 
-**Općenito za sve ilustracije:**
-- Povećati opacity na svim elementima (trenutno 0.15-0.25 -> 0.3-0.5)
-- Dodati hatching linije za vintage gravura efekt
-- Poboljšati proporcije figura
-
-### Datoteka: `src/components/sections/GallerySection.tsx`
-
+### 3. MineCart (Location sekcija)
 ```text
-Linija s MiningIllustration:
-Trenutno: className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
-Novo: className="absolute bottom-4 sm:bottom-6 right-4 sm:right-8 z-20"
+Trenutno: Geometrijska kolica s detaljima
+Novo: Skicirana kolica s organskim linijama
+
+Elementi:
+- Kolica nacrtana s nepravilnim pravokutnicima
+- Kotači kao brzi krugovi (ne savršeni)
+- Ugljen kao brze, crne skicirane mrlje
+- Tračnice s laganim, valovitim linijama
+- Rudar koji gura - gestualna skica figure
 ```
 
-### Datoteka: `src/components/sections/AmenitiesSection.tsx`
-
+### 4. MiningTools (About sekcija)
 ```text
-Provjeriti container padding i osigurati centriranje:
-- max-w-7xl ostaje
-- Dodati mx-auto ako nedostaje
-- Ukloniti asimetrični padding ako postoji
+Trenutno: Ornamentalni border s detaljnim alatima
+Novo: Brze skice alata u nizu
+
+Elementi:
+- Krampovi nacrtani s 2-3 brza poteza
+- Lampe kao jednostavni pravokutnici s krugom
+- Lopate s brzim linijama
+- Ornamenti zamijenjeni jednostavnim točkama ili crticama
+- Dekorativne linije s blagim valovitim efektom
 ```
 
 ---
 
-## Vizualni primjer poboljšanih rudara
+## Tehnička implementacija
 
-Prije (jednostavne forme):
-```text
-  O      <- krug za glavu
- /|\     <- linije za tijelo
- / \     <- linije za noge
-```
+### SVG tehnike za skica efekt
 
-Poslije (vintage gravura stil):
+1. **Nepravilne linije**: Koristiti `path` s blagim krivinama umjesto ravnih `line` elemenata
+   ```text
+   Prije: M0 0 L100 0 (ravna linija)
+   Poslije: M0 1 Q25 -1, 50 2 Q75 0, 100 1 (blago valovita)
+   ```
+
+2. **Višestruki potezi**: Za svaki oblik dodati 2-3 blago pomaknute linije
+   ```text
+   Linija 1: opacity 0.4, offset 0
+   Linija 2: opacity 0.25, offset 1-2px
+   ```
+
+3. **Stroke svojstva**:
+   - `stroke-linecap="round"` za mekše krajeve
+   - `stroke-linejoin="round"` za zaobljene kutove
+   - Varijabilna `stroke-width` (1-3px)
+
+4. **Hatching za sjene**: Lagane dijagonalne linije s niskim opacityjem
+   ```text
+   45° linije, razmak 4-6px, opacity 0.15-0.25
+   ```
+
+---
+
+## Datoteka za izmjenu
+
+**`src/components/MiningIllustration.tsx`**
+
+Kompletna zamjena svih 4 SVG komponenti s novim skica stilom:
+- TunnelEntrance - zadržati SRETNO natpis, promijeniti stil crteža
+- MinersWalking - gestualne figure, zadržati smjer lijevo-desno
+- MineCart - organske linije, zadržati kompoziciju
+- MiningTools - jednostavniji, brži potezi
+
+---
+
+## Primjer vizualne razlike
+
 ```text
-  ╭─╮    <- detaljna kaciga s lampom
-  │●│    <- lice s detaljem
- ╱│ │╲   <- ramena s hatching linijama
- │ │ │   <- tijelo s teksturom
-╱  │  ╲  <- noge u pokretu
-     ⚒   <- detaljni kramp
+VINTAGE GRAVURA STIL (trenutno):
+┌────────────────────────────┐
+│  ╔══════════════════════╗  │  <- precizne, formalne linije
+│  ║      SRETNO          ║  │
+│  ╚══════════════════════╝  │
+│      ╱▔▔▔▔▔▔▔▔▔╲          │  <- geometrijski luk
+│     ║           ║          │
+└────────────────────────────┘
+
+SKICA/CRTEŽ STIL (novo):
+┌────────────────────────────┐
+│   ~~ SRETNO ~~             │  <- ručno pisani font
+│     /```````\              │  <- nepravilne linije
+│    /   ~~~   \             │  <- višestruki potezi
+│   |    ~~~    |            │  <- skicirani detalji
+└────────────────────────────┘
 ```
 
 ---
 
-## Promjene po datotekama
+## Očekivani rezultat
 
-1. **`src/components/MiningIllustration.tsx`**
-   - Redizajn svih 4 ilustracija s boljim SVG pathovima
-   - Povećanje kontrasta i vidljivosti
-   - Konzistentan smjer kretanja
-
-2. **`src/components/sections/GallerySection.tsx`**
-   - Poravnanje ilustracije udesno
-
-3. **`src/components/sections/AmenitiesSection.tsx`**
-   - Provjera i korekcija centriranja sadržaja
+Ilustracije će izgledati kao umjetničke skice iz skicenbloka:
+- Topliji, osobniji doživljaj
+- Uklapa se u "autentični" karakter vile
+- Manje formalno, više organsko
+- Zadržava čitljivost "SRETNO" natpisa
+- Konzistentan smjer kretanja rudara (lijevo-desno)
