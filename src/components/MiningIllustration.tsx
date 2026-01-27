@@ -54,10 +54,17 @@ const TunnelEntrance = memo(() => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    {/* Ground line */}
+    <defs>
+      {/* Text shadow filter */}
+      <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="hsl(0 0% 0%)" floodOpacity="0.5"/>
+      </filter>
+    </defs>
+    
+    {/* Ground line with hatching */}
     <path
       d="M0 95 Q75 92, 150 95 Q225 98, 300 95"
-      stroke="hsl(35 25% 75% / 0.2)"
+      stroke="hsl(35 25% 75% / 0.35)"
       strokeWidth="1.5"
       fill="none"
     />
@@ -65,61 +72,79 @@ const TunnelEntrance = memo(() => (
     {/* Tunnel arch - stone texture effect */}
     <path
       d="M60 95 L60 50 Q60 15, 150 15 Q240 15, 240 50 L240 95"
-      stroke="hsl(35 25% 75% / 0.3)"
+      stroke="hsl(35 25% 75% / 0.5)"
       strokeWidth="3"
-      fill="hsl(0 0% 8% / 0.8)"
+      fill="hsl(0 0% 8% / 0.9)"
     />
     
     {/* Inner tunnel darkness */}
     <path
       d="M75 95 L75 55 Q75 28, 150 28 Q225 28, 225 55 L225 95"
-      fill="hsl(0 0% 5% / 0.9)"
+      fill="hsl(0 0% 3% / 0.95)"
     />
     
-    {/* Wooden support beams - left */}
-    <line x1="70" y1="95" x2="70" y2="45" stroke="hsl(25 35% 50% / 0.4)" strokeWidth="4" />
-    <line x1="65" y1="45" x2="85" y2="42" stroke="hsl(25 35% 50% / 0.4)" strokeWidth="3" />
+    {/* Stone block texturing on arch */}
+    <path d="M70 75 L78 73" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" />
+    <path d="M72 60 L82 58" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" />
+    <path d="M222 75 L230 73" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" />
+    <path d="M218 60 L228 58" stroke="hsl(35 25% 75% / 0.25)" strokeWidth="1" fill="none" />
+    <path d="M95 25 L115 23" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" />
+    <path d="M185 25 L205 23" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1" fill="none" />
     
-    {/* Wooden support beams - right */}
-    <line x1="230" y1="95" x2="230" y2="45" stroke="hsl(25 35% 50% / 0.4)" strokeWidth="4" />
-    <line x1="235" y1="45" x2="215" y2="42" stroke="hsl(25 35% 50% / 0.4)" strokeWidth="3" />
+    {/* Wooden support beams - left with wood grain */}
+    <line x1="70" y1="95" x2="70" y2="45" stroke="hsl(25 35% 45% / 0.6)" strokeWidth="5" />
+    <line x1="68" y1="90" x2="68" y2="50" stroke="hsl(25 35% 35% / 0.3)" strokeWidth="1" />
+    <line x1="72" y1="85" x2="72" y2="55" stroke="hsl(25 35% 35% / 0.3)" strokeWidth="1" />
+    <line x1="65" y1="45" x2="85" y2="42" stroke="hsl(25 35% 45% / 0.6)" strokeWidth="4" />
     
-    {/* Cross beam */}
+    {/* Wooden support beams - right with wood grain */}
+    <line x1="230" y1="95" x2="230" y2="45" stroke="hsl(25 35% 45% / 0.6)" strokeWidth="5" />
+    <line x1="228" y1="90" x2="228" y2="50" stroke="hsl(25 35% 35% / 0.3)" strokeWidth="1" />
+    <line x1="232" y1="85" x2="232" y2="55" stroke="hsl(25 35% 35% / 0.3)" strokeWidth="1" />
+    <line x1="235" y1="45" x2="215" y2="42" stroke="hsl(25 35% 45% / 0.6)" strokeWidth="4" />
+    
+    {/* Cross beam with wood texture */}
     <path
-      d="M65 45 Q150 35, 235 45"
-      stroke="hsl(25 35% 50% / 0.4)"
-      strokeWidth="4"
+      d="M65 45 Q150 33, 235 45"
+      stroke="hsl(25 35% 45% / 0.6)"
+      strokeWidth="5"
+      fill="none"
+    />
+    <path
+      d="M80 43 Q150 32, 220 43"
+      stroke="hsl(25 35% 35% / 0.25)"
+      strokeWidth="1"
       fill="none"
     />
     
-    {/* SRETNO banner */}
-    <rect x="100" y="5" width="100" height="22" rx="2" fill="hsl(25 35% 50% / 0.25)" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1" />
+    {/* SRETNO banner - high visibility */}
+    <rect x="95" y="2" width="110" height="26" rx="3" fill="hsl(25 35% 35% / 0.9)" stroke="hsl(35 25% 70% / 0.6)" strokeWidth="1.5" />
+    <rect x="98" y="5" width="104" height="20" rx="2" fill="none" stroke="hsl(35 25% 70% / 0.3)" strokeWidth="0.5" />
     <text
       x="150"
-      y="20"
+      y="19"
       textAnchor="middle"
       className="font-display"
-      fill="hsl(35 25% 75% / 0.7)"
-      fontSize="12"
-      fontWeight="600"
-      letterSpacing="3"
+      fill="hsl(35 30% 85%)"
+      fontSize="14"
+      fontWeight="700"
+      letterSpacing="4"
+      filter="url(#textShadow)"
     >
       SRETNO
     </text>
     
-    {/* Stone texture details */}
-    <path d="M65 70 Q67 68, 72 70" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" />
-    <path d="M228 60 Q232 58, 235 61" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" />
-    <path d="M80 35 Q90 33, 95 36" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" />
-    <path d="M205 35 Q215 33, 220 36" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1" fill="none" />
+    {/* Rails going into tunnel - more visible */}
+    <line x1="110" y1="95" x2="130" y2="70" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2.5" />
+    <line x1="190" y1="95" x2="170" y2="70" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2.5" />
     
-    {/* Rails going into tunnel */}
-    <line x1="110" y1="95" x2="130" y2="75" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="2" />
-    <line x1="190" y1="95" x2="170" y2="75" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="2" />
+    {/* Rail ties */}
+    <line x1="115" y1="88" x2="185" y2="88" stroke="hsl(25 35% 45% / 0.3)" strokeWidth="2" />
+    <line x1="120" y1="82" x2="180" y2="82" stroke="hsl(25 35% 45% / 0.3)" strokeWidth="2" />
   </svg>
 ));
 
-// Miners walking silhouettes - Amenities section
+// Miners walking silhouettes - Amenities section (all walking left to right)
 const MinersWalking = memo(() => (
   <svg
     viewBox="0 0 400 70"
@@ -131,77 +156,111 @@ const MinersWalking = memo(() => (
     {/* Mountain/hill silhouette background */}
     <path
       d="M0 70 L0 55 Q20 45, 50 50 Q80 40, 120 48 Q160 35, 200 42 Q240 30, 280 38 Q320 32, 360 40 Q390 35, 400 45 L400 70 Z"
-      fill="hsl(35 25% 75% / 0.08)"
+      fill="hsl(35 25% 75% / 0.12)"
     />
     
     {/* Ground line */}
     <path
       d="M0 65 Q100 62, 200 65 Q300 68, 400 65"
-      stroke="hsl(35 25% 75% / 0.15)"
-      strokeWidth="1"
+      stroke="hsl(35 25% 75% / 0.25)"
+      strokeWidth="1.5"
       fill="none"
     />
     
-    {/* Miner 1 - walking with pickaxe */}
-    <g transform="translate(40, 20)" fill="hsl(35 25% 75% / 0.25)">
-      {/* Head with helmet */}
-      <ellipse cx="8" cy="5" rx="5" ry="5" />
-      <path d="M3 3 L13 3 L12 0 L4 0 Z" /> {/* Helmet */}
-      <circle cx="5" cy="2" r="1.5" fill="hsl(25 35% 50% / 0.3)" /> {/* Lamp */}
-      {/* Body */}
-      <path d="M8 10 L8 28 M4 15 L8 12 L12 18 M8 28 L3 45 M8 28 L13 44" strokeWidth="2.5" stroke="hsl(35 25% 75% / 0.25)" fill="none" />
-      {/* Pickaxe */}
-      <path d="M12 18 L28 8 M24 5 L28 8 L28 12" stroke="hsl(35 25% 75% / 0.2)" strokeWidth="1.5" fill="none" />
+    {/* Miner 1 - walking right with pickaxe over shoulder */}
+    <g transform="translate(30, 18)" fill="hsl(35 25% 75% / 0.4)">
+      {/* Helmet with lamp */}
+      <path d="M6 0 L14 0 L15 4 L5 4 Z" fill="hsl(35 25% 75% / 0.35)" />
+      <circle cx="14" cy="2" r="2" fill="hsl(25 35% 55% / 0.5)" />
+      {/* Head */}
+      <ellipse cx="10" cy="7" rx="5" ry="4" />
+      {/* Body - leaning forward walking right */}
+      <path d="M10 11 L12 28" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="3" fill="none" />
+      {/* Arms - right arm forward with pickaxe */}
+      <path d="M10 14 L6 20" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2.5" fill="none" />
+      <path d="M10 14 L18 12 L30 6" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="none" />
+      {/* Pickaxe head */}
+      <path d="M28 3 L32 6 L30 10" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2" fill="none" />
+      {/* Legs - walking stride */}
+      <path d="M12 28 L6 46" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2.5" fill="none" />
+      <path d="M12 28 L18 45" stroke="hsl(35 25% 75% / 0.4)" strokeWidth="2.5" fill="none" />
     </g>
     
-    {/* Miner 2 - different pose */}
-    <g transform="translate(100, 18)" fill="hsl(35 25% 75% / 0.22)">
-      <ellipse cx="8" cy="5" rx="5" ry="5" />
-      <path d="M3 3 L13 3 L12 0 L4 0 Z" />
-      <circle cx="5" cy="2" r="1.5" fill="hsl(25 35% 50% / 0.25)" />
-      <path d="M8 10 L8 30 M3 16 L8 12 L14 14 M8 30 L2 48 M8 30 L14 47" strokeWidth="2.5" stroke="hsl(35 25% 75% / 0.22)" fill="none" />
-      {/* Shovel */}
-      <path d="M14 14 L25 5" stroke="hsl(35 25% 75% / 0.18)" strokeWidth="1.5" fill="none" />
-      <ellipse cx="27" cy="4" rx="3" ry="2" fill="hsl(35 25% 75% / 0.15)" />
+    {/* Miner 2 - walking right with shovel */}
+    <g transform="translate(95, 16)" fill="hsl(35 25% 75% / 0.35)">
+      <path d="M6 0 L14 0 L15 4 L5 4 Z" fill="hsl(35 25% 75% / 0.3)" />
+      <circle cx="14" cy="2" r="2" fill="hsl(25 35% 55% / 0.45)" />
+      <ellipse cx="10" cy="7" rx="5" ry="4" />
+      <path d="M10 11 L13 30" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="3" fill="none" />
+      {/* Arms with shovel */}
+      <path d="M10 14 L5 22" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2.5" fill="none" />
+      <path d="M10 14 L20 18 L28 12" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="1.5" fill="none" />
+      <ellipse cx="30" cy="10" rx="4" ry="2.5" fill="hsl(35 25% 75% / 0.25)" />
+      {/* Legs */}
+      <path d="M13 30 L8 50" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2.5" fill="none" />
+      <path d="M13 30 L20 48" stroke="hsl(35 25% 75% / 0.35)" strokeWidth="2.5" fill="none" />
     </g>
     
-    {/* Miner 3 */}
-    <g transform="translate(170, 22)" fill="hsl(35 25% 75% / 0.2)">
-      <ellipse cx="8" cy="5" rx="5" ry="5" />
-      <path d="M3 3 L13 3 L12 0 L4 0 Z" />
-      <circle cx="5" cy="2" r="1.5" fill="hsl(25 35% 50% / 0.22)" />
-      <path d="M8 10 L8 28 M5 17 L8 12 L11 17 M8 28 L4 44 M8 28 L12 43" strokeWidth="2.5" stroke="hsl(35 25% 75% / 0.2)" fill="none" />
-      {/* Pickaxe on shoulder */}
-      <path d="M5 12 L-5 5 M-8 2 L-5 5 L-5 9" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1.5" fill="none" />
+    {/* Miner 3 - walking right, pickaxe on shoulder */}
+    <g transform="translate(165, 20)" fill="hsl(35 25% 75% / 0.32)">
+      <path d="M6 0 L14 0 L15 4 L5 4 Z" fill="hsl(35 25% 75% / 0.28)" />
+      <circle cx="14" cy="2" r="2" fill="hsl(25 35% 55% / 0.4)" />
+      <ellipse cx="10" cy="7" rx="5" ry="4" />
+      <path d="M10 11 L11 26" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="3" fill="none" />
+      {/* Arms - pickaxe resting on shoulder */}
+      <path d="M10 14 L4 21" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="2.5" fill="none" />
+      <path d="M10 14 L16 10" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="2.5" fill="none" />
+      <path d="M14 6 L26 -2" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" />
+      <path d="M24 -4 L28 -2 L26 2" stroke="hsl(35 25% 75% / 0.28)" strokeWidth="1.5" fill="none" />
+      {/* Legs */}
+      <path d="M11 26 L5 44" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="2.5" fill="none" />
+      <path d="M11 26 L17 43" stroke="hsl(35 25% 75% / 0.32)" strokeWidth="2.5" fill="none" />
     </g>
     
-    {/* Miner 4 */}
-    <g transform="translate(240, 20)" fill="hsl(35 25% 75% / 0.23)">
-      <ellipse cx="8" cy="5" rx="5" ry="5" />
-      <path d="M3 3 L13 3 L12 0 L4 0 Z" />
-      <circle cx="5" cy="2" r="1.5" fill="hsl(25 35% 50% / 0.25)" />
-      <path d="M8 10 L8 29 M4 18 L8 12 L13 16 M8 29 L3 46 M8 29 L13 45" strokeWidth="2.5" stroke="hsl(35 25% 75% / 0.23)" fill="none" />
+    {/* Miner 4 - walking right with lantern */}
+    <g transform="translate(235, 18)" fill="hsl(35 25% 75% / 0.38)">
+      <path d="M6 0 L14 0 L15 4 L5 4 Z" fill="hsl(35 25% 75% / 0.33)" />
+      <circle cx="14" cy="2" r="2" fill="hsl(25 35% 55% / 0.5)" />
+      <ellipse cx="10" cy="7" rx="5" ry="4" />
+      <path d="M10 11 L12 29" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="3" fill="none" />
+      {/* Arms - carrying lantern */}
+      <path d="M10 14 L5 20" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="2.5" fill="none" />
+      <path d="M10 14 L18 20" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="2.5" fill="none" />
       {/* Lantern */}
-      <rect x="14" y="12" width="4" height="6" stroke="hsl(25 35% 50% / 0.2)" strokeWidth="1" fill="none" />
+      <rect x="18" y="18" width="5" height="8" rx="1" stroke="hsl(25 35% 55% / 0.4)" strokeWidth="1.5" fill="none" />
+      <circle cx="20.5" cy="22" r="1.5" fill="hsl(25 35% 55% / 0.3)" />
+      {/* Legs */}
+      <path d="M12 29 L6 47" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="2.5" fill="none" />
+      <path d="M12 29 L19 46" stroke="hsl(35 25% 75% / 0.38)" strokeWidth="2.5" fill="none" />
     </g>
     
-    {/* Miner 5 */}
-    <g transform="translate(310, 19)" fill="hsl(35 25% 75% / 0.18)">
-      <ellipse cx="8" cy="5" rx="5" ry="5" />
-      <path d="M3 3 L13 3 L12 0 L4 0 Z" />
-      <circle cx="5" cy="2" r="1.5" fill="hsl(25 35% 50% / 0.2)" />
-      <path d="M8 10 L8 28 M3 15 L8 12 L14 17 M8 28 L2 47 M8 28 L14 46" strokeWidth="2.5" stroke="hsl(35 25% 75% / 0.18)" fill="none" />
-      {/* Pickaxe */}
-      <path d="M14 17 L26 10 M22 7 L26 10 L26 14" stroke="hsl(35 25% 75% / 0.15)" strokeWidth="1.5" fill="none" />
+    {/* Miner 5 - walking right with pickaxe ready */}
+    <g transform="translate(305, 17)" fill="hsl(35 25% 75% / 0.3)">
+      <path d="M6 0 L14 0 L15 4 L5 4 Z" fill="hsl(35 25% 75% / 0.26)" />
+      <circle cx="14" cy="2" r="2" fill="hsl(25 35% 55% / 0.35)" />
+      <ellipse cx="10" cy="7" rx="5" ry="4" />
+      <path d="M10 11 L13 30" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="3" fill="none" />
+      {/* Arms with pickaxe */}
+      <path d="M10 14 L4 21" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2.5" fill="none" />
+      <path d="M10 14 L22 8 L34 2" stroke="hsl(35 25% 75% / 0.26)" strokeWidth="1.5" fill="none" />
+      <path d="M32 -1 L36 2 L34 6" stroke="hsl(35 25% 75% / 0.26)" strokeWidth="1.5" fill="none" />
+      {/* Legs */}
+      <path d="M13 30 L7 49" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2.5" fill="none" />
+      <path d="M13 30 L20 48" stroke="hsl(35 25% 75% / 0.3)" strokeWidth="2.5" fill="none" />
     </g>
     
-    {/* Small mine entrance in distance */}
-    <path
-      d="M380 65 L380 50 Q380 42, 390 42 Q400 42, 400 50 L400 65"
-      fill="hsl(0 0% 5% / 0.5)"
-      stroke="hsl(35 25% 75% / 0.1)"
-      strokeWidth="1"
-    />
+    {/* Mine entrance on right - destination */}
+    <g transform="translate(365, 0)">
+      <path
+        d="M0 65 L0 45 Q0 35, 17 35 Q35 35, 35 45 L35 65"
+        fill="hsl(0 0% 5% / 0.7)"
+        stroke="hsl(35 25% 75% / 0.25)"
+        strokeWidth="2"
+      />
+      {/* Entrance details */}
+      <line x1="5" y1="65" x2="5" y2="42" stroke="hsl(25 35% 45% / 0.35)" strokeWidth="2" />
+      <line x1="30" y1="65" x2="30" y2="42" stroke="hsl(25 35% 45% / 0.35)" strokeWidth="2" />
+    </g>
   </svg>
 ));
 

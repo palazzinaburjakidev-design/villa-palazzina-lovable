@@ -484,7 +484,7 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
         <MiningIllustration 
           type="tunnel-entrance" 
           isActive={isActive} 
-          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+          className="absolute bottom-4 sm:bottom-6 right-4 sm:right-8 z-20"
         />
       </div>
 
