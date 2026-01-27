@@ -1272,6 +1272,38 @@ export const translations: Translations = {
     it: 'YouTube (Google) - per la visualizzazione di contenuti video. I video incorporati possono impostare cookie di terze parti in conformità con l\'informativa sulla privacy di YouTube.',
     de: 'YouTube (Google) - zur Anzeige von Videoinhalten. Eingebettete Videos können Cookies von Drittanbietern gemäß den Datenschutzrichtlinien von YouTube setzen.',
   },
+
+  // Analytics Section
+  'privacy.analytics.title': {
+    en: 'Website Analytics',
+    hr: 'Analitika web stranice',
+    it: 'Analisi del sito web',
+    de: 'Website-Analytik',
+  },
+  'privacy.analytics.text': {
+    en: 'This website uses Cloudflare Web Analytics to collect anonymous visitor statistics. This service:',
+    hr: 'Ova web stranica koristi Cloudflare Web Analytics za prikupljanje anonimne statistike posjetitelja. Ova usluga:',
+    it: 'Questo sito web utilizza Cloudflare Web Analytics per raccogliere statistiche anonime sui visitatori. Questo servizio:',
+    de: 'Diese Website verwendet Cloudflare Web Analytics zur Erfassung anonymer Besucherstatistiken. Dieser Dienst:',
+  },
+  'privacy.analytics.item1': {
+    en: 'Does not use cookies',
+    hr: 'Ne koristi kolačiće',
+    it: 'Non utilizza cookie',
+    de: 'Verwendet keine Cookies',
+  },
+  'privacy.analytics.item2': {
+    en: 'Does not collect personal data',
+    hr: 'Ne prikuplja osobne podatke',
+    it: 'Non raccoglie dati personali',
+    de: 'Erfasst keine persönlichen Daten',
+  },
+  'privacy.analytics.item3': {
+    en: 'Is used exclusively for anonymous traffic statistics',
+    hr: 'Koristi se isključivo za anonimnu statistiku prometa',
+    it: 'Viene utilizzato esclusivamente per statistiche anonime sul traffico',
+    de: 'Wird ausschließlich für anonyme Verkehrsstatistiken verwendet',
+  },
   'privacy.gdprRights.title': {
     en: 'Your Rights Under GDPR',
     hr: 'Vaša prava prema GDPR-u',

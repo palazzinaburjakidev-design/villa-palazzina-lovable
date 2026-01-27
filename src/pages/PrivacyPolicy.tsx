@@ -87,6 +87,21 @@ const PrivacyPolicy = () => {
               </ul>
             </section>
 
+            {/* Analytics */}
+            <section>
+              <h2 className="font-display text-xl text-gold mb-4">
+                {t('privacy.analytics.title')}
+              </h2>
+              <p className="text-linen/80 leading-relaxed mb-4">
+                {t('privacy.analytics.text')}
+              </p>
+              <ul className="list-disc list-inside text-linen/80 space-y-2">
+                <li>{t('privacy.analytics.item1')}</li>
+                <li>{t('privacy.analytics.item2')}</li>
+                <li>{t('privacy.analytics.item3')}</li>
+              </ul>
+            </section>
+
             {/* GDPR Rights */}
             <section>
               <h2 className="font-display text-xl text-gold mb-4">
