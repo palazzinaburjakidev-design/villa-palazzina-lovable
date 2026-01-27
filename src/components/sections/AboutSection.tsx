@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import MiningIllustration from '@/components/MiningIllustration';
 
 interface AboutSectionProps {
   isActive: boolean;
@@ -235,6 +236,13 @@ const AboutSection = memo(({
               </div>
             </div>
           </motion.div>
+
+          {/* Mining Illustration */}
+          <MiningIllustration 
+            type="mining-tools" 
+            isActive={isActive} 
+            className="mt-4 sm:mt-6 flex justify-center"
+          />
         </motion.div>
 
         {/* Footer */}
