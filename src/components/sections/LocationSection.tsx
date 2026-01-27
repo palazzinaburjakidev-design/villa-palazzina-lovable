@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LocationBanner from './LocationBanner';
+import MiningIllustration from '@/components/MiningIllustration';
 
 interface LocationSectionProps {
   isActive: boolean;
@@ -73,6 +74,13 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
             <LocationBanner />
           </motion.div>
         </motion.div>
+
+        {/* Mining Illustration */}
+        <MiningIllustration 
+          type="mine-cart" 
+          isActive={isActive} 
+          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+        />
       </div>
     </section>
   );

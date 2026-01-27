@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Waves, Sparkles, Dumbbell, CircleDot, Wifi, Flame, AirVent, Gamepad2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import MiningIllustration from '@/components/MiningIllustration';
 
 interface AmenitiesSectionProps {
   isActive: boolean;
@@ -134,6 +135,13 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
             })}
           </motion.div>
         </motion.div>
+
+        {/* Mining Illustration */}
+        <MiningIllustration 
+          type="miners-walking" 
+          isActive={isActive} 
+          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-full max-w-3xl px-4 z-20"
+        />
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import MiningIllustration from '@/components/MiningIllustration';
 
 import galleryBedroom from '@/assets/gallery-bedroom.avif';
 import galleryPool from '@/assets/gallery-pool.avif';
@@ -478,6 +479,13 @@ const GallerySection = ({ isActive }: GallerySectionProps) => {
             {t('gallery.description')}
           </motion.p>
         </motion.div>
+
+        {/* Mining Illustration */}
+        <MiningIllustration 
+          type="tunnel-entrance" 
+          isActive={isActive} 
+          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+        />
       </div>
 
       {/* Album Lightbox */}
