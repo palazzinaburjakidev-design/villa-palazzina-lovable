@@ -1,131 +1,102 @@
 
-# Plan: Promjena ilustracija u Linorez/Drvorez stil
+
+# Plan: Totalno crne ilustracije (Pure Black Silhouettes)
 
 ## Pregled
 
-Transformacija rudarskih ilustracija u autentični linorez/drvorez (woodcut) stil koji karakteriziraju:
-- Grubi, ekspresivni potezi poput rezanja u drvo
-- Visoki crno-bijeli kontrast
-- Solidne ispune umjesto tankih linija
-- Karakteristične "rezane" teksture
-- Izgled starih novinskih gravura
+Transformacija rudarskih ilustracija u **čiste crne siluete** - bez unutarnjih linija, bez bijelih kontura, samo solidni crni oblici. Minimalistički, dramatičan pristup.
 
 ---
 
-## Karakteristike Linorez/Drvorez stila
+## Karakteristike stila
 
-### Vizualni elementi
-- **Debele, grube linije** - kao da su urezane u drvo
-- **Solidne ispune** - crne siluete s bijelim negativnim prostorom
-- **Paralelne linije za sjene** - horizontalne/dijagonalne "rezane" linije
-- **Gruba tekstura** - nepravilni rubovi, rustikalni izgled
-- **Visoki kontrast** - crno/bijelo bez polutona
-- **Karakteristične "V" usjeke** - linije koje završavaju kao usjeci noža
+### Vizualni pristup
+- **100% crne ispune** - `fill="hsl(0 0% 5-10%)"`
+- **Bez stroke linija** - ili minimalne samo za vanjski rub
+- **Čiste siluete** - prepoznatljive samo po obliku
+- **Bez unutarnjih detalja** - samo kontura forme
+- **Suptilna transparentnost** - 70-90% opacity za eleganciju na tamnoj pozadini
 
-### Paleta boja
-- Primarna: `sandstone` puna opacity (0.7-1.0) za svijetle forme
-- Pozadina/sjene: transparentna ili jako tamna ispuna
-- Bez gradijenata - samo solidne ispune i linije
-
-### Tehnike
-- `fill` umjesto samo `stroke` za glavne oblike
-- Deblje linije (3-6px) za glavne konture
-- Paralelne hatching linije za teksturu (ne cross-hatch)
-- Nepravilni, "izrezani" rubovi na pathovima
+### Paleta
+```
+fill: hsl(0 0% 6-10%)    <- skoro crna
+stroke: hsl(0 0% 15-20%) <- jedva vidljiv rub (opcionalno)
+opacity: 0.7 - 0.9       <- za suptilnost
+```
 
 ---
 
 ## Promjene po ilustraciji
 
-### 1. TunnelEntrance (Gallery sekcija)
+### 1. TunnelEntrance
+- Kameni luk: crna silueta luka
+- Tunel: potpuno crn
+- "SRETNO" banner: crna pozadina, suptilni svijetli tekst (jedini kontrast)
+- Drvene grede: crne vertikale
+- Tračnice: crne linije
 
-**Elementi:**
-- Kameni luk kao solidna silueta s bijelim prostorom za tunel
-- "SRETNO" banner s debelim okvirom i ispunjenom pozadinom
-- Drvene grede kao crni pravokutnici s paralelnim linijama
-- Tračnice kao debele solidne linije
-- Tekstura kamena kroz paralelne dijagonalne linije
+### 2. MinersWalking
+- Rudari: čiste crne siluete figura
+- Alati: crne forme (krampovi, lopate)
+- Planine: crna masa u pozadini
+- Bez unutarnjih detalja - samo prepoznatljivi oblici
 
-**SVG pristup:**
-- Koristiti `fill` za velike oblike
-- Path s nepravilnim rubovima za "rezani" efekt
-- Hatching linije za volumen (razmak 3-5px)
+### 3. MineCart
+- Kolica: crna trapezoidna forma
+- Kotači: crni krugovi
+- Ugljen: crna nepravilna masa
+- Rudar: crna silueta
 
-### 2. MinersWalking (Amenities sekcija)
-
-**Elementi:**
-- Rudari kao solidne crne siluete s definiranim proporcijama
-- Alati jasno prepoznatljivi (krampovi, lopate)
-- Planine u pozadini s paralelnim linijama
-- Kacige s lampama kao karakteristični oblici
-- Ekspresivne, dinamične poze
-
-**SVG pristup:**
-- Solidne filled siluete za figure
-- Debele konture (3-4px)
-- Unutarnje teksturne linije za detalje
-
-### 3. MineCart (Location sekcija)
-
-**Elementi:**
-- Kolica kao čvrst geometrijski oblik
-- Kotači kao debeli krugovi s ispunom
-- Ugljen kao gruba, nepravilna masa
-- Rudar s prepoznatljivom siluetom
-- Tračnice kao paralelne debele linije
-
-**SVG pristup:**
-- Filled oblici za kolica i kotače
-- Grube konture za rudar figuru
-- Tekstura ugljena kroz kratke paralelne poteze
-
-### 4. MiningTools (About sekcija)
-
-**Elementi:**
-- Alati kao solidne ispunjene forme
-- Krampovi s jasnom glavom i drškom
-- Lampe s karakterističnim oblikom
-- Dekorativne linije kao debeli potezi
-- Ornamenti kao jednostavni geometrijski oblici
-
-**SVG pristup:**
-- Većina elemenata s `fill` umjesto samo `stroke`
-- Debele border linije (2-4px)
-- Jednostavna, čitljiva ikonografija
+### 4. MiningTools
+- Svi alati: crne ispunjene forme
+- Dekorativne linije: tanke crne linije
+- Bez ornamenata - čisto i minimalistički
 
 ---
 
 ## Tehnička implementacija
 
-### SVG definicije
-
-Woodcut stroke style:
 ```jsx
-const woodcutStroke = {
-  strokeLinecap: "square", // Oštri završeci
-  strokeLinejoin: "miter", // Oštri kutovi
+// Stil za sve elemente
+const pureBlackStyle = {
+  fill: "hsl(0 0% 8%)",
+  stroke: "none", // ili minimalni stroke za definiciju
+  opacity: 0.8
 };
-```
 
-### Hatching pattern za teksturu
-```jsx
-<defs>
-  <pattern id="woodcutHatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
-    <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="1.5" />
-  </pattern>
-</defs>
-```
-
-### Primjer woodcut siluete rudara
-```jsx
-// Solidna silueta umjesto linijskih crteža
+// Primjer siluete rudara
 <path 
-  d="M10 5 Q15 2, 18 5 L18 8 Q17 12, 15 14 L18 28 Q20 40, 22 50 L18 50 L16 35 L14 50 L10 50 L12 35 L10 28 L7 20 Q5 16, 8 14 L10 14 L10 5" 
-  fill="hsl(35 25% 75% / 0.6)" 
-  stroke="hsl(35 25% 75% / 0.8)" 
-  strokeWidth="2"
+  d="M10 5 Q15 2, 18 5 L18 50 L10 50 Z" 
+  fill="hsl(0 0% 8%)"
+  fillOpacity="0.85"
 />
 ```
+
+---
+
+## Vizualni primjer
+
+```
+TRENUTNO (woodcut s konturama):
+    ╔═══╗
+   ░║   ║░    <- linije i teksture
+    ╚═══╝
+
+NOVO (pure black):
+    ████
+   █████      <- samo crna forma
+    ████
+```
+
+---
+
+## Očekivani rezultat
+
+- **Ultra minimalistički** izgled
+- **Dramatične siluete** na tamnoj pozadini
+- **Elegantna jednostavnost**
+- **"SRETNO"** ostaje čitljiv kao jedini svijetli element
+- Ilustracije djeluju kao **suptilni grafički elementi**
 
 ---
 
@@ -133,63 +104,10 @@ const woodcutStroke = {
 
 **`src/components/MiningIllustration.tsx`**
 
-Kompletna transformacija svih 4 SVG komponenti:
+Promjene:
+1. Ukloniti sve `stroke` atribute ili postaviti na "none"
+2. Postaviti sve `fill` na crnu (`hsl(0 0% 6-10%)`)
+3. Dodati `fillOpacity` 0.7-0.9 za suptilnost
+4. Pojednostaviti pathove - ukloniti unutarnje detalje
+5. Zadržati samo prepoznatljive siluete
 
-1. **Zamjena `sketchStroke` s `woodcutStroke`**:
-   - `strokeLinecap: "square"` umjesto "round"
-   - `strokeLinejoin: "miter"` umjesto "round"
-
-2. **Povećanje opaciteta i debljine linija**:
-   - Opacity: 0.5 - 0.9 (visoki kontrast)
-   - strokeWidth: 2-6px (deblje linije)
-
-3. **Dodavanje filled oblika**:
-   - Siluete rudara s `fill` atributom
-   - Geometrijski oblici umjesto gestualnih linija
-
-4. **Hatching tekstura**:
-   - Paralelne linije za sjene
-   - Karakteristični "rezani" usjeci
-
----
-
-## Vizualna usporedba
-
-**SKICA STIL (trenutno):**
-```
-    o          <- krug za glavu
-   /|\         <- tanke linije za tijelo
-   / \         <- tanke linije za noge
-```
-
-**LINOREZ/DRVOREZ STIL (novo):**
-```
-   ████        <- solidna ispuna glave
-  ██████       <- debele linije za tijelo
- ██    ██      <- čvrste forme za noge
-    ▄█▄        <- alat kao solidna forma
-```
-
----
-
-## Očekivani rezultat
-
-Ilustracije će izgledati kao autentične stare gravure:
-- Rustikalni, tradicijski izgled
-- Visoki kontrast i čitljivost
-- Profesionalne, umjetničke siluete
-- Uklapa se u "autentični" karakter vile
-- Asocira na industrijsku baštinu i rudarstvo
-- "SRETNO" natpis ostaje jasno vidljiv
-- Rudari hodaju konzistentno lijevo-desno
-
----
-
-## Promjene u kodu
-
-Kompletna zamjena SVG sadržaja u `src/components/MiningIllustration.tsx`:
-- Novi `woodcutStroke` objekt za stil linija
-- Redizajn TunnelEntrance s solidnim oblicima
-- Redizajn MinersWalking s ispunjenim siluetama
-- Redizajn MineCart s geometrijskim formama
-- Redizajn MiningTools s ikonografskim elementima
