@@ -136,75 +136,71 @@ const MinersWalking = memo(() => (
     {/* Ground line - subtle */}
     <path d="M0 65 L400 65" stroke={subtleStroke} strokeWidth="2" fill="none" />
     
-    {/* Miner 1 - pure black silhouette */}
+    {/* Miner 1 - walking with pickaxe on shoulder */}
     <g transform="translate(20, 8)">
       <path 
-        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 34 Q24 44, 20 55 L16 55 L17 40 L14 55 L10 55 L13 38 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        d="M12 8 Q15 5, 18 7 Q20 9, 19 13 L19 16 Q21 18, 19 20 L21 26 L23 38 Q24 48, 22 55 L18 55 L20 42 L16 55 L12 55 L15 40 L13 26 L9 32 L7 28 L11 22 Q9 20, 11 18 L12 8 Z" 
         fill={pureBlackFill}
         fillOpacity="1"
       />
-      {/* Helmet */}
-      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill={darkFill} fillOpacity="1" />
-      <circle cx="18" cy="5" r="3" fill={darkFill} fillOpacity="1" />
-      {/* Pickaxe - black silhouette */}
-      <path d="M12 16 L28 4" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
-      <path d="M26 2 L32 6 L28 10 Z" fill={darkFill} fillOpacity="1" />
+      {/* Head */}
+      <ellipse cx="15" cy="7" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+      {/* Pickaxe on shoulder - horizontal */}
+      <path d="M8 14 L28 10" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+      <path d="M26 7 L32 12 L28 16 Z" fill={darkFill} fillOpacity="1" />
     </g>
     
-    {/* Miner 2 - pure black silhouette */}
+    {/* Miner 2 - hands at sides, walking */}
     <g transform="translate(85, 6)">
       <path 
-        d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L18 16 Q20 18, 18 20 L20 24 L22 36 Q24 46, 20 57 L16 57 L17 42 L14 57 L10 57 L13 40 L10 24 L6 30 L4 26 L8 20 Q6 18, 8 16 L8 10 Z" 
+        d="M12 10 Q15 7, 18 9 Q20 11, 19 15 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 50, 21 57 L17 57 L19 44 L15 57 L11 57 L14 42 L12 28 L8 38 L6 36 L10 26 Q8 22, 10 20 L12 10 Z" 
         fill={pureBlackFill}
         fillOpacity="0.98"
       />
-      <path d="M7 10 Q10 4, 17 7 L18 10 Q12 12, 8 11 Z" fill={darkFill} fillOpacity="1" />
-      <circle cx="18" cy="7" r="2.5" fill={darkFill} fillOpacity="0.98" />
-      {/* Shovel */}
-      <path d="M14 18 L32 12" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
-      <ellipse cx="34" cy="10" rx="5" ry="3" fill={darkFill} fillOpacity="0.98" transform="rotate(-15, 34, 10)" />
+      {/* Head with cap */}
+      <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+      <path d="M10 7 L20 7 L18 4 L12 4 Z" fill={pureBlackFill} fillOpacity="1" />
     </g>
     
-    {/* Miner 3 - pure black silhouette */}
+    {/* Miner 3 - carrying shovel low */}
     <g transform="translate(155, 10)">
       <path 
-        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 32 Q24 42, 20 53 L16 53 L17 38 L14 53 L10 53 L13 36 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        d="M12 8 Q15 5, 18 7 Q20 9, 19 13 L19 16 Q21 18, 19 20 L20 26 L22 36 Q23 46, 21 53 L17 53 L19 40 L15 53 L11 53 L14 38 L12 26 L6 30 L4 28 L10 22 Q8 20, 10 18 L12 8 Z" 
         fill={pureBlackFill}
         fillOpacity="0.96"
       />
-      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill={darkFill} fillOpacity="0.98" />
-      <circle cx="18" cy="5" r="2.5" fill={darkFill} fillOpacity="0.96" />
-      {/* Pickaxe */}
-      <path d="M10 18 L24 8" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
-      <path d="M22 6 L28 8 L26 14 Z" fill={darkFill} fillOpacity="0.96" />
+      {/* Head */}
+      <ellipse cx="15" cy="7" rx="5" ry="4" fill={darkFill} fillOpacity="0.98" />
+      {/* Shovel carried low */}
+      <path d="M6 30 L-4 48" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+      <ellipse cx="-6" cy="50" rx="5" ry="3" fill={darkFill} fillOpacity="0.96" transform="rotate(70, -6, 50)" />
     </g>
     
-    {/* Miner 4 - pure black silhouette */}
+    {/* Miner 4 - lantern in lowered hand */}
     <g transform="translate(225, 7)">
       <path 
-        d="M8 10 Q12 6, 16 8 Q18 10, 17 14 L18 16 Q20 18, 18 20 L20 24 L22 36 Q24 46, 20 56 L16 56 L17 41 L14 56 L10 56 L13 39 L10 24 L6 30 L4 26 L8 20 Q6 18, 8 16 L8 10 Z" 
+        d="M12 10 Q15 7, 18 9 Q20 11, 19 15 L19 18 Q21 20, 19 22 L20 28 L22 40 Q23 50, 21 56 L17 56 L19 43 L15 56 L11 56 L14 41 L12 28 L8 40 L6 38 L10 26 Q8 22, 10 20 L12 10 Z" 
         fill={pureBlackFill}
         fillOpacity="0.98"
       />
-      <path d="M7 10 Q10 4, 17 7 L18 10 Q12 12, 8 11 Z" fill={darkFill} fillOpacity="1" />
-      <circle cx="18" cy="7" r="2.5" fill={darkFill} fillOpacity="0.98" />
-      {/* Lantern */}
-      <path d="M22 22 L26 20" stroke={pureBlackFill} strokeWidth="2" strokeLinecap="square" />
-      <rect x="24" y="18" width="8" height="14" fill={darkFill} fillOpacity="1" />
+      {/* Head */}
+      <ellipse cx="15" cy="9" rx="5" ry="4" fill={darkFill} fillOpacity="1" />
+      {/* Lantern hanging from lowered arm */}
+      <rect x="4" y="42" width="6" height="10" fill={darkFill} fillOpacity="1" />
     </g>
     
-    {/* Miner 5 - pure black silhouette */}
-    <g transform="translate(295, 9)">
+    {/* Miner 5 - bent forward, tired pose */}
+    <g transform="translate(295, 12)">
       <path 
-        d="M8 8 Q12 4, 16 6 Q18 8, 17 12 L18 14 Q20 16, 18 18 L20 22 L22 34 Q24 44, 20 54 L16 54 L17 39 L14 54 L10 54 L13 37 L10 22 L6 28 L4 24 L8 18 Q6 16, 8 14 L8 8 Z" 
+        d="M14 6 Q17 4, 20 6 Q22 8, 21 12 L22 15 Q24 17, 22 19 L24 24 L28 34 Q30 44, 26 51 L22 51 L25 40 L20 51 L16 51 L20 38 L18 24 L12 28 L10 26 L16 20 Q14 18, 16 16 L14 6 Z" 
         fill={pureBlackFill}
         fillOpacity="0.95"
       />
-      <path d="M7 8 Q10 2, 17 5 L18 8 Q12 10, 8 9 Z" fill={darkFill} fillOpacity="0.97" />
-      <circle cx="18" cy="5" r="2.5" fill={darkFill} fillOpacity="0.95" />
-      {/* Pickaxe */}
-      <path d="M12 16 L36 6" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
-      <path d="M34 4 L40 8 L36 12 Z" fill={darkFill} fillOpacity="0.95" />
+      {/* Head tilted forward */}
+      <ellipse cx="17" cy="5" rx="5" ry="4" fill={darkFill} fillOpacity="0.97" transform="rotate(15, 17, 5)" />
+      {/* Pickaxe dragging */}
+      <path d="M12 28 L2 38" stroke={pureBlackFill} strokeWidth="3" strokeLinecap="square" />
+      <path d="M0 36 L-4 42 L2 44 Z" fill={darkFill} fillOpacity="0.95" />
     </g>
     
     {/* Mine entrance - pure black arch */}
