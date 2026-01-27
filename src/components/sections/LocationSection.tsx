@@ -79,7 +79,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
         <MiningIllustration 
           type="mine-cart" 
           isActive={isActive} 
-          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+          className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
         />
       </div>
     </section>
