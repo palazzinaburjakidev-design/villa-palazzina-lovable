@@ -196,6 +196,8 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
                 <img 
                   src={currentItem.image} 
                   alt={t(currentItem.nameKey)}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
