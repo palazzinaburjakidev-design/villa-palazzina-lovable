@@ -234,11 +234,11 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
         ))}
       </div>
 
-      {/* Photo Attribution - for beaches and towns categories */}
+      {/* Photo Attribution */}
       {isPrimary && (currentCategory.id === 'beaches' || currentCategory.id === 'towns') && (
         <p className="text-center text-[10px] text-sandstone/40 pb-2 italic">
           {currentCategory.id === 'beaches' 
-            ? 'Izvor fotografija: Turistička zajednica Općine Raša, Turistička zajednica Rabac-Labin'
+            ? 'Izvor fotografija: Turistička zajednica Općine Raša'
             : 'Izvor fotografija: Turistička zajednica Rabac-Labin'
           }
         </p>
