@@ -520,10 +520,10 @@ export const translations: Translations = {
     de: '11 km',
   },
   'location.tunarica.description': {
-    en: 'A secluded cove surrounded by lush greenery. Ideal for nature lovers seeking tranquility away from crowds.',
-    hr: 'Osamljena uvala okružena bujnim zelenilom. Idealna za ljubitelje prirode koji traže mir daleko od gužvi.',
-    it: 'Una baia appartata circondata da vegetazione rigogliosa. Ideale per gli amanti della natura in cerca di tranquillità.',
-    de: 'Eine abgeschiedene Bucht umgeben von üppigem Grün. Ideal für Naturliebhaber auf der Suche nach Ruhe abseits der Massen.',
+    en: 'A secluded cove surrounded by lush greenery — a true favorite among locals seeking peace and quiet.',
+    hr: 'Osamljena uvala okružena bujnim zelenilom — pravi favorit lokalaca koji traže mir i tišinu.',
+    it: 'Una baia appartata circondata da vegetazione rigogliosa — un vero favorito dei locali in cerca di pace.',
+    de: 'Eine abgeschiedene Bucht umgeben von üppigem Grün — ein echter Favorit der Einheimischen, die Ruhe suchen.',
   },
   'location.ravni.title': {
     en: 'Trget Beach',
