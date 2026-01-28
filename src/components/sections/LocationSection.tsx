@@ -38,7 +38,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
     <section className="relative h-full w-full overflow-hidden bg-coal coal-texture">
       {/* Content */}
       <div 
-        className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 py-20 sm:py-24"
+        className="relative z-10 h-full flex flex-col justify-center items-center px-4 sm:px-6 py-20 sm:py-24 pb-8 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
         data-scrollable="true"
       >
         <motion.div
@@ -79,7 +79,7 @@ const LocationSection = memo(({ isActive }: LocationSectionProps) => {
         <MiningIllustration 
           type="mine-cart" 
           isActive={isActive} 
-          className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-xl px-4 z-20"
+          className="relative mt-6 sm:absolute sm:bottom-6 sm:mt-0 left-0 right-0 mx-auto w-full max-w-xl px-4 z-20"
         />
       </div>
     </section>

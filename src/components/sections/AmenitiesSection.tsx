@@ -82,7 +82,7 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
       {/* Content */}
       <div 
         data-scrollable="true"
-        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-28 sm:pb-20 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
+        className="relative z-10 h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-6 pt-20 sm:pt-20 pb-8 sm:pb-20 overflow-y-auto sm:overflow-hidden touch-pan-y overscroll-contain"
       >
         <motion.div
           className="text-center max-w-7xl xl:max-w-[90%] w-full text-backdrop py-8 sm:py-12 px-4 sm:px-6"
@@ -140,7 +140,7 @@ const AmenitiesSection = memo(({ isActive }: AmenitiesSectionProps) => {
         <MiningIllustration 
           type="miners-walking" 
           isActive={isActive} 
-          className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
+          className="relative mt-6 sm:absolute sm:bottom-6 sm:mt-0 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
         />
       </div>
     </section>
