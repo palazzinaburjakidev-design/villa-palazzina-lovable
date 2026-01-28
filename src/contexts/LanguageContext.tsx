@@ -556,10 +556,10 @@ export const translations: Translations = {
     de: '16 km',
   },
   'location.rabacBeaches.description': {
-    en: 'Award-winning beaches with turquoise waters. Known as the "Pearl of Kvarner" with excellent facilities.',
-    hr: 'Nagrađivane plaže s tirkiznim morem. Poznate kao "Biser Kvarnera" s odličnim sadržajima.',
-    it: 'Spiagge premiate con acque turchesi. Conosciute come la "Perla del Quarnero" con eccellenti strutture.',
-    de: 'Preisgekrönte Strände mit türkisfarbenem Wasser. Bekannt als die "Perle des Kvarner" mit ausgezeichneten Einrichtungen.',
+    en: 'Rabac offers award-winning beaches with turquoise waters and excellent facilities, earning its nickname "Pearl of Kvarner".',
+    hr: 'Rabac nudi nagrađivane plaže s tirkiznim morem i odličnim sadržajima, po čemu je i dobio nadimak "Biser Kvarnera".',
+    it: 'Rabac offre spiagge premiate con acque turchesi e strutture eccellenti, guadagnandosi il soprannome di "Perla del Quarnero".',
+    de: 'Rabac bietet preisgekrönte Strände mit türkisfarbenem Wasser und ausgezeichneten Einrichtungen, weshalb es "Perle des Kvarner" genannt wird.',
   },
   // Towns & Cities
   'location.labin.title': {
@@ -629,10 +629,10 @@ export const translations: Translations = {
     de: '40 km',
   },
   'location.pula.description': {
-    en: 'Home to the magnificent Roman Arena and rich ancient history. A vibrant city with culture, nightlife, and cuisine.',
-    hr: 'Dom veličanstvene rimske Arene i bogate antičke povijesti. Živahan grad s kulturom, noćnim životom i gastronomijom.',
-    it: 'Sede della magnifica Arena Romana e ricca di storia antica. Una città vivace con cultura, vita notturna e cucina.',
-    de: 'Heimat der großartigen römischen Arena und reicher antiker Geschichte. Eine lebhafte Stadt mit Kultur, Nachtleben und Küche.',
+    en: 'Pula is home to the magnificent Roman Arena and offers rich culture, vibrant nightlife, and excellent cuisine.',
+    hr: 'Pula je dom veličanstvene rimske Arene te nudi bogatu kulturu, živahan noćni život i izvrsnu gastronomiju.',
+    it: 'Pola ospita la magnifica Arena Romana e offre ricca cultura, vivace vita notturna e cucina eccellente.',
+    de: 'Pula beherbergt die großartige römische Arena und bietet reiche Kultur, lebhaftes Nachtleben und exzellente Küche.',
   },
   'location.rasa.title': {
     en: 'Raša',
@@ -647,10 +647,10 @@ export const translations: Translations = {
     de: '12 km',
   },
   'location.rasa.description': {
-    en: 'The youngest town in Istria, known for its mining history and peaceful surroundings.',
-    hr: 'Najmlađi grad u Istri, prepoznatljiv po rudarskoj povijesti i mirnom okruženju.',
-    it: 'La città più giovane dell\'Istria, nota per la sua storia mineraria e l\'ambiente tranquillo.',
-    de: 'Die jüngste Stadt Istriens, bekannt für ihre Bergbaugeschichte und ruhige Umgebung.',
+    en: 'Raša is the youngest town in Istria, featuring unique mining heritage and a peaceful atmosphere.',
+    hr: 'Raša je najmlađi grad u Istri, prepoznatljiv po jedinstvenoj rudarskoj baštini i mirnom okruženju.',
+    it: 'Arsia è la città più giovane dell\'Istria, caratterizzata da un patrimonio minerario unico e un\'atmosfera tranquilla.',
+    de: 'Raša ist die jüngste Stadt Istriens mit einzigartigem Bergbauerbe und einer friedlichen Atmosphäre.',
   },
   // Transport
   'location.airport.title': {
@@ -745,10 +745,10 @@ export const translations: Translations = {
     de: '2 km',
   },
   'location.martinPescador.description': {
-    en: 'Renowned seafood restaurant with fresh Adriatic catches. Terrace dining with stunning sea views.',
-    hr: 'Poznati restoran s plodovima mora i svježim jadranskim ulovom. Blagovanje na terasi s pogledom na more.',
-    it: 'Rinomato ristorante di pesce con pescato fresco dell\'Adriatico. Pranzo in terrazza con splendida vista mare.',
-    de: 'Renommiertes Fischrestaurant mit frischem adriatischem Fang. Terrassen-Dining mit atemberaubendem Meerblick.',
+    en: 'Martin Pescador is a renowned seafood restaurant offering fresh Adriatic catches with terrace dining and sea views.',
+    hr: 'Martin Pescador je poznati restoran s plodovima mora koji nudi svježi jadranski ulov uz blagovanje na terasi s pogledom na more.',
+    it: 'Martin Pescador è un rinomato ristorante di pesce che offre pescato fresco dell\'Adriatico con terrazza e vista mare.',
+    de: 'Martin Pescador ist ein renommiertes Fischrestaurant mit frischem adriatischem Fang, Terrassenessen und Meerblick.',
   },
   'location.konobaNando.title': {
     en: 'Konoba Nando',
@@ -781,10 +781,10 @@ export const translations: Translations = {
     de: '12 km',
   },
   'location.pizzeriaRumore.description': {
-    en: 'Popular pizzeria in Labin with wood-fired pizzas and a lively atmosphere. Perfect for families.',
-    hr: 'Popularna pizzeria u Labinu s pizzama iz krušne peći i živahnom atmosferom. Savršeno za obitelji.',
-    it: 'Pizzeria popolare ad Albona con pizze cotte a legna e atmosfera vivace. Perfetta per le famiglie.',
-    de: 'Beliebte Pizzeria in Labin mit holzofengebackenen Pizzen und lebhafter Atmosphäre. Ideal für Familien.',
+    en: 'This popular Labin pizzeria serves delicious wood-fired pizzas in a lively, family-friendly atmosphere.',
+    hr: 'Ova popularna labinska pizzeria poslužuje ukusne pizze iz krušne peći u živahnoj obiteljskoj atmosferi.',
+    it: 'Questa popolare pizzeria di Albona serve deliziose pizze cotte a legna in un\'atmosfera vivace e familiare.',
+    de: 'Diese beliebte Pizzeria in Labin serviert köstliche Holzofenpizzen in einer lebhaften, familienfreundlichen Atmosphäre.',
   },
   'location.stareStaze.title': {
     en: 'Stare Staze',
