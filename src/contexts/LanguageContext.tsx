@@ -538,10 +538,10 @@ export const translations: Translations = {
     de: '2 km',
   },
   'location.ravni.description': {
-    en: 'A peaceful pebble beach just minutes away — a true favorite among locals for its crystal-clear waters.',
-    hr: 'Mirna šljunčana plaža na samo nekoliko minuta vožnje — pravi favorit lokalaca zbog kristalno čistog mora.',
-    it: 'Una tranquilla spiaggia di ciottoli a pochi minuti di distanza — un vero favorito dei locali per le sue acque cristalline.',
-    de: 'Ein ruhiger Kiesstrand nur wenige Minuten entfernt — ein echter Favorit der Einheimischen wegen des kristallklaren Wassers.',
+    en: 'A peaceful pebble beach just minutes away — a true favorite among locals.',
+    hr: 'Mirna šljunčana plaža na samo nekoliko minuta vožnje — pravi favorit lokalaca.',
+    it: 'Una tranquilla spiaggia di ciottoli a pochi minuti di distanza — un vero favorito dei locali.',
+    de: 'Ein ruhiger Kiesstrand nur wenige Minuten entfernt — ein echter Favorit der Einheimischen.',
   },
   'location.rabacBeaches.title': {
     en: 'Rabac Beaches',
