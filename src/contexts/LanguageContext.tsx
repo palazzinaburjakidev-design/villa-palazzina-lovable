@@ -520,10 +520,10 @@ export const translations: Translations = {
     de: '11 km',
   },
   'location.tunarica.description': {
-    en: 'A secluded cove surrounded by lush greenery — a true favorite among locals seeking peace and quiet.',
-    hr: 'Osamljena uvala okružena bujnim zelenilom — pravi favorit lokalaca koji traže mir i tišinu.',
-    it: 'Una baia appartata circondata da vegetazione rigogliosa — un vero favorito dei locali in cerca di pace.',
-    de: 'Eine abgeschiedene Bucht umgeben von üppigem Grün — ein echter Favorit der Einheimischen, die Ruhe suchen.',
+    en: 'A secluded cove surrounded by lush greenery. Ideal for nature lovers seeking tranquility away from crowds.',
+    hr: 'Osamljena uvala okružena bujnim zelenilom. Idealna za ljubitelje prirode koji traže mir daleko od gužvi.',
+    it: 'Una baia appartata circondata da vegetazione rigogliosa. Ideale per gli amanti della natura in cerca di tranquillità.',
+    de: 'Eine abgeschiedene Bucht umgeben von üppigem Grün. Ideal für Naturliebhaber auf der Suche nach Ruhe abseits der Massen.',
   },
   'location.ravni.title': {
     en: 'Trget Beach',
@@ -538,10 +538,10 @@ export const translations: Translations = {
     de: '2 km',
   },
   'location.ravni.description': {
-    en: 'A peaceful pebble beach just minutes away. Crystal-clear waters perfect for swimming and snorkeling.',
-    hr: 'Mirna šljunčana plaža na samo nekoliko minuta vožnje. Kristalno čisto more idealno za plivanje i ronjenje.',
-    it: 'Una tranquilla spiaggia di ciottoli a pochi minuti di distanza. Acque cristalline perfette per nuotare e fare snorkeling.',
-    de: 'Ein ruhiger Kiesstrand nur wenige Minuten entfernt. Kristallklares Wasser perfekt zum Schwimmen und Schnorcheln.',
+    en: 'A peaceful pebble beach just minutes away — a true favorite among locals for its crystal-clear waters.',
+    hr: 'Mirna šljunčana plaža na samo nekoliko minuta vožnje — pravi favorit lokalaca zbog kristalno čistog mora.',
+    it: 'Una tranquilla spiaggia di ciottoli a pochi minuti di distanza — un vero favorito dei locali per le sue acque cristalline.',
+    de: 'Ein ruhiger Kiesstrand nur wenige Minuten entfernt — ein echter Favorit der Einheimischen wegen des kristallklaren Wassers.',
   },
   'location.rabacBeaches.title': {
     en: 'Rabac Beaches',
