@@ -32,6 +32,18 @@ interface Category {
 
 const categoriesGroup1: Category[] = [
   {
+    id: 'towns',
+    labelKey: 'location.category.towns',
+    icon: <Building2 className="w-4 h-4" />,
+    items: [
+      { nameKey: 'location.rasa.title', descriptionKey: 'location.rasa.description', distanceKey: 'location.rasa.distance', image: rasaTownImg },
+      { nameKey: 'location.labin.title', descriptionKey: 'location.labin.description', distanceKey: 'location.labin.distance', image: labinOldTownImg },
+      { nameKey: 'location.rabac.title', descriptionKey: 'location.rabac.description', distanceKey: 'location.rabac.distance', image: rabacTownImg },
+      { nameKey: 'location.rovinj.title', descriptionKey: 'location.rovinj.description', distanceKey: 'location.rovinj.distance', image: rovinjTownImg },
+      { nameKey: 'location.pula.title', descriptionKey: 'location.pula.description', distanceKey: 'location.pula.distance', image: pulaTownImg },
+    ],
+  },
+  {
     id: 'beaches',
     labelKey: 'location.category.beaches',
     icon: <Waves className="w-4 h-4" />,
@@ -40,18 +52,6 @@ const categoriesGroup1: Category[] = [
       { nameKey: 'location.tunarica.title', descriptionKey: 'location.tunarica.description', distanceKey: 'location.tunarica.distance', image: tunaricaImg },
       { nameKey: 'location.santaMarina.title', descriptionKey: 'location.santaMarina.description', distanceKey: 'location.santaMarina.distance', image: santaMarinaImg },
       { nameKey: 'location.rabacBeaches.title', descriptionKey: 'location.rabacBeaches.description', distanceKey: 'location.rabacBeaches.distance', image: rabacBeachImg },
-    ],
-  },
-  {
-    id: 'towns',
-    labelKey: 'location.category.towns',
-    icon: <Building2 className="w-4 h-4" />,
-    items: [
-      { nameKey: 'location.labin.title', descriptionKey: 'location.labin.description', distanceKey: 'location.labin.distance', image: labinOldTownImg },
-      { nameKey: 'location.rasa.title', descriptionKey: 'location.rasa.description', distanceKey: 'location.rasa.distance', image: rasaTownImg },
-      { nameKey: 'location.rabac.title', descriptionKey: 'location.rabac.description', distanceKey: 'location.rabac.distance', image: rabacTownImg },
-      { nameKey: 'location.rovinj.title', descriptionKey: 'location.rovinj.description', distanceKey: 'location.rovinj.distance', image: rovinjTownImg },
-      { nameKey: 'location.pula.title', descriptionKey: 'location.pula.description', distanceKey: 'location.pula.distance', image: pulaTownImg },
     ],
   },
   {
@@ -266,7 +266,7 @@ BannerGroup.displayName = 'BannerGroup';
 const LocationBanner = memo(() => {
   return (
     <div className="w-full space-y-3">
-      {/* Group 1: Beaches, Towns, Restaurants (Primary) */}
+      {/* Group 1: Towns, Beaches, Restaurants (Primary) */}
       <BannerGroup categories={categoriesGroup1} initialDelay={0} isPrimary={true} />
       
       {/* Group 2: Supermarkets, Transport */}
