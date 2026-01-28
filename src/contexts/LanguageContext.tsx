@@ -634,6 +634,24 @@ export const translations: Translations = {
     it: 'Sede della magnifica Arena Romana e ricca di storia antica. Una città vivace con cultura, vita notturna e cucina.',
     de: 'Heimat der großartigen römischen Arena und reicher antiker Geschichte. Eine lebhafte Stadt mit Kultur, Nachtleben und Küche.',
   },
+  'location.rasa.title': {
+    en: 'Raša',
+    hr: 'Raša',
+    it: 'Arsia',
+    de: 'Raša',
+  },
+  'location.rasa.distance': {
+    en: '4 km',
+    hr: '4 km',
+    it: '4 km',
+    de: '4 km',
+  },
+  'location.rasa.description': {
+    en: 'A unique mining town built in the 1930s with distinctive rationalist architecture. A fascinating piece of Istrian industrial heritage.',
+    hr: 'Jedinstveni rudarski gradić izgrađen 1930-ih s karakterističnom racionalističkom arhitekturom. Fascinantan dio istarske industrijske baštine.',
+    it: 'Una città mineraria unica costruita negli anni \'30 con distintiva architettura razionalista. Un affascinante pezzo del patrimonio industriale istriano.',
+    de: 'Eine einzigartige Bergbaustadt, erbaut in den 1930er Jahren mit charakteristischer rationalistischer Architektur. Ein faszinierendes Stück istrischen Industrieerbes.',
+  },
   // Transport
   'location.airport.title': {
     en: 'Pula Airport',
