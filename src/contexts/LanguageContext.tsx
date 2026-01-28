@@ -575,10 +575,10 @@ export const translations: Translations = {
     de: '11 km',
   },
   'location.labin.description': {
-    en: 'A charming medieval hilltop town with rich mining heritage, art galleries, and stunning Adriatic views.',
-    hr: 'Šarmantni srednjovjekovni gradić na brdu s bogatom rudarskom baštinom, umjetničkim galerijama i pogledom na Jadran.',
-    it: 'Un affascinante borgo medievale con ricca eredità mineraria, gallerie d\'arte e splendide viste sull\'Adriatico.',
-    de: 'Eine charmante mittelalterliche Hügelstadt mit reichem Bergbauerbe, Kunstgalerien und atemberaubendem Adriablick.',
+    en: 'A charming medieval hilltop town with mining heritage, art galleries, and Adriatic views.',
+    hr: 'Šarmantni srednjovjekovni gradić s rudarskom baštinom, galerijama i pogledom na Jadran.',
+    it: 'Un affascinante borgo medievale con eredità mineraria, gallerie d\'arte e vista sull\'Adriatico.',
+    de: 'Eine charmante mittelalterliche Hügelstadt mit Bergbauerbe, Kunstgalerien und Adriablick.',
   },
   'location.rabac.title': {
     en: 'Rabac',
@@ -593,10 +593,10 @@ export const translations: Translations = {
     de: '16 km',
   },
   'location.rabac.description': {
-    en: 'A lively coastal resort with beautiful beaches, waterfront promenades, and excellent seafood restaurants.',
-    hr: 'Živahno obalno odmaralište s prekrasnim plažama, šetnicom uz more i izvrsnim ribljem restoranima.',
+    en: 'A lively coastal resort with beautiful beaches, promenades, and excellent seafood restaurants.',
+    hr: 'Živahno obalno odmaralište s prekrasnim plažama, šetnicom i izvrsnim ribljem restoranima.',
     it: 'Un vivace resort costiero con belle spiagge, lungomare e ottimi ristoranti di pesce.',
-    de: 'Ein lebhafter Küstenort mit schönen Stränden, Uferpromenaden und ausgezeichneten Fischrestaurants.',
+    de: 'Ein lebhafter Küstenort mit schönen Stränden, Promenaden und ausgezeichneten Fischrestaurants.',
   },
   'location.rovinj.title': {
     en: 'Rovinj',
@@ -611,10 +611,10 @@ export const translations: Translations = {
     de: '53 km',
   },
   'location.rovinj.description': {
-    en: 'Istria\'s most romantic town with colorful houses, cobblestone streets, and the iconic Church of St. Euphemia.',
-    hr: 'Najromantičniji grad Istre sa šarenim kućama, kaldrmanim ulicama i ikoničnom crkvom Sv. Eufemije.',
-    it: 'La città più romantica dell\'Istria con case colorate, strade acciottolate e l\'iconica Chiesa di Santa Eufemia.',
-    de: 'Istriens romantischste Stadt mit bunten Häusern, Kopfsteinpflasterstraßen und der ikonischen Kirche der Hl. Euphemia.',
+    en: 'Istria\'s most romantic town with colorful houses, cobblestone streets, and St. Euphemia Church.',
+    hr: 'Najromantičniji grad Istre sa šarenim kućama, kaldrmanim ulicama i crkvom Sv. Eufemije.',
+    it: 'La città più romantica dell\'Istria con case colorate, vie acciottolate e la Chiesa di Santa Eufemia.',
+    de: 'Istriens romantischste Stadt mit bunten Häusern, Pflasterstraßen und der Kirche der Hl. Euphemia.',
   },
   'location.pula.title': {
     en: 'Pula',
