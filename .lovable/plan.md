@@ -1,41 +1,34 @@
 
-# Plan: Poboljšanje opisa lokacija
 
-## Cilj
-Osigurati da svi opisi u Location sekciji budu potpune rečenice, bez fragmentiranih dijelova, a da pritom ne budu preduge (optimalno 15-25 riječi po opisu).
+# Plan: Ispravak opisa plaža
 
-## Izmjene u datoteci `src/contexts/LanguageContext.tsx`
+## Problem
+U prethodnoj izmjeni pogrešno je ažuriran opis za **Tunarica** umjesto za **Plaža Trget**. Korisnik je tražio promjenu za "plažu Trget", a ja sam krivo izmijenio Tunaricu.
 
-### 1. Plaže
+## Izmjene
 
-**Rabac Beaches** (linija 558-562):
-- Trenutno: "Award-winning beaches with turquoise waters. Known as the 'Pearl of Kvarner' with excellent facilities."
-- Novo: "Rabac offers award-winning beaches with turquoise waters and excellent facilities, earning its nickname 'Pearl of Kvarner'."
+### 1. Vratiti originalni opis za Tunaricu
+**Datoteka:** `src/contexts/LanguageContext.tsx` (linije 522-526)
 
-### 2. Gradovi
+| Jezik | Trenutno (pogrešno) | Originalno (ispravno) |
+|-------|--------------------|-----------------------|
+| EN | "A secluded cove surrounded by lush greenery — a true favorite among locals seeking peace and quiet." | "A secluded cove surrounded by lush greenery. Ideal for nature lovers seeking tranquility away from crowds." |
+| HR | "Osamljena uvala okružena bujnim zelenilom — pravi favorit lokalaca..." | "Osamljena uvala okružena bujnim zelenilom. Idealna za ljubitelje prirode koji traže mir daleko od gužvi." |
+| IT | "Una baia appartata... — un vero favorito dei locali..." | "Una baia appartata circondata da vegetazione rigogliosa. Ideale per gli amanti della natura in cerca di tranquillità." |
+| DE | "Eine abgeschiedene Bucht... — ein echter Favorit der Einheimischen..." | "Eine abgeschiedene Bucht umgeben von üppigem Grün. Ideal für Naturliebhaber auf der Suche nach Ruhe abseits der Massen." |
 
-**Pula** (linija 631-635):
-- Trenutno: "Home to the magnificent Roman Arena and rich ancient history. A vibrant city with culture, nightlife, and cuisine."
-- Novo: "Pula is home to the magnificent Roman Arena and offers rich culture, nightlife, and excellent cuisine."
+### 2. Ažurirati opis za Plažu Trget (Ravni)
+**Datoteka:** `src/contexts/LanguageContext.tsx` (linije 540-544)
 
-**Raša** (linija 649-653):
-- Trenutno: "The youngest town in Istria, known for its mining history and peaceful surroundings."
-- Novo: "Raša is the youngest town in Istria, featuring unique mining heritage and a peaceful atmosphere."
-
-### 3. Restorani
-
-**Martin Pescador** (linija 747-751):
-- Trenutno: "Renowned seafood restaurant with fresh Adriatic catches. Terrace dining with stunning sea views."
-- Novo: "Martin Pescador is a renowned seafood restaurant offering fresh Adriatic catches with terrace dining and sea views."
-
-**Pizzeria Rumore** (linija 783-787):
-- Trenutno: "Popular pizzeria in Labin with wood-fired pizzas and a lively atmosphere. Perfect for families."
-- Novo: "This popular Labin pizzeria serves delicious wood-fired pizzas in a lively, family-friendly atmosphere."
-
-## Sve prijevode (HR, IT, DE)
-Svaka promjena će biti prevedena na sva 4 jezika kako bi konzistentnost bila održana.
+| Jezik | Trenutno | Novo |
+|-------|----------|------|
+| EN | "A peaceful pebble beach just minutes away. Crystal-clear waters perfect for swimming and snorkeling." | "A peaceful pebble beach just minutes away — a true favorite among locals for its crystal-clear waters." |
+| HR | "Mirna šljunčana plaža na samo nekoliko minuta vožnje. Kristalno čisto more idealno za plivanje i ronjenje." | "Mirna šljunčana plaža na samo nekoliko minuta vožnje — pravi favorit lokalaca zbog kristalno čistog mora." |
+| IT | "Una tranquilla spiaggia di ciottoli a pochi minuti di distanza. Acque cristalline perfette per nuotare e fare snorkeling." | "Una tranquilla spiaggia di ciottoli a pochi minuti di distanza — un vero favorito dei locali per le sue acque cristalline." |
+| DE | "Ein ruhiger Kiesstrand nur wenige Minuten entfernt. Kristallklares Wasser perfekt zum Schwimmen und Schnorcheln." | "Ein ruhiger Kiesstrand nur wenige Minuten entfernt — ein echter Favorit der Einheimischen wegen des kristallklaren Wassers." |
 
 ## Tehnički detalji
-- Datoteka: `src/contexts/LanguageContext.tsx`
-- Broj izmjena: 5 opisa × 4 jezika = 20 string izmjena
-- Nema strukturalnih promjena, samo tekstualne izmjene
+- **Datoteka:** `src/contexts/LanguageContext.tsx`
+- **Broj izmjena:** 8 string izmjena (2 opisa × 4 jezika)
+- **Nema strukturalnih promjena**, samo tekstualne ispravke
+
