@@ -641,16 +641,16 @@ export const translations: Translations = {
     de: 'Raša',
   },
   'location.rasa.distance': {
-    en: '4 km',
-    hr: '4 km',
-    it: '4 km',
-    de: '4 km',
+    en: '12 km',
+    hr: '12 km',
+    it: '12 km',
+    de: '12 km',
   },
   'location.rasa.description': {
-    en: 'A unique mining town built in the 1930s with distinctive rationalist architecture. A fascinating piece of Istrian industrial heritage.',
-    hr: 'Jedinstveni rudarski gradić izgrađen 1930-ih s karakterističnom racionalističkom arhitekturom. Fascinantan dio istarske industrijske baštine.',
-    it: 'Una città mineraria unica costruita negli anni \'30 con distintiva architettura razionalista. Un affascinante pezzo del patrimonio industriale istriano.',
-    de: 'Eine einzigartige Bergbaustadt, erbaut in den 1930er Jahren mit charakteristischer rationalistischer Architektur. Ein faszinierendes Stück istrischen Industrieerbes.',
+    en: 'The youngest town in Istria, known for its mining history and peaceful surroundings.',
+    hr: 'Najmlađi grad u Istri, prepoznatljiv po rudarskoj povijesti i mirnom okruženju.',
+    it: 'La città più giovane dell\'Istria, nota per la sua storia mineraria e l\'ambiente tranquillo.',
+    de: 'Die jüngste Stadt Istriens, bekannt für ihre Bergbaugeschichte und ruhige Umgebung.',
   },
   // Transport
   'location.airport.title': {
