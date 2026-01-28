@@ -611,10 +611,10 @@ export const translations: Translations = {
     de: '53 km',
   },
   'location.rovinj.description': {
-    en: 'Istria\'s most romantic town with colorful houses, cobblestone streets, and St. Euphemia Church.',
-    hr: 'Najromantičniji grad Istre sa šarenim kućama, kaldrmanim ulicama i crkvom Sv. Eufemije.',
-    it: 'La città più romantica dell\'Istria con case colorate, vie acciottolate e la Chiesa di Santa Eufemia.',
-    de: 'Istriens romantischste Stadt mit bunten Häusern, Pflasterstraßen und der Kirche der Hl. Euphemia.',
+    en: 'Istria\'s most romantic town with colorful houses, stone streets, and St. Euphemia Church.',
+    hr: 'Najromantičniji grad Istre sa šarenim kućama, kamenim ulicama i crkvom Sv. Eufemije.',
+    it: 'La città più romantica dell\'Istria con case colorate, vie di pietra e la Chiesa di Santa Eufemia.',
+    de: 'Istriens romantischste Stadt mit bunten Häusern, Steinstraßen und der Kirche der Hl. Euphemia.',
   },
   'location.pula.title': {
     en: 'Pula',
