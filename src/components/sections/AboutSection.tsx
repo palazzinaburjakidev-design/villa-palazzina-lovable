@@ -163,31 +163,31 @@ const AboutSection = memo(({
           {/* FAQ Section */}
           <motion.div variants={itemVariants} className="glass-card-coal rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
             <div className="flex items-center gap-2 mb-3">
-              <HelpCircle className="w-4 h-4 text-terracotta flex-shrink-0" />
-              <h3 className="text-sandstone text-sm sm:text-base font-medium text-shadow-sm">{t('faq.title')}</h3>
+              <HelpCircle className="w-5 h-5 text-terracotta flex-shrink-0" />
+              <h3 className="text-sandstone text-base sm:text-lg font-medium text-shadow-sm">{t('faq.title')}</h3>
             </div>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="pool" className="border-sandstone/10">
-                <AccordionTrigger className="text-sandstone text-xs sm:text-sm py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
+                <AccordionTrigger className="text-sandstone text-sm sm:text-base py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
                   {t('faq.pool.question')}
                 </AccordionTrigger>
-                <AccordionContent className="text-sandstone/80 text-xs sm:text-sm pb-3">
+                <AccordionContent className="text-sandstone/80 text-sm sm:text-base pb-3">
                   {t('faq.pool.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="kitchen" className="border-sandstone/10">
-                <AccordionTrigger className="text-sandstone text-xs sm:text-sm py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
+                <AccordionTrigger className="text-sandstone text-sm sm:text-base py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
                   {t('faq.kitchen.question')}
                 </AccordionTrigger>
-                <AccordionContent className="text-sandstone/80 text-xs sm:text-sm pb-3">
+                <AccordionContent className="text-sandstone/80 text-sm sm:text-base pb-3">
                   {t('faq.kitchen.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="towels" className="border-sandstone/10 border-b-0">
-                <AccordionTrigger className="text-sandstone text-xs sm:text-sm py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
+                <AccordionTrigger className="text-sandstone text-sm sm:text-base py-2.5 hover:no-underline hover:text-terracotta [&[data-state=open]]:text-terracotta">
                   {t('faq.towels.question')}
                 </AccordionTrigger>
-                <AccordionContent className="text-sandstone/80 text-xs sm:text-sm pb-3">
+                <AccordionContent className="text-sandstone/80 text-sm sm:text-base pb-3">
                   {t('faq.towels.answer')}
                 </AccordionContent>
               </AccordionItem>
