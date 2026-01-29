@@ -6,7 +6,7 @@ interface SectionIndicatorProps {
   scrollToSection: (index: number) => void;
 }
 
-const sectionNames = ['Hero', 'Gallery', 'Amenities', 'Location', 'Contact'];
+const sectionNames = ['Home', 'Gallery', 'Amenities', 'Location', 'Contact'];
 
 const SectionIndicator = ({ totalSections, currentSection, scrollToSection }: SectionIndicatorProps) => {
   return (
