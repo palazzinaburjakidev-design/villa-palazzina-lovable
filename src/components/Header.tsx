@@ -10,10 +10,10 @@ interface HeaderProps {
 }
 
 const languages: { code: Language; label: string }[] = [
-  { code: 'en', label: 'EN' },
-  { code: 'hr', label: 'HR' },
-  { code: 'it', label: 'IT' },
   { code: 'de', label: 'DE' },
+  { code: 'en', label: 'EN' },
+  { code: 'it', label: 'IT' },
+  { code: 'hr', label: 'HR' },
 ];
 
 const Header = ({ currentSection, scrollToSection }: HeaderProps) => {
