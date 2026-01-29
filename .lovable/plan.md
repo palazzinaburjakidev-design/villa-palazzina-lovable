@@ -1,68 +1,44 @@
 
-# Plan: Popravak preklapanja ilustracija na mobilnim uređajima
+# Plan: Pojačavanje vidljivosti naslova "Villa Palazzina Burjaki"
 
 ## Problem
-Mining ilustracije su pozicionirane s `position: absolute` i `bottom-4`, što ih fiksira na dno containera. Na mobilnim uređajima, kad sadržaj scrolla, ilustracije ostaju fiksirane i prekrivaju kartice sadržaja.
+Naslov "Villa Palazzina Burjaki" na Hero sekciji ima terracotta boju koja se loše vidi preko svijetlih dijelova pozadinske slike (zeleno drveće). Trenutna text-shadow je mekana i proširena, ali nedostaje joj oštra kontura.
 
 ## Rješenje
-Promijeniti pozicioniranje ilustracija tako da na mobilnim uređajima budu dio normalnog document flow-a (relativna pozicija), a na većim ekranima zadrže absolute pozicioniranje.
+Dodati višeslojnu text-shadow s oštrim crnim obrubom (stroke efekt) plus mekanim glow efektom za bolju čitljivost.
 
-## Izmjene
+## Izmjena
 
-### 1. AmenitiesSection.tsx
+**Datoteka:** `src/components/sections/HeroSection.tsx`
 
-**Trenutno (linija 140-144):**
+**Linija 67 - trenutno:**
 ```tsx
-<MiningIllustration 
-  type="miners-walking" 
-  isActive={isActive} 
-  className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
-/>
+style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.9), 0 4px 24px rgba(0, 0, 0, 0.6)' }}
 ```
 
 **Novo:**
 ```tsx
-<MiningIllustration 
-  type="miners-walking" 
-  isActive={isActive} 
-  className="relative mt-6 sm:absolute sm:bottom-6 sm:mt-0 left-0 right-0 mx-auto w-full max-w-3xl px-4 z-20"
-/>
+style={{ 
+  textShadow: `
+    -2px -2px 0 rgba(0, 0, 0, 0.8),
+    2px -2px 0 rgba(0, 0, 0, 0.8),
+    -2px 2px 0 rgba(0, 0, 0, 0.8),
+    2px 2px 0 rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.9),
+    0 4px 30px rgba(0, 0, 0, 0.7)
+  `
+}}
 ```
-
-**Također potrebno ukloniti** `pb-28` iz parent containera jer ilustracija više ne treba taj prostor na mobilnom:
-- Linija 85: promijeniti `pb-28 sm:pb-20` u `pb-8 sm:pb-20`
-
-### 2. LocationSection.tsx
-
-**Trenutno (linija 79-83):**
-```tsx
-<MiningIllustration 
-  type="mine-cart" 
-  isActive={isActive} 
-  className="absolute bottom-4 sm:bottom-6 left-0 right-0 mx-auto w-full max-w-xl px-4 z-20"
-/>
-```
-
-**Novo:**
-```tsx
-<MiningIllustration 
-  type="mine-cart" 
-  isActive={isActive} 
-  className="relative mt-6 sm:absolute sm:bottom-6 sm:mt-0 left-0 right-0 mx-auto w-full max-w-xl px-4 z-20"
-/>
-```
-
-**Također dodati scrollanje** na Location sekciju za mobile i smanjiti padding:
-- Linija 41: dodati `overflow-y-auto sm:overflow-hidden` i `pb-8`
 
 ## Kako rješenje funkcionira
 
-| Uređaj | Pozicioniranje ilustracije |
-|--------|---------------------------|
-| Mobile (< 640px) | `relative` - dio normalnog flowa, scrolla zajedno sa sadržajem |
-| Desktop (≥ 640px) | `absolute bottom-6` - fiksirana na dnu sekcije |
+| Sjena | Svrha |
+|-------|-------|
+| `-2px -2px 0` (x4 smjera) | Oštra crna kontura oko slova (stroke efekt) |
+| `0 0 20px` | Mekani glow za dodatnu dubinu |
+| `0 4px 30px` | Sjena ispod teksta za 3D efekt |
 
-## Tehnički detalji
-- **Datoteke:** `src/components/sections/AmenitiesSection.tsx`, `src/components/sections/LocationSection.tsx`
-- **Tailwind klase:** `relative sm:absolute` za responsive pozicioniranje
-- **Breakpoint:** `sm:` (640px) - standardni Tailwind mobile breakpoint
+## Vizualni učinak
+- Crna kontura oko slova osigurava čitljivost preko bilo koje pozadine
+- Glow efekt dodaje dubinu bez da je previše agresivan
+- Zadržava eleganciju terracotta boje dok povećava kontrast
