@@ -64,7 +64,7 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
           <motion.h1
             variants={itemVariants}
             className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-terracotta-light mb-3 sm:mb-4"
-            style={{ textShadow: '-2px -2px 0 rgba(0, 0, 0, 0.8), 2px -2px 0 rgba(0, 0, 0, 0.8), -2px 2px 0 rgba(0, 0, 0, 0.8), 2px 2px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.9), 0 4px 30px rgba(0, 0, 0, 0.7)' }}
+            style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 1), 0 4px 8px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.6)' }}
           >
             {t('hero.brand')}
           </motion.h1>
