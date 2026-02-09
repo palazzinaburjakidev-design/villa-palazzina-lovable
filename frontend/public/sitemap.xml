@@ -1,21 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
   <url>
     <loc>https://palazzinaburjaki.com/</loc>
-    <lastmod>2026-01-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://palazzinaburjaki.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://palazzinaburjaki.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://palazzinaburjaki.com/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://palazzinaburjaki.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://palazzinaburjaki.com/"/>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://palazzinaburjaki.com/hero-villa.jpg</image:loc>
+      <image:title>Villa Palazzina Burjaki - Luxury villa in Istria, Croatia</image:title>
+      <image:caption>Exterior view of Villa Palazzina Burjaki with private pool and Mediterranean architecture</image:caption>
+    </image:image>
   </url>
+
+  <!-- Gallery Section -->
+  <url>
+    <loc>https://palazzinaburjaki.com/#gallery</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Amenities Section -->
+  <url>
+    <loc>https://palazzinaburjaki.com/#amenities</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Location Section -->
+  <url>
+    <loc>https://palazzinaburjaki.com/#location</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://palazzinaburjaki.com/#about</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
   <url>
     <loc>https://palazzinaburjaki.com/privacy-policy</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Cookie Policy -->
   <url>
     <loc>https://palazzinaburjaki.com/cookie-policy</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>
