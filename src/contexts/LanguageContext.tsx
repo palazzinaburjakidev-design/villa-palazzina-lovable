@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 export type Language = 'en' | 'hr' | 'it' | 'de';
 
@@ -1622,6 +1623,9 @@ const getInitialLanguage = (): Language => {
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+  // Cache: lang -> { key: value }
+  const supabaseCache = useRef<Record<string, Record<string, string>>>({});
+  const [supabaseTranslations, setSupabaseTranslations] = useState<Record<string, string>>({});
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -1636,11 +1640,63 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
   }, []);
 
-  const t = (key: string): string => {
+  // Fetch translations from Supabase when language changes
+  useEffect(() => {
+    const fetchTranslations = async () => {
+      // Check cache first
+      if (supabaseCache.current[language]) {
+        setSupabaseTranslations(supabaseCache.current[language]);
+        return;
+      }
+
+      try {
+        // Paginate to handle >1000 rows
+        const allRows: { key: string; value: string }[] = [];
+        let from = 0;
+        const pageSize = 1000;
+
+        while (true) {
+          const { data, error } = await supabase
+            .from('translations')
+            .select('key, value')
+            .eq('lang', language)
+            .range(from, from + pageSize - 1);
+
+          if (error) {
+            console.warn('Failed to fetch translations from Supabase:', error.message);
+            break;
+          }
+          if (!data || data.length === 0) break;
+          allRows.push(...data);
+          if (data.length < pageSize) break;
+          from += pageSize;
+        }
+
+        if (allRows.length > 0) {
+          const map: Record<string, string> = {};
+          for (const row of allRows) {
+            map[row.key] = row.value;
+          }
+          supabaseCache.current[language] = map;
+          setSupabaseTranslations(map);
+        }
+      } catch (err) {
+        console.warn('Supabase translations fetch failed, using hardcoded fallback.');
+      }
+    };
+
+    fetchTranslations();
+  }, [language]);
+
+  const t = useCallback((key: string): string => {
+    // Priority: Supabase translations > hardcoded current language > hardcoded English > key
+    if (supabaseTranslations[key]) {
+      return supabaseTranslations[key];
+    }
     const translation = translations[key];
     if (!translation) return key;
     return translation[language] || translation['en'] || key;
-  };
+  }, [language, supabaseTranslations]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
