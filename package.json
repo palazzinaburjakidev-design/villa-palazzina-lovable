@@ -1,0 +1,9 @@
+{
+  "name": "palazzina-burjaki",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && yarn install && yarn build",
+    "dev": "cd frontend && yarn dev"
+  }
+}
