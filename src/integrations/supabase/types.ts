@@ -14,7 +14,149 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      amenities: {
+        Row: {
+          icon_name: string
+          id: string
+          sort_order: number
+        }
+        Insert: {
+          icon_name: string
+          id?: string
+          sort_order?: number
+        }
+        Update: {
+          icon_name?: string
+          id?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      gallery_albums: {
+        Row: {
+          album_key: string
+          category: string
+          id: string
+          sort_order: number
+        }
+        Insert: {
+          album_key: string
+          category: string
+          id?: string
+          sort_order?: number
+        }
+        Update: {
+          album_key?: string
+          category?: string
+          id?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          album_id: string
+          id: string
+          image_url: string
+          is_cover: boolean
+          sort_order: number
+        }
+        Insert: {
+          album_id: string
+          id?: string
+          image_url: string
+          is_cover?: boolean
+          sort_order?: number
+        }
+        Update: {
+          album_id?: string
+          id?: string
+          image_url?: string
+          is_cover?: boolean
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gallery_images_album_id_fkey"
+            columns: ["album_id"]
+            isOneToOne: false
+            referencedRelation: "gallery_albums"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      locations: {
+        Row: {
+          category: string
+          distance_km: number | null
+          google_maps_url: string | null
+          id: string
+          image_key: string | null
+          location_key: string
+          photo_credit: string | null
+          sort_order: number
+        }
+        Insert: {
+          category: string
+          distance_km?: number | null
+          google_maps_url?: string | null
+          id?: string
+          image_key?: string | null
+          location_key: string
+          photo_credit?: string | null
+          sort_order?: number
+        }
+        Update: {
+          category?: string
+          distance_km?: number | null
+          google_maps_url?: string | null
+          id?: string
+          image_key?: string | null
+          location_key?: string
+          photo_credit?: string | null
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      translations: {
+        Row: {
+          id: string
+          key: string
+          lang: string
+          value: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          lang: string
+          value: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          lang?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      villa_info: {
+        Row: {
+          id: string
+          key: string
+          value: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          value: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
