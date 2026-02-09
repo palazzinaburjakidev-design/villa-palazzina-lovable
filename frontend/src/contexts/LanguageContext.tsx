@@ -16,7 +16,6 @@ const defaultLanguageContext: LanguageContextType = {
   language: 'en',
   setLanguage: () => {
     if (import.meta.env.DEV) {
-      // eslint-disable-next-line no-console
       console.warn('LanguageProvider is missing: setLanguage() is a no-op.');
     }
   },
@@ -73,6 +72,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     if (stored && ['en', 'hr', 'it', 'de'].includes(stored) && stored !== language) {
       setLanguageState(stored as Language);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fetch translations from Supabase when language changes
