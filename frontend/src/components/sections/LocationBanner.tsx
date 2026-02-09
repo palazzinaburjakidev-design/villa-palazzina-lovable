@@ -148,7 +148,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       if (timeoutId) clearTimeout(timeoutId);
       if (intervalId) clearInterval(intervalId);
     };
-  }, [categories.length, initialDelay, isPaused]);
+  }, [categories.length, initialDelay, isPaused]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCategoryChange = (index: number) => {
     setActiveCategory(index);
