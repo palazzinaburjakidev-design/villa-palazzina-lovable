@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: ["github-audit-demo.preview.emergentagent.com"],
     hmr: {
       overlay: false,
     },
