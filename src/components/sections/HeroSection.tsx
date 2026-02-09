@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useVillaInfo } from '@/hooks/useVillaInfo';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import heroImage from '@/assets/hero-villa.avif';
 
@@ -10,6 +11,7 @@ interface HeroSectionProps {
 
 const HeroSection = memo(({ isActive }: HeroSectionProps) => {
   const { t } = useLanguage();
+  const { data: villaInfo } = useVillaInfo();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -88,7 +90,7 @@ const HeroSection = memo(({ isActive }: HeroSectionProps) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <a
-                  href="https://hr.airbnb.com/rooms/1374488?_set_bev_on_new_domain=1759776626_EANmIzZjMwMzBlZm&set_everest_cookie_on_new_domain=1759776626.EAZTc0YzVhMzQ2NjM1Mz.1SKP7GRHZCCh7kEL-c4mglEEFUYXy0c2fdwyNyEgf5s&source_impression_id=p3_1768839068_P3JJtgKZZG0aLdcA"
+                  href={villaInfo.airbnb_url || "https://hr.airbnb.com/rooms/1374488"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-8 py-3 sm:px-10 sm:py-4 bg-terracotta hover:bg-terracotta-light text-coal font-semibold uppercase tracking-widest text-sm sm:text-base rounded transition-all duration-300 hover:scale-105"
