@@ -148,7 +148,7 @@ const BannerGroup = memo(({ categories, initialDelay = 0, isPrimary = false }: B
       if (timeoutId) clearTimeout(timeoutId);
       if (intervalId) clearInterval(intervalId);
     };
-  }, [categories.length, initialDelay]);
+  }, [categories.length, initialDelay, isPaused]);
 
   const handleCategoryChange = (index: number) => {
     setActiveCategory(index);
