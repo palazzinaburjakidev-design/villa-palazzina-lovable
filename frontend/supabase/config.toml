@@ -1,5 +1,8 @@
 project_id = "vtqeoixvlofguiqvdoyb"
 
+[functions.db-keep-alive]
+verify_jwt = false
+
 [functions.translations]
 verify_jwt = false
 
