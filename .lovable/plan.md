@@ -1,157 +1,45 @@
 
-# Plan: Prebacivanje svih podataka u Supabase (API za web + APK)
 
-## Pregled
+# Plan: Potpuna migracija na Supabase
 
-Trenutno je sav sadrzaj (prijevodi, amenities, lokacije, galerija) hardkodiran u React komponentama. Plan je premjestiti sve podatke u Supabase tablice i kreirati edge funkcije kao REST API koji koriste i web stranica i buduca Android aplikacija.
+## Sto se radi
 
-## Faza 1: Kreiranje Supabase tablica
+Prebaciti SVE preostale podatke na Supabase i ukloniti hardkodirane prijevode iz koda. Nema novih funkcionalnosti -- samo cistenje.
 
-### Tablica `translations`
-```
-id (uuid, PK)
-key (text) -- npr. 'hero.brand'
-lang (text) -- 'en', 'hr', 'it', 'de'
-value (text) -- prevedeni tekst
-```
-- RLS: Javni SELECT (svi mogu citati), bez INSERT/UPDATE/DELETE za anonimne korisnike
-- Unosi: svih ~400 kljuceva x 4 jezika = ~1600 redova
+## Koraci
 
-### Tablica `amenities`
-```
-id (uuid, PK)
-icon_name (text) -- npr. 'Waves', 'Sparkles'
-sort_order (integer)
-```
-- Amenity nazivi i opisi idu kroz `translations` tablicu (kljucevi poput 'amenities.pool.title')
-- 8 stavki
+### 1. Migrirati privacy/cookie prijevode u bazu (SQL migracija)
 
-### Tablica `locations`
-```
-id (uuid, PK)
-category (text) -- 'beaches', 'towns', 'transport', 'restaurants'
-image_key (text) -- naziv slike npr. 'santa-marina'
-distance_km (numeric)
-google_maps_url (text, nullable)
-photo_credit (text, nullable)
-sort_order (integer)
-```
-- Nazivi, opisi i udaljenosti idu kroz `translations` tablicu
-- ~15 stavki
+U bazi nedostaje ~70 translation kljuceva za Privacy Policy i Cookie Policy stranice (privacy.*, cookie.*). Ovi prijevodi postoje samo hardkodirani u LanguageContext.tsx.
 
-### Tablica `gallery_albums`
-```
-id (uuid, PK)
-album_key (text) -- npr. 'pool', 'terrace'
-category (text) -- 'exterior', 'living', 'bedrooms', 'bathrooms'
-sort_order (integer)
-```
+Kreirati SQL migraciju koja ubacuje sve privacy.* i cookie.* kljuceve za sva 4 jezika (EN, HR, IT, DE) -- ukupno ~280 redova.
 
-### Tablica `gallery_images`
-```
-id (uuid, PK)
-album_id (uuid, FK -> gallery_albums.id)
-image_url (text) -- URL iz Supabase Storage
-sort_order (integer)
-is_cover (boolean, default false)
-```
-- Slike se uploadaju u Supabase Storage bucket `gallery`
-- ~75 slika ukupno
+### 2. Ocistiti LanguageContext.tsx
 
-### Tablica `villa_info`
-```
-id (uuid, PK)
-key (text) -- npr. 'name', 'address', 'latitude', 'longitude', 'airbnb_url', 'max_guests'
-value (text)
-```
+Trenutno datoteka ima ~1715 linija od kojih je ~1600 hardkodirani objekt `translations`.
 
-## Faza 2: Supabase Storage
+Promjene:
+- Ukloniti cijeli `export const translations: Translations = { ... }` objekt (~1600 linija)
+- Ukloniti `Translations` interface (vise nije potreban)
+- Dodati loading state -- dok se prijevodi ucitavaju iz Supabase, `t()` vraca prazan string umjesto kljuca (izbjegava "trepanje" kljuceva na ekranu)
+- `t()` funkcija koristi samo `supabaseTranslations` bez fallbacka na hardkodirane vrijednosti
+- Zadrzati cache logiku i paginaciju (vec implementirano)
 
-- Kreirati bucket `gallery` (public)
-- Uploadati sve slike iz `src/assets/` u odgovarajuce foldere:
-  - `gallery/pool/pool-1.avif`, `gallery/pool/pool-2.avif` itd.
-  - `gallery/bedrooms/bedroom1-1.avif` itd.
-  - `gallery/locations/santa-marina.webp` itd.
-- Slike lokacija (plaže, gradovi) također u bucket
+Rezultat: datoteka ce imati ~120 linija umjesto ~1715.
 
-## Faza 3: Edge funkcije (REST API)
+### 3. Provjera
 
-### `translations` edge funkcija
-- `GET /translations?lang=hr` -- vraca sve prijevode za zadani jezik
-- `GET /translations?lang=hr&prefix=hero` -- filtriranje po prefixu
-- Odgovor: `{ "hero.brand": "Villa Palazzina Burjaki", "hero.title": "Autentični Istarski Bijeg", ... }`
+- Provjeriti da sve 4 jezika rade korektno
+- Provjeriti Privacy i Cookie Policy stranice
+- Provjeriti da nema "trepanja" kljuceva
 
-### `amenities` edge funkcija
-- `GET /amenities?lang=hr`
-- Odgovor: niz amenity objekata s prevedenim nazivima i opisima
-
-### `locations` edge funkcija
-- `GET /locations?lang=hr`
-- `GET /locations?lang=hr&category=beaches`
-- Odgovor: niz lokacija s prevedenim nazivima, opisima, slikama i koordinatama
-
-### `gallery` edge funkcija
-- `GET /gallery` -- vraca sve albume s brojem slika i cover URL-om
-- `GET /gallery?album=pool` -- vraca sve slike za odredeni album
-- `GET /gallery?category=exterior` -- filtriranje po kategoriji
-
-### `villa-info` edge funkcija
-- `GET /villa-info` -- vraca sve podatke o vili (adresa, koordinate, Airbnb URL, itd.)
-
-## Faza 4: Azuriranje React frontenda
-
-### Novi hook: `useTranslations`
-- Zamjenjuje hardkodirani `LanguageContext`
-- Dohvaca prijevode iz Supabase tablice umjesto iz staticnog objekta
-- Kešira prijevode u memoriji nakon prvog dohvata
-- Fallback na engleski ako prijevod ne postoji
-
-### Azuriranje komponenti
-- `AmenitiesSection.tsx`: Dohvaca amenities podatke iz Supabase
-- `LocationSection.tsx` + `LocationBanner.tsx`: Dohvaca lokacije iz Supabase
-- `GallerySection.tsx`: Dohvaca albume i slike iz Supabase Storage
-- `HeroSection.tsx`: Dohvaca villa info podatke
-- Ukloniti sve hardkodirane importove slika iz `src/assets/`
-
-### Loading stanja
-- Dodati skeleton loadere dok se podaci ucitavaju
-- Dodati error handling za slucaj da Supabase nije dostupan
-
-## Faza 5: Migracija podataka
-
-- SQL skripta za unos svih ~1600 prijevoda
-- SQL skripta za unos 8 amenityja
-- SQL skripta za unos ~15 lokacija
-- SQL skripta za unos ~18 albuma i ~75 slika
-- Upload slika u Storage bucket
-
-## Redoslijed implementacije
-
-1. Kreiranje tablica (migracija)
-2. Kreiranje Storage bucketa i upload slika
-3. Unos podataka u tablice
-4. Kreiranje edge funkcija (5 komada)
-5. Kreiranje `useTranslations` hooka
-6. Azuriranje svake komponente redom
-7. Testiranje web stranice
-8. Dokumentiranje API-ja za APK razvoj
+---
 
 ## Tehnicke napomene
 
-- Sve tablice imaju RLS s javnim SELECT pravilom (podaci su javni)
-- Edge funkcije ne zahtijevaju autentifikaciju (javni API)
-- Prijevodi se kešieraju na klijentu nakon prvog dohvata da se smanji broj upita
-- Slike iz Supabase Storage imaju javne URL-ove
-- Stare slike iz `src/assets/` se mogu ukloniti nakon migracije (smanjuje bundle)
+- Komponente (LocationBanner, AmenitiesSection, GallerySection) OSTAJU kakve jesu -- koriste `t()` koji vec povlaci iz Supabase
+- Slike ostaju lokalne (src/assets/) -- upload u Storage rucno
+- Edge funkcije ostaju nepromijenjene
+- Nakon ove promjene, jedini izvor prijevoda je Supabase `translations` tablica
+- Ako Supabase bude nedostupan, stranica ce prikazivati kljuceve umjesto teksta (svjestan trade-off za cistiji kod)
 
-## Procjena opsega
-
-Ovo je VELIK posao koji zahtijeva vise koraka:
-- 5 tablica za kreirati
-- ~1700+ redova podataka za unijeti
-- ~75 slika za uploadati u Storage
-- 5 edge funkcija za napisati
-- 6+ komponenti za azurirati
-- Novi hook za prijevode
-
-Preporucam raditi u fazama, pocevsi od tablica i edge funkcija, pa zatim postupno azurirati komponente.
