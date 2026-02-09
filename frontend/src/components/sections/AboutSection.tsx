@@ -217,13 +217,13 @@ const AboutSection = memo(({
                   <MapPin className="w-4 h-4 text-terracotta flex-shrink-0" />
                   <span className="text-sandstone text-xs sm:text-sm text-shadow-sm">{villaInfo.address || 'Burjaki 36, Trgetari 52224'}</span>
                 </a>
-                <a href={`mailto:${villaInfo.email || 'palazzinaburjaki@gmail.com'}`} className="inline-flex items-center justify-center gap-2 glass-card-coal px-3 py-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors">
+                <a href="mailto:palazzinaburjaki@gmail.com" className="inline-flex items-center justify-center gap-2 glass-card-coal px-3 py-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors">
                   <Mail className="w-4 h-4 text-terracotta flex-shrink-0" />
-                  <span className="text-sandstone text-xs sm:text-sm text-shadow-sm truncate">{villaInfo.email || 'palazzinaburjaki@gmail.com'}</span>
+                  <span className="text-sandstone text-xs sm:text-sm text-shadow-sm truncate">palazzinaburjaki@gmail.com</span>
                 </a>
-                <a href={`tel:${villaInfo.phone || '+385123456789'}`} className="inline-flex items-center justify-center gap-2 glass-card-coal px-3 py-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors">
+                <a href="tel:+385911513014" className="inline-flex items-center justify-center gap-2 glass-card-coal px-3 py-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors">
                   <Phone className="w-4 h-4 text-terracotta flex-shrink-0" />
-                  <span className="text-sandstone text-xs sm:text-sm text-shadow-sm">{villaInfo.phone || '+385 91 151 3014'}</span>
+                  <span className="text-sandstone text-xs sm:text-sm text-shadow-sm">+385 91 151 3014</span>
                 </a>
                 <a href="https://www.instagram.com/burjaki/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 glass-card-coal px-3 py-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors">
                   <Instagram className="w-4 h-4 text-terracotta flex-shrink-0" />
