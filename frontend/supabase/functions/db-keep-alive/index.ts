@@ -22,7 +22,7 @@ Deno.serve(async (req) => {
     // Execute a simple SELECT query to keep the database active
     // This query does not modify any data
     const { data, error } = await supabase
-      .from("profiles")
+      .from("villa_info")
       .select("id")
       .limit(1);
 
