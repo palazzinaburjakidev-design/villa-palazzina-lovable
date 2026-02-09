@@ -1,1 +1,16 @@
 project_id = "vtqeoixvlofguiqvdoyb"
+
+[functions.translations]
+verify_jwt = false
+
+[functions.amenities]
+verify_jwt = false
+
+[functions.locations]
+verify_jwt = false
+
+[functions.gallery]
+verify_jwt = false
+
+[functions.villa-info]
+verify_jwt = false
