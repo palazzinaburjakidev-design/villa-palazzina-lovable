@@ -146,7 +146,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
   if (import.meta.env.DEV && context === defaultLanguageContext) {
-    // eslint-disable-next-line no-console
     console.warn('useLanguage is being used outside LanguageProvider.');
   }
   return context;
