@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "0.0.0.0",
     port: 3000,
-    allowedHosts: ["villa-palazzina.preview.emergentagent.com"],
+    allowedHosts: true,
     hmr: {
       overlay: false,
     },
