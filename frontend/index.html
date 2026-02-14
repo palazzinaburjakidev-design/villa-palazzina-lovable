@@ -71,21 +71,9 @@
     <link rel="preconnect" href="https://vtqeoixvlofguiqvdoyb.supabase.co" />
     <link rel="dns-prefetch" href="https://vtqeoixvlofguiqvdoyb.supabase.co" />
 
-    <!-- Critical CSS for SEO content (prevents layout shift) -->
+    <!-- Critical CSS for initial render -->
     <style>
-      .seo-content { font-family: system-ui, -apple-system, sans-serif; color: #1a1a1a; }
-      .seo-content header { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/hero-villa.jpg') center/cover; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 2rem; }
-      .seo-content h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 300; }
-      .seo-content h2 { font-size: 1.75rem; color: #8B7355; margin: 2rem 0 1rem; }
-      .seo-content main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-      .seo-content section { margin-bottom: 3rem; }
-      .seo-content ul { list-style: disc; padding-left: 1.5rem; }
-      .seo-content li { margin-bottom: 0.5rem; }
-      .seo-content a { color: #8B7355; }
-      .seo-content .cta { background: #8B7355; color: white; padding: 1rem 2rem; text-decoration: none; display: inline-block; margin-top: 1rem; }
-      .seo-content img { max-width: 100%; height: auto; }
-      /* Hide when React loads */
-      .react-loaded .seo-content { display: none; }
+      #root { min-height: 100vh; }
     </style>
 
     <!-- Cloudflare Web Analytics -->
@@ -265,100 +253,8 @@
   </head>
 
   <body>
-    <!-- SEO Content - Visible without JavaScript -->
-    <div class="seo-content" id="seo-fallback">
-      <header>
-        <h1>Palazzina Burjaki – Holiday Home in Istria</h1>
-        <p>Traditional Istrian property with private pool, jacuzzi & sauna near Labin</p>
-        <a href="https://hr.airbnb.com/rooms/1374488" class="cta">Book Now on Airbnb</a>
-      </header>
-
-      <main>
-        <section id="about-villa">
-          <h2>Holiday Accommodation in Istria, Croatia</h2>
-          <p>Palazzina Burjaki is a beautifully restored <strong>traditional Istrian house</strong> located in the peaceful village of Trgetari, near <strong>Labin</strong> and the popular beach resort of <strong>Rabac</strong>. This authentic Croatian holiday home offers the perfect blend of traditional architecture and modern comfort.</p>
-          <p>With <strong>4 bedrooms, 5 bathrooms, and 235 m² of living space</strong>, our property accommodates up to 8 guests – ideal for families and groups seeking an unforgettable vacation in <strong>Istria, Croatia</strong>.</p>
-          <img src="/hero-villa.jpg" alt="Palazzina Burjaki - Traditional Istrian house with terracotta roof near Labin, Croatia" width="1200" height="800" loading="lazy" />
-        </section>
-
-        <section id="amenities">
-          <h2>Amenities & Features</h2>
-          <ul>
-            <li><strong>Private swimming pool</strong> – Seasonal outdoor pool exclusively for guests</li>
-            <li><strong>Jacuzzi & Sauna</strong> – Wellness area for relaxation</li>
-            <li><strong>Fitness center</strong> – Fully equipped gym</li>
-            <li><strong>Fully equipped kitchen</strong> – Modern appliances for home cooking</li>
-            <li><strong>Free WiFi</strong> – High-speed internet throughout</li>
-            <li><strong>Air conditioning</strong> – In all rooms</li>
-            <li><strong>Free parking</strong> – Private parking on premises</li>
-            <li><strong>BBQ & Garden</strong> – Outdoor dining area with grill</li>
-            <li><strong>Basketball court</strong> – For active recreation</li>
-          </ul>
-        </section>
-
-        <section id="location">
-          <h2>Location – Near Labin & Rabac, Istria</h2>
-          <p>Our accommodation is ideally situated in the <strong>Istrian countryside</strong>, offering peace and privacy while remaining close to all major attractions:</p>
-          <ul>
-            <li><strong>Rabac beaches</strong> – 15 minutes by car</li>
-            <li><strong>Labin old town</strong> – 20 minutes by car</li>
-            <li><strong>Pula & Arena</strong> – 45 minutes by car</li>
-            <li><strong>Rovinj</strong> – 1 hour by car</li>
-          </ul>
-          <address>
-            <strong>Address:</strong> Burjaki 36, Trgetari 52224, Istria, Croatia
-          </address>
-        </section>
-
-        <section id="reviews">
-          <h2>Guest Reviews</h2>
-          <p>Palazzina Burjaki is rated <strong>4.93 out of 5 stars</strong> on Airbnb based on 54 reviews. Our guests love the authentic Istrian atmosphere, the private pool, and the warm hospitality.</p>
-        </section>
-
-        <section id="booking">
-          <h2>Book Your Stay in Istria</h2>
-          <p>Ready to experience the authentic Croatian lifestyle? Book Palazzina Burjaki for your next holiday in Istria.</p>
-          <ul>
-            <li><strong>Check-in:</strong> 16:00 – 00:00</li>
-            <li><strong>Check-out:</strong> by 10:00</li>
-            <li><strong>Minimum stay:</strong> Contact for details</li>
-          </ul>
-          <a href="https://hr.airbnb.com/rooms/1374488" class="cta">Book on Airbnb</a>
-        </section>
-
-        <section id="contact">
-          <h2>Contact Us</h2>
-          <p><strong>Phone:</strong> <a href="tel:+385911513014">+385 91 151 3014</a></p>
-          <p><strong>Email:</strong> <a href="mailto:palazzinaburjaki@gmail.com">palazzinaburjaki@gmail.com</a></p>
-          <p><strong>Instagram:</strong> <a href="https://www.instagram.com/burjaki/" target="_blank" rel="noopener">@burjaki</a></p>
-          <p><strong>Facebook:</strong> <a href="https://www.facebook.com/palazzinaferienhaus/" target="_blank" rel="noopener">Palazzina Ferienhaus</a></p>
-        </section>
-      </main>
-
-      <footer>
-        <p>© 2025 Palazzina Burjaki. Traditional Istrian Holiday Home near Labin, Croatia.</p>
-      </footer>
-    </div>
-
-    <!-- React App Mount Point -->
+    <!-- React App Mount Point - Single source of truth for content -->
     <div id="root"></div>
-
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      // Hide SEO content when React loads
-      document.addEventListener('DOMContentLoaded', function() {
-        var checkReact = setInterval(function() {
-          if (document.getElementById('root').children.length > 0) {
-            document.body.classList.add('react-loaded');
-            clearInterval(checkReact);
-          }
-        }, 100);
-        // Fallback: hide after 3 seconds anyway
-        setTimeout(function() {
-          document.body.classList.add('react-loaded');
-          clearInterval(checkReact);
-        }, 3000);
-      });
-    </script>
   </body>
 </html>
