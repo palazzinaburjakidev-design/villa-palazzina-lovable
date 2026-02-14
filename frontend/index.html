@@ -142,16 +142,35 @@
     {
       "@context": "https://schema.org",
       "@type": "VacationRental",
+      "@id": "https://palazzinaburjaki.com/#vacationrental",
+      "identifier": "palazzina-burjaki-istria",
+      "additionalType": "https://schema.org/LodgingBusiness",
       "name": "Palazzina Burjaki",
       "description": "Authentic traditional Istrian house with Mediterranean charm, private pool, jacuzzi, sauna, and peaceful surroundings near Labin and Rabac beaches. Accommodates up to 8 guests.",
       "url": "https://palazzinaburjaki.com/",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://palazzinaburjaki.com/hero-villa.jpg",
-        "width": 1920,
-        "height": 1080,
-        "caption": "Palazzina Burjaki - Traditional Istrian holiday house near Labin, Croatia"
-      },
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://palazzinaburjaki.com/hero-villa.jpg",
+          "width": 1920,
+          "height": 1080,
+          "caption": "Palazzina Burjaki - Traditional Istrian holiday house with pool near Labin, Croatia"
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://palazzinaburjaki.com/pool.jpg",
+          "width": 1200,
+          "height": 800,
+          "caption": "Private swimming pool at Palazzina Burjaki, Istria"
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://palazzinaburjaki.com/interior.jpg",
+          "width": 1200,
+          "height": 800,
+          "caption": "Interior of Palazzina Burjaki - traditional Istrian accommodation"
+        }
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Burjaki 36",
@@ -164,6 +183,18 @@
         "@type": "GeoCoordinates",
         "latitude": 45.0833,
         "longitude": 14.1167
+      },
+      "containsPlace": {
+        "@type": "Place",
+        "name": "Palazzina Burjaki",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Burjaki 36",
+          "addressLocality": "Trgetari",
+          "postalCode": "52224",
+          "addressRegion": "Istria",
+          "addressCountry": "HR"
+        }
       },
       "telephone": "+385 91 151 3014",
       "email": "palazzinaburjaki@gmail.com",
